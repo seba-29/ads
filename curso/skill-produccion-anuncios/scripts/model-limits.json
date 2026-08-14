@@ -1,0 +1,9 @@
+{
+  "_comment": "Declaracion UNICA de los limites por modelo. La leen alpha_sections.py (Python) y run-all-ads.sh (Bash, via jq). NO la dupliques en codigo: el bug de la Ley 20 fue exactamente eso, tres copias a mano que divergieron, con run-all-ads.sh teniendo los numeros invertidos. chars = tope real del prompt COMPLETO (alpha + product-dna + concepto + scaffolding). max_refs = maximo de imagenes de referencia por envio.",
+  "models": {
+    "gpt-image-2":     { "chars": 5000, "max_refs": 16 },
+    "nano-banana-pro": { "chars": 3500, "max_refs": 8 },
+    "nano-banana-2":   { "chars": 3500, "max_refs": 8 }
+  },
+  "default_model": "gpt-image-2"
+}

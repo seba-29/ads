@@ -1,0 +1,13 @@
+{
+  "name": "produccion-anuncios-scripts",
+  "version": "1.0.0",
+  "description": "Helper scripts for the /produccion-anuncios Claude Code skill. Handles product image scraping, logo extraction, and content sanitization for the Felipe student ads pipeline.",
+  "private": true,
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "sharp": "^0.33.0",
+    "exceljs": "^4.4.0"
+  }
+}
