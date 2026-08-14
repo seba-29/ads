@@ -18,17 +18,41 @@ Más presupuesto sobre lo que ya funciona.
 > Anuncios).
 
 Subir más rápido reinicia la fase de aprendizaje y desestabiliza el rendimiento. El
-algoritmo necesita re-aprender con cada salto grande; 35% es el escalón que suele
-absorber sin romperse.
+algoritmo necesita re-aprender con cada salto grande.
 
-Ejemplo desde $20/día:
-| Día | Presupuesto |
-|---|---|
-| 0 | $20 |
-| 3-7 | $27 |
-| 6-14 | $36 |
-| 9-21 | $49 |
-| 12-28 | $66 |
+> ### ⚠️ Ajuste 2026 — el 35% es el techo, no el default
+>
+> Hoy se sabe que un cambio de presupuesto **superior al 20% reinicia la fase de
+> aprendizaje**, y que ese reinicio cuesta **+35-60% de CPA durante 48-72 horas**.
+> El consenso actual es **20-30% cada 3-5 días**.
+>
+> Cómo conciliarlo con la regla del curso:
+> - **Default: +20%.** No reinicia el aprendizaje. Es el escalón seguro.
+> - **+25-30%:** sobre conjuntos ya estables, con ROAS holgado sobre el objetivo.
+> - **+35%:** techo absoluto, solo sobre ganadores probados y asumiendo que puede
+>   haber reinicio. Nunca como ritmo habitual.
+>
+> El curso no está equivocado: dice "máximo 35%". Lo que cambió es que ahora sabemos
+> exactamente dónde está la línea (20%) y cuánto cuesta cruzarla.
+
+Ejemplo desde $20/día con escalones del 20%:
+| Día | Presupuesto | Al 35% (agresivo) |
+|---|---|---|
+| 0 | $20 | $20 |
+| 3-5 | $24 | $27 |
+| 6-10 | $29 | $36 |
+| 9-15 | $35 | $49 |
+| 12-20 | $41 | $66 |
+
+La curva del 35% llega más rápido, pero cada escalón arriesga 2-3 días de CPA
+degradado. En 20 días la diferencia real suele ser menor de lo que sugiere la tabla.
+
+### Piso: nunca bajes del mínimo de aprendizaje
+
+Al escalar hacia arriba esto no aplica, pero al **repartir** presupuesto entre conjuntos
+sí: ningún conjunto debería quedar por debajo de `(CPA objetivo × 50) ÷ 7` al día. Si
+escalar horizontalmente te obliga a dividir el presupuesto por debajo de ese piso, no
+estás escalando: estás fragmentando. Ver `10-publicos-y-exclusiones.md` §4.
 
 ### Las 2 alertas del escalamiento vertical
 

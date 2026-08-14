@@ -3,6 +3,19 @@
 Todo el sistema cuelga de aquí. Antes de tocar cualquier configuración en el
 Administrador de Anuncios, hay que saber **en qué etapa del ciclo** estamos.
 
+> ### ⚠️ Cómo leer este documento en 2026
+>
+> La **estrategia** de este documento está intacta: las 4 etapas, el reparto
+> 60/20/10/10 y la lógica de artes y niveles siguen siendo correctas.
+>
+> La **implementación** cambió. Con Advantage+ Audience (el default), las columnas
+> *Públicos* y *Ubicaciones* son **sugerencias** que Meta puede ignorar; solo
+> *Exclusiones* y la ubicación geográfica son controles duros. Y separar las 4 etapas
+> exige un presupuesto que la mayoría de las cuentas no tiene.
+>
+> Lee esta matriz como **el diseño**, y `09-plataforma-2026.md` +
+> `10-publicos-y-exclusiones.md` como **la construcción**.
+
 ---
 
 ## 1. Las 4 etapas
@@ -112,6 +125,12 @@ Cada etapa excluye a **todas las que vienen después**:
 Sin esto, dos campañas tuyas compiten en la misma subasta por la misma persona: pagas
 CPM inflado y no sabes cuál etapa produjo la venta.
 
+> **En 2026 este patrón dejó de ser el más aburrido para ser el más importante.** Como
+> las inclusiones son sugerencias, la cascada de exclusiones es *lo único* que sostiene
+> la separación entre etapas. Sin ella no tienes un ciclo de ventas: tienes cuatro
+> campañas mostrándole lo mismo a la misma gente. Implementación en
+> `10-publicos-y-exclusiones.md` §3.
+
 **Patrón 4 — El arte y el texto se endurecen juntos.**
 Presentación abre con artes suaves (educativo, aspiracional, humano) y textos
 indirectos (Inconsciente/Problema). Ascensión cierra con artes duras (promoción,
@@ -162,8 +181,11 @@ calendario de marketing — ver `08-calendario-mkt.md`).
 ## 5. Preguntas frecuentes que resuelve esta matriz
 
 **"¿Cuántos anuncios por conjunto?"**
-En Presentación, 3-5 anuncios que varíen **ángulo y nivel de consciencia**, no solo el
-color del fondo. En etapas calientes, 2-3 bastan: el público es chico y se fatiga.
+El curso dice 3-5 en Presentación y 2-3 en etapas calientes. **Eso quedó corto:** Meta
+retiró la recomendación de "máximo 6 anuncios" y hoy los mejores anunciantes testean
+**15-50 anuncios por conjunto**. Con arquitectura consolidada, carga 10-20 cubriendo
+los 5 niveles de consciencia. Lo que no cambia: que varíen **ángulo y nivel**, no el
+color del fondo.
 
 **"¿Advantage+ o manual?"**
 La matriz es agnóstica: define público, exclusión y arte. Si usas presupuesto de

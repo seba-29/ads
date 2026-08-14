@@ -105,6 +105,35 @@ Ejemplo con el deseo *Social status*:
 
 ---
 
+## De nivel a configuración
+
+Saber el nivel no sirve si no se traduce en cuenta. La tabla completa
+(público, exclusión, objetivo y arte por nivel) está en
+**`10-publicos-y-exclusiones.md` §6**. El resumen:
+
+| Nivel | Exclusión que lo define (el control duro) |
+|---|---|
+| Inconsciente · Problema | Excluir interacción + intención + compradores |
+| Solución | Excluir intención + compradores |
+| Producto | Excluir compradores |
+| Decisión | Excluir compradores recientes (30d) |
+
+**Ojo con el orden causal.** No eliges el nivel porque el público sea frío: eliges la
+exclusión para que el público *sea* frío, y entonces el nivel corresponde. Es lo único
+que Meta obedece.
+
+### Cuando no puedes separar por presupuesto
+
+Con presupuesto chico (lo normal), no se separan las etapas — todo corre en un conjunto
+abierto. **Los niveles no desaparecen: se convierten en anuncios distintos dentro del
+mismo conjunto.** Cargas 3-4 anuncios por nivel y Meta le muestra a cada persona el que
+mejor le calza, que es exactamente lo que el ciclo pretendía lograr con estructura.
+
+Dicho de otro modo: **el ciclo sobrevive como arquitectura de mensaje aunque muera como
+arquitectura de entrega.** Ver `10-publicos-y-exclusiones.md` §4 y §5.
+
+---
+
 ## Cómo auditar un anuncio existente
 
 Tres preguntas, en orden:

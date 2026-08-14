@@ -1,6 +1,6 @@
 ---
 name: meta-ads
-description: Sistema completo de estrategia, estructura, optimización y escalamiento de Meta Ads (Facebook e Instagram Ads) basado en la metodología del Ciclo de Ventas de Felipe Vergara. Úsala SIEMPRE que haya que diseñar la estrategia de una cuenta publicitaria, estructurar campañas/conjuntos/anuncios, definir públicos y exclusiones, calcular presupuestos y CPA/ROAS objetivo, simular escenarios de campaña, investigar al cliente ideal (7 maletas, avatar, ángulos), generar hooks y creativos por nivel de consciencia, diagnosticar por qué una campaña no funciona, o escalar lo que sí funciona. Se activa con - "estrategia de Meta Ads", "estructurar campañas", "cuánto presupuesto", "CPA objetivo", "ROAS", "mi campaña no vende", "optimizar campaña", "escalar campaña", "públicos y exclusiones", "ángulos de venta", "hooks", "niveles de consciencia", "ciclo de ventas", "trafficker", "Facebook Ads", "Instagram Ads", "campaña de mensajes/WhatsApp", "clientes potenciales", "retargeting". También cuando el usuario comparte métricas de una campaña (CPM, CTR, frecuencia, costo por conversación) y pide interpretarlas.
+description: Sistema completo de estrategia, estructura, optimización y escalamiento de Meta Ads (Facebook e Instagram Ads) basado en la metodología del Ciclo de Ventas de Felipe Vergara. Úsala SIEMPRE que haya que diseñar la estrategia de una cuenta publicitaria, estructurar campañas/conjuntos/anuncios, definir públicos y exclusiones, calcular presupuestos y CPA/ROAS objetivo, simular escenarios de campaña, investigar al cliente ideal (7 maletas, avatar, ángulos), generar hooks y creativos por nivel de consciencia, diagnosticar por qué una campaña no funciona, o escalar lo que sí funciona. Se activa con - "estrategia de Meta Ads", "estructurar campañas", "cuánto presupuesto", "CPA objetivo", "ROAS", "mi campaña no vende", "optimizar campaña", "escalar campaña", "públicos y exclusiones", "ángulos de venta", "hooks", "niveles de consciencia", "ciclo de ventas", "trafficker", "Facebook Ads", "Instagram Ads", "campaña de mensajes/WhatsApp", "clientes potenciales", "retargeting", "Advantage+", "fase de aprendizaje", "públicos personalizados", "lookalike", "a quién excluyo", "cuántos conjuntos de anuncios", "CTWA", "click to WhatsApp". También cuando el usuario comparte métricas de una campaña (CPM, CTR, frecuencia, costo por conversación) y pide interpretarlas. Incluye la actualización de la plataforma a 2026 (objetivos ODAX, Advantage+ Audience, controles vs sugerencias, ventanas de retención, fase de aprendizaje) y cuándo conviene separar o consolidar la estructura de cuenta.
 ---
 
 # Meta Ads — Sistema del Ciclo de Ventas
@@ -13,6 +13,13 @@ persona está en una etapa distinta de su relación con la marca, y a cada etapa
 corresponde un presupuesto, un público, un tipo de arte y un nivel de consciencia
 distinto. Un anuncio que funciona en frío fracasa en retargeting — no porque sea malo,
 sino porque está en la etapa equivocada.
+
+---
+
+> ⚠️ **Antes de configurar nada, lee `reference/09-plataforma-2026.md`.** El curso
+> enseña la estrategia (vigente) sobre una plataforma que cambió mucho. La Ley 1 de ese
+> documento — *incluir es sugerir, excluir es mandar* — reescribe cómo se implementa el
+> ciclo en el Administrador de Anuncios actual.
 
 ---
 
@@ -46,15 +53,19 @@ Identifica en cuál de los 6 trabajos está el usuario y ve al archivo correspon
 
 | # | El usuario quiere… | Lee |
 |---|---|---|
-| 1 | Diseñar/estructurar la cuenta completa | `reference/01-ciclo-de-ventas.md` |
-| 2 | Entender a quién le vende y con qué ángulos | `reference/02-investigacion.md` |
-| 3 | Escribir copy / decidir el mensaje | `reference/03-niveles-consciencia.md` |
-| 4 | Producir creativos, hooks, variantes | `reference/04-creativos.md` |
-| 5 | Saber cuánto invertir / si el negocio da | `reference/05-presupuesto.md` + `scripts/` |
-| 6 | Arreglar o escalar lo que ya corre | `reference/06-optimizacion.md`, `reference/07-escalamiento.md` |
+| 1 | Diseñar/estructurar la cuenta completa | `01-ciclo-de-ventas.md` → `10-publicos-y-exclusiones.md` |
+| 2 | Entender a quién le vende y con qué ángulos | `02-investigacion.md` |
+| 3 | Escribir copy / decidir el mensaje | `03-niveles-consciencia.md` |
+| 4 | Producir creativos, hooks, variantes | `04-creativos.md` |
+| 5 | Saber cuánto invertir / si el negocio da | `05-presupuesto.md` + `scripts/` |
+| 6 | Arreglar o escalar lo que ya corre | `06-optimizacion.md`, `07-escalamiento.md` |
+| 7 | **Configurar públicos, exclusiones, estructura real** | `09-plataforma-2026.md` → `10-publicos-y-exclusiones.md` |
 
 Referencias de apoyo: `reference/08-calendario-mkt.md` (fechas comerciales),
 `prompts/` (prompts de investigación listos para usar).
+
+**El eje 1↔7 es el que más importa.** `01` dice qué separar y por qué; `10` dice cómo
+se sostiene esa separación hoy — y cuándo conviene no separar nada.
 
 **Herramientas ejecutables** (`scripts/`, sin dependencias — solo Python 3):
 - `presupuesto.py` — de meta de ventas a inversión, CPA objetivo y ROAS objetivo.
@@ -89,20 +100,23 @@ etapa) está en `reference/01-ciclo-de-ventas.md`. **Es el documento central del
 Cuando el usuario llega con una cuenta nueva (o un cliente nuevo), este es el orden.
 Saltarse pasos es la causa #1 de campañas que no venden.
 
-1. **Investigación** → 7 Maletas + avatar + ángulos (`reference/02-investigacion.md`,
+1. **Investigación** → 7 Maletas + avatar + ángulos (`02-investigacion.md`,
    `prompts/`). Sin esto, todo lo demás es adivinanza.
 2. **Números** → meta de ventas → inversión necesaria, CPA objetivo, ROAS objetivo
    (`scripts/presupuesto.py`). Si los números no dan, **el problema es la oferta, no
    los anuncios.**
 3. **Oferta** → ¿se puede mejorar antes de gastar? (Gratis / Garantía / Pago fácil —
-   `reference/04-creativos.md`).
-4. **Estructura** → repartir 60/20/10/10 y armar campañas, públicos y exclusiones
-   (`reference/01-ciclo-de-ventas.md`).
-5. **Creativos** → matriz de diversificación: deseos × perfiles × niveles de
-   consciencia, y elegir el tipo de arte por etapa (`reference/04-creativos.md`).
-6. **Lanzar y esperar** → optimizar cada 5-7 días, nunca antes (Ley 0).
-7. **Optimizar** → las 3 Q's (`reference/06-optimizacion.md`).
-8. **Escalar** → vertical y horizontal (`reference/07-escalamiento.md`).
+   `04-creativos.md`).
+4. **Arquitectura** → calcular `(CPA × 50) ÷ 7` y decidir si se separan las 4 etapas o
+   se consolidan (`10-publicos-y-exclusiones.md` §4). **Este paso decide todo lo que
+   sigue** y no existía en el material original.
+5. **Públicos y exclusiones** → crear los 6 públicos base y montar la cascada
+   (`10-publicos-y-exclusiones.md`).
+6. **Creativos** → matriz de diversificación: deseos × perfiles × niveles de
+   consciencia, y el tipo de arte por etapa (`04-creativos.md`).
+7. **Lanzar y esperar** → optimizar cada 5-7 días, nunca antes (Ley 0).
+8. **Optimizar** → las 3 Q's (`06-optimizacion.md`).
+9. **Escalar** → vertical y horizontal (`07-escalamiento.md`).
 
 ---
 
@@ -119,10 +133,18 @@ Saltarse pasos es la causa #1 de campañas que no venden.
 4. **Ubica siempre la etapa del ciclo.** Antes de opinar sobre un público, un arte o
    un texto, define en qué etapa está. La misma pregunta tiene respuestas opuestas en
    Presentación y en Conversión.
-5. **Exclusiones no son opcionales.** Toda etapa excluye a las etapas posteriores. Sin
-   exclusiones, las campañas compiten entre sí en la subasta y pagas dos veces por la
-   misma persona.
-6. **Si falta información del negocio, pregunta.** Ticket promedio, margen y meta de
+5. **Exclusiones no son opcionales — son el mecanismo.** Toda etapa excluye a las
+   posteriores. Con Advantage+ Audience, las inclusiones son sugerencias y las
+   exclusiones son la única palanca dura: sin ellas el ciclo no existe, solo lo
+   parece. Ver `09` (Ley 1) y `10`.
+6. **Nunca recomiendes separar 4 etapas sin verificar el presupuesto.** Si la inversión
+   diaria no cubre `(CPA × 50) ÷ 7` por conjunto, separar empeora los resultados.
+   Consolidar no es rendirse: es la forma correcta con presupuesto chico.
+7. **Distingue lo que caducó de lo que no.** La estrategia del curso (ciclo, niveles,
+   artes, 3 Q's) sigue vigente. La configuración (nombres de objetivos, separación por
+   inclusión, exclusiones de intereses) cambió. Al citar el curso, aclara cuál de las
+   dos estás usando.
+8. **Si falta información del negocio, pregunta.** Ticket promedio, margen y meta de
    ventas son obligatorios para cualquier recomendación de presupuesto. No los asumas.
 
 ---

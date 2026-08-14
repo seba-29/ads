@@ -113,6 +113,52 @@ igual en todos los casos**. Solo cambia el último eslabón.
 
 ---
 
+## Benchmarks de contexto (2026)
+
+Los umbrales del curso son **tus cortes de decisión** y no cambian. Estos números son
+otra cosa: sirven para saber si tu cuenta está en el rango del mercado o si tienes un
+problema estructural. **No los uses como objetivo** — tu objetivo sale de
+`05-presupuesto.md`, de tu ticket y tu margen.
+
+### Medianas generales
+
+| Métrica | 2025 | 2026 | Variación |
+|---|---|---|---|
+| CPM | $11,82 | **$14,19** | +20% |
+| CPC | $0,70 | **$0,78** | +11% |
+| CPA | $27,66 | **$38,19** | +38% |
+| CTR (mediana) | — | **~2,2%** | — |
+
+> **La lectura importante:** el costo de la publicidad en Meta subió fuerte. Una cuenta
+> que "empeoró" respecto al año pasado puede estar simplemente al día con el mercado.
+> Compara siempre contra tu CPA objetivo, no contra tu histórico.
+
+### Por etapa del ciclo
+
+| | Presentación (frío) | Evaluación (tibio) | Conversión (caliente) | Ascensión |
+|---|---|---|---|---|
+| **CPM** | $10-15 | $6-12 | ~$8,4 | — |
+| **CTR** | 0,9-1,5% | 1,5-3,0% | 2,0-4,0% | 2,0-5,0% |
+| **Tasa de conversión** | 0,4-1,5% | 2-7% | 5-12% | 10-20% |
+| **ROAS** | 1-3× | 3-6× | 4-10× | 5-10×+ |
+| **Frecuencia** | — | máx. 3-4/sem | 3-4/sem (5-7 alta intención) | — |
+
+Esto explica por qué el curso pone el umbral de CTR en 2%: es el corte razonable en
+frío. **En retargeting, un CTR de 2% es mediocre, no bueno** — ahí deberías estar sobre
+3%. Ajusta el umbral según la etapa que estés mirando.
+
+### Dos advertencias sobre estos números
+
+1. **Los benchmarks públicos varían muchísimo entre fuentes** (hay reportes de CPC
+   medio de $0,78 y de $1,72 el mismo año, según metodología y mix de industrias).
+   Úsalos como orden de magnitud, nunca como veredicto.
+2. **El ROAS del retargeting está inflado.** El impacto incremental real se estima en
+   solo el **20-40%** de lo que muestra el panel: buena parte de esa gente iba a
+   comprar igual. Es la razón numérica por la que el 60% del presupuesto se queda en
+   Presentación.
+
+---
+
 ## Reglas de optimización
 
 1. **Cada 5-7 días.** Si la última edición fue hace 2 días, la respuesta correcta es

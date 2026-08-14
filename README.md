@@ -15,9 +15,11 @@ investigación, creativos, presupuesto, optimización y escalamiento.
 │   ├── 03-niveles-consciencia.md   Los 5 niveles y a qué etapa corresponde cada uno
 │   ├── 04-creativos.md             10 tipos de artes · matriz 30 hooks · oferta · sesgos
 │   ├── 05-presupuesto.md           CPA objetivo, ROAS objetivo, simulador
-│   ├── 06-optimizacion.md          Las 3 Q's y el árbol de diagnóstico
+│   ├── 06-optimizacion.md          Las 3 Q's · árbol de diagnóstico · benchmarks 2026
 │   ├── 07-escalamiento.md          Vertical/horizontal · Número Mágico · fatiga
-│   └── 08-calendario-mkt.md        Fechas comerciales para campañas especiales
+│   ├── 08-calendario-mkt.md        Fechas comerciales para campañas especiales
+│   ├── 09-plataforma-2026.md       ← qué cambió en Meta y qué significa (Ley 1)
+│   └── 10-publicos-y-exclusiones.md ← arquitectura real: públicos, exclusiones, estructura
 ├── prompts/
 │   ├── investigacion-basica.md     Perfil psicológico del cliente ideal
 │   ├── investigacion-avanzada.md   Deep research: competencia + 5 ángulos + 25 hooks
@@ -53,7 +55,7 @@ python3 .claude/skills/meta-ads/scripts/diagnostico.py \
   --tiempo-video 4 --tasa-conversion 55 --costo-resultado 12 --costo-objetivo 6.75
 ```
 
-## Las tres ideas que sostienen todo
+## Las cuatro ideas que sostienen todo
 
 **1. El Ciclo de Ventas.** Cuatro etapas con presupuesto fijo: Presentación (60%),
 Evaluación (20%), Conversión (10%), Ascensión (10%). Cada etapa tiene su público, su
@@ -61,11 +63,44 @@ exclusión, su tipo de arte y su nivel de consciencia. Es un ciclo, no un embudo
 
 **2. La impaciencia es el enemigo #1.** Revisa a diario, optimiza **cada 5-7 días**.
 La diferencia entre un trafficker profesional y uno principiante no es el conocimiento
-técnico: es dejar que el algoritmo aprenda.
+técnico: es dejar que el algoritmo aprenda. Hoy hay número: un cambio de presupuesto
+> 20% reinicia el aprendizaje y cuesta +35-60% de CPA por 48-72 horas.
 
 **3. Diagnostica antes de recetar.** Las 3 Q's: ¿qué pasó? (métricas principales),
 ¿por qué pasó? (métricas secundarias), ¿qué haremos? (la acción que se deriva). Nunca
 saltes de la 1 a la 3.
+
+**4. Incluir es sugerir, excluir es mandar.** Con Advantage+ Audience (default desde
+2026), intereses, lookalikes y públicos personalizados incluidos son solo *sugerencias*
+que Meta ignora si le conviene. Los únicos controles duros son la **ubicación** y las
+**exclusiones de públicos personalizados**. El Ciclo de Ventas ya no se define por a
+quién le hablas: se define por **a quién bloqueas**.
+
+## La actualización a 2026
+
+El curso enseña la estrategia sobre una plataforma que cambió. Los documentos `09` y
+`10` son el puente, investigados en agosto de 2026:
+
+- **6 objetivos ODAX** en vez de los 11 legacy; Mensajes vive dentro de *Interacción* y
+  Ventas del Catálogo dentro de *Ventas*.
+- **Fase de aprendizaje: ~50 eventos en 7 días.** De ahí sale la fórmula que decide la
+  arquitectura de la cuenta: `(CPA objetivo × 50) ÷ 7` por conjunto. Con presupuesto
+  chico, separar las 4 etapas **empeora** los resultados — el ciclo sobrevive como
+  arquitectura de mensaje, con los 5 niveles como anuncios dentro de un solo conjunto.
+- **Públicos de compra pasaron de 180 a 730 días** (18 mayo 2026). Excluirlos a 730d en
+  prospección bloquea la recompra sin que aparezca en ninguna métrica.
+- **Se eliminaron las exclusiones por interés**; solo se excluye por público
+  personalizado.
+- **Escalado: 20-30% cada 3-5 días** es el consenso actual; el 35% del curso es el
+  techo, no el default.
+- **15-50 anuncios por conjunto** (se retiró el máximo de 6). La matriz de 30 hooks
+  pasa de banco de ideas a carga inicial.
+- **CTWA:** sin `ctwa_clid` + API de Conversiones, Meta optimiza hacia gente que
+  escribe, no hacia compradores. 9 de cada 10 anunciantes lo tienen mal.
+
+Lo que **no** caducó: el ciclo, los 5 niveles de consciencia, los 10 tipos de arte, las
+7 maletas, las 3 Q's y sus umbrales. El algoritmo se comió la segmentación, no el
+mensaje — hoy el creativo *es* la segmentación.
 
 ## Verificación
 

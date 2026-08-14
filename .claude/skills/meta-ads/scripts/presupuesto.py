@@ -94,16 +94,60 @@ def imprimir(r):
         mensual = r["inversion"] * pct
         print(f"  {nombre:<16}{pct*100:>5.0f}%{money(mensual):>16}{money(mensual/30):>16}")
 
+    arquitectura(r)
+
     print("\nRECORDATORIO")
     print("  El % a invertir NO es todo tu margen de utilidad: es el % que estas")
     print("  dispuesto a invertir para adquirir un cliente nuevo. Margen 35% y")
     print("  quieres ganar minimo 15% -> el % a invertir es 20%.")
-
-    if r["inversion"] / 30 < 5:
-        print("\n  [AVISO] El presupuesto diario total es muy bajo. Con cifras asi,")
-        print("          consolida etapas (Presentacion + un solo retargeting) en vez")
-        print("          de repartir en cuatro campanas que no salen de aprendizaje.")
     print()
+
+
+def arquitectura(r):
+    """Decide separar vs consolidar segun el minimo de fase de aprendizaje.
+
+    Un conjunto necesita ~50 eventos de optimizacion en 7 dias para salir de
+    aprendizaje  ->  minimo diario = (CPA objetivo x 50) / 7.
+    """
+    # En modo leads, el evento que Meta optimiza es el LEAD, no la venta.
+    cpa_evento = r["cpl_objetivo"] if r["cpl_objetivo"] is not None else r["cpa_objetivo"]
+    etiqueta = "lead/conversacion" if r["cpl_objetivo"] is not None else "compra"
+
+    minimo = (cpa_evento * 50) / 7
+    diario = r["inversion"] / 30
+    conjuntos = int(diario // minimo) if minimo > 0 else 0
+
+    print("\nARQUITECTURA DE CUENTA  (fase de aprendizaje: 50 eventos / 7 dias)")
+    print(f"  Evento que optimiza Meta ......... {etiqueta} ({money(cpa_evento)})")
+    print(f"  Minimo diario POR CONJUNTO ....... {money(minimo)}")
+    print(f"  Tu presupuesto diario total ...... {money(diario)}")
+    print(f"  Conjuntos que puedes sostener .... {conjuntos}")
+
+    print()
+    if conjuntos >= 4:
+        print("  >>> ARQUITECTURA SEPARADA <<<")
+        print("  Te alcanza para las 4 etapas del ciclo con conjuntos sanos.")
+        print("  Monta la cascada completa de exclusiones (ref. 10, seccion 3).")
+    elif conjuntos >= 2:
+        print("  >>> ARQUITECTURA MIXTA <<<")
+        print("  No alcanza para 4 conjuntos, si para 2. Recomendado:")
+        print("    1) Prospeccion  — abierto, excluye warm + compradores 180d")
+        print("    2) Retargeting  — fusiona Evaluacion + Conversion,")
+        print("                      excluye compradores 180d")
+        print("  Ascension: por email/WhatsApp organico, no por ads.")
+    else:
+        print("  >>> ARQUITECTURA CONSOLIDADA <<<")
+        print("  Con este presupuesto, separar etapas EMPEORA los resultados:")
+        print("  varios conjuntos en aprendizaje limitado rinden peor que uno solo.")
+        print("    - UNA campana, UN conjunto, abierto.")
+        print("    - Unica exclusion (control duro): Compradores 180d.")
+        print("    - Los 5 niveles de consciencia van como ANUNCIOS distintos")
+        print("      adentro del mismo conjunto (10-20 anuncios).")
+        print("  El ciclo sobrevive como arquitectura de MENSAJE, no de entrega.")
+
+    if conjuntos < 4:
+        falta = minimo * 4 * 30
+        print(f"\n  Para sostener las 4 etapas separadas necesitarias ~{money(falta)}/mes.")
 
 
 def main():

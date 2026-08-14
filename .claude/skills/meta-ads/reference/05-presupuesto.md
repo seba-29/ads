@@ -109,10 +109,36 @@ Para presupuesto diario: dividir entre 30 (o entre los días de calendario activ
 Presentación durante 2-3 semanas, y se abre el resto a medida que los públicos se
 llenan. El 60/20/10/10 es el estado de régimen.
 
-**Piso práctico:** si el 10% de Conversión da un presupuesto diario tan bajo que el
-conjunto no sale de aprendizaje, es mejor consolidar etapas que tener cuatro campañas
-famélicas. Con presupuestos pequeños: Presentación + una sola campaña de retargeting
-que fusione Evaluación/Conversión.
+### El piso de la fase de aprendizaje — el cálculo que decide tu arquitectura
+
+Un conjunto de anuncios necesita **~50 eventos de optimización en 7 días** para salir
+de la fase de aprendizaje. De ahí:
+
+```
+Presupuesto diario mínimo por conjunto = (CPA objetivo × 50) ÷ 7
+```
+
+> **Ojo con qué CPA usar.** Es el costo del **evento que Meta optimiza**, no el de la
+> venta. En una campaña de mensajes, Meta optimiza *conversaciones*: usa el costo por
+> conversación objetivo, no el CPA de venta. Confundirlos infla el mínimo por 10×.
+
+Ese número, comparado con tu inversión diaria, decide todo:
+
+| Conjuntos que sostienes | Arquitectura |
+|---|---|
+| **4 o más** | **Separada** — las 4 etapas del ciclo, cascada completa de exclusiones |
+| **2-3** | **Mixta** — Prospección + un solo Retargeting (fusiona Evaluación y Conversión) |
+| **0-1** | **Consolidada** — una campaña, un conjunto, los 5 niveles como anuncios |
+
+`scripts/presupuesto.py` lo calcula y te dice cuál te toca.
+
+El resultado suele sorprender: con el ejemplo de arriba ($3.200/mes, CPA $8), **solo
+alcanza para un conjunto**. Para correr las 4 etapas separadas harían falta ~$6.900/mes.
+Esto no invalida el ciclo de ventas: cambia *dónde* se ejecuta. Ver
+`10-publicos-y-exclusiones.md` §4 y §5.
+
+**Consolidar no es rendirse.** Cuatro conjuntos en aprendizaje limitado rinden peor que
+uno bien alimentado. La disciplina del ciclo se mantiene en los creativos.
 
 ---
 
