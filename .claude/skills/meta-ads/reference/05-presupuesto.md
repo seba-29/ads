@@ -140,6 +140,55 @@ Esto no invalida el ciclo de ventas: cambia *dónde* se ejecuta. Ver
 **Consolidar no es rendirse.** Cuatro conjuntos en aprendizaje limitado rinden peor que
 uno bien alimentado. La disciplina del ciclo se mantiene en los creativos.
 
+### 🔧 Matiz importante: "aprendizaje limitado" NO es sinónimo de fracaso
+
+Este cálculo es una **guía de diseño**, no una compuerta. La creencia de que hay que
+salir de la fase de aprendizaje sí o sí es falsa: **la fase de aprendizaje es opcional
+para generar resultados.** Lo que cambia al salir es la **consistencia**, no
+necesariamente la rentabilidad.
+
+Casos documentados en aprendizaje limitado:
+- Tres conjuntos a **$15-20/día** con **ROAS promedio 5,86** ($1.528 → $8.958).
+- Conversaciones a **$0,39** en un conjunto que salió de aprendizaje con solo 51
+  conversaciones y $29 de inversión total.
+- Leads a **$0,34** y registros a **$0,04**.
+
+Compáralo con la misma cuenta a escala: $2.153/día, +500 conversiones por conjunto,
+ROAS 4,54 — **menor ROAS que el conjunto chico, pero mucho más consistente**. Eso es
+exactamente lo que compra salir del aprendizaje: previsibilidad, no rentabilidad.
+
+**Cuándo NO preocuparse por el aprendizaje limitado:**
+- La campaña genera resultados rentables.
+- El presupuesto simplemente no da para 50 conversiones semanales.
+- La cuenta es nueva.
+- Acabas de hacer un cambio necesario.
+
+**Cuándo SÍ merece atención:**
+- Rendimiento inconsistente sin razón clara.
+- El presupuesto **ya debería** permitir 50 resultados semanales y sigue en
+  aprendizaje → revisa si estás haciendo cambios demasiado frecuentes (Ley 0).
+- Quieres escalar agresivamente y la inconsistencia te impide prever.
+
+> **Cómo usar el cálculo entonces:** para **decidir cuántos conjuntos abrir**, no para
+> decidir si vale la pena anunciar. Con $300/mes se puede vender muy bien — en un solo
+> conjunto.
+
+### El otro mínimo: presupuesto por conjunto en CBO
+
+Cuando el presupuesto está a nivel campaña (CBO / "Presupuesto de la Campaña
+Advantage"), la referencia práctica es distinta:
+
+```
+Presupuesto diario por conjunto ≥ 3 a 5 × CPA objetivo
+```
+
+En la práctica: **$20-50 USD diarios por conjunto**. Por debajo de eso el sistema no
+tiene margen para probar y conviene **empezar en ABO** (presupuesto por conjunto).
+
+**No existe un mínimo universal de Meta.** El mínimo técnico es $1/día. Pero
+*"$5/día sin criterio rinde menos que $50/día con fórmula"*. El umbral práctico de
+"poco presupuesto" está en **menos de US$1.000 al mes**.
+
 ---
 
 ## 4. Simulador de campañas

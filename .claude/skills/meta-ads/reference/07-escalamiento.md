@@ -20,20 +20,26 @@ Más presupuesto sobre lo que ya funciona.
 Subir más rápido reinicia la fase de aprendizaje y desestabiliza el rendimiento. El
 algoritmo necesita re-aprender con cada salto grande.
 
-> ### ⚠️ Ajuste 2026 — el 35% es el techo, no el default
+> ### ⚠️ El 35% vs. el 20%: dos fuentes, y cómo resolverlo
 >
-> Hoy se sabe que un cambio de presupuesto **superior al 20% reinicia la fase de
-> aprendizaje**, y que ese reinicio cuesta **+35-60% de CPA durante 48-72 horas**.
-> El consenso actual es **20-30% cada 3-5 días**.
+> **Meta no publica un porcentaje oficial.** Hay dos posiciones:
 >
-> Cómo conciliarlo con la regla del curso:
-> - **Default: +20%.** No reinicia el aprendizaje. Es el escalón seguro.
-> - **+25-30%:** sobre conjuntos ya estables, con ROAS holgado sobre el objetivo.
-> - **+35%:** techo absoluto, solo sobre ganadores probados y asumiendo que puede
->   haber reinicio. Nunca como ritmo habitual.
+> - **Felipe Vergara (+US$45M invertidos):** un cambio de hasta **35%** hacia arriba o
+>   hacia abajo es el límite para evitar el reinicio. Es el rango más consistente que
+>   observa en pruebas con múltiples cuentas.
+> - **Consenso general de la industria:** **20-30% cada 3-5 días**; sobre 20% el
+>   reinicio se vuelve probable, y cuesta **+35-60% de CPA durante 48-72 horas**.
 >
-> El curso no está equivocado: dice "máximo 35%". Lo que cambió es que ahora sabemos
-> exactamente dónde está la línea (20%) y cuánto cuesta cruzarla.
+> **Cómo operar con las dos:**
+> - **+20%** → escalón conservador. Nadie discute que es seguro.
+> - **+25-35%** → el rango de Felipe. Úsalo en conjuntos estables con margen holgado
+>   sobre el Número Mágico, y **vigila el CPA los 2 días siguientes**.
+> - **>35%** → nadie lo defiende. Ahí el reinicio es seguro.
+>
+> Con **CBO** el ritmo documentado es **15-30% cada 24-48 horas**.
+>
+> Lo importante no es el número exacto: es que **hay un techo por escalón** y que
+> cruzarlo tiene un costo medible. Si dudas, sube menos y más seguido.
 
 Ejemplo desde $20/día con escalones del 20%:
 | Día | Presupuesto | Al 35% (agresivo) |
@@ -58,12 +64,48 @@ estás escalando: estás fragmentando. Ver `10-publicos-y-exclusiones.md` §4.
 
 **a) Monitorea muy de cerca tu Número Mágico — Ley de Retornos Decrecientes.**
 
-El **Número Mágico** es el presupuesto diario a partir del cual tu costo por resultado
-empieza a subir de forma sostenida. Toda cuenta tiene uno. No es un fallo: es que el
-público rentable se agota y Meta empieza a comprar impresiones más caras.
+### Qué es exactamente el Número Mágico
 
-Cómo encontrarlo: registra en cada escalón `presupuesto diario → costo por resultado`.
-Cuando dos escalones seguidos empeoran el costo, el anterior era tu Número Mágico.
+> **El ROAS mínimo (o el costo por adquisición máximo) por debajo del cual la empresa
+> empieza a perder dinero.**
+
+Es la brújula de toda decisión: lo que está **por encima** se deja correr; lo que está
+**por debajo** se apaga — sin importar cuánto presupuesto le esté dando Meta.
+
+Se calcula distinto según el negocio:
+
+| Tipo de negocio | Su Número Mágico es… |
+|---|---|
+| **Tienda online** | Un **ROAS mínimo**, según margen del producto y costos de operación |
+| **Empresa de servicios** | El **costo de adquisición de cliente** máximo rentable |
+| **WhatsApp / sin sitio web** | El **costo por lead** máximo asumible |
+
+Números mágicos reales de cuentas documentadas: ROAS mínimo **3,5** (e-commerce),
+**2,8** (empresa europea), **4** (vestidos de baño), costo por lead máximo **US$8-9**
+(inmobiliaria).
+
+> **Regla temporal:** calcúlalo **ANTES de escalar, no después.** Al escalar los costos
+> van a subir sí o sí, y sin ese número no sabes si preocuparte.
+> `scripts/presupuesto.py` te lo da.
+
+### La Ley de Retornos Decrecientes
+
+> *"A medida que subes tu presupuesto, tu retorno bajará — le llegarás a personas más
+> frías. Por eso, si quieres escalar, debes tener márgenes muy buenos y trabajar
+> también en la recompra."*
+
+Los retornos **no son lineales**. Al escalar, Meta muestra los anuncios a personas
+progresivamente menos propensas a comprar, porque el público más calificado se agota
+primero. **El ROAS SIEMPRE cae al escalar.** Lo importante no es evitar la caída: es
+que se mantenga por encima del Número Mágico.
+
+*"No hay nada en la vida que crezca al infinito. Todo en la naturaleza tiende a
+estabilizarse hasta alcanzar cierto punto de equilibrio."*
+
+### Cómo encontrar tu punto de quiebre
+
+Registra en cada escalón `presupuesto diario → costo por resultado`. Cuando dos
+escalones seguidos empeoran el costo, el anterior era tu techo práctico.
 
 | Presupuesto/día | Costo por resultado |
 |---|---|
@@ -73,8 +115,31 @@ Cuando dos escalones seguidos empeoran el costo, el anterior era tu Número Mág
 | $49 | **$7,80** ← empieza a romperse |
 | $66 | **$9,40** ← confirmado |
 
-→ Número Mágico ≈ **$36/día**. Para crecer más allá de ahí, hay que escalar
-**horizontalmente**, no seguir subiendo.
+→ Techo ≈ **$36/día**. Para crecer más allá, hay que escalar **horizontalmente**.
+
+### ⚠️ Cuándo una campaña está lista para escalar
+
+**Anuncios consistentemente por encima del Número Mágico durante al menos 2-3 SEMANAS
+SEGUIDAS**, con suficientes conversiones para haber completado el aprendizaje.
+
+Escalar antes de eso, o sin haber diagnosticado la cuenta, es *"uno de los errores más
+costosos en Meta Ads"*.
+
+> *"Un cambio brusco de presupuesto sin diagnóstico previo es como ir al médico y pedir
+> cinco pastillas sin hacerse ningún examen."*
+
+### ⚠️ El error #1 al escalar: concentrar el presupuesto en el mejor ROAS
+
+Meta reparte el presupuesto de forma desigual **a propósito**, y suele darle más dinero
+al anuncio de **peor** ROAS puntual porque es el **más escalable**. Concentrar el
+presupuesto en el de mejor ROAS hace **caer** el retorno general (de 4,2 a 3 o 2,5 en
+el caso documentado).
+
+*"Si tienes conjuntos de anuncios con ROAS alto pero baja inversión, no los apagues ni
+concentres todo ahí. Déjalos correr, van a darte buenos resultados de vez en cuando."*
+
+Es el **efecto desglose** — ver `12-andromeda-y-diversidad-creativa.md` §3. Evalúa el
+conjunto **globalmente**, no anuncio por anuncio.
 
 **b) Ten cuidado con la Fatiga de Anuncios — Frecuencia.**
 

@@ -10,6 +10,70 @@ todo a tres preguntas en orden. **Nunca saltes de la 1 a la 3.**
 
 ---
 
+## Antes de las 3 Q's: solo 3 métricas importan
+
+Si el objetivo es **vender**, solo tres métricas deciden algo:
+
+1. **Importe gastado**
+2. **Resultados** (compras / leads / conversaciones)
+3. **Costo por resultado** ← el que manda
+
+Para tiendas online se agregan dos: **valor de conversión de compras** y **ROAS**.
+Todo lo demás es secundario: sirve para *diagnosticar*, nunca para *decidir*.
+
+### ⚠️ CPC y CPM son engañosas — con datos que lo prueban
+
+Es el error de lectura más común, y hay evidencia dura en contra:
+
+| Anuncio | CPC | Costo por compra |
+|---|---|---|
+| A | **US$2,34** (el más alto) | **US$21,70** (el más bajo) |
+| B | **US$0,79** (el más bajo) | **US$32,00** (el más alto, y peor ROAS) |
+
+El estudio *"3 Facebook Metrics That Matter"*, basado en **más de US$100 millones**
+invertidos, demostró que prácticamente **no existe relación entre el CPC y el ROAS**, y
+que el CPM tampoco se relaciona con ventas ni con retorno. Lo mismo se verificó en
+campañas de Mensajes (dos anuncios con costo por resultado casi idéntico pese a que uno
+tenía CPC 3× más alto) y de Clientes Potenciales.
+
+> **No es la cantidad de tráfico, es la calidad.** Un CPC alto puede significar que
+> estás comprando la atención de gente que sí compra.
+
+**Cómo se concilia con el árbol de diagnóstico de más abajo:** CPM y CPC son entradas
+de diagnóstico, **nunca veredictos**. Si el costo por resultado está bien, un CPM alto
+no es un problema. Solo se miran cuando el costo por resultado ya está mal.
+
+---
+
+## Las 5 métricas personalizadas
+
+Se crean en **Administrador de anuncios → Columnas → Personalizar columna → Crear
+métrica personalizada**. Son las que convierten la Q2 en algo medible de verdad.
+
+| # | Métrica | Fórmula | Formato |
+|---|---|---|---|
+| 1 | **Tasa de conversión** | *Ventas web:* Compras ÷ Visitas a la página de destino<br>*Leads:* Clientes potenciales ÷ Clics únicos en el enlace<br>*Mensajes:* Conversaciones iniciadas ÷ Clics únicos en el enlace | Porcentaje |
+| 2 | **Ticket promedio** | Valor de conversión de compras ÷ Compras | **Divisa** |
+| 3 | **Calidad de clics** | Visitas a la página de destino ÷ Clics en el enlace | Porcentaje |
+| 4 | **Captura del video** | Reproducciones de video de 3 seg ÷ Impresiones | Porcentaje |
+| 5 | **Retención del video** | ThruPlays ÷ Impresiones | Porcentaje |
+
+*ThruPlay = 15 segundos de video (o el video completo si dura menos de 15 seg).*
+
+### Umbrales y qué hacer con cada una
+
+| Métrica | Umbral | Si está baja |
+|---|---|---|
+| **Captura del video** | **>25-30%** es bueno | **Cambia solo el principio**, no todo el video. Nada de introducciones lentas: al punto desde el primer segundo. |
+| **Retención del video** | **≥5%** es positivo | Mejorar guion y edición. Siempre es menor que la captura. |
+| **Calidad de clics** | — | Optimiza la **velocidad del sitio**: reduce el peso de las imágenes, quita plugins innecesarios. |
+| **Tasa de conversión (leads)** | — | Revisa las **preguntas del formulario**: pides demasiado, o no se entiende por qué llenarlo. |
+
+> "Captura del video" es la métrica que mide **si el gancho funciona**, y es la que
+> conecta directamente con los hooks de `04-creativos.md`.
+
+---
+
 ## Las 3 Q's
 
 ### 1. ¿Qué pasó? → Métricas principales
@@ -92,7 +156,41 @@ presupuesto.
 **CPM es la métrica de contexto.** Un CPM alto puede ser: público demasiado estrecho,
 mucha competencia en esa fecha (ver `08-calendario-mkt.md`), o un anuncio con mala
 señal de calidad. Se ataca por dos vías a la vez: **públicos más grandes** y **mejores
-anuncios**.
+anuncios**. Pero recuerda la advertencia de arriba: **el CPM no decide nada por sí
+solo.**
+
+### Frecuencia — los números finos
+
+| Referencia | Valor |
+|---|---|
+| **Óptima** | **1,5 – 3,0** impactos por persona a la semana |
+| **Límite operativo** | mantener **< 5** en los últimos 7 días |
+| **Qué pasa al superar 5** | el CPA sube desproporcionadamente y el **CTR cae ~40%** |
+
+Caso real de público quemado: frecuencia **11,13** en 7 días → el ROAS histórico de 4,5
+cayó a 2,26 en 30 días y a 1,97 en la última semana.
+
+> **No confíes ciegamente en la alerta de la plataforma.** Hay casos documentados donde
+> Meta muestra aviso de saturación con la frecuencia real entre **1,68 y 2,36**.
+> Verifica el número antes de tocar nada.
+
+**Las 4 acciones contra la fatiga**, en orden:
+1. **Agregar contenido nuevo** — textos, imágenes y videos (escalar horizontalmente).
+2. **Ampliar el público** — la fatiga golpea primero a los públicos chicos, o sea al
+   remarketing. Si sigues a visitantes web de 7 días, extiende a 30.
+3. **Redistribuir el presupuesto** — bajar el de las campañas con públicos chicos y
+   moverlo a las de públicos grandes.
+4. **Probar otro objetivo de campaña** — si usas Ventas, prueba Ventas del Catálogo; si
+   recolectas contactos, combina con Clientes Potenciales; si no tienes sitio web,
+   Mensajes o WhatsApp.
+
+### ⚠️ Nunca pauses un anuncio por su gasto bajo
+
+Meta reparte el presupuesto de forma deliberadamente desigual y a veces le da **más
+dinero al anuncio de peor ROAS** porque es el más escalable. Evalúa el conjunto
+**globalmente**. Concentrar el presupuesto en el anuncio de mejor ROAS puntual hace
+**caer** el ROAS general (de 4,2 a 3 o 2,5 en el caso documentado). Es el **efecto
+desglose** — ver `12-andromeda-y-diversidad-creativa.md` §3.
 
 ---
 
