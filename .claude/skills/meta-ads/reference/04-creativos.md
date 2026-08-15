@@ -110,6 +110,115 @@ Prompt listo para usar: `prompts/diversificacion-creativa.md`.
 
 ---
 
+## 2b. Los 7 ganchos probados
+
+Del análisis de **más de 12.000 anuncios en 30 días**. Son plantillas: rellénalas con
+el material de `02-investigacion.md`.
+
+| # | Plantilla | Por qué funciona | Ejemplo |
+|---|---|---|---|
+| 1 | **"Cómo pasé de X a Y"** | El cerebro busca completar la historia | *"Cómo pasé de gastar $500 al mes en publicidad sin resultados a generar más de 40 leads calificados cada semana."* |
+| 2 | **"Por esto dejé de comprar X"** | Confesión personal, efecto de titular de chisme | *"Por esto dejé de comprar suplementos de supermercado."* |
+| 3 | **"Llevo X tiempo y ya llevo Y resultados"** | Prueba social con **números concretos** ("me encantó" no mueve nada) | *"Llevo dos semanas usando esta estrategia y ya conseguí 14 reuniones de ventas."* |
+| 4 | **"Esta pregunta es muy buena…"** | Parece contenido orgánico; **sostiene anuncios largos** sin perder atención | *"Esta pregunta es muy buena: ¿por qué tus anuncios generan clics pero no ventas?"* |
+| 5 | **"Todos me dijeron que era una pésima idea"** | Tensión narrativa | *"Todos me dijeron que era una pésima idea dejar mi trabajo para empezar este negocio."* |
+| 6 | **"¿Te imaginas [resultado soñado]?"** | "Imagina" activa visualización inmediata | *"¿Te imaginas despertar y encontrar cinco solicitudes de clientes nuevos en tu bandeja?"* |
+| 7 | **"Tengo el X que usa [famoso]"** | Efecto halo | *"Tengo el mismo tipo de reloj que usa Cristiano Ronaldo, pero cuesta menos del 5% de su precio."* |
+
+**Dónde usar cada uno:** 1 → servicios, cursos, casos de éxito. 2 → cuando reemplazas
+una alternativa tradicional. 3 → testimonios y productos de resultado rápido. 5 →
+historia de fundación y superación.
+
+> ⚠️ **Nunca afirmes que un famoso es tu cliente si no puedes demostrarlo.** Es
+> publicidad engañosa y trae problemas legales.
+
+### El gancho que NUNCA debes usar
+
+**Empezar hablando de tu empresa.** Frases prohibidas en los primeros segundos:
+
+- ❌ *"Somos una empresa con 15 años de experiencia"*
+- ❌ *"Bienvenidos a nuestro negocio"*
+- ❌ *"Queremos presentar nuestro producto"*
+
+No generan atención porque **el usuario no te conoce y todavía no tiene motivos para
+escucharte**. El orden correcto: primero curiosidad, problema o transformación;
+**después** hablas de tu marca. Si pierdes los primeros 3 segundos, el resto del
+anuncio deja de importar.
+
+---
+
+## 2c. Los 9 bloques y las 5 fórmulas
+
+De una agencia que prueba **+3.000 anuncios al mes**. Un anuncio se arma como un lego.
+
+**Los 9 bloques:**
+1. Gancho fuerte
+2. Introducción al problema / síntomas
+3. Soluciones que fallaron
+4. Beneficios
+5. Producto
+6. Mecanismo único / diferenciales
+7. Prueba social
+8. Reducción de riesgo (garantías)
+9. Llamado a la acción claro
+
+**Las 5 fórmulas de secuencia:**
+
+| Fórmula | Secuencia |
+|---|---|
+| **Problema-solución** | problema → dolor → intentos fallidos → tu producto → beneficios → prueba social → CTA |
+| **Autoridad** | credenciales → el "por qué oculto" → tu solución |
+| **Storytelling** | momento relatable → lucha → intentos fallidos → descubrimiento → transformación |
+| **Antes/después** | muestra el cambio visualmente → el producto es el "puente" |
+| **Estilo de vida** | el estilo de vida deseado → tu producto como herramienta para llegar |
+
+**La magia está en cruzar fórmula × formato.** La misma fórmula Problema-solución
+puede ejecutarse como VSL, video POV o carrusel. Formatos que menciona: VSL, estilo
+podcast, recomendación de autoridad, entrevista en la calle, POV, testimonial, "mito
+vs. realidad", antes/después, demostración de producto y unboxing.
+
+> Esto multiplica tu inventario: 5 fórmulas × 10 formatos = 50 combinaciones antes de
+> siquiera cambiar el ángulo. Es la respuesta operativa a la diversidad de nivel ALTO
+> que pide Andrómeda (`12-andromeda-y-diversidad-creativa.md`).
+
+---
+
+## 2d. Las 3 E's del copywriting
+
+Todo copy efectivo pasa por tres fases **en orden**.
+
+### 1 · ENTENDER
+Investigar quién es realmente tu cliente:
+- **Habla con tus compradores más fieles** — videollamada corta para descubrir puntos
+  de dolor. Puedes incentivar con producto gratis, descuento o sesión sin costo.
+- **Lee los mensajes que YA tienes** — WhatsApp Business, DMs de Instagram, Messenger,
+  correo. Ahí están las objeciones reales: tallas, colores, ingredientes, tiempos de
+  entrega, métodos de pago, garantías. **Las reseñas de 1 y 2 estrellas son
+  retroalimentación gratuita.**
+- **Estudia la Biblioteca de Anuncios** — no para copiar, para identificar qué funciona
+  en tu nicho y mejorarlo.
+
+### 2 · ESCRIBIR
+Redactar según el **nivel de consciencia** de la audiencia
+(`03-niveles-consciencia.md`).
+
+> **Escribe primero en Google Docs, no dentro del Administrador de Anuncios.** Hay
+> demasiadas opciones visuales que distraen.
+>
+> **Límite: 125 caracteres para el primer bloque.** El mensaje principal tiene que
+> captar la atención dentro de esos 125.
+
+### 3 · EDITAR
+**Nunca publiques el copy del primer intento.** Déjalo dormir al menos unas horas —
+escribe en la tarde, revisa al día siguiente. Al revisar:
+- Ortografía y gramática.
+- **Consistencia del nivel de consciencia** — no mezclar mensajes de producto con
+  mensajes de problema.
+- Simplicidad: si usas un término técnico, rodéalo de lenguaje simple.
+- A/B test cambiando **un solo elemento** por prueba.
+
+---
+
 ## 3. Hooks para video (estilo UGC)
 
 - **Duración: máximo 5 segundos.**

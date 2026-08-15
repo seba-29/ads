@@ -157,6 +157,77 @@ Presupuesto diario mínimo por conjunto = (CPA objetivo × 50) ÷ 7
 
 `scripts/presupuesto.py --cpa-objetivo` hace este cálculo y te dice cuál te toca.
 
+### La estructura que Felipe usa hoy (de $2/día a $25.000/mes)
+
+No son 4 campañas. **Son 2**, separadas por temperatura. Esto es lo que aplica en todas
+las cuentas, y coincide con la "arquitectura mixta" de arriba:
+
+```
+CAMPAÑA 1 — TRÁFICO FRÍO (presentación)        ~75% del presupuesto
+  Presupuesto: a nivel CONJUNTO (ABO)
+  Segmentación: COMPLETAMENTE ABIERTA — solo país o ciudad
+  Ubicaciones: Advantage ACTIVADO
+  Varios conjuntos, uno por:
+     · producto/servicio
+     · idea creativa (ángulo, creador, enfoque)
+     · promoción temporal (se pausa al terminar sin afectar al resto)
+  3 a 6 anuncios por conjunto (mínimo 3)
+
+CAMPAÑA 2 — RETARGETING (tráfico caliente)     ~25% del presupuesto
+  Presupuesto: CBO (o indiferente: solo hay una variable)
+  UN SOLO conjunto que agrupa TODOS los públicos personalizados
+  Público personalizado Advantage: DESACTIVADO   ← clave
+  Edad y sexo: bastante amplios
+  3 a 4 anuncios con formatos variados
+```
+
+**Por qué separarlas:** controlar con precisión cuánto se invierte en cada una, medir
+por separado y evitar que compitan entre sí. La misma estructura sirve para los tres
+objetivos (Interacción/mensajes, Clientes Potenciales, Ventas).
+
+**Los 3 públicos del conjunto de retargeting**, a 180 días:
+1. Interactuaron con tu perfil de **Instagram**
+2. Interactuaron con tu página de **Facebook**
+3. Vieron al menos **10 segundos** de tus videos (en FB e IG)
+
+> ⚠️ **Desactiva "público personalizado Advantage" SOLO en retargeting.** El objetivo
+> ahí es enfocarse en quienes ya te conocen, no ampliar a desconocidos. En tráfico frío
+> se deja activado.
+
+### CBO vs. ABO: la regla
+
+| Público | Presupuesto | Por qué |
+|---|---|---|
+| **Frío** | **ABO** (por conjunto) | Requiere exploración. Con ABO controlas cuánto va a cada forma de segmentar y comparas. |
+| **Retargeting** | **CBO** (por campaña) | Públicos muy pequeños. Con presupuesto alto sobre público chico, la frecuencia se dispara y se quema. Con CBO, Meta reparte sin quemar. |
+
+> El principio que gobierna la decisión: *"cuanta menos información le enviemos al
+> algoritmo, mayor control manual necesitaremos"*.
+
+Metáfora útil: el presupuesto a nivel campaña es un auto **automático**; el de conjunto
+es **manual**. Hay que saber manejar los dos.
+
+**Cuándo cambiar:** pasa a CBO cuando ya tienes ganadores claros; vuelve a ABO si
+necesitas testear o recuperar control granular.
+
+### ⛔ La estructura "1-1-1" está prohibida
+
+1 campaña + 1 conjunto + 1 anuncio. Si ese único anuncio no funciona, **no tienes con
+qué compararlo**. Mínimo 3 anuncios por conjunto, variando **formato** (imagen, video,
+secuencia) y **ángulo** (testimonio, marca, oferta, publicación existente).
+
+### Exclusión de compradores: la ventana depende del producto
+
+| Tipo de producto | Ventana de exclusión |
+|---|---|
+| **La mayoría** | **30-90 días** |
+| **Uso prolongado** | hasta **180 días** |
+| **Consumo frecuente** | **no excluir** |
+
+Caso real documentado (e-commerce, $1.200 USD/mes): exclusión de compradores de **60
+días**, aplicada tanto en los conjuntos de tráfico frío como en la campaña de
+retargeting. Cruza esto con la escalera de recencia de §7.
+
 ---
 
 ## 5. La arquitectura consolidada — el ciclo dentro de un solo conjunto

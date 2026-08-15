@@ -1,6 +1,6 @@
 ---
 name: meta-ads
-description: Sistema completo de estrategia, estructura, optimización y escalamiento de Meta Ads (Facebook e Instagram Ads) basado en la metodología del Ciclo de Ventas de Felipe Vergara. Úsala SIEMPRE que haya que diseñar la estrategia de una cuenta publicitaria, estructurar campañas/conjuntos/anuncios, definir públicos y exclusiones, calcular presupuestos y CPA/ROAS objetivo, simular escenarios de campaña, investigar al cliente ideal (7 maletas, avatar, ángulos), generar hooks y creativos por nivel de consciencia, diagnosticar por qué una campaña no funciona, o escalar lo que sí funciona. Se activa con - "estrategia de Meta Ads", "estructurar campañas", "cuánto presupuesto", "CPA objetivo", "ROAS", "mi campaña no vende", "optimizar campaña", "escalar campaña", "públicos y exclusiones", "ángulos de venta", "hooks", "niveles de consciencia", "ciclo de ventas", "trafficker", "Facebook Ads", "Instagram Ads", "campaña de mensajes/WhatsApp", "clientes potenciales", "retargeting", "Advantage+", "fase de aprendizaje", "públicos personalizados", "lookalike", "a quién excluyo", "cuántos conjuntos de anuncios", "CTWA", "click to WhatsApp". También cuando el usuario comparte métricas de una campaña (CPM, CTR, frecuencia, costo por conversación) y pide interpretarlas. Incluye la actualización de la plataforma a 2026 (objetivos ODAX, Advantage+ Audience, controles vs sugerencias, ventanas de retención, fase de aprendizaje) y cuándo conviene separar o consolidar la estructura de cuenta.
+description: Sistema completo de estrategia, estructura, optimización y escalamiento de Meta Ads (Facebook e Instagram Ads) basado en la metodología del Ciclo de Ventas de Felipe Vergara. Úsala SIEMPRE que haya que diseñar la estrategia de una cuenta publicitaria, estructurar campañas/conjuntos/anuncios, definir públicos y exclusiones, calcular presupuestos y CPA/ROAS objetivo, simular escenarios de campaña, investigar al cliente ideal (7 maletas, avatar, ángulos), generar hooks y creativos por nivel de consciencia, diagnosticar por qué una campaña no funciona, o escalar lo que sí funciona. Se activa con - "estrategia de Meta Ads", "estructurar campañas", "cuánto presupuesto", "CPA objetivo", "ROAS", "mi campaña no vende", "optimizar campaña", "escalar campaña", "públicos y exclusiones", "ángulos de venta", "hooks", "niveles de consciencia", "ciclo de ventas", "trafficker", "Facebook Ads", "Instagram Ads", "campaña de mensajes/WhatsApp", "clientes potenciales", "retargeting", "Advantage+", "fase de aprendizaje", "públicos personalizados", "lookalike", "a quién excluyo", "cuántos conjuntos de anuncios", "CTWA", "click to WhatsApp", "Andrómeda", "MCP de Meta", "conectar Claude a Meta Ads", "diversidad creativa", "ganchos", "copywriting", "número mágico", "CBO o ABO", "efecto desglose". También cuando el usuario comparte métricas de una campaña (CPM, CTR, frecuencia, costo por conversación) y pide interpretarlas. Incluye la actualización de la plataforma a 2026 (objetivos ODAX, Advantage+ Audience, controles vs sugerencias, ventanas de retención, fase de aprendizaje), el algoritmo Andrómeda y la diversidad creativa, el conector MCP oficial de Meta para IA, el playbook de WhatsApp para LATAM, y cuándo conviene separar o consolidar la estructura de cuenta.
 ---
 
 # Meta Ads — Sistema del Ciclo de Ventas
@@ -48,7 +48,7 @@ Si el usuario pide "apagar un anuncio que lleva 1 día", esta ley aplica: dilo.
 
 ## Cómo usar este skill
 
-Identifica en cuál de los 6 trabajos está el usuario y ve al archivo correspondiente.
+Identifica en cuál de los 10 trabajos está el usuario y ve al archivo correspondiente.
 **No cargues todas las referencias**: lee solo la que aplica.
 
 | # | El usuario quiere… | Lee |
@@ -60,6 +60,9 @@ Identifica en cuál de los 6 trabajos está el usuario y ve al archivo correspon
 | 5 | Saber cuánto invertir / si el negocio da | `05-presupuesto.md` + `scripts/` |
 | 6 | Arreglar o escalar lo que ya corre | `06-optimizacion.md`, `07-escalamiento.md` |
 | 7 | **Configurar públicos, exclusiones, estructura real** | `09-plataforma-2026.md` → `10-publicos-y-exclusiones.md` |
+| 8 | Conectar la IA a la cuenta (MCP oficial) | `11-ia-y-mcp.md` |
+| 9 | Entender el algoritmo y producir variedad creativa | `12-andromeda-y-diversidad-creativa.md` |
+| 10 | **Campañas a WhatsApp / mensajes (caso LATAM)** | `13-whatsapp-latam.md` |
 
 Referencias de apoyo: `reference/08-calendario-mkt.md` (fechas comerciales),
 `prompts/` (prompts de investigación listos para usar).
