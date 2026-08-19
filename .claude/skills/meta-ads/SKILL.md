@@ -63,6 +63,7 @@ Identifica en cuál de los 10 trabajos está el usuario y ve al archivo correspo
 | 8 | Conectar la IA a la cuenta (MCP oficial) | `11-ia-y-mcp.md` |
 | 9 | Entender el algoritmo y producir variedad creativa | `12-andromeda-y-diversidad-creativa.md` |
 | 10 | **Campañas a WhatsApp / mensajes (caso LATAM)** | `13-whatsapp-latam.md` |
+| 11 | Levantar el ADN de un cliente nuevo y sacar los 30 hooks | `14-adn-de-marca.md` |
 
 Referencias de apoyo: `reference/08-calendario-mkt.md` (fechas comerciales),
 `prompts/` (prompts de investigación listos para usar).
@@ -154,7 +155,18 @@ Saltarse pasos es la causa #1 de campañas que no venden.
 
 ## Relación con otras skills
 
-Este skill es el **cerebro estratégico y de compra de medios**. Si en el entorno existe
-una skill de **producción de anuncios** (generación de imágenes/video), este skill
-define *qué* producir (etapa, nivel de consciencia, tipo de arte, hook) y esa skill lo
-*renderiza*. No dupliques: aquí se decide la estrategia, allá se ejecuta la pieza.
+Este skill es el **cerebro estratégico y de compra de medios**: decide *qué* producir
+(etapa, nivel de consciencia, tipo de arte, hook, presupuesto, públicos y exclusiones).
+
+En este repo están instaladas además las tres skills de producción de Felipe Vergara,
+que ejecutan la pieza:
+
+| Skill | Qué hace | Costo |
+|---|---|---|
+| `escanear-marca` | Web → ADN de marca (`marca-cliente.json`) | gratis |
+| `diversificacion-creativa` | ADN → los 30 hooks | gratis |
+| `produccion-anuncios` | Orquesta las dos y renderiza 30 imágenes + Excel | **~US$1,50** (Kie.ai) |
+
+No dupliques: aquí se decide la estrategia, allá se ejecuta la pieza. El criterio de
+esas tres está destilado en `14-adn-de-marca.md`, para poder aplicarlo **a mano** cuando
+no haya web que escanear ni saldo de Kie.
