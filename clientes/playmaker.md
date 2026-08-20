@@ -31,7 +31,7 @@
 | | |
 |---|---|
 | **Destino** | web / WhatsApp / form nativo / DM |
-| **Objetivo de campaña** | Ventas / Clientes potenciales / Interacción |
+| **Objetivo de campaña** | **Clientes Potenciales (formulario nativo)** |
 | **Píxel** | ✅ / ❌ |
 | **API de Conversiones** | ✅ / ❌ |
 | **`ctwa_clid`** *(solo si es WhatsApp)* | ✅ / ❌ |
@@ -57,11 +57,11 @@
 | **2 perfiles de comprador** | |
 
 ## Estado actual de la cuenta
-- **Qué corre hoy:**
-- **Arquitectura:** separada / mixta / consolidada
-- **Públicos personalizados creados:**
-- **Exclusiones activas:**
-- **Problema declarado por el cliente:**
+- **Qué corre hoy:** nada — la cuenta quedó **impaga** y no es consultable.
+- **Historial:** las campañas estaban apagadas; se creó una **campaña nueva de Clientes Potenciales con formulario** (hace ~2 días) y acto seguido saltó el estado de pago.
+- **Estado de gestión:** ✅ ya se avisó al cliente.
+- **Desbloquea:** que el cliente regularice el saldo. Hasta entonces no hay nada que optimizar.
+- **Al reactivar:** la campaña nueva va a reiniciar aprendizaje. Tratarla como lanzamiento, no como continuación.
 
 ## Bitácora
 | Fecha | Qué se cambió | Por qué | Métrica que debía moverse | Resultado |

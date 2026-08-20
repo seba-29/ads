@@ -52,16 +52,16 @@
 |---|---|
 | **Nivel de consciencia dominante del copy** | |
 | **¿Tiene material para hablarle a gente fría?** | |
-| **Tipo de oferta** | info / servicio / producto físico / e-commerce / alto ticket / SaaS |
+| **Tipo de oferta** | **servicio** |
 | **3 deseos de Reiss** *(con evidencia)* | |
 | **2 perfiles de comprador** | |
 
 ## Estado actual de la cuenta
-- **Qué corre hoy:**
-- **Arquitectura:** separada / mixta / consolidada
-- **Públicos personalizados creados:**
-- **Exclusiones activas:**
-- **Problema declarado por el cliente:**
+- **Qué corre hoy:** **todavía no se gestiona campaña desde Heat.**
+- **Cuentas:** solo importa la **activa con anuncios** (`65286325`). Las demás están deshabilitadas o son read-only — **ignorar**.
+- **⚠️ Cuello de botella:** falta material, se está gestionando.
+- **🎯 Foco próxima semana:** **oferta especial de aniversario de la clínica**.
+- **Implicación de la oferta de aniversario:** es una **campaña especial** con fecha de corte. Prepararla con 2-3 semanas de anticipación (`08-calendario-mkt.md`), y usar artes de **Promoción** con copy de nivel **Decisión** sobre públicos calientes. Si no hay públicos calientes todavía, hay que empezar a llenarlos **ya** con tráfico frío, o la oferta va a caer en el vacío.
 
 ## Bitácora
 | Fecha | Qué se cambió | Por qué | Métrica que debía moverse | Resultado |

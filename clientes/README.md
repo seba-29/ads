@@ -29,6 +29,23 @@ antes de operar.*
 | **CLÍNICA PALAVAS** | Una de sus cuentas marcada por actividad inusual, anuncios pausados | Contactar a soporte de Meta |
 | **ESPACIO FUSIÓN** | Sin acceso a su cuenta publicitaria | Compartir acceso al BM |
 
+## Estado de trabajo (actualizado con contexto de Seba)
+
+| Cliente | Corre hoy | Bloqueo real |
+|---|---|---|
+| ASISTENCIA LEGAL | ✅ Lead-gen nueva + campañas legadas del cliente | Vigilar solapamiento entre ambas |
+| CASA ZEN | 🚀 Se montan hoy — lanzamiento | — (material ✅) |
+| PLAYMAKER | ⛔ Detenido | Saldo impago (cliente avisado) |
+| BE FASHION | ✅ Tráfico + Lead-gen | **Material gráfico** — graban la próxima semana |
+| DRA. VANESSA SILVA | ✅ WhatsApp, solo Santiago | Ampliar geo (tarea, no bloqueo) |
+| CLÍNICA PALAVAS | ⛔ Sin campaña aún | **Material** · foco: oferta de aniversario |
+| RAÍCES FUTURAS | ⛔ Inactivo | Saldo impago |
+| ESPACIO FUSIÓN | ⛔ Sin lanzar | Aprobación del cliente + **sin acceso a la cuenta** |
+| CLÍNICA ONDEX | ⛔ Sin campaña aún | **Falta contenido** + definir estrategia |
+
+> **El patrón:** 5 de 9 están frenados por **material creativo**, no por estrategia ni
+> por presupuesto. Ese es el cuello de botella real de la cartera.
+
 ## Qué necesita cada ficha para ser operable
 
 Sin los tres primeros no hay recomendación de presupuesto posible:

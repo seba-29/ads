@@ -55,11 +55,11 @@
 | **2 perfiles de comprador** | |
 
 ## Estado actual de la cuenta
-- **Qué corre hoy:**
-- **Arquitectura:** separada / mixta / consolidada
-- **Públicos personalizados creados:**
-- **Exclusiones activas:**
-- **Problema declarado por el cliente:**
+- **Qué corre hoy:** nada todavía — **se montan las primeras campañas hoy**.
+- **Material gráfico:** ✅ recién recibido.
+- **Situación:** apertura reciente → **campaña de lanzamiento**.
+- **Implicación clave:** cuenta nueva = **sin públicos personalizados**. Las primeras 2-3 semanas van 100% a Presentación (segmentación abierta) mientras se llenan los públicos de interacción. Ver `10` §4 y la nota de arranque en `05-presupuesto.md`.
+- **Crear desde el día 1 aunque estén vacíos:** interacción FB+IG 365d, video 25%+ 365d, visitantes web 180d, compradores.
 
 ## Bitácora
 | Fecha | Qué se cambió | Por qué | Métrica que debía moverse | Resultado |

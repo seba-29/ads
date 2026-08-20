@@ -57,11 +57,10 @@
 | **2 perfiles de comprador** | |
 
 ## Estado actual de la cuenta
-- **Qué corre hoy:**
-- **Arquitectura:** separada / mixta / consolidada
-- **Públicos personalizados creados:**
-- **Exclusiones activas:**
-- **Problema declarado por el cliente:**
+- **Qué corre hoy:** nada — **pendiente de aprobación del cliente** para lanzar.
+- **Estado:** se está gestionando el contenido; falta que el cliente lo apruebe.
+- **🔎 Cuenta publicitaria:** el cliente indica que puede llamarse algo con **"Patricia"** o **"Soy Patinaza"**. **Verificado: no aparece ninguna cuenta con esos nombres** entre las 29 accesibles vía el conector MCP.
+- **Desbloquea:** que compartan acceso a la cuenta publicitaria con el Business Manager de Heat, o confirmar el nombre exacto.
 
 ## Bitácora
 | Fecha | Qué se cambió | Por qué | Métrica que debía moverse | Resultado |

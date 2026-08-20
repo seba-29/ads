@@ -29,7 +29,7 @@
 | | |
 |---|---|
 | **Destino** | web / WhatsApp / form nativo / DM |
-| **Objetivo de campaña** | Ventas / Clientes potenciales / Interacción |
+| **Objetivo de campaña** | **Tráfico + Clientes Potenciales** |
 | **Píxel** | ✅ / ❌ |
 | **API de Conversiones** | ✅ / ❌ |
 | **`ctwa_clid`** *(solo si es WhatsApp)* | ✅ / ❌ |
@@ -50,16 +50,18 @@
 |---|---|
 | **Nivel de consciencia dominante del copy** | |
 | **¿Tiene material para hablarle a gente fría?** | |
-| **Tipo de oferta** | info / servicio / producto físico / e-commerce / alto ticket / SaaS |
+| **Tipo de oferta** | **e-commerce** |
 | **3 deseos de Reiss** *(con evidencia)* | |
 | **2 perfiles de comprador** | |
 
 ## Estado actual de la cuenta
 - **Qué corre hoy:**
-- **Arquitectura:** separada / mixta / consolidada
-- **Públicos personalizados creados:**
-- **Exclusiones activas:**
-- **Problema declarado por el cliente:**
+  - **Campaña de Tráfico** activa — la clienta quiere aumentar seguidores.
+  - **Campaña de Clientes Potenciales** con formulario de Meta, segmentada a mujeres de cierta edad.
+- **⚠️ Cuello de botella: falta material gráfico.**
+- **Próxima semana:** graban videos nuevos con foco específico en anuncios.
+- **⚠️ Expectativa a alinear:** una campaña de Tráfico optimiza por clics, no por seguidores ni por ventas. Sirve para volumen y para llenar públicos de retargeting; no para vender. Conviene dejarlo explícito con la clienta antes de que juzgue el resultado por ventas.
+- **🆕 Google Ads:** quiere testear. Foco **joyería**, no carteras — la tesis es no competir contra Falabella / Mercado Libre / Michael Kors en marcas reconocidas. Canal fuera del alcance de la skill `meta-ads`.
 
 ## Bitácora
 | Fecha | Qué se cambió | Por qué | Métrica que debía moverse | Resultado |

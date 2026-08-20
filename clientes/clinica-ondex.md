@@ -52,16 +52,15 @@
 |---|---|
 | **Nivel de consciencia dominante del copy** | |
 | **¿Tiene material para hablarle a gente fría?** | |
-| **Tipo de oferta** | info / servicio / producto físico / e-commerce / alto ticket / SaaS |
+| **Tipo de oferta** | **servicio** |
 | **3 deseos de Reiss** *(con evidencia)* | |
 | **2 perfiles de comprador** | |
 
 ## Estado actual de la cuenta
-- **Qué corre hoy:**
-- **Arquitectura:** separada / mixta / consolidada
-- **Públicos personalizados creados:**
-- **Exclusiones activas:**
-- **Problema declarado por el cliente:**
+- **Qué corre hoy:** nada — **falta definir estrategia y conseguir material.**
+- **⚠️ Cuello de botella:** **no tienen contenido suficiente** utilizable para anuncios en video. Hay que producirlo o conseguirlo.
+- **Pendiente:** analizar estrategia + revisar qué contenido existe y qué es reciclable.
+- **Nota:** con material escaso, los formatos que rinden sin producción nueva son **slideshow ads** (video desde imágenes), testimonios grabados con celular y contenido de pacientes. Ver `04-creativos.md` §2c (los 9 bloques permiten recombinar poco material en muchas piezas).
 
 ## Bitácora
 | Fecha | Qué se cambió | Por qué | Métrica que debía moverse | Resultado |

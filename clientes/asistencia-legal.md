@@ -29,7 +29,7 @@
 | | |
 |---|---|
 | **Destino** | web / WhatsApp / form nativo / DM |
-| **Objetivo de campaña** | Ventas / Clientes potenciales / Interacción |
+| **Objetivo de campaña** | **Clientes Potenciales (formulario nativo)** |
 | **Píxel** | ✅ / ❌ |
 | **API de Conversiones** | ✅ / ❌ |
 | **`ctwa_clid`** *(solo si es WhatsApp)* | ✅ / ❌ |
@@ -50,16 +50,18 @@
 |---|---|
 | **Nivel de consciencia dominante del copy** | |
 | **¿Tiene material para hablarle a gente fría?** | |
-| **Tipo de oferta** | info / servicio / producto físico / e-commerce / alto ticket / SaaS |
+| **Tipo de oferta** | **servicio** |
 | **3 deseos de Reiss** *(con evidencia)* | |
 | **2 perfiles de comprador** | |
 
 ## Estado actual de la cuenta
 - **Qué corre hoy:**
-- **Arquitectura:** separada / mixta / consolidada
-- **Públicos personalizados creados:**
-- **Exclusiones activas:**
-- **Problema declarado por el cliente:**
+  - Campaña **nueva de Clientes Potenciales con formulario nativo**, creada por Heat.
+  - **Campañas antiguas del cliente siguen activas**, a propósito, para no cortar el flujo de leads.
+- **Arquitectura:** convivencia temporal (Heat + legado del cliente)
+- **Objetivo declarado:** llegar a gestionar todas las campañas de la empresa
+- **⚠️ Riesgo a vigilar:** dos campañas de la misma cuenta persiguiendo al mismo público compiten en la misma subasta → CPM inflado y atribución confusa. Ver `10-publicos-y-exclusiones.md` §3.
+- **Pendiente:** medir por separado Heat vs. legado antes de proponer apagar lo viejo.
 
 ## Bitácora
 | Fecha | Qué se cambió | Por qué | Métrica que debía moverse | Resultado |
