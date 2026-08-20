@@ -3,3 +3,8 @@ __pycache__/
 *.pyc
 .env
 .DS_Store
+
+# Exports de clientes con datos personales — nunca al repo
+orders_export*.csv
+*_orders*.csv
+customers_export*.csv
