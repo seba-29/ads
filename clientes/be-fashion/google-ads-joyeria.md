@@ -6,22 +6,73 @@
 
 ---
 
-## 1. La tesis y por qué es correcta
+## 1. La tesis — corregida con datos del catálogo real
 
-**Foco en joyería, no en carteras.** El razonamiento de Seba es el bueno: en Search se
-compite por **intención que ya existe**, y en "cartera Michael Kors" la subasta la
-dominan Falabella y Mercado Libre — con presupuesto, autoridad de dominio y feed. Ahí
-el CPC duele y se pierde.
+**Dato que cambia el plan:** Be Fashion **no vende joyería genérica. Es un retailer
+multimarca de joyería premium.**
 
-Joyería es mejor apuesta por una razón estructural: las búsquedas tienden a ser **más
-específicas y menos dominadas por marca** ("aros de plata 925", "collar personalizado
-con nombre", "anillo acero quirúrgico mujer"). Ahí un player chico sí puede rankear
-rentable.
+| Marca | SKU | % catálogo | Precio promedio |
+|---|---:|---:|---:|
+| **UNOde50** | 69 | **67%** | $206.454 |
+| **Tous** | 17 | 17% | $203.726 |
+| Lola Casademunt | 8 | 8% | $72.490 |
+| Pandora · Swarovski · Tory Burch · Kate Spade | 5 | 5% | — |
 
-**Dato que respalda la categoría:** joyería y accesorios promedia **ROAS 2,5×** en
-Google. Con márgenes típicos de la categoría (55-70%), el **ROAS de equilibrio es
-1,43-1,82×**. O sea: la categoría deja margen real entre el punto de equilibrio y el
-promedio. No es una apuesta ciega.
+Y el ticket es alto: **precio promedio de catálogo $191.854 · mediana $199.990**, con el
+64% del surtido entre $150.000 y $250.000.
+
+### Por qué esto mejora mucho la apuesta
+
+La estrategia original apuntaba a genéricos ("aros de plata", "collar personalizado").
+**Con este catálogo, el activo real son las búsquedas de marca.**
+
+Alguien que busca **"uno de 50 chile"** o **"aros tous oso"** ya sabe qué quiere, cuánto
+cuesta y por qué lo quiere. Esa es la intención más alta que existe en Search, y el
+término es mucho más barato que un genérico disputado por todo el retail.
+
+**Se sostiene la tesis de Seba de no ir por carteras**, pero por una razón más precisa:
+no es que joyería sea "menos competido" en abstracto — es que **este catálogo tiene
+marcas con demanda de búsqueda propia**, y ahí un retailer chico puede competir de igual
+a igual porque compite por *disponibilidad y despacho*, no por autoridad de marca.
+
+> ⚠️ **UNOde50 concentra el 67% del surtido.** Es la apuesta principal de la campaña y
+> también el riesgo: cualquier problema de abastecimiento golpea toda la estrategia.
+
+### La corrección de margen que hay que hacer
+
+El plan anterior citaba márgenes de joyería de **55-70%**. **Ese benchmark no aplica
+acá:** corresponde a marcas propias. Be Fashion **revende** UNOde50, Tous y Pandora, y
+los márgenes de reventa en retail de moda son bastante menores.
+
+**Es el dato que falta y el único que bloquea el cálculo final.**
+
+---
+
+## 1b. Escenarios de rentabilidad
+
+Sobre ticket de catálogo **$190.000 CLP** y tasa de conversión **2%** (referencia de la
+categoría apparel/joyería):
+
+| Margen real | ROAS equilibrio | CPA máximo | **CPC máximo** |
+|---:|---:|---:|---:|
+| 25% | 4,00× | $47.500 | **$950** |
+| 30% | 3,33× | $57.000 | **$1.140** |
+| 35% | 2,86× | $66.500 | **$1.330** |
+| 40% | 2,50× | $76.000 | **$1.520** |
+| 50% | 2,00× | $95.000 | **$1.900** |
+
+**Lectura:** incluso en el escenario pesimista (25%), el techo de CPC es **$950 CLP** —
+holgado para Chile. **El ticket alto es lo que hace viable este canal.** Con un ticket
+de $30.000 no habría conversación posible.
+
+> **La disciplina del % a invertir (igual que en Meta):** el margen bruto **no** es lo
+> que se invierte. Si el margen es 40% pero la clienta quiere conservar 15% de utilidad,
+> el % a invertir es **25%**, no 40%. Usar el margen completo hace que "el ROAS dé" y que
+> igual no se gane nada.
+
+> ⚠️ **Esto es precio de catálogo, no AOV real.** El AOV verdadero sale del export de
+> órdenes de Shopify y puede ser distinto: más bajo si la gente compra Lola Casademunt
+> ($69.990), más alto si compran varias piezas. **Pedirlo antes de fijar la puja.**
 
 ---
 
@@ -183,41 +234,50 @@ presupuesto muy bajo, tampoco.
 
 ---
 
-## 7. Estructura de la campaña
+## 7. Estructura de la campaña — por MARCA, no por tipo de producto
 
-**Un tema de intención por grupo de anuncios.** No un grupo gigante con todo adentro —
-Smart Bidding necesita señales limpias para saber qué convierte.
+Este es el cambio grande respecto al plan inicial. Con marcas de demanda propia, agrupar
+por *aros / collares / anillos* desperdicia lo mejor del catálogo.
 
 ```
-CAMPAÑA · Búsqueda · Joyería · Chile
-│  Puja: Maximizar clics + límite de CPC  (fase 1)
-│  Ubicación: Chile (o solo RM si el envío lo justifica)
-│  Idioma: español
-│  Negativas: la lista de §5 a nivel campaña
+CAMPAÑA A · Búsqueda · MARCAS · Chile          ← la apuesta principal (~70% del presupuesto)
+│  Puja: Maximizar clics + límite de CPC (ver §1b)
 │
-├── GRUPO · Aros
-│     frase: "aros de plata", "aros mujer", "aros minimalistas"
-│     RSA propio + landing de la categoría aros
+├── GRUPO · UNOde50                             67% del surtido
+│     frase: "uno de 50", "unode50 chile", "pulsera uno de 50",
+│            "anillo uno de 50", "collar uno de 50"
+│     → landing: colección UNOde50
 │
-├── GRUPO · Collares
-│     frase: "collar personalizado", "collar con nombre", "cadena de plata mujer"
-│     RSA propio + landing de collares
+├── GRUPO · Tous                                17% del surtido
+│     frase: "tous chile", "aros tous", "oso tous", "anillo tous plata"
+│     → landing: colección Tous
 │
-├── GRUPO · Anillos
-│     frase: "anillo de plata mujer", "anillo acero quirúrgico"
-│
-└── GRUPO · Marca (si la marca tiene búsquedas propias)
-      exacta: "be fashion", variantes
-      Separado siempre: si no, el CTR de marca infla el promedio y no ves la verdad
+└── GRUPO · Otras marcas                        Pandora · Swarovski · Tory Burch · Kate Spade
+      frase por marca · solo si hay stock real (son 5 SKU en total)
+
+CAMPAÑA B · Búsqueda · GENÉRICOS · Chile       ← secundaria (~30%), CPC más caro
+├── GRUPO · Aros          "aros de plata mujer", "aros colgantes"
+├── GRUPO · Collares      "collar de plata mujer", "collar con perla"
+├── GRUPO · Anillos       "anillo de plata mujer"
+└── GRUPO · Pulseras      "pulsera de cuero mujer", "pulsera de plata"
+
+CAMPAÑA C · Marca propia · "be fashion"        ← siempre separada
+      exacta: "befashion", "be fashion chile", "be fashion joyas"
+      Si no se separa, el CTR de marca infla el promedio y no ves la verdad
 ```
 
-**Cada grupo con su propia landing** de esa categoría. Mandar todo a la home mata la
-conversión y baja el nivel de calidad.
+**Cada grupo con su landing de colección.** La tienda ya tiene la estructura de
+categorías en Shopify — hay que usarla, no mandar todo a la home.
 
-**RSA:** un anuncio adaptable por grupo, con titulares que incluyan el término del tema.
-Google 2026 ofrece **AI Max para Búsqueda** como capa opcional que expande coincidencias
-y genera copy — **déjalo apagado en el test**, por la misma razón que PMax: quita
-legibilidad.
+**Prioridad si el presupuesto es chico:** empezar **solo con la Campaña A**, y dentro de
+ella solo **UNOde50 y Tous**. Son el 84% del surtido y la intención más alta. Los
+genéricos pueden esperar.
+
+### El ángulo competitivo del copy
+
+Contra la tienda oficial de la marca y contra el retail grande, un multimarca chico
+compite con: **stock real, despacho rápido, atención directa**. Eso va en los RSA.
+"Envío a todo Chile", "stock disponible", "despacho en 24h" — si es verdad.
 
 ---
 
@@ -238,16 +298,36 @@ más que las ventas que genere.
 
 ---
 
+## 8b. ⚠️ Higiene de catálogo (bloquea Shopping)
+
+El análisis detectó **5 registros defectuosos sobre 104 (~5%)** que hay que corregir
+**antes** de conectar Merchant Center, porque el feed los arrastra y Shopping los rechaza:
+
+| Problema | Registro | Acción |
+|---|---|---|
+| **Precio $0** | Cinturón Carolina Herrera | Merchant Center lo rechaza. Corregir o despublicar. |
+| **Descuento 92% sospechoso** | Anillo UNOde50 $19.990 (antes $249.990) | Casi seguro error de carga. **Verificar antes de que alguien compre.** |
+| **Mal categorizados** | Cartera Pinko · Sandalias Melissa · Cinturón | Sacar de "Joyas y Bisutería" — ensucian el feed y las señales |
+| **7% agotado** | 7 de 104 | Shopping penaliza feeds con stock desactualizado |
+
+**Además, el hueco de entrada:** solo 13 productos bajo $100.000, y 8 son de una sola
+marca. Si en algún momento se busca volumen o captar compradoras primerizas, esa franja
+está vacía. Hoy Lola Casademunt ($69.990) es el único gancho de entrada real.
+
+---
+
 ## 9. Checklist de lanzamiento
 
-- [ ] Ticket promedio y margen **de joyería** confirmados con la clienta
+- [ ] **Margen real de reventa** confirmado (el de catálogo no sirve: es multimarca)
+- [ ] **AOV real** pedido del export de órdenes de Shopify
+- [ ] Higiene de catálogo resuelta (§8b) — bloquea Shopping
 - [ ] CPA máximo y CPC límite calculados
 - [ ] Etiqueta de conversión de Google Ads instalada y **probada**
 - [ ] GA4 vinculado · conversiones mejoradas activadas
 - [ ] Valor de conversión poblado (sin esto no hay ROAS)
 - [ ] Ventana de conversión en 30 días
 - [ ] Lista de negativas cargada **antes** de activar
-- [ ] Grupos por tema de intención, cada uno con su landing
+- [ ] Grupos **por marca** (UNOde50, Tous), cada uno con su landing de colección
 - [ ] Puja en **Maximizar clics con límite de CPC**
 - [ ] **AI Max apagado**
 - [ ] Campaña de marca separada
