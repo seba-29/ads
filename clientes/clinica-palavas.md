@@ -23,20 +23,21 @@
 | **% dispuesto a invertir por cliente nuevo** | |
 | **Meta de ventas mensual** | |
 | **Inversión actual/mes** | |
-| **CPA objetivo** *(calculado)* | |
-| **ROAS objetivo** *(calculado)* | |
-| **NÚMERO MÁGICO** *(ROAS mínimo o CPA/CPL máximo)* | |
+| **CPA objetivo** *(calculado)* | **$839 CLP / conversación** — real, últimos 30d (1.138 conv. / $955.033) |
+| **ROAS objetivo** *(calculado)* | ⛔ no calculable — falta ticket |
+| **NÚMERO MÁGICO** *(ROAS mínimo o CPA/CPL máximo)* | ⛔ **bloqueado: falta ticket y margen** |
+| **Mínimo por conjunto** *(CPA×50÷7)* | **$6.000/día** |
 
 ## Conversión y medición
 | | |
 |---|---|
-| **Destino** | web / WhatsApp / form nativo / DM |
-| **Objetivo de campaña** | Ventas / Clientes potenciales / Interacción |
+| **Destino** | **WhatsApp (CTWA)** |
+| **Objetivo de campaña** | **Interacción → Mensajes** (lo único que gasta en esta cuenta; las de Ventas con píxel llevan meses en $0) |
 | **Píxel** | ✅ / ❌ |
 | **API de Conversiones** | ✅ / ❌ |
-| **`ctwa_clid`** *(solo si es WhatsApp)* | ✅ / ❌ |
-| **% de cierre lead → venta** | *(si no se sabe, 5% como estándar)* |
-| **Quién responde y en cuánto** | |
+| **`ctwa_clid`** *(solo si es WhatsApp)* | ❌ **NO** — Meta optimiza hacia quien escribe, no hacia quien compra |
+| **% de cierre lead → venta** | ❓ **no medido — es el dato que bloquea todo** |
+| **Quién responde y en cuánto** | ❓ sin definir |
 
 ## Las 7 Maletas
 1. **Público** —
@@ -57,7 +58,10 @@
 | **2 perfiles de comprador** | |
 
 ## Estado actual de la cuenta
-- **Qué corre hoy:** **todavía no se gestiona campaña desde Heat.**
+- **Qué corre hoy:** **NADA.** Las ~50 campañas de la cuenta están pausadas.
+- **Costo por conversación por sucursal (30d):** Chillán **$746** · Las Condes **$1.010** · retargeting **$1.154** ⚠️ (el retargeting es el más caro de la cuenta — está al revés).
+- **CPM:** Chillán $1.650 · Las Condes **$5.727** (3,5×). Pero Las Condes **convierte mejor**: 1,48% del alcance escribe vs 0,94% en Chillán. El problema de Las Condes es el precio del inventario, no el mensaje.
+- **📄 Plan vigente:** `clinica-palavas/plan-aniversario-cyber.md` (24 ago → 4 oct, $3.700.000).
 - **Cuentas:** solo importa la **activa con anuncios** (`65286325`). Las demás están deshabilitadas o son read-only — **ignorar**.
 - **⚠️ Cuello de botella:** falta material, se está gestionando.
 - **🎯 Foco próxima semana:** **oferta especial de aniversario de la clínica**.
@@ -66,4 +70,4 @@
 ## Bitácora
 | Fecha | Qué se cambió | Por qué | Métrica que debía moverse | Resultado |
 |---|---|---|---|---|
-| | | | | |
+| 24-ago-2026 | Auditoría de cuenta + plan Aniversario→Cyber | Sale promo de aniversario | — | CPA real $839; arquitectura de 6 conjuntos |
