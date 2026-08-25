@@ -1,0 +1,26 @@
+ONDEX — archivos de la integración del formulario con GoHighLevel
+=================================================================
+
+Copiar cada carpeta sobre el proyecto correspondiente, respetando las rutas.
+
+  kinesiologia/  -> sobre  kinesiologia/
+  metodo-ondex/  -> sobre  metodo-ondex/
+
+Archivos NUEVOS
+  src/lib/leads.ts                        envío a GHL + eventos de Meta
+  src/vite-env.d.ts                       tipado de las variables de entorno
+  .env.example                            plantilla de configuración
+
+Archivos MODIFICADOS (reemplazan a los actuales)
+  src/components/sections/Formulario.tsx  el envío real, antes no enviaba nada
+  index.html                              píxel, lang es-CL, title y meta
+
+gitignore.txt
+  No reemplaza tu .gitignore. Sólo agrega estas dos líneas al final del tuyo:
+      .env
+      .env.local
+
+DESPUÉS DE COPIAR
+  1. cp .env.example .env   y rellenar los cuatro valores
+  2. npm install
+  3. npm run dev            y probar el formulario de punta a punta
