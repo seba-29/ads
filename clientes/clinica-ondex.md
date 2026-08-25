@@ -12,8 +12,11 @@
 | **Business Manager** | Ondex Ads |
 | **Moneda** | CLP |
 | **Estado de la cuenta** | ✅ ACTIVE |
-| **Rubro** | |
-| **Web / IG** | |
+| **Rubro** | Kinesiología y ondas de choque · Santiago |
+| **Web / IG** | clinicaondex.cl · [@clinicaondex](https://www.instagram.com/clinicaondex) |
+| **Subcuenta GHL** | `CHtgjFPx4hWkSAtKewIo` |
+| **WhatsApp** | `+56952296611` |
+| **Líneas de servicio** | Kinesiología · Método Ondex (ondas de choque) |
 
 ## Los números (obligatorios — sin esto no hay recomendación de presupuesto)
 | | |
@@ -30,10 +33,10 @@
 ## Conversión y medición
 | | |
 |---|---|
-| **Destino** | web / WhatsApp / form nativo / DM |
-| **Objetivo de campaña** | Ventas / Clientes potenciales / Interacción |
-| **Píxel** | ✅ / ❌ |
-| **API de Conversiones** | ✅ / ❌ |
+| **Destino** | **Landing propia con form de 2 pasos** → WhatsApp (Heat) |
+| **Objetivo de campaña** | Clientes potenciales |
+| **Píxel** | ⚠️ `736328569555463` (dataset «Landing») — **ver advertencia abajo** |
+| **API de Conversiones** | Conectada en ese dataset por *otra* integración; falta la de GHL |
 | **`ctwa_clid`** *(solo si es WhatsApp)* | ✅ / ❌ |
 | **% de cierre lead → venta** | *(si no se sabe, 5% como estándar)* |
 | **Quién responde y en cuánto** | |
@@ -57,12 +60,21 @@
 | **2 perfiles de comprador** | |
 
 ## Estado actual de la cuenta
-- **Qué corre hoy:** nada — **falta definir estrategia y conseguir material.**
-- **⚠️ Cuello de botella:** **no tienen contenido suficiente** utilizable para anuncios en video. Hay que producirlo o conseguirlo.
-- **Pendiente:** analizar estrategia + revisar qué contenido existe y qué es reciclable.
-- **Nota:** con material escaso, los formatos que rinden sin producción nueva son **slideshow ads** (video desde imágenes), testimonios grabados con celular y contenido de pacientes. Ver `04-creativos.md` §2c (los 9 bloques permiten recombinar poco material en muchas piezas).
+- **Qué corre hoy:** nada todavía. Las dos landings están construidas y la integración con el CRM ya está escrita y probada.
+- **✅ Corregido — sí hay material de video.** La landing de Método trae **11 testimonios reales de pacientes en 9:16**, ya montados. La nota anterior decía que no había contenido utilizable; era incorrecta. Kinesiología sigue sin video propio (usa reseñas de Google).
+- **⚠️ Píxel compartido.** El dataset `736328569555463` («Landing») tiene **3 dominios** disparando y recibe eventos de tienda (`Comprar`, `Iniciar pago`). Existe además un dataset **«Clínica Ondex»** `1354537603365442`. Hay que decidir cuál se usa y dejarlo limpio antes de armar públicos — si no, el retargeting mezcla visitantes de otros proyectos. Calidad de coincidencias hoy: **6,1/10**.
+- **Pendiente antes de encender:** ticket promedio y margen por línea (bloquean el CPA objetivo), presupuesto mensual, y capacidad de agenda semanal.
+
+## Documentos
+| Archivo | Qué tiene |
+|---|---|
+| `clinica-ondex/revision-estructura-matias.md` | Revisión del board de Figma de la contraparte |
+| `clinica-ondex/estructura-corregida-etapa1.md` | La estructura reescrita, con la escalera de eventos y presupuestos |
+| `clinica-ondex/landing/GUIA.md` | La integración de las landings con GHL, y el deploy |
+| `clinica-ondex/landing/MAPEO-GHL.md` | Mapeo webhook → campos, y las advertencias del píxel |
 
 ## Bitácora
 | Fecha | Qué se cambió | Por qué | Métrica que debía moverse | Resultado |
 |---|---|---|---|---|
-| | | | | |
+| 25-ago-2026 | Formulario de las dos landings conectado a GHL, en 2 pasos con captura parcial | El formulario no enviaba los datos a ninguna parte: `handleSubmit` solo pintaba «¡Listo!» y borraba lo escrito | Leads que llegan al CRM: de 0 a todos | Probado en navegador; falta configurar y publicar |
+| 25-ago-2026 | Creados 15 campos personalizados en GHL | Sin ellos GHL recibe el lead y bota los datos | Completitud de la ficha del contacto | ✅ Los 15 verificados |
