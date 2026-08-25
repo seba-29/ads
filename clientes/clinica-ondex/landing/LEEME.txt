@@ -1,15 +1,14 @@
-ONDEX — integración del formulario con GoHighLevel  (formulario en 2 pasos)
-===========================================================================
+ONDEX — integración del formulario con GoHighLevel   (form en 2 pasos)
+======================================================================
 
 Copiar cada carpeta sobre el proyecto correspondiente, respetando las rutas.
-
   kinesiologia/  ->  sobre tu carpeta kinesiologia/
   metodo-ondex/  ->  sobre tu carpeta metodo-ondex/
 
 NUEVOS
   src/lib/leads.ts                        envío a GHL + eventos de Meta
   src/vite-env.d.ts                       tipado de las variables de entorno
-  .env.example                            plantilla de configuración
+  .env.example                            configuración (ya casi lista)
 
 MODIFICADOS (reemplazan a los actuales)
   src/components/sections/Formulario.tsx  formulario en 2 pasos con envío real
@@ -19,17 +18,17 @@ AGREGAR A TU .gitignore
   .env
   .env.local
 
+YA VIENE CONFIGURADO
+  WhatsApp  +56952296611
+  Píxel     1354537603365442   <- el de "Clínica Ondex", NO el de "Landing"
+  Origen    kinesiologia / metodo, cada uno en su carpeta
+
+FALTA UNA SOLA COSA
+  VITE_GHL_WEBHOOK_URL  -> sale al crear el workflow en GHL.
+                           Es la única línea vacía del .env.example.
+
 PASOS
-  1. cp .env.example .env    y rellenar los cuatro valores
+  1. cp .env.example .env    y pegar la URL del webhook
   2. npm install
   3. npm run dev             y probar el formulario de punta a punta
-  4. npm run build           y subir el CONTENIDO de dist/ al subdominio
-
-QUÉ HACE EL FORMULARIO AHORA
-  Paso 1  nombre + WhatsApp  -> al presionar "Continuar" avanza al tiro y manda
-          la captura parcial a GHL en segundo plano (evento: lead_parcial).
-          Quien abandone el paso 2 YA quedó en el CRM y Heat lo puede tomar.
-  Paso 2  dolor + tiempo     -> al enviar manda el lead completo
-          (evento: lead_completo) y dispara el evento Lead del píxel.
-
-  Los dos POST crean/actualizan el MISMO contacto: GHL hace upsert por teléfono.
+  4. npm run build           y publicar el CONTENIDO de dist/

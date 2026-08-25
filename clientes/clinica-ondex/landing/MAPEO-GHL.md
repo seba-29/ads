@@ -10,7 +10,7 @@
 | | |
 |---|---|
 | **WhatsApp de la clínica** | `+56952296611` |
-| **Píxel de Meta** | `736328569555463` *(dataset «Landing»)* |
+| **Píxel de Meta** | ✅ `1354537603365442` *(dataset «Clínica Ondex»)* |
 | **Subcuenta GHL** | `CHtgjFPx4hWkSAtKewIo` |
 | **Enlace del Inbound Webhook** | *pendiente — sale al crear el workflow* |
 
@@ -102,44 +102,40 @@ que GHL aprenda el esquema sin que tengas que usar herramientas raras.
 
 ---
 
-## ⚠️ Dos cosas del píxel que hay que resolver antes de encender
+## ✅ Píxel: resuelto — se usa «Clínica Ondex» `1354537603365442`
 
-### 1. Hay dos píxeles de Ondex y estamos por usar el que no lleva su nombre
+Había tres conjuntos de datos en la cuenta y el candidato inicial era el equivocado.
+Comparados lado a lado:
 
-En el Administrador de Eventos aparecen tres conjuntos de datos:
+| | **Clínica Ondex** ✅ | Landing ❌ |
+|---|---|---|
+| ID | `1354537603365442` | `736328569555463` |
+| Sitios web | **solo `clinicaondex.cl`** | `clinicaondex.cl` **y 2 más** |
+| Página de Facebook | `124293844098117` | — |
+| Instagram | `17841473227720180` | — |
+| PageView | **4.100** | 370 |
+| Otros eventos | `Ver contenido` (10) | `Comprar`, `Iniciar pago`, `Completar registro` |
+| Integración | Navegador — una sola fuente | Múltiple |
 
-| Nombre | ID |
+**«Landing» es un píxel genérico compartido entre proyectos.** Tres dominios disparando
+adentro y eventos de tienda que una clínica de kinesiología no genera. Si se usaba ese,
+cualquier público de retargeting habría mezclado visitantes de los otros dos dominios —
+pagando impresiones a gente que nunca vio Ondex.
+
+«Clínica Ondex» tiene la página y el Instagram de la clínica colgando, un solo dominio
+y el historial real. Es el correcto y es el que quedó compilado en las dos landings.
+
+### Lo que esto habilita desde el día uno
+
+El conjunto ya lleva **4.100 PageView acumulados** del sitio actual, con tráfico
+constante de ~100/día. Eso significa que **ya hay un público de retargeting formado**
+antes de encender el primer anuncio — no hay que esperar a juntarlo.
+
+### Lo que queda por revisar en Meta
+
+| Tarea | Por qué |
 |---|---|
-| VAMBE | `1481473176277907` |
-| **Clínica Ondex** | `1354537603365442` |
-| **Landing** | `736328569555463` ← el que me pasaste |
-
-Si las campañas se crean apuntando a **Clínica Ondex** pero la landing dispara hacia
-**Landing**, los eventos quedan en un conjunto y la optimización mira el otro.
-**Hay que confirmar cuál tiene asociada la cuenta publicitaria** antes de encender.
-
-### 2. El píxel «Landing» ya lo usa otra cosa
-
-Lo que muestra la captura:
-
-- **Sitios web: `clinicaondex.cl` y 2 más** — hay tres dominios disparando al mismo conjunto
-- Eventos recibidos: `PageView` 370 · `Ver contenido` 29 · **`Comprar` 2** ·
-  **`Iniciar pago` 2** · **`Completar registro` 2**
-- La **API de Conversiones ya está conectada** en este conjunto
-
-`Comprar` e `Iniciar pago` son eventos de tienda. Una clínica de kinesiología que no
-tiene nada corriendo no debería estar generándolos. Todo indica que **«Landing» es un
-píxel genérico compartido entre varios proyectos.**
-
-El problema no es que ensucie un reporte: es que **los públicos se mezclan.** Un
-retargeting armado sobre «visitantes del sitio» de este conjunto va a incluir gente de
-los otros dos dominios, y les vas a pagar impresiones a personas que nunca vieron Ondex.
-
-**Recomendación:** un conjunto de datos propio y exclusivo para las dos landings de
-Ondex, sin nadie más disparando adentro. Si «Clínica Ondex» está limpio, ese.
-
-### 3. Calidad de coincidencias en 6,1/10
-
-Es mediocre, con «Actualización recomendada» en `PageView`. Nuestra implementación
-sube esto: manda `fbc`, `fbp` y `fbclid` en cada lead. Cuando además se conecte la API
-de Conversiones desde GHL con teléfono y correo hasheados, debería subir bastante más.
+| **Verificar el dominio `clinicaondex.cl`** en Configuración del negocio → Seguridad de marca → Dominios | Cubre también los subdominios `metodo.` y `kinesiologia.`. Sin esto, la medición web en iOS queda coja. |
+| **Ordenar la priorización de eventos** (Medición de eventos agregados) | El orden importa: `Purchase` → `Schedule` → `Lead` → `Lead_Parcial` → `ViewContent` → `PageView`. |
+| Revisar las **6 acciones recomendadas** del conjunto | Meta marca «gasto publicitario afectado por una baja calidad de datos». Conviene mirarlas antes de invertir. |
+| Confirmar qué integración manda hoy la **API de Conversiones** | El conjunto dice tenerla conectada, pero nuestro flujo desde GHL todavía no existe. Hay que saber qué la está usando. |
