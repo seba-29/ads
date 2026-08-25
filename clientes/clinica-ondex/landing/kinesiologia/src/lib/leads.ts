@@ -8,9 +8,19 @@
 export interface LeadPayload {
   nombre: string;
   whatsapp: string;
-  dolor: string;
-  tiempo: string;
+  /** Sólo viene en la captura completa; en la parcial todavía no se preguntó. */
+  dolor?: string;
+  tiempo?: string;
 }
+
+/**
+ * `parcial` = completó el paso 1 (nombre + WhatsApp) y todavía no terminó.
+ * `completo` = envió el formulario entero.
+ *
+ * Los dos crean/actualizan el mismo contacto en GHL (hace upsert por teléfono),
+ * así que quien abandona el paso 2 igual queda en el CRM y Heat lo puede tomar.
+ */
+export type TipoLead = "parcial" | "completo";
 
 export type ResultadoEnvio =
   | { ok: true; eventId: string }
@@ -83,7 +93,10 @@ export function normalizarTelefono(valor: string): string {
   return `+${digitos}`;
 }
 
-export async function enviarLead(datos: LeadPayload): Promise<ResultadoEnvio> {
+export async function enviarLead(
+  datos: LeadPayload,
+  tipo: TipoLead,
+): Promise<ResultadoEnvio> {
   if (!WEBHOOK_URL) {
     return { ok: false, error: "Falta configurar VITE_GHL_WEBHOOK_URL." };
   }
@@ -91,10 +104,11 @@ export async function enviarLead(datos: LeadPayload): Promise<ResultadoEnvio> {
   const eventId = nuevoEventId();
 
   const cuerpo = {
+    evento: tipo === "parcial" ? "lead_parcial" : "lead_completo",
     first_name: datos.nombre.trim(),
     phone: normalizarTelefono(datos.whatsapp),
-    zona_dolor: datos.dolor.trim(),
-    tiempo_dolor: datos.tiempo.trim(),
+    zona_dolor: datos.dolor?.trim() || undefined,
+    tiempo_dolor: datos.tiempo?.trim() || undefined,
     origen_landing: ORIGEN,
     event_id: eventId,
     ...capturarAtribucion(),
@@ -126,12 +140,20 @@ export async function enviarLead(datos: LeadPayload): Promise<ResultadoEnvio> {
 }
 
 /**
- * Dispara el evento `Lead` del píxel. El `eventID` tiene que ser el mismo que se
- * le mandó a GHL: así Meta reconoce el evento del navegador y el de la API de
- * Conversiones como uno solo y no lo cuenta dos veces.
+ * Dispara el evento del píxel. El `eventID` tiene que ser el mismo que se le mandó
+ * a GHL: así Meta reconoce el evento del navegador y el de la API de Conversiones
+ * como uno solo y no lo cuenta dos veces.
+ *
+ * `Lead_Parcial` va como evento personalizado a propósito: sirve para armar públicos
+ * de retargeting y para reportería, pero NUNCA se optimiza contra él. Si la campaña
+ * optimizara hacia el paso 1, Meta buscaría gente que llena medio formulario y se va.
  */
-export function dispararLeadPixel(eventId: string): void {
-  window.fbq?.("track", "Lead", {}, { eventID: eventId });
+export function dispararPixel(tipo: TipoLead, eventId: string): void {
+  if (tipo === "parcial") {
+    window.fbq?.("trackCustom", "Lead_Parcial", {}, { eventID: eventId });
+  } else {
+    window.fbq?.("track", "Lead", {}, { eventID: eventId });
+  }
 }
 
 /** Link de WhatsApp con mensaje prellenado. `undefined` si no hay número configurado. */

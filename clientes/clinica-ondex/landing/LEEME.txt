@@ -1,26 +1,35 @@
-ONDEX — archivos de la integración del formulario con GoHighLevel
-=================================================================
+ONDEX — integración del formulario con GoHighLevel  (formulario en 2 pasos)
+===========================================================================
 
 Copiar cada carpeta sobre el proyecto correspondiente, respetando las rutas.
 
-  kinesiologia/  -> sobre  kinesiologia/
-  metodo-ondex/  -> sobre  metodo-ondex/
+  kinesiologia/  ->  sobre tu carpeta kinesiologia/
+  metodo-ondex/  ->  sobre tu carpeta metodo-ondex/
 
-Archivos NUEVOS
+NUEVOS
   src/lib/leads.ts                        envío a GHL + eventos de Meta
   src/vite-env.d.ts                       tipado de las variables de entorno
   .env.example                            plantilla de configuración
 
-Archivos MODIFICADOS (reemplazan a los actuales)
-  src/components/sections/Formulario.tsx  el envío real, antes no enviaba nada
-  index.html                              píxel, lang es-CL, title y meta
+MODIFICADOS (reemplazan a los actuales)
+  src/components/sections/Formulario.tsx  formulario en 2 pasos con envío real
+  index.html                              píxel, lang es-CL, title y metadatos
 
-gitignore.txt
-  No reemplaza tu .gitignore. Sólo agrega estas dos líneas al final del tuyo:
-      .env
-      .env.local
+AGREGAR A TU .gitignore
+  .env
+  .env.local
 
-DESPUÉS DE COPIAR
-  1. cp .env.example .env   y rellenar los cuatro valores
+PASOS
+  1. cp .env.example .env    y rellenar los cuatro valores
   2. npm install
-  3. npm run dev            y probar el formulario de punta a punta
+  3. npm run dev             y probar el formulario de punta a punta
+  4. npm run build           y subir el CONTENIDO de dist/ al subdominio
+
+QUÉ HACE EL FORMULARIO AHORA
+  Paso 1  nombre + WhatsApp  -> al presionar "Continuar" avanza al tiro y manda
+          la captura parcial a GHL en segundo plano (evento: lead_parcial).
+          Quien abandone el paso 2 YA quedó en el CRM y Heat lo puede tomar.
+  Paso 2  dolor + tiempo     -> al enviar manda el lead completo
+          (evento: lead_completo) y dispara el evento Lead del píxel.
+
+  Los dos POST crean/actualizan el MISMO contacto: GHL hace upsert por teléfono.

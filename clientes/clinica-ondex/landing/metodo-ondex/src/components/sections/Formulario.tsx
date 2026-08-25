@@ -1,8 +1,8 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { motion, useReducedMotion, type Variants } from "framer-motion";
-import { CheckCircle2, Loader2, MessageCircle } from "lucide-react";
+import { ArrowLeft, CheckCircle2, Loader2, MessageCircle } from "lucide-react";
 import { GradientButton } from "@/components/ui/gradient-button";
-import { dispararLeadPixel, enviarLead, urlWhatsApp } from "@/lib/leads";
+import { dispararPixel, enviarLead, urlWhatsApp } from "@/lib/leads";
 
 const gradientText =
   "bg-[linear-gradient(to_top_right,#12246b_0%,var(--brand)_35%,var(--brand)_65%,#12246b_100%)] bg-clip-text text-transparent";
@@ -50,10 +50,14 @@ const inputClass =
 export function Formulario() {
   const reduceMotion = useReducedMotion();
   const [form, setForm] = useState<FormState>(emptyForm);
+  const [paso, setPaso] = useState<1 | 2>(1);
   const [submitted, setSubmitted] = useState(false);
   const [enviando, setEnviando] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [nombreEnviado, setNombreEnviado] = useState("");
+
+  // Evita reenviar la captura parcial si la persona vuelve atrás y avanza de nuevo.
+  const parcialEnviado = useRef(false);
 
   const waDirecto = urlWhatsApp();
   const waTrasEnvio = urlWhatsApp(nombreEnviado);
@@ -82,9 +86,15 @@ export function Formulario() {
     (e: React.ChangeEvent<HTMLInputElement>) =>
       setForm((prev) => ({ ...prev, [field]: e.target.value }));
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  /**
+   * Paso 1 → 2. Avanza de inmediato y manda la captura parcial en segundo plano:
+   * nadie tiene que esperar una llamada de red para pasar de pantalla.
+   *
+   * Esta captura es la que rescata a quien abandona el paso 2. Con nombre y
+   * WhatsApp, Heat ya puede empezar a conversar; el resto lo pregunta en el chat.
+   */
+  const handlePaso1 = (e: React.FormEvent) => {
     e.preventDefault();
-    if (enviando) return;
 
     // Si la trampa viene llena es un bot: se finge éxito y no se envía nada.
     if (form.empresa.trim()) {
@@ -93,13 +103,31 @@ export function Formulario() {
       return;
     }
 
+    setPaso(2);
+
+    if (!parcialEnviado.current) {
+      parcialEnviado.current = true;
+      void enviarLead(
+        { nombre: form.nombre, whatsapp: form.whatsapp },
+        "parcial",
+      ).then((resultado) => {
+        if (resultado.ok) dispararPixel("parcial", resultado.eventId);
+        else console.error("[formulario] captura parcial fallida:", resultado.error);
+      });
+    }
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (enviando) return;
+
     setEnviando(true);
     setError(null);
 
-    const resultado = await enviarLead(form);
+    const resultado = await enviarLead(form, "completo");
 
     if (resultado.ok) {
-      dispararLeadPixel(resultado.eventId);
+      dispararPixel("completo", resultado.eventId);
       setNombreEnviado(form.nombre.trim());
       setSubmitted(true);
       setForm(emptyForm);
@@ -182,123 +210,167 @@ export function Formulario() {
                   WhatsApp para guiarte y agendar tu evaluación.
                 </p>
 
-                <form
-                  onSubmit={handleSubmit}
-                  className="mt-8 flex flex-col gap-4"
-                >
-                  <div>
-                    <label
-                      htmlFor="nombre"
-                      className="mb-1.5 block text-sm font-medium text-foreground"
-                    >
-                      Nombre
-                    </label>
-                    <input
-                      id="nombre"
-                      type="text"
-                      required
-                      value={form.nombre}
-                      onChange={handleChange("nombre")}
-                      className={inputClass}
-                      placeholder="Tu nombre"
+                <div className="mt-6 flex items-center gap-3">
+                  <div className="h-1 flex-1 overflow-hidden rounded-full bg-muted">
+                    <motion.div
+                      className="h-full rounded-full bg-brand"
+                      initial={false}
+                      animate={{ width: paso === 1 ? "50%" : "100%" }}
+                      transition={{ duration: reduceMotion ? 0 : 0.35, ease: "easeOut" }}
                     />
                   </div>
+                  <span className="text-xs font-medium text-muted-foreground">
+                    Paso {paso} de 2
+                  </span>
+                </div>
 
-                  <div>
-                    <label
-                      htmlFor="whatsapp"
-                      className="mb-1.5 block text-sm font-medium text-foreground"
-                    >
-                      WhatsApp
-                    </label>
-                    <input
-                      id="whatsapp"
-                      type="tel"
-                      required
-                      value={form.whatsapp}
-                      onChange={handleChange("whatsapp")}
-                      className={inputClass}
-                      placeholder="+56 9 1234 5678"
-                    />
-                  </div>
-
-                  <div>
-                    <label
-                      htmlFor="dolor"
-                      className="mb-1.5 block text-sm font-medium text-foreground"
-                    >
-                      ¿Dónde sientes el dolor?
-                    </label>
-                    <input
-                      id="dolor"
-                      type="text"
-                      required
-                      value={form.dolor}
-                      onChange={handleChange("dolor")}
-                      className={inputClass}
-                      placeholder="Ej: talón, rodilla, hombro"
-                    />
-                  </div>
-
-                  <div>
-                    <label
-                      htmlFor="tiempo"
-                      className="mb-1.5 block text-sm font-medium text-foreground"
-                    >
-                      ¿Hace cuánto tiempo?
-                    </label>
-                    <input
-                      id="tiempo"
-                      type="text"
-                      required
-                      value={form.tiempo}
-                      onChange={handleChange("tiempo")}
-                      className={inputClass}
-                      placeholder="Ej: 3 meses"
-                    />
-                  </div>
-
-                  {/* Trampa anti-spam: fuera de pantalla y fuera del tab. */}
-                  <div
-                    aria-hidden="true"
-                    style={{ position: "absolute", left: "-9999px" }}
+                {paso === 1 ? (
+                  <motion.form
+                    key="paso-1"
+                    initial={{ opacity: 0, x: reduceMotion ? 0 : 12 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: reduceMotion ? 0 : 0.3, ease: "easeOut" }}
+                    onSubmit={handlePaso1}
+                    className="mt-6 flex flex-col gap-4"
                   >
-                    <label htmlFor="empresa">Empresa</label>
-                    <input
-                      id="empresa"
-                      type="text"
-                      tabIndex={-1}
-                      autoComplete="off"
-                      value={form.empresa}
-                      onChange={handleChange("empresa")}
-                    />
-                  </div>
+                    <div>
+                      <label
+                        htmlFor="nombre"
+                        className="mb-1.5 block text-sm font-medium text-foreground"
+                      >
+                        Nombre
+                      </label>
+                      <input
+                        id="nombre"
+                        type="text"
+                        required
+                        value={form.nombre}
+                        onChange={handleChange("nombre")}
+                        className={inputClass}
+                        placeholder="Tu nombre"
+                      />
+                    </div>
 
-                  {error && (
-                    <p
-                      role="alert"
-                      className="rounded-lg bg-red-50 px-3 py-2 text-sm text-red-700"
+                    <div>
+                      <label
+                        htmlFor="whatsapp"
+                        className="mb-1.5 block text-sm font-medium text-foreground"
+                      >
+                        WhatsApp
+                      </label>
+                      <input
+                        id="whatsapp"
+                        type="tel"
+                        required
+                        minLength={8}
+                        value={form.whatsapp}
+                        onChange={handleChange("whatsapp")}
+                        className={inputClass}
+                        placeholder="+56 9 1234 5678"
+                      />
+                    </div>
+
+                    {/* Trampa anti-spam: fuera de pantalla y fuera del tab. */}
+                    <div
+                      aria-hidden="true"
+                      style={{ position: "absolute", left: "-9999px" }}
                     >
-                      {error}
-                    </p>
-                  )}
+                      <label htmlFor="empresa">Empresa</label>
+                      <input
+                        id="empresa"
+                        type="text"
+                        tabIndex={-1}
+                        autoComplete="off"
+                        value={form.empresa}
+                        onChange={handleChange("empresa")}
+                      />
+                    </div>
 
-                  <GradientButton
-                    type="submit"
-                    size="sm"
-                    className="mt-2 w-full"
-                    disabled={enviando}
+                    <GradientButton type="submit" size="sm" className="mt-2 w-full">
+                      Continuar
+                    </GradientButton>
+                  </motion.form>
+                ) : (
+                  <motion.form
+                    key="paso-2"
+                    initial={{ opacity: 0, x: reduceMotion ? 0 : 12 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: reduceMotion ? 0 : 0.3, ease: "easeOut" }}
+                    onSubmit={handleSubmit}
+                    className="mt-6 flex flex-col gap-4"
                   >
-                    {enviando ? (
-                      <>
-                        <Loader2 className="h-4 w-4 animate-spin" />
-                        Enviando…
-                      </>
-                    ) : (
-                      "Enviar"
+                    <div>
+                      <label
+                        htmlFor="dolor"
+                        className="mb-1.5 block text-sm font-medium text-foreground"
+                      >
+                        ¿Dónde sientes el dolor?
+                      </label>
+                      <input
+                        id="dolor"
+                        type="text"
+                        required
+                        value={form.dolor}
+                        onChange={handleChange("dolor")}
+                        className={inputClass}
+                        placeholder="Ej: talón, rodilla, hombro"
+                      />
+                    </div>
+
+                    <div>
+                      <label
+                        htmlFor="tiempo"
+                        className="mb-1.5 block text-sm font-medium text-foreground"
+                      >
+                        ¿Hace cuánto tiempo?
+                      </label>
+                      <input
+                        id="tiempo"
+                        type="text"
+                        required
+                        value={form.tiempo}
+                        onChange={handleChange("tiempo")}
+                        className={inputClass}
+                        placeholder="Ej: 3 meses"
+                      />
+                    </div>
+
+                    {error && (
+                      <p
+                        role="alert"
+                        className="rounded-lg bg-red-50 px-3 py-2 text-sm text-red-700"
+                      >
+                        {error}
+                      </p>
                     )}
-                  </GradientButton>
-                </form>
+
+                    <GradientButton
+                      type="submit"
+                      size="sm"
+                      className="mt-2 w-full"
+                      disabled={enviando}
+                    >
+                      {enviando ? (
+                        <>
+                          <Loader2 className="h-4 w-4 animate-spin" />
+                          Enviando…
+                        </>
+                      ) : (
+                        "Enviar"
+                      )}
+                    </GradientButton>
+
+                    <button
+                      type="button"
+                      onClick={() => setPaso(1)}
+                      disabled={enviando}
+                      className="mx-auto inline-flex items-center gap-1.5 text-sm text-muted-foreground transition-colors hover:text-foreground disabled:opacity-50"
+                    >
+                      <ArrowLeft className="h-4 w-4" />
+                      Volver
+                    </button>
+                  </motion.form>
+                )}
               </>
             )}
 

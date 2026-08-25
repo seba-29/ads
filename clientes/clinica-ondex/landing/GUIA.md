@@ -1,8 +1,8 @@
 # Landings de Ondex — conexión a GHL y salida a producción
 
-> Revisión del código entregado el 25-ago-2026 + la integración ya escrita.
+> Revisión del código entregado el 25-ago-2026 + la integración ya escrita y probada.
 > Stack: Vite 8 + React 19 + TypeScript + Tailwind 4 + framer-motion.
-> Las dos compilan limpio (`npm run build`, ~1,2s, 126 kB gzip de JS).
+> Las dos compilan limpio (`npm run build`, ~1,5s, ~127 kB gzip de JS).
 
 ---
 
@@ -26,12 +26,12 @@ Y acto seguido la pantalla de éxito dice:
 > por WhatsApp"*
 
 Si esto se publicaba así, **cada persona que llenaba el formulario recibía esa promesa
-y sus datos se perdían.** Con tráfico pagado encima, es plata quemada sin dejar rastro.
+y sus datos se perdían.** Con tráfico pagado encima, plata quemada sin dejar rastro.
 
 Verificado con `grep` sobre `src/` y `index.html` de ambos proyectos: cero coincidencias
 de `fetch(`, `wa.me`, `webhook`, `fbq`, `gtag` o `dataLayer`.
 
-### Otras dos que venían del mismo lado
+### Otras dos del mismo lote
 
 - **El botón "Hablar por WhatsApp" no hacía nada.** `type="button"`, sin `onClick` y
   sin `href`. Ya estaba anotado en `PENDIENTES.md` (punto 4: falta el número).
@@ -43,8 +43,7 @@ de `fetch(`, `wa.me`, `webhook`, `fbq`, `gtag` o `dataLayer`.
 
 ## La decisión: formulario propio conectado a GHL, no un embed de GHL
 
-Es la pregunta que había sobre la mesa. La respuesta es **quedarse con el formulario
-que ya está y conectarlo por detrás.** Cuatro razones, la primera decisiva:
+Cuatro razones, la primera decisiva:
 
 ### 1. El píxel — esta es la que manda
 
@@ -59,8 +58,8 @@ pareja, Meta cuenta el mismo lead dos veces o no lo cuenta, y todo el plan de me
 
 ### 2. El diseño
 El formulario vive dentro de una tarjeta de dos columnas con foto a la izquierda. Un
-iframe no hereda los tokens de marca: se va a ver pegado con scotch. Y los iframes de
-GHL son conocidos por pelear con la altura y el scroll en mobile.
+iframe no hereda los tokens de marca: se ve pegado con scotch. Y los iframes de GHL son
+conocidos por pelear con la altura y el scroll en mobile.
 
 ### 3. La velocidad
 Un iframe es un segundo documento que cargar. En una landing de tráfico pagado, en
@@ -69,10 +68,33 @@ mobile y con red chilena, eso se paga en conversión.
 ### 4. El traspaso a WhatsApp
 La estrategia depende de que al enviar, la persona caiga en WhatsApp con Heat esperando.
 Con formulario propio controlas el `wa.me` con mensaje prellenado. Desde dentro de un
-iframe de GHL estás peleando contra el comportamiento del iframe.
+iframe de GHL estás peleando contra el iframe.
 
 **Lo único que el formulario de GHL regala es la plomería al CRM.** Son ~30 líneas de
 código. No vale las cuatro cosas de arriba.
+
+---
+
+## El formulario quedó en dos pasos
+
+El board de Matías asume captura parcial (*"completa Paso 1, no termina"*), pero el
+formulario real era de un solo paso: si la persona no enviaba, no quedaba nada.
+
+Ahora:
+
+| | Campos | Qué pasa |
+|---|---|---|
+| **Paso 1** | nombre + WhatsApp | Al presionar **Continuar** avanza al tiro y manda la captura parcial a GHL en segundo plano (`evento: lead_parcial`). Dispara `Lead_Parcial` en el píxel. |
+| **Paso 2** | dolor + tiempo | Al enviar manda el lead completo (`evento: lead_completo`) y dispara `Lead` en el píxel. |
+
+**Los dos POST crean/actualizan el mismo contacto** — GHL hace upsert por teléfono.
+
+Lo que esto rescata: **quien abandona el paso 2 ya quedó en el CRM.** Nombre y WhatsApp
+es todo lo que Heat necesita para empezar a conversar; el resto lo pregunta en el chat.
+Ese volumen antes se perdía entero.
+
+El envío parcial va en segundo plano a propósito: nadie tiene que esperar una llamada de
+red para pasar de pantalla.
 
 ---
 
@@ -82,15 +104,15 @@ código. No vale las cuatro cosas de arriba.
 
 | Función | Qué hace |
 |---|---|
-| `enviarLead()` | POST JSON al Inbound Webhook de GHL, con timeout de 10s y errores tipados |
-| `dispararLeadPixel()` | `fbq('track','Lead')` con el `eventID` que deduplica contra CAPI |
+| `enviarLead(datos, tipo)` | POST JSON al Inbound Webhook de GHL, timeout de 10s, errores tipados |
+| `dispararPixel(tipo, eventId)` | `Lead` o `Lead_Parcial` con el `eventID` que deduplica contra CAPI |
 | `urlWhatsApp()` | Link `wa.me` con mensaje prellenado; `undefined` si no hay número |
 | `normalizarTelefono()` | Deja todo en E.164 chileno: `+569XXXXXXXX` |
 
 **Lo que viaja a GHL en cada lead:**
 
 ```
-first_name, phone, zona_dolor, tiempo_dolor, origen_landing, event_id,
+evento, first_name, phone, zona_dolor, tiempo_dolor, origen_landing, event_id,
 utm_source, utm_medium, utm_campaign, utm_content, utm_term,
 gclid, fbclid, fbp, fbc, landing_url, referrer
 ```
@@ -100,21 +122,44 @@ para reconocer que ese lead vino de ese anuncio. Sin ellos, los eventos `Schedul
 `Purchase` que GHL mande después por CAPI **no se pueden atribuir a ninguna campaña**
 y Meta nunca aprende qué anuncio trae pacientes.
 
-Detalle fino que quedó cubierto: la cookie `_fbc` la escribe el píxel, pero puede no
-existir todavía en el primer pageview. Si en la URL viene `fbclid` y la cookie no está,
-`leads.ts` la arma a mano con el formato de Meta (`fb.1.<timestamp>.<fbclid>`).
+Detalle fino cubierto: la cookie `_fbc` la escribe el píxel, pero puede no existir en el
+primer pageview. Si en la URL viene `fbclid` y la cookie no está, `leads.ts` la arma con
+el formato de Meta (`fb.1.<timestamp>.<fbclid>`).
+
+**`Lead_Parcial` va como evento personalizado a propósito.** Sirve para armar públicos de
+retargeting y para reportería, pero **nunca se optimiza contra él**: si la campaña
+optimizara hacia el paso 1, Meta buscaría gente que llena medio formulario y se va.
 
 ### `Formulario.tsx` *(modificado en ambos)*
-- Envío real con estado `enviando` y botón bloqueado + spinner mientras va
+- Wizard de 2 pasos con barra de progreso y botón **Volver**
+- Envío real con estado `enviando`, botón bloqueado y spinner
 - Mensaje de error visible si GHL no responde, que empuja a WhatsApp como salida
-- **Trampa anti-spam** (campo `empresa` fuera de pantalla y fuera del tab): si viene
-  llena, se finge éxito y no se envía nada
-- Botón **"Hablar ahora por WhatsApp"** en la pantalla de éxito — el traspaso instantáneo a Heat
+- **Trampa anti-spam** (campo `empresa` fuera de pantalla y fuera del tab)
+- Botón **"Hablar ahora por WhatsApp"** en la pantalla de éxito
 - El botón "Hablar por WhatsApp" de abajo ahora **sí es un link**
 
 ### `index.html` *(modificado en ambos)*
-- Píxel de Meta, con guard: si `VITE_META_PIXEL_ID` va vacío, no carga nada
+- Píxel de Meta con guard: si `VITE_META_PIXEL_ID` va vacío, no carga nada
 - `lang="es-CL"`, title real, meta description, Open Graph y Twitter card
+
+---
+
+## Probado de punta a punta
+
+Con Chromium y Playwright, interceptando el webhook y stubeando `fbq`, entrando con
+`?fbclid=...&utm_source=facebook&utm_medium=paid&utm_campaign=...`:
+
+| Caso | Resultado |
+|---|---|
+| Recorrido completo de los 2 pasos | 2 POST: `lead_parcial` y `lead_completo` |
+| Teléfono `9 8765 4321` | Normalizado a `+56987654321` |
+| `fbclid` sin cookie `_fbc` todavía | `fbc` construido: `fb.1.<ts>.PRUEBA_FBCLID_123` |
+| UTMs de la URL | Los cinco capturados y enviados |
+| Eventos del píxel | `Lead_Parcial` y `Lead`, cada uno con su `eventID` |
+| **Volver al paso 1 y avanzar de nuevo** | **No reenvía la parcial** (2 POST, no 3) |
+| **Abandonar en el paso 2** | **El lead ya quedó en GHL** como `lead_parcial` |
+| **GHL devuelve 500** | Error visible, **no** marca éxito falso, **no** borra lo escrito |
+| **Bot llena la trampa** | **0 POST a GHL**, y el bot ve "éxito" |
 
 ---
 
@@ -132,61 +177,100 @@ existir todavía en el primer pageview. Si en la URL viene `fbclid` y la cookie 
    | `zona_dolor` | Campo personalizado |
    | `tiempo_dolor` | Campo personalizado |
    | `origen_landing` | Campo personalizado *(o un tag)* |
+   | `evento` | Campo personalizado — distingue `lead_parcial` de `lead_completo` |
    | `event_id` | Campo personalizado — **necesario para deduplicar el evento de CAPI** |
    | `fbp`, `fbc`, `fbclid`, `gclid`, `utm_*` | Campos personalizados |
 
 5. Agregar tag según `origen_landing` (`landing-kinesiologia` / `landing-metodo`).
-6. Enganchar el workflow de Heat para que conteste al instante.
+6. **Bifurcar por `evento`:**
+   - `lead_parcial` → Heat abre conversación al tiro. Tag `lead-parcial`.
+   - `lead_completo` → Heat abre conversación con el contexto del dolor. Quitar
+     `lead-parcial` si estaba.
+7. Enganchar el workflow de Heat para que conteste al instante.
 
 ### Sobre la seguridad del webhook
-La URL queda **visible en el bundle** que llega al navegador — lo verifiqué en el build.
-Esto es aceptable: un Inbound Webhook sólo permite **crear** contactos, nunca leer datos.
+La URL queda **visible en el bundle** que llega al navegador — verificado en el build.
+Es aceptable: un Inbound Webhook sólo permite **crear** contactos, nunca leer datos.
 No es una credencial que dé acceso a la cuenta.
 
 **Lo que NUNCA puede ir en una variable `VITE_`** es una API key privada de GHL: todo lo
 que empieza con `VITE_` termina en el JavaScript público.
 
-El riesgo real es spam. Cubierto en tres capas: la trampa del formulario, filtro del lado
-de GHL (descartar si falta `zona_dolor`, por ejemplo), y si algún día molesta de verdad,
-un proxy serverless que esconda la URL. Para una clínica, con lo que hay basta.
+El riesgo real es spam. Cubierto en tres capas: la trampa del formulario (probada, 0 POST),
+filtro del lado de GHL (descartar si falta `phone`, por ejemplo), y si algún día molesta
+de verdad, un proxy que esconda la URL. Para una clínica, con lo que hay basta.
 
 ---
 
-## Salir a producción en el subdominio
+## Salir a producción — cPanel
 
-Las dos son SPA de una sola página, **sin router**. No hacen falta reglas de rewrite.
-`npm run build` deja todo en `dist/`, con las rutas colgando de la raíz — por eso
-funcionan en un subdominio sin tocar `base` en `vite.config.ts`.
+Las dos son SPA de una sola página, **sin router**. No hacen falta reglas de rewrite ni
+tocar `base` en `vite.config.ts`: `npm run build` deja las rutas colgando de la raíz y en
+un subdominio la raíz es la carpeta del subdominio.
 
 Subdominios sugeridos:
 
-| Landing | Subdominio |
-|---|---|
-| Método | `metodo.clinicaondex.cl` |
-| Kinesiología | `kinesiologia.clinicaondex.cl` |
+| Landing | Subdominio | Carpeta en el hosting |
+|---|---|---|
+| Método | `metodo.clinicaondex.cl` | `/home/USUARIO/metodo` |
+| Kinesiología | `kinesiologia.clinicaondex.cl` | `/home/USUARIO/kinesiologia` |
 
-### Si el hosting es cPanel / hosting compartido
-1. `npm run build` en local
-2. Crear el subdominio en cPanel, apuntando a su propia carpeta
-3. Subir **el contenido de `dist/`** (no la carpeta `dist` en sí) a esa carpeta
-4. Activar SSL con Let's Encrypt (AutoSSL)
-5. Cada cambio = build local + resubir
+### Paso a paso
 
-### Si el hosting es Netlify / Vercel / Cloudflare Pages
-1. Subir cada proyecto a su repositorio
-2. Conectar el repo. Build command `npm run build`, publish directory `dist`
-3. Cargar las variables `VITE_*` en el panel del proveedor
-4. Agregar el dominio personalizado, SSL automático
+**1. Crear los subdominios**
+cPanel → **Dominios** (o *Subdominios*) → Crear. Poner el subdominio y **cambiar el
+Document Root** a una carpeta propia — cPanel propone `public_html/metodo` por defecto y
+sirve, pero fuera de `public_html` es más limpio.
 
-Esta segunda opción es bastante mejor: cada push despliega solo, hay rollback, y abre
-la puerta a mover el webhook a una función serverless.
+**2. Build en local**
+```bash
+cd metodo-ondex
+cp .env.example .env      # rellenar los 4 valores
+npm install
+npm run build             # deja todo en dist/
+```
+
+**3. Subir**
+Comprimir **el contenido de `dist/`** (no la carpeta `dist` en sí) en un `.zip`, subirlo
+con el **Administrador de archivos** de cPanel a la carpeta del subdominio y extraer ahí.
+Por FTP también sirve, pero con ~31 MB de video en Método el zip es mucho más rápido.
+
+**4. SSL**
+cPanel → **SSL/TLS Status** → seleccionar el subdominio → **Run AutoSSL**. Suele tardar
+unos minutos. Sin HTTPS el píxel no funciona bien y `crypto.randomUUID()` no existe
+(hay fallback, pero igual: el sitio tiene que ir por HTTPS).
+
+**5. Forzar HTTPS**
+Crear un `.htaccess` en la carpeta del subdominio:
+
+```apache
+RewriteEngine On
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# Caché larga para los assets con hash en el nombre
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType text/css "access plus 1 year"
+  ExpiresByType application/javascript "access plus 1 year"
+  ExpiresByType video/mp4 "access plus 1 month"
+  ExpiresByType image/jpeg "access plus 1 month"
+</IfModule>
+
+# Comprimir texto
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css application/javascript image/svg+xml
+</IfModule>
+```
+
+**6. Cada cambio** = build local + volver a subir. En cPanel no hay deploy automático.
 
 ### Peso de los assets
 `metodo-ondex/public` pesa **31 MB**, de los cuales **24 MB son los 11 testimonios**.
 No es un problema de carga inicial: el carrusel usa `preload="metadata"`, así que sólo
-pide las cabeceras. Pero conviene:
+pide las cabeceras. Pero en hosting compartido conviene:
 - Agregarle `poster` a los `<video>` para que se vea el primer cuadro al instante
-- Si el hosting es compartido y lento, mover los videos a un CDN
+- Si el servidor va lento con los `.mp4`, mover los videos a un CDN
 
 ---
 
@@ -196,33 +280,11 @@ pide las cabeceras. Pero conviene:
 video"*. **Ya no es así.** En `metodo-ondex/public/testimonios/` hay **11 testimonios
 reales de pacientes en formato vertical 9:16**, ya montados en la landing.
 
-Eso es exactamente el creativo más valioso que existe para esta cuenta, en el formato
-que Meta quiere, y estaba dado por perdido. Cambia el diagnóstico del cuello de botella
+Es exactamente el creativo más valioso que existe para esta cuenta, en el formato que
+Meta quiere, y estaba dado por perdido. Cambia el diagnóstico del cuello de botella
 creativo que levanté al revisar el board de Matías.
 
 Kinesiología sigue sin video propio — usa un marquee de reseñas de Google.
-
----
-
-## Discrepancia con el board de Matías
-
-El board describe **"Landing Kinesiología 1 — form en 2 pasos"** y toda la Fase 3 se
-apoya en distinguir *"completa Paso 1, no termina"* de *"no completa ni el Paso 1"*.
-
-**El formulario real es de un solo paso con 4 campos** (nombre, WhatsApp, dolor, tiempo).
-No hay paso 1 ni paso 2, y por lo tanto **la captura parcial no existe**: si la persona
-no envía, no queda nada.
-
-Hay que decidir cuál de los dos manda:
-
-- **Dejarlo en un paso** — menos fricción, y 4 campos ya es corto. Entonces hay que
-  corregir el board: la rama "completa Paso 1 y no termina" desaparece.
-- **Partirlo en dos** — paso 1 nombre + WhatsApp (se dispara `Lead_Parcial` al pasar de
-  paso), paso 2 dolor + tiempo. Recupera a quien abandona, y es lo que el board asume.
-
-**Mi recomendación: partirlo en dos.** Nombre y WhatsApp es todo lo que Heat necesita
-para empezar a conversar; el resto lo pregunta en el chat. Quien abandone después del
-paso 1 igual entra al CRM y Heat lo toma. Es volumen que hoy se pierde entero.
 
 ---
 
@@ -233,10 +295,13 @@ paso 1 igual entra al CRM y Heat lo toma. Es volumen que hoy se pierde entero.
 | **Número de WhatsApp de la clínica** | Cliente — sin esto los botones quedan ocultos |
 | **URL del Inbound Webhook** | Se genera al crear el workflow en GHL |
 | **ID del píxel de Meta** | Business Manager |
-| **Qué hosting es** | Define los pasos de deploy |
 | Campos personalizados en GHL | Crearlos antes del primer lead de prueba |
-| Decidir 1 paso vs 2 pasos | Define si se toca el board o el formulario |
 | Imagen Open Graph 1200×630 | Hoy apunta a `/foto-evaluacion.jpg`, que no tiene esa proporción |
 
 Los tres primeros son de configuración: en cuanto lleguen, van al `.env` y esto queda
 funcionando de punta a punta.
+
+**Y hay que actualizar el board de Matías:** ahora el formulario sí es de 2 pasos, así
+que la Fase 3 y la Fase 5 quedan consistentes — pero conviene marcar que la rama
+"completa Paso 1, no termina" **ya está implementada** y llega al CRM como
+`lead_parcial`.
