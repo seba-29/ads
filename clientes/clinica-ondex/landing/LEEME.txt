@@ -1,34 +1,27 @@
 ONDEX — integración del formulario con GoHighLevel   (form en 2 pasos)
 ======================================================================
+PROBADO DE PUNTA A PUNTA CONTRA EL GHL REAL — 25-ago-2026
 
 Copiar cada carpeta sobre el proyecto correspondiente, respetando las rutas.
   kinesiologia/  ->  sobre tu carpeta kinesiologia/
   metodo-ondex/  ->  sobre tu carpeta metodo-ondex/
 
-NUEVOS
-  src/lib/leads.ts                        envío a GHL + eventos de Meta
-  src/vite-env.d.ts                       tipado de las variables de entorno
-  .env.example                            configuración (ya casi lista)
+NUEVOS       src/lib/leads.ts · src/vite-env.d.ts · .env.example
+MODIFICADOS  src/components/sections/Formulario.tsx · index.html
 
-MODIFICADOS (reemplazan a los actuales)
-  src/components/sections/Formulario.tsx  formulario en 2 pasos con envío real
-  index.html                              píxel, lang es-CL, title y metadatos
-
-AGREGAR A TU .gitignore
-  .env
-  .env.local
+AGREGAR A .gitignore:  .env  y  .env.local
 
 YA VIENE CONFIGURADO
   WhatsApp  +56952296611
-  Píxel     1354537603365442   <- el de "Clínica Ondex", NO el de "Landing"
-  Origen    kinesiologia / metodo, cada uno en su carpeta
+  Píxel     1354537603365442      (el de "Clínica Ondex")
+  Origen    metodo-ondex / kinesiologia     -> arma la etiqueta
+  Nombre    Método Ondex / Kinesiología     -> lo que lee la clínica
 
-FALTA UNA SOLA COSA
-  VITE_GHL_WEBHOOK_URL  -> sale al crear el workflow en GHL.
-                           Es la única línea vacía del .env.example.
+FALTA UNA SOLA LÍNEA
+  VITE_GHL_WEBHOOK_URL  -> la del Inbound Webhook del workflow.
 
 PASOS
-  1. cp .env.example .env    y pegar la URL del webhook
+  1. cp .env.example .env  y pegar la URL del webhook
   2. npm install
-  3. npm run dev             y probar el formulario de punta a punta
-  4. npm run build           y publicar el CONTENIDO de dist/
+  3. npm run build
+  4. publicar el CONTENIDO de dist/

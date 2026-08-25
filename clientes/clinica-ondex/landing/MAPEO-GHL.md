@@ -139,3 +139,50 @@ antes de encender el primer anuncio — no hay que esperar a juntarlo.
 | **Ordenar la priorización de eventos** (Medición de eventos agregados) | El orden importa: `Purchase` → `Schedule` → `Lead` → `Lead_Parcial` → `ViewContent` → `PageView`. |
 | Revisar las **6 acciones recomendadas** del conjunto | Meta marca «gasto publicitario afectado por una baja calidad de datos». Conviene mirarlas antes de invertir. |
 | Confirmar qué integración manda hoy la **API de Conversiones** | El conjunto dice tenerla conectada, pero nuestro flujo desde GHL todavía no existe. Hay que saber qué la está usando. |
+
+---
+
+## ✅ Probado contra el GHL real — 25-ago-2026
+
+Tres rondas de prueba disparando el webhook de verdad, con el workflow publicado.
+
+| Verificación | Resultado |
+|---|---|
+| Un solo contacto (parcial + completo, mismo teléfono) | ✅ |
+| Una sola oportunidad | ✅ |
+| Permitir reingreso | ✅ el segundo envío entra |
+| `Tipo de lead` sobrescrito a `lead_completo` | ✅ |
+| `Zona del dolor` y `Tiempo con el dolor` | ✅ solo los escribe el envío completo |
+| Etiqueta de landing sin caracteres invisibles | ✅ `landing-kinesiologia` |
+| `lead-parcial` eliminada al llegar el completo | ✅ |
+| Atribución de Meta (`fbclid`, `fbp`, `fbc`) | ✅ |
+| UTMs (los cinco) | ✅ |
+
+### Dos pendientes, ninguno bloquea el lanzamiento
+
+**1. `Origen landing` guarda el identificador, no el nombre.** Queda `kinesiologia`
+en vez de `Kinesiología`. En el nodo «Crear contacto» hay que apuntar ese campo a
+**`origen_landing_nombre`** en lugar de `origen_landing`. La clave nueva sólo aparece
+en el selector después de volver al disparador → **Buscar nuevas solicitudes** → elegir
+la más reciente → guardar. Es cosmético: la etiqueta y el filtrado ya funcionan.
+
+**2. `gclid` no se está guardando.** Llegó `TEST_GCLID_777` en el envío y el campo
+quedó vacío. Revisar si está mapeado en el nodo; si lo está y aun así no escribe,
+el campo estándar de GHL puede no ser escribible desde un workflow y hay que crear
+uno personalizado (`gclid_landing`).
+
+Sin `gclid` **no se puede atribuir un paciente al clic de Google Ads**. No urge porque
+Google todavía no corre, pero hay que resolverlo antes de encender esa parte. La
+atribución de Meta sí está completa.
+
+### Sobre el identificador de la landing
+
+La landing manda **dos formas del mismo dato**, a propósito:
+
+| Clave | Vale | Para qué |
+|---|---|---|
+| `origen_landing` | `metodo-ondex` · `kinesiologia` | Arma la etiqueta. Sin tildes ni espacios para que nunca se rompa. |
+| `origen_landing_nombre` | `Método Ondex` · `Kinesiología` | Lo que lee la clínica en la ficha. |
+
+Un espacio no separable (`\xa0`) en una etiqueta la vuelve imposible de escribir a mano
+— pasó en la primera prueba y por eso el identificador va sin espacios.

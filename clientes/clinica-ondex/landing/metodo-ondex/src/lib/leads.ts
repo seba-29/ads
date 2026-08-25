@@ -23,12 +23,16 @@ export interface LeadPayload {
 export type TipoLead = "parcial" | "completo";
 
 export type ResultadoEnvio =
-  | { ok: true; eventId: string }
+  | { ok: true; eventId: string; guardadoEnCrm: boolean }
   | { ok: false; error: string };
 
 const WEBHOOK_URL = import.meta.env.VITE_GHL_WEBHOOK_URL;
 const WHATSAPP = import.meta.env.VITE_WHATSAPP_NUMERO;
+// Dos formas del mismo dato, a propósito:
+//   ORIGEN        -> identificador sin tildes ni espacios, para armar la etiqueta
+//   ORIGEN_NOMBRE -> como lo lee una persona en la ficha del contacto
 const ORIGEN = import.meta.env.VITE_LANDING_ORIGEN ?? "desconocido";
+const ORIGEN_NOMBRE = import.meta.env.VITE_LANDING_NOMBRE ?? ORIGEN;
 
 declare global {
   interface Window {
@@ -97,11 +101,18 @@ export async function enviarLead(
   datos: LeadPayload,
   tipo: TipoLead,
 ): Promise<ResultadoEnvio> {
-  if (!WEBHOOK_URL) {
-    return { ok: false, error: "Falta configurar VITE_GHL_WEBHOOK_URL." };
-  }
-
   const eventId = nuevoEventId();
+
+  // Modo WhatsApp: si todavía no hay webhook configurado, la landing sigue
+  // funcionando. El evento del píxel se dispara igual y la persona pasa a
+  // hablar con el agente. El lead no queda en el CRM — es un estado
+  // transitorio para poder publicar antes de tener el workflow, no el destino.
+  if (!WEBHOOK_URL) {
+    console.warn(
+      "[leads] VITE_GHL_WEBHOOK_URL sin configurar — modo WhatsApp: este lead NO llega al CRM.",
+    );
+    return { ok: true, eventId, guardadoEnCrm: false };
+  }
 
   const cuerpo = {
     evento: tipo === "parcial" ? "lead_parcial" : "lead_completo",
@@ -110,6 +121,7 @@ export async function enviarLead(
     zona_dolor: datos.dolor?.trim() || undefined,
     tiempo_dolor: datos.tiempo?.trim() || undefined,
     origen_landing: ORIGEN,
+    origen_landing_nombre: ORIGEN_NOMBRE,
     event_id: eventId,
     ...capturarAtribucion(),
   };
@@ -127,7 +139,7 @@ export async function enviarLead(
     if (!respuesta.ok) {
       return { ok: false, error: `GHL respondió ${respuesta.status}.` };
     }
-    return { ok: true, eventId };
+    return { ok: true, eventId, guardadoEnCrm: true };
   } catch (e) {
     const abortado = e instanceof DOMException && e.name === "AbortError";
     return {
