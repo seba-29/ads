@@ -169,3 +169,43 @@ de que el dominio esté migrado y estable.
 
 En Método y Kinesiología quedó **en el código fuente**. En Home y Recupera, en el
 parche — `aplicar-parche.py` ya lo repone junto con el resto.
+
+---
+
+# Salidas alternativas eliminadas de las dos landings de anuncios · 27-ago-2026
+
+Método y Kinesiología son **landings de caída de anuncios**: su única conversión
+es el formulario. Se quitaron los dos botones que competían con él debajo del form:
+
+- **«Hablar por WhatsApp»** *(antes de convertir)*
+- **«Ver en Instagram»**
+
+## Por qué, más allá del foco
+
+El botón de WhatsApp no sólo distraía: **convertía tráfico pagado en un lead sin
+atribución.** Quien lo tocaba llegaba a WhatsApp sin `fbclid`, sin `fbc` y sin
+UTMs. Heat lo atendía igual, pero **Meta nunca sabía de qué anuncio vino** — y sin
+esa señal la campaña no puede optimizar hacia lo que funciona.
+
+El formulario, en cambio, manda los 18 campos con toda la atribución.
+
+El de Instagram era fuga pura: sacaba de la página a alguien por quien se pagó.
+
+## Lo que SÍ se conservó
+
+**«Hablar ahora por WhatsApp» en la pantalla de éxito.** Ese aparece *después* de
+convertir, cuando el lead ya está en el CRM con su atribución completa, y sirve
+para acelerar el traspaso a Heat. No compite con nada.
+
+En Testimonials queda la frase «+70.000 personas siguen su recuperación en
+Instagram @clinicaondex» — es texto de prueba social, no un enlace. Se deja.
+
+## Verificado en vivo
+
+| | Instagram | WhatsApp antes | WhatsApp en el éxito |
+|---|---|---|---|
+| `metodoondex.clinicaondex.cl` | 0 ✅ | 0 ✅ | 1 ✅ |
+| `kinesiologia.clinicaondex.cl` | 0 ✅ | 0 ✅ | 1 ✅ |
+
+**Home y Recupera conservan sus botones.** El Home es un router, no una landing de
+caída — ahí una salida a WhatsApp es legítima.

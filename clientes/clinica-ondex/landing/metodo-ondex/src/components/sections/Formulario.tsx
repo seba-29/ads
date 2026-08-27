@@ -7,26 +7,6 @@ import { dispararPixel, enviarLead, urlWhatsApp } from "@/lib/leads";
 const gradientText =
   "bg-[linear-gradient(to_top_right,#12246b_0%,var(--brand)_35%,var(--brand)_65%,#12246b_100%)] bg-clip-text text-transparent";
 
-// lucide-react ya no incluye el ícono de Instagram (es una marca registrada) — se dibuja a mano.
-function InstagramIcon({ className }: { className?: string }) {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth={2}
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      className={className}
-      aria-hidden="true"
-    >
-      <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
-      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
-      <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
-    </svg>
-  );
-}
-
 interface FormState {
   nombre: string;
   whatsapp: string;
@@ -59,7 +39,6 @@ export function Formulario() {
   // Evita reenviar la captura parcial si la persona vuelve atrás y avanza de nuevo.
   const parcialEnviado = useRef(false);
 
-  const waDirecto = urlWhatsApp();
   const waTrasEnvio = urlWhatsApp(nombreEnviado);
 
   const containerVariants: Variants = {
@@ -373,32 +352,6 @@ export function Formulario() {
                 )}
               </>
             )}
-
-            <div className="mt-10 border-t border-border pt-8 text-center">
-              <p className="mb-4 text-sm text-muted-foreground">
-                ¿Prefieres escribirnos directo?
-              </p>
-              <div className="flex flex-col items-center gap-3">
-                {waDirecto && (
-                  <GradientButton variant="light" className="mx-auto" asChild>
-                    <a href={waDirecto} target="_blank" rel="noopener noreferrer">
-                      <MessageCircle className="h-5 w-5" />
-                      Hablar por WhatsApp
-                    </a>
-                  </GradientButton>
-                )}
-                <GradientButton variant="light" className="mx-auto" asChild>
-                  <a
-                    href="https://www.instagram.com/clinicaondex"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <InstagramIcon className="h-5 w-5" />
-                    Ver en Instagram
-                  </a>
-                </GradientButton>
-              </div>
-            </div>
           </div>
         </motion.div>
       </motion.div>
