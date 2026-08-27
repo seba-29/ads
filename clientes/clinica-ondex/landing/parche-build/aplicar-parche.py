@@ -84,6 +84,11 @@ def pixel_snippet() -> str:
 """
 
 
+def google_tags() -> str:
+    """GTM + Google tag, tal como los tenía el WordPress."""
+    return (AQUI / "google-tags.html").read_text(encoding="utf-8")
+
+
 def puente(origen: str, nombre: str) -> str:
     plantilla = (AQUI / "puente-formulario.html").read_text(encoding="utf-8")
     return (plantilla.replace("__WEBHOOK__", WEBHOOK)
@@ -114,8 +119,15 @@ def main() -> int:
     def sin_scripts_del_parche(texto: str) -> str:
         def fuera(m):
             cuerpo = m.group(0)
-            return "" if ("fbq(" in cuerpo or WEBHOOK in cuerpo) else cuerpo
+            marcas = ("fbq(", WEBHOOK, "GTM-W5R3ZKZR", "GT-5TW99JXL", "gtm.start")
+            return "" if any(m in cuerpo for m in marcas) else cuerpo
         return re.sub(r"<script\b[^>]*>.*?</script>", fuera, texto, flags=re.S)
+
+    html = re.sub(r'\s*<noscript><iframe src="https://www\.googletagmanager\.com'
+                  r'/ns\.html[^>]*>[^<]*</iframe></noscript>', "", html)
+    html = re.sub(r'\s*<script async src="https://www\.googletagmanager\.com/gtag/js[^>]*></script>', "", html)
+    html = re.sub(r"\s*<!-- Google Tag Manager[^>]*-->", "", html)
+    html = re.sub(r"\s*<!-- Google tag · [^>]*-->", "", html)
 
     antes_scripts = len(re.findall(r"fbq\('init'", html))
     html = sin_scripts_del_parche(html)
@@ -150,9 +162,12 @@ def main() -> int:
     html = re.sub(r'<html lang="[^"]*"', '<html lang="es-CL"', html)
     html = re.sub(r"<title>.*?</title>", f'<title>{conf["title"]}</title>',
                   html, flags=re.S)
-    html = re.sub(r'\s*<link rel="icon"[^>]*>', "", html)
+    html = re.sub(r'\s*<link rel="(icon|apple-touch-icon)"[^>]*>', "", html)
     html = re.sub(r'\s*<meta name="(description|theme-color)"[^>]*>', "", html)
+    html = re.sub(r'\s*<meta name="twitter:[^"]*"[^>]*>', "", html)
     html = re.sub(r'\s*<meta property="og:[^"]*"[^>]*>', "", html)
+    # Deja el <head> sin las lineas en blanco que van quedando al limpiar.
+    html = re.sub(r"\n[ \t]*\n[ \t]*\n+", "\n\n", html)
 
     cabeza = f"""    <link rel="icon" href="/favicon.ico" sizes="any" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
@@ -165,12 +180,17 @@ def main() -> int:
     <meta property="og:description" content="{conf["desc"]}" />
     <meta property="og:image" content="{conf["og"]}" />
     <meta property="og:locale" content="es_CL" />
+    <meta name="twitter:card" content="summary_large_image" />
 """
     html = html.replace("</head>",
-                        cabeza + pixel_snippet()
+                        cabeza + pixel_snippet() + google_tags()
                         + puente(conf["origen"], conf["nombre"]) + "  </head>")
+    noscript = ('    <noscript><iframe src="https://www.googletagmanager.com'
+                '/ns.html?id=GTM-W5R3ZKZR" height="0" width="0" '
+                'style="display:none;visibility:hidden"></iframe></noscript>')
+    html = html.replace("<body>", "<body>\n" + noscript, 1)
     (dist / "index.html").write_text(html, encoding="utf-8")
-    print(f'✓ index.html: lang, title, favicons, Open Graph, píxel y puente')
+    print("✓ index.html: lang, title, favicons, Open Graph, píxel, GTM y puente")
 
     # ---- 4. cabeceras de caché ----
     (dist / "_headers").write_text(
@@ -201,6 +221,11 @@ def main() -> int:
         ("lang es-CL", 'lang="es-CL"' in html),
         ("sin localhost", restantes == 0),
         ("favicon.svg eliminado", not (dist / "favicon.svg").exists()),
+        ("GTM presente 1 vez", html.count("GTM-W5R3ZKZR") == 3),
+        ("sin <link> duplicados", html.count('rel="apple-touch-icon"') == 1
+                                  and html.count('rel="icon"') == 3),
+        ("sin <meta> duplicados", html.count('property="og:title"') == 1
+                                  and html.count('name="twitter:card"') == 1),
     ]
     for etiqueta, ok in checks:
         print(f"  {'✓' if ok else '✗'} {etiqueta}")

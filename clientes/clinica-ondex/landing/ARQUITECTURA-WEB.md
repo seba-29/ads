@@ -128,3 +128,44 @@ publicación:
 - [ ] Links del nav apuntando a los dominios reales
 - [ ] Si tiene formulario: webhook configurado y probado de punta a punta
 - [ ] Certificado activo antes de mandarle tráfico pagado
+
+---
+
+# Medición de Google — recuperada del WordPress · 27-ago-2026
+
+El WordPress cargaba una pila de Google que las landings nuevas no tenían. Se
+habría caído entera el día del cambio de dominio, justo antes de encender Google Ads.
+
+| Carga | Dispara |
+|---|---|
+| `gtm.js?id=GTM-W5R3ZKZR` | **`AW-17126523264`** (Google Ads) + **`G-FZXBQDXQ5F`** (GA4) |
+| `gtag/js?id=GT-5TW99JXL` | **`G-GBKVQZR4X4`** — una *segunda* propiedad GA4 |
+
+Verificado leyendo el contenido público de los dos contenedores.
+
+**Se replicaron los dos, tal cual, en las cuatro landings.** En una migración no
+se rediseña la medición: se conserva y se limpia después, con datos a la vista.
+
+### Dos cosas que salieron de revisar esto
+
+**El contenedor de GTM no trae etiquetas de conversión con etiqueta**
+(`AW-.../label`), sólo la de configuración de Google Ads. Por eso ponerlo en las
+cuatro páginas es seguro: no dispara conversiones falsas. Se verificó antes de
+instalarlo, precisamente para descartar el doble conteo.
+
+**Hay dos propiedades de GA4 midiendo en paralelo** — `G-FZXBQDXQ5F` vía GTM y
+`G-GBKVQZR4X4` vía el Google tag. Probablemente alguien configuró GA4 dos veces.
+No hace daño, pero conviene decidir cuál es la buena y apagar la otra **después**
+de que el dominio esté migrado y estable.
+
+### Estado de las cuatro
+
+| Sitio | HTTP | GTM | gtag | Píxel Meta |
+|---|---|---|---|---|
+| `metodoondex.clinicaondex.cl` | 200 | ✅ | ✅ | ✅ |
+| `kinesiologia.clinicaondex.cl` | 200 | ✅ | ✅ | ✅ |
+| `recupera-el-control.clinicaondex.cl` | 200 | ✅ | ✅ | ✅ |
+| `home-ondex.netlify.app` *(falta el dominio)* | 200 | ✅ | ✅ | ✅ |
+
+En Método y Kinesiología quedó **en el código fuente**. En Home y Recupera, en el
+parche — `aplicar-parche.py` ya lo repone junto con el resto.
