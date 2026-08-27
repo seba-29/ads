@@ -1,0 +1,24 @@
+# Migración desde el WordPress · 27-ago-2026
+#
+# El sitio viejo tenía exactamente DOS páginas indexadas: / y /thank-you/
+# (verificado en https://clinicaondex.cl/page-sitemap1.xml).
+# Con eso, estas reglas cubren el riesgo real de la migración.
+
+/thank-you/      /   301
+/thank-you       /   301
+
+# Rutas de WordPress que pueden tener enlaces entrantes viejos.
+/wp-content/*    /   301
+/wp-includes/*   /   301
+/wp-admin/*      /   301
+/feed            /   301
+/feed/*          /   301
+
+# NO se pone un comodín "/*  /  301" a propósito, por dos razones:
+#   1. Netlify lo descarta: /* también matchea /, y con destino / lo lee
+#      como un bucle. Probado en producción — la regla no se aplica.
+#   2. Aunque funcionara, Google desaconseja mandar todos los 404 al inicio:
+#      lo trata como "soft 404" y no traspasa autoridad. Para una URL que
+#      nunca existió, un 404 honesto es la respuesta correcta.
+#
+# Si aparecen más URLs viejas con tráfico, se agregan aquí una por una.

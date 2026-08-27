@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="es-CL">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Recupera el control | Clínica Ondex</title>
+    <script type="module" crossorigin src="/assets/index-CCA4jND1.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-BwpoiAPL.css">
+      <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <meta name="theme-color" content="#1d48f8" />
+    <meta name="description" content="El dolor que no se va no se soluciona solo. Agenda tu evaluación en Clínica Ondex, Santiago." />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Recupera el control | Clínica Ondex" />
+    <meta property="og:description" content="El dolor que no se va no se soluciona solo. Agenda tu evaluación en Clínica Ondex, Santiago." />
+    <meta property="og:image" content="/foto-evaluacion.jpg" />
+    <meta property="og:locale" content="es_CL" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <script>
+      !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+      n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+      document,'script','https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', '1354537603365442');
+      fbq('track', 'PageView');
+    </script>
+    <script>
+      /* Puente del formulario -> GoHighLevel.
+         Esta pagina se compilo sin envio al CRM: al enviar solo mostraba la
+         pantalla de exito y borraba los datos. Este script escucha el envio en
+         fase de captura (antes que React), manda el lead a GHL y dispara el
+         evento del pixel. React sigue pintando el "Listo!".
+         Tambien enlaza el boton "Hablar por WhatsApp", que se compilo sin href.
+
+         OJO: esto es un parche sobre el build. Si el proyecto se vuelve a
+         compilar desde el codigo fuente hay que incorporarlo alli (ver
+         src/lib/leads.ts de las landings de Metodo y Kinesiologia). */
+      (function () {
+        "use strict";
+        var WEBHOOK = "https://services.leadconnectorhq.com/hooks/CHtgjFPx4hWkSAtKewIo/webhook-trigger/818f97bf-925a-4fc7-b21d-c110a878ddd6";
+        var ORIGEN = "recupera-el-control";
+        var ORIGEN_NOMBRE = "Recupera el control";
+        var WHATSAPP = "56952296611";
+        var enviado = false;
+
+        function leerCookie(n) {
+          var pre = n + "=", t = document.cookie.split("; ");
+          for (var i = 0; i < t.length; i++)
+            if (t[i].indexOf(pre) === 0) return decodeURIComponent(t[i].slice(pre.length));
+        }
+        function nuevoId() {
+          try { if (window.crypto && crypto.randomUUID) return crypto.randomUUID(); } catch (e) {}
+          return "evt-" + Date.now() + "-" + Math.random().toString(36).slice(2, 11);
+        }
+        /* Meta necesita fbc para atribuirle la conversion al anuncio. La cookie
+           _fbc la escribe el pixel, pero puede no existir en el primer pageview:
+           si viene fbclid en la URL y la cookie no esta, se arma a mano. */
+        function obtenerFbc(p) {
+          var c = leerCookie("_fbc"); if (c) return c;
+          var id = p.get("fbclid");
+          return id ? "fb.1." + Date.now() + "." + id : undefined;
+        }
+        function normalizar(v) {
+          var d = String(v || "").replace(/\D/g, "");
+          if (d.indexOf("56") === 0) return "+" + d;
+          if (d.length === 9 && d.charAt(0) === "9") return "+56" + d;
+          if (d.length === 8) return "+569" + d;
+          return "+" + d;
+        }
+        function val(f, id) {
+          var e = (f && f.querySelector("#" + id)) || document.getElementById(id);
+          return e && e.value ? e.value.trim() : "";
+        }
+        function opt(s) { return s ? s : undefined; }
+
+        document.addEventListener("submit", function (ev) {
+          var f = ev.target;
+          if (!f || f.tagName !== "FORM" || enviado) return;
+          var nombre = val(f, "nombre"), whatsapp = val(f, "whatsapp");
+          if (!nombre || !whatsapp) return;   /* no es el formulario de contacto */
+          enviado = true;
+
+          var p = new URLSearchParams(window.location.search);
+          var id = nuevoId();
+          var cuerpo = {
+            evento: "lead_completo",
+            first_name: nombre,
+            phone: normalizar(whatsapp),
+            zona_dolor: opt(val(f, "dolor")),
+            tiempo_dolor: opt(val(f, "tiempo")),
+            origen_landing: ORIGEN,
+            origen_landing_nombre: ORIGEN_NOMBRE,
+            event_id: id,
+            utm_source: opt(p.get("utm_source")),
+            utm_medium: opt(p.get("utm_medium")),
+            utm_campaign: opt(p.get("utm_campaign")),
+            utm_content: opt(p.get("utm_content")),
+            utm_term: opt(p.get("utm_term")),
+            gclid: opt(p.get("gclid")),
+            fbclid: opt(p.get("fbclid")),
+            fbp: leerCookie("_fbp"),
+            fbc: obtenerFbc(p),
+            landing_url: window.location.href,
+            referrer: document.referrer || undefined
+          };
+          try {
+            fetch(WEBHOOK, {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify(cuerpo),
+              keepalive: true
+            })["catch"](function (e) {
+              enviado = false;
+              console.error("[puente] fallo el envio a GHL:", e);
+            });
+          } catch (e) { enviado = false; console.error("[puente]", e); }
+          if (window.fbq) window.fbq("track", "Lead", {}, { eventID: id });
+        }, true);
+
+        /* El boton "Hablar por WhatsApp" se compilo como <button> sin enlace. */
+        document.addEventListener("click", function (ev) {
+          var el = ev.target;
+          for (var i = 0; el && i < 5; i++, el = el.parentElement) {
+            if (el.tagName === "A") return;
+            if (el.tagName === "BUTTON" && /Hablar por WhatsApp/i.test(el.textContent || "")) {
+              ev.preventDefault();
+              window.open(
+                "https://wa.me/" + WHATSAPP + "?text=" +
+                  encodeURIComponent("Hola, quiero informacion sobre una evaluacion."),
+                "_blank", "noopener"
+              );
+              return;
+            }
+          }
+        }, true);
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
