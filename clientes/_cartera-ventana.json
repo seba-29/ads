@@ -16,9 +16,10 @@
     "Regla: lo que no se sepa va en null. Nunca un numero inventado."
   ],
   "ventana": {
-    "desde": null,
-    "hasta": null,
-    "verificado_contra_meta": false
+    "desde": "2026-08-24",
+    "hasta": "2026-08-30",
+    "verificado_contra_meta": true,
+    "verificado_el": "2026-08-31"
   },
   "clientes": [
     {
@@ -77,16 +78,16 @@
     {
       "cliente": "CLINICA PALAVAS",
       "cuenta": "65286325",
-      "destino": "WhatsApp (CTWA)",
+      "destino": "Formulario nativo de Meta (leadgen)",
       "estado": "activa",
-      "gasto": null,
-      "resultados": null,
+      "gasto": 382186,
+      "resultados": 221,
       "cpa_objetivo": null,
       "dias_desde_edicion": null,
-      "dias_corriendo": null,
-      "frecuencia": null,
-      "atribucion_ok": false,
-      "nota": "CPA de referencia medido: $839/conversacion (1.138 conv / $955.033 en 30d) - es historico, NO objetivo. Sin ctwa_clid. Tiene 4 cuentas; la operativa es esta."
+      "dias_corriendo": 6,
+      "frecuencia": 2.61,
+      "atribucion_ok": true,
+      "nota": "31-ago VERIFICADO EN VIVO. Corre UNA sola campana: 'ANIV26 - Clientes Potenciales' (OUTCOME_LEADS, creada 25-ago). Las ~50 campanas de WhatsApp/Ventas estan TODAS en $0. El CPA de referencia de $839 era por CONVERSACION de WhatsApp y NO es comparable con estos $1.729 por lead de formulario. La atribucion del lead SI es fiable (form nativo); lo que falta es la tasa de cierre lead->venta."
     },
     {
       "cliente": "CLINICA ONDEX",
@@ -105,18 +106,18 @@
     {
       "cliente": "PLAYMAKER",
       "cuenta": "231866284693734",
-      "estado": "por_verificar",
-      "bloqueo": "Saldo impago al 20-ago. NO verificado en vivo desde entonces. Confirmar estado real antes de darlo por bloqueado."
+      "estado": "activa",
+      "nota": "31-ago VERIFICADO EN VIVO: cuenta ACTIVE con metodo de pago y consultable. El saldo impago del 20-ago ESTA RESUELTO. Falta revisar que corre hoy."
     },
     {
       "cliente": "RAICES FUTURAS",
       "cuenta": "26933616669645555",
       "estado": "bloqueada",
-      "bloqueo": "Saldo impago — confirmado sin cambios por Seba el 31-ago"
+      "bloqueo": "UNSETTLED confirmado en vivo el 31-ago — no consultable"
     },
     {
       "cliente": "ESPACIO FUSION",
-      "cuenta": null,
+      "cuenta": "366677430643171",
       "estado": "activa",
       "destino": "por confirmar",
       "gasto": null,
@@ -125,7 +126,7 @@
       "dias_desde_edicion": null,
       "dias_corriendo": null,
       "frecuencia": null,
-      "nota": "31-ago: Seba confirma que YA TIENE ACCESO y la cuenta esta andando. Falta identificar el ID de cuenta: no aparecia entre las 29 accesibles por MCP con los nombres 'Patricia' / 'Soy Patinaza'. Verificar en vivo."
+      "nota": "31-ago IDENTIFICADA: es la cuenta 'Soypatinaza' (BM Soypatinaza 178345516176776), ACTIVE y consultable. Antes no aparecia; ahora si, con el acceso que consiguio Seba."
     }
   ]
 }

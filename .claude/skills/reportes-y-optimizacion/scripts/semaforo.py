@@ -35,6 +35,7 @@ DESVIACION_ROJA = 0.30       # 30% sobre objetivo
 FRECUENCIA_AMARILLA = 3.0
 FRECUENCIA_ROJA = 5.0
 DIAS_SIN_RESULTADOS_ROJO = 3  # gasto sin ningun resultado = falla, no lentitud
+EVENTOS_SALIDA_APRENDIZAJE = 50  # los 50 eventos/7d que sacan a un conjunto de aprendizaje
 
 ORDEN_CAJONES = ["ROJO", "AMARILLO", "PROVISIONAL", "VERDE", "SIN_LECTURA", "BLOQUEADA"]
 
@@ -100,6 +101,14 @@ def evaluar(c):
         return r
 
     # --- 3. Hay muestra suficiente? -------------------------------------------
+    # La regla de los 7 dias existe porque la campana podria seguir en aprendizaje.
+    # Pero el aprendizaje se sale con 50 eventos en 7 dias, no con el calendario:
+    # una campana con 200 conversiones en 6 dias ya salio con creces. Cuando la
+    # muestra lo demuestra, el calendario deja de mandar. Sin esto el script manda
+    # a "sin lectura" campanas con datos de sobra, que es el error opuesto pero
+    # igual de caro: no tocar lo que si hay que tocar.
+    muestra_supera_aprendizaje = n is not None and n >= EVENTOS_SALIDA_APRENDIZAJE
+
     faltas = []
     if n is None:
         faltas.append("no se informaron resultados")
@@ -107,8 +116,14 @@ def evaluar(c):
         faltas.append(f"{n} resultados (se necesitan {MUESTRA_MINIMA})")
     if dias_edicion is not None and dias_edicion < DIAS_MINIMOS_SIN_EDICION:
         faltas.append(f"editada hace {dias_edicion} dias (aprendizaje reiniciado)")
-    if dias_corriendo is not None and dias_corriendo < DIAS_MINIMOS_CORRIENDO:
+    if (dias_corriendo is not None and dias_corriendo < DIAS_MINIMOS_CORRIENDO
+            and not muestra_supera_aprendizaje):
         faltas.append(f"lleva {dias_corriendo} dias corriendo")
+    elif (dias_corriendo is not None and dias_corriendo < DIAS_MINIMOS_CORRIENDO
+            and muestra_supera_aprendizaje):
+        r["avisos"].append(
+            f"lleva solo {dias_corriendo} dias, pero {n} resultados (>{EVENTOS_SALIDA_APRENDIZAJE}) "
+            "demuestran que ya salio de aprendizaje: la lectura es valida")
 
     if faltas:
         r["cajon"] = "SIN_LECTURA"

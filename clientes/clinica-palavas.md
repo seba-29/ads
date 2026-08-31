@@ -23,7 +23,9 @@
 | **% dispuesto a invertir por cliente nuevo** | |
 | **Meta de ventas mensual** | |
 | **Inversión actual/mes** | |
-| **CPA objetivo** *(calculado)* | **$839 CLP / conversación** — real, últimos 30d (1.138 conv. / $955.033) |
+| **CPA objetivo** *(calculado)* | ⛔ no calculable — falta ticket y margen |
+| **CPL real hoy** | **$1.729 CLP / lead de formulario** (verificado 31-ago, 221 leads / $382.186 en 7d) |
+| **~~CPA histórico WhatsApp~~** | ~~$839/conversación~~ — **NO comparable**: era de campañas de mensajes, hoy todas apagadas |
 | **ROAS objetivo** *(calculado)* | ⛔ no calculable — falta ticket |
 | **NÚMERO MÁGICO** *(ROAS mínimo o CPA/CPL máximo)* | ⛔ **bloqueado: falta ticket y margen** |
 | **Mínimo por conjunto** *(CPA×50÷7)* | **$6.000/día** |
@@ -31,11 +33,11 @@
 ## Conversión y medición
 | | |
 |---|---|
-| **Destino** | **WhatsApp (CTWA)** |
-| **Objetivo de campaña** | **Interacción → Mensajes** (lo único que gasta en esta cuenta; las de Ventas con píxel llevan meses en $0) |
+| **Destino** | **Formulario nativo de Meta** (antes WhatsApp/CTWA, hoy sin gasto) |
+| **Objetivo de campaña** | **Clientes Potenciales (formulario nativo)** — `ANIV26`, creada 25-ago. Las ~50 campañas de WhatsApp/Ventas están TODAS en $0 |
 | **Píxel** | ✅ / ❌ |
 | **API de Conversiones** | ✅ / ❌ |
-| **`ctwa_clid`** *(solo si es WhatsApp)* | ❌ **NO** — Meta optimiza hacia quien escribe, no hacia quien compra |
+| **`ctwa_clid`** *(solo si es WhatsApp)* | ❌ NO — pero **hoy es irrelevante**: no hay campañas de WhatsApp gastando. El lead del formulario nativo sí es fiable |
 | **% de cierre lead → venta** | ❓ **no medido — es el dato que bloquea todo** |
 | **Quién responde y en cuánto** | ❓ sin definir |
 
@@ -71,3 +73,17 @@
 | Fecha | Qué se cambió | Por qué | Métrica que debía moverse | Resultado |
 |---|---|---|---|---|
 | 24-ago-2026 | Auditoría de cuenta + plan Aniversario→Cyber | Sale promo de aniversario | — | CPA real $839; arquitectura de 6 conjuntos |
+| 31-ago-2026 | Nada — solo lectura | Primer ciclo de reportes con datos en vivo | — | CPL $1.729 (±7%) sobre 221 leads. Detectados: Inyectables a 5,2× el mejor CPL, Chillán con frecuencia 3,37, y Estética convirtiendo el formulario al doble |
+
+---
+
+## Ciclo de reportes
+
+- **Última ventana leída:** 24-30 ago 2026 → [`clinica-palavas/reporte-2026-08-31.md`](clinica-palavas/reporte-2026-08-31.md)
+- **Próxima revisión:** 7 de septiembre
+- **Estado:** 📋 Provisional — el CPL es confiable (±7%), pero sin ticket ni margen no hay veredicto
+
+### Los 3 pendientes que desbloquean la cuenta
+1. Ticket promedio y margen de una sesión
+2. Cuántos de los 221 leads se contactaron, en cuánto, y cuántos agendaron
+3. Capacidad real de atención (entran ~37 leads/día)
