@@ -16,10 +16,11 @@
     "Regla: lo que no se sepa va en null. Nunca un numero inventado."
   ],
   "ventana": {
-    "desde": "2026-08-24",
-    "hasta": "2026-08-30",
+    "desde": "2026-08-25",
+    "hasta": "2026-08-31",
     "verificado_contra_meta": true,
-    "verificado_el": "2026-08-31"
+    "verificado_el": "2026-08-31",
+    "nota": "Totales al 31-ago informados por Seba. Desgloses por conjunto/anuncio verificados al 30-ago: el conector se desconecto antes de refrescarlos."
   },
   "clientes": [
     {
@@ -80,11 +81,11 @@
       "cuenta": "65286325",
       "destino": "Formulario nativo de Meta (leadgen)",
       "estado": "activa",
-      "gasto": 382186,
-      "resultados": 221,
+      "gasto": 413128,
+      "resultados": 235,
       "cpa_objetivo": null,
       "dias_desde_edicion": null,
-      "dias_corriendo": 6,
+      "dias_corriendo": 7,
       "frecuencia": 2.61,
       "atribucion_ok": true,
       "nota": "31-ago VERIFICADO EN VIVO. Corre UNA sola campana: 'ANIV26 - Clientes Potenciales' (OUTCOME_LEADS, creada 25-ago). Las ~50 campanas de WhatsApp/Ventas estan TODAS en $0. El CPA de referencia de $839 era por CONVERSACION de WhatsApp y NO es comparable con estos $1.729 por lead de formulario. La atribucion del lead SI es fiable (form nativo); lo que falta es la tasa de cierre lead->venta."

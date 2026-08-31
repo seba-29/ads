@@ -24,7 +24,7 @@
 | **Meta de ventas mensual** | |
 | **Inversión actual/mes** | |
 | **CPA objetivo** *(calculado)* | ⛔ no calculable — falta ticket y margen |
-| **CPL real hoy** | **$1.729 CLP / lead de formulario** (verificado 31-ago, 221 leads / $382.186 en 7d) |
+| **CPL real hoy** | **$1.758 CLP / lead de formulario** (235 leads / $413.128, del 25 al 31-ago) |
 | **~~CPA histórico WhatsApp~~** | ~~$839/conversación~~ — **NO comparable**: era de campañas de mensajes, hoy todas apagadas |
 | **ROAS objetivo** *(calculado)* | ⛔ no calculable — falta ticket |
 | **NÚMERO MÁGICO** *(ROAS mínimo o CPA/CPL máximo)* | ⛔ **bloqueado: falta ticket y margen** |
@@ -79,7 +79,7 @@
 
 ## Ciclo de reportes
 
-- **Última ventana leída:** 24-30 ago 2026 → [`clinica-palavas/reporte-2026-08-31.md`](clinica-palavas/reporte-2026-08-31.md)
+- **Última ventana leída:** 25-31 ago 2026 → [`clinica-palavas/reporte-2026-08-31.md`](clinica-palavas/reporte-2026-08-31.md)
 - **Próxima revisión:** 7 de septiembre
 - **Estado:** 📋 Provisional — el CPL es confiable (±7%), pero sin ticket ni margen no hay veredicto
 
