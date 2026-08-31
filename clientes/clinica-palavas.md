@@ -114,3 +114,48 @@ abre una ficha suelta en el CRM sin enlace al contacto de origen — ver §2b de
 
 > La planilla con los datos de pacientes **no se guarda en el repo**: trae nombres y teléfonos.
 > Acá quedan solo los agregados.
+
+## Cierre real de ANIV26 (conector de Meta en vivo, 31-ago)
+
+Cuenta `65286325` · campaña `52575111467315` · ventana 25–31 ago.
+**Ojo: el panel mostraba un corte anterior ($413.550 / 235). Estas son las definitivas.**
+
+| | Total | Chillán | Las Condes | Stgo Oriente |
+|---|---|---|---|---|
+| Gasto | **$421.736** | $161.361 | $138.261 | $122.114 |
+| Interesados | **239** | 75 | 82 | 82 |
+| Costo por interesado | $1.765 | $2.151 | $1.686 | **$1.489** |
+| Alcance | 36.637* | 16.501 | 12.434 | 9.349 |
+| Frecuencia | 2,66 | **3,52** | 1,80 | 1,79 |
+| CPM | $4.335 | **$2.777** | $6.166 | $7.284 |
+| CTR | 2,67% | 1,99% | **3,83%** | 3,44% |
+| Impresiones | 97.294 | 58.106 | 22.423 | 16.765 |
+| Clics | 2.593 | 1.157 | 859 | 577 |
+
+*El alcance total es menor que la suma por deduplicación.
+
+Por anuncio: Cosmetología $83.350/71 leads · Inyectables $35.427/6 · Harmony $3.337/5 ·
+Chillán vid1v1 $122.395/62 (el que produjo el único pago atribuible).
+
+### Los dos hallazgos de plataforma
+
+1. **Chillán se está saturando.** Frecuencia 3,52 en seis días contra 1,80 de las otras dos, con
+   el público más chico (16.501). Es justo la zona que mejor convierte, así que **subirle
+   presupuesto sin material nuevo o sin ampliar el radio solo sube la frecuencia**, no el alcance.
+2. **Las Condes tiene el mejor CTR (3,83%) y el peor avance en CRM.** Sirve para separar las dos
+   cosas: el anuncio hace su parte, lo que se cae está después. No confundirlas.
+
+### Costo por persona calificada (Meta en vivo ÷ calificadas de GHL)
+
+| Zona | Gasto | Calificadas | Costo |
+|---|---|---|---|
+| Chillán | $161.361 | 23 | **$7.016** |
+| Cosmetología | $83.350 | 7 | $11.907 |
+| Las Condes | $138.261 | 2 | $69.131 |
+| **TOTAL** | **$421.736** | **32** | **$13.179** |
+
+Contra el ticket de $121.549: **basta 1 de cada 9 calificadas** comprando una sesión.
+
+> `quality_ranking`, `engagement_rate_ranking` y `conversion_rate_ranking` **no están disponibles**
+> por el conector, ni a nivel de campaña ni de anuncio. Si se quieren, hay que sacarlos del Ads
+> Manager a mano.
