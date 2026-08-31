@@ -27,6 +27,34 @@ oportunidad sin ese campo no entra a ninguna fila de anuncio.
 
 ---
 
+## 1b. CORRECCIÓN — el disparo se mide por ETIQUETA, no solo por fuente
+
+**Seba objetó que veía contactos del disparo en «link de pago enviado». Tenía razón, y la
+objeción destapó un error de medición mío.**
+
+Contar el disparo solo por `source = "Disparo-depilacion-laser"` (980) deja fuera contactos
+que sí venían del disparo pero cuya oportunidad tiene otra fuente. Contando por **fuente O
+etiqueta** (`wsp-masivo`, `masivo-2`) son **985**, y el resultado cambia:
+
+| | Solo por fuente | Por fuente o etiqueta |
+|---|---|---|
+| Personas | 980 | **985** |
+| Etapa positiva | 9 (0,9%) | **12 (1,2%)** |
+| Link de pago enviado | 4 | **4** |
+| **Pagos** | **0** | **2** |
+
+**«Cero ventas» era falso.** Los 2 pagos son contactos con etiqueta `wsp-masivo` cuya
+oportunidad de pago tiene fuente `COMPRA WEB` — ver §2b, que es el mecanismo de fondo.
+
+La conclusión de fondo aguanta (1,2% contra 14,2%, con 985 casos), pero **la comparación de
+ventas 2 vs 1 no significa nada** con números tan chicos y no se debe usar.
+
+**Regla que sale de esto:** la fuente de una oportunidad describe *cómo entró esa oportunidad*,
+no *de dónde viene la persona*. Para poblaciones (campañas, disparos, listas) hay que contar
+por etiqueta del contacto, que sobrevive a la creación de oportunidades nuevas.
+
+---
+
 ## 2. El disparo masivo no funcionó
 
 | | Anuncios de Meta | Disparo masivo WhatsApp |
@@ -52,6 +80,35 @@ Etiqueta dominante: `aniversario` (492).
 2. **Riesgo de la línea.** 980 plantillas a una lista sin opt-in reciente, con 96,8% sin
    responder, es exactamente el perfil que degrada la calificación de calidad del número. Es
    la misma línea por la que entra toda la atención de la clínica.
+
+---
+
+## 2b. EL MECANISMO: al cobrar, el CRM abre una ficha nueva y pierde el origen
+
+**21 de los 26 pagos tienen fuente `COMPRA WEB`.** No son el lead original que avanzó de etapa:
+son **oportunidades nuevas** creadas por el checkout, sin las atribuciones del contacto original.
+
+Esto explica varias cosas a la vez:
+- Por qué **ningún pago tiene atribución de Meta**: la oportunidad de pago nace sin ella.
+- Por qué el disparo «no tenía ventas» contándolo por fuente: sus 2 pagos son `COMPRA WEB`.
+- Por qué las **etiquetas** sí sobreviven: viven en el contacto, no en la oportunidad.
+
+**Consecuencia para el negocio:** el CRM de Palavas **no puede** hoy atribuir una venta a su
+origen. No es un bug del panel ni nuestro — es cómo está armado el flujo de cobro. Se arregla
+enlazando el cobro al contacto.
+
+### La prueba que descarta el duplicado de contactos
+
+Antes de culpar al panel había que descartar que los pagos fueran las MISMAS personas bajo un
+contacto duplicado. Se cruzaron los **26 pagos** contra los **206 leads de Meta** por
+**teléfono (8 últimos dígitos), correo y nombre normalizado**:
+
+**Coincide 1.** Y es el pago de Chillán que ya estaba contado. Los otros 25 son gente que nunca
+pasó por un anuncio. Ninguno de los 26 quedó sin datos para cruzar.
+
+También se descartó el contacto con varias oportunidades: de 3.819 opps hay 3.757 contactos
+únicos y solo 61 con más de una; **0** pagos tienen un contacto con otra oportunidad atribuida
+a Meta.
 
 ---
 
@@ -99,7 +156,20 @@ Chillán** — el que el reporte manda a recortar.
 | Reordenamiento masivo de etapas hoy | ❌ 53 cambios el 31-ago, sin movimiento en bloque |
 | Citas de calendario | ❌ los 7 calendarios son personales, sin agenda de reservas |
 
-**No se identificó el mecanismo que produce 16/17/48 en el panel.** Que la columna «link de pago
+**No se identificó el mecanismo que produce 16/17/48 en el panel**, y tras §2b la lista de
+explicaciones benignas quedó vacía: no es atribución perdida, no es contacto duplicado, no es
+oportunidad múltiple.
+
+### Cómo zanjarlo en 10 segundos (no se puede desde acá)
+
+El pie de la tabla del panel dice: *«Haz clic en los números de tu CRM para ver quiénes son»*.
+**Hacer clic en el 16.**
+- Si salen 16 nombres que en GHL están en «Pago Realizado» → el error es de esta lectura.
+- Si salen nombres de otras etapas, o que no existen → el error es del panel.
+
+Predicción falsable de esta lectura: el único pago atribuible a la campaña es un lead de
+**«Depilacion Laser Chillan vid1 v1» del 27-ago**. Cualquier otro nombre bajo cosmetología
+contradice este análisis. Que la columna «link de pago
 enviado» dé **1 en ambos** sugiere que el panel lee la misma fuente y que la diferencia está en
 cómo cuenta, no en qué lee. Esto se cierra corriendo el panel contra esta subcuenta con logs,
 no desde acá.
