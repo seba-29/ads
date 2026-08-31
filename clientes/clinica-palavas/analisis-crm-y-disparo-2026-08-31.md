@@ -223,3 +223,66 @@ Bajada y análisis: `scripts/` de esta carpeta no aplica — se hizo con llamada
 `services.leadconnectorhq.com/opportunities/search` paginando por `startAfter`/`startAfterId`
 (el `page` tope a 5.000, ver `lib/ghl.ts:81`). El PIT se usó solo como variable de sesión y
 **no está en el repo**; hay que pedirlo de nuevo y rotarlo.
+
+---
+
+## 6. El campo de origen que el panel NO lee — y por qué las 112 no se contactan
+
+**Seba planteó que el pago siempre va a caer con atribución web (el agente de IA manda el link
+de WooCommerce) y que la clave está en el ORIGEN de cada oportunidad, buscando el ID del
+formulario. Tenía razón: el campo existe.**
+
+### `attributionSource` ≠ `attributions[]`
+
+El contacto de GHL tiene **dos** lugares con atribución:
+
+| Campo | Qué trae | ¿Lo lee el panel? |
+|---|---|---|
+| `attributions[]` (array, en la oportunidad) | `utmCampaignId`, `utmAdId`, `utmContent` | ✅ sí — es el único que usa |
+| `attributionSource` / `lastAttributionSource` (objeto, en el contacto) | `sessionSource`, **`formId`**, **`adId`**, **`ctwaClid`**, `url` | ❌ **no** |
+
+`getCampaignByContact` (§3) apunta al array, que en los compradores viene vacío. El objeto
+`attributionSource` **sí está poblado** y es el que sobrevive al cobro.
+
+### Aplicado a los 26 compradores
+
+| Origen (`sessionSource`) | Compradores |
+|---|---|
+| CRM Workflows (manual) | 13 |
+| Social media (whatsapp) | 9 |
+| **Paid Social** | **3** |
+| CRM UI (csv_import) | 1 |
+
+Cruzando el `adId` de esos 3 contra los seis anuncios de ANIV26:
+
+| Pago | adId | ¿De esta campaña? |
+|---|---|---|
+| 27-ago | `52575111467115` | ✅ **sí** — «Depilacion Laser Chillan vid1 v1» |
+| 21-ago | `52531577044915` | ❌ CTWA de otra campaña (`fb.me/8tNINawmk`) |
+| 01-jul | `52546308894115` | ❌ CTWA de julio (post de Instagram) |
+
+**Tercera vía independiente, mismo resultado: 1 pago de esta campaña.** Las otras dos ventas
+de Paid Social son de CTWA anterior — valen para la cuenta, no para ANIV26.
+
+> **Pendiente real para `heat-ads`:** leer `attributionSource.adId` como respaldo cuando
+> `attributions[].utmCampaignId` viene vacío. Recuperaría las ventas de CTWA que hoy no se
+> atribuyen a nada. No cambia el número de Palavas, sí el de cuentas que corren CTWA.
+
+### Por qué no se contactan las 112 — split perfecto
+
+| Grupo | Con etiqueta `ia-prendida` |
+|---|---|
+| Las **92 trabajadas** | **92 de 92** (100%) |
+| Las **112 sin contactar** | **0 de 112** (0%) |
+
+No es lentitud ni capacidad: **el asistente nunca se activó para esas 112**. Su única etiqueta
+es `lead-nuevo`. Y 68 de ellas llevan 2 días o más así.
+
+El patrón se repite en todo el CRM: «Conversando IA» tiene 701 de 1.189 con la etiqueta,
+«Lead Nuevo» solo 38 de 1.185. La etiqueta es lo que mueve un lead de una etapa a la otra.
+
+**Qué revisar en el repo de la gente de IA:** el workflow que asigna `ia-prendida` al crearse un
+lead. Para estos 112 no está disparando.
+
+**Consecuencia para el reporte al cliente:** la versión anterior le pedía a la clínica contactar
+a esas 112. Es trabajo nuestro, no de ellos — corregido, ahora la agencia lo asume con plazo.
