@@ -87,3 +87,30 @@
 1. Ticket promedio y margen de una sesión
 2. Cuántos de los 221 leads se contactaron, en cuánto, y cuántos agendaron
 3. Capacidad real de atención (entran ~37 leads/día)
+
+---
+
+## Economía de la cuenta (31-ago-2026) — POR FIN
+
+Calculado sobre la base de pacientes que entregó la clínica (`Envio_API_LasCondes_Top1000.xlsx`,
+1.000 pacientes con historial de sesiones + 1.838 en las olas siguientes).
+
+| Dato | Valor |
+|---|---|
+| **Ticket por sesión de depilación** | **$121.549** mediana · $125.391 promedio *(n=1.000)* |
+| **Valor histórico por paciente** | **$255.920** mediana · $313.688 promedio *(Ola 2, n=1.392)* |
+| Costo por lead (campaña ANIV26) | $1.760 |
+| Costo por persona calificada | $12.923 (Chillán $6.851) |
+
+**Umbral de rentabilidad en facturación:** basta que **1 de cada 9** personas calificadas compre
+una sesión. Si la paciente vuelve (el histórico dice que sí: $255.920 ≈ dos sesiones), **1 de
+cada 20**. En Chillán, la mitad.
+
+⛔ **Falta el margen.** Todo lo anterior es facturación. Sin el % que queda después de insumos y
+profesional no se puede fijar un CPA objetivo real. Es el único dato que sigue pendiente.
+
+**Cobros:** la clínica usa **Mercado Pago** (no WooCommerce, como se supuso antes). Cada cobro
+abre una ficha suelta en el CRM sin enlace al contacto de origen — ver §2b del análisis.
+
+> La planilla con los datos de pacientes **no se guarda en el repo**: trae nombres y teléfonos.
+> Acá quedan solo los agregados.
