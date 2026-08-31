@@ -7,6 +7,11 @@
 >
 > Lo que está acá es contexto que ya se verificó. Lo que falta está marcado como falta.
 
+> **Nota de ramas.** El trabajo vivía en `claude/hola-como-estas-1gc1yt`, un nombre que
+> generó el sistema al crear la sesión. El 31-ago se creó **`main`** con toda la historia
+> (49 commits, desde la primera versión de la skill `meta-ads`). **`main` es la rama de
+> trabajo de ahora en adelante.**
+
 ---
 
 ## 1. Por qué hacen falta los dos repos
