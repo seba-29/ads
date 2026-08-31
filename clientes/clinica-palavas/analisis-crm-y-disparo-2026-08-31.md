@@ -112,67 +112,64 @@ a Meta.
 
 ---
 
-## 3. ⛔ El panel y el CRM no coinciden — y la diferencia invierte el reporte
+## 3. ✅ RESUELTO — el panel cuenta ACUMULADO y el embudo está mal ordenado
 
-Cruce de la ventana 25–31 ago, mismas oportunidades, misma regla de atribución que usa el panel:
+**Seba insistió en que el panel mostraba 16/17/1/48. Tenía razón en insistir: el panel no se
+equivoca en su propia lógica, me equivoqué yo al no probar la ruta acumulada.**
 
-| | Panel (`ads.heat.cl`) | GoHighLevel (directo) |
-|---|---|---|
-| Leads | 235 *(de Meta)* | 204 oportunidades |
-| **Pago realizado** | **16** | **1** |
-| Agendado | 17 | 1 |
-| Link de pago enviado | 1 | **1 ✅** |
-| Calificado | 48 | 26 |
+`lib/stages.ts` → `stageColumnCount(..., cumulative=true)` suma **todas las etapas con
+`position >= la del objetivo`**, saltando las perdedoras. El tooltip de `FunnelTable.tsx:490` lo
+dice explícito: *«hoy están en esa etapa o más adelante en tu CRM»*.
 
-Y por conjunto, **el orden se da vuelta**:
+Y el embudo de Palavas está ordenado así en GHL:
 
-| Conjunto | Panel: pagos | GHL: avanzaron | GHL: pagos |
-|---|---|---|---|
-| Estética Santiago Oriente | 11 | 7 de 74 (9,5%) | **0** |
-| Depilación Láser Chillán | 4 | 20 de 61 (**32,8%**) | **1** |
-| Depilación Láser Santiago | 1 | 2 de 69 (2,9%) | 0 |
-
-El reporte dice «cosmetología es el mejor negocio de la cuenta». **Según el CRM, el mejor es
-Chillán** — el que el reporte manda a recortar.
-
-### Contexto que hace la diferencia difícil de explicar como error de lectura
-
-- En **todo el embudo, desde el 22 de mayo, existen 26 pagos**. El panel atribuye 16 a una
-  semana de una campaña.
-- De esos 26 pagos: **21 tienen fuente `COMPRA WEB`**, 4 `Web`, 1 vacía. **Ninguno `Facebook`.**
-- **0 de los 26** tiene atribución de Meta, ni en la oportunidad ni en el contacto. Sus objetos
-  de atribución vienen vacíos, mientras que las 206 oportunidades de Meta traen atribución
-  completa (`utmCampaignId`, `utmAdId`, `utmContent`, `adSource`).
-
-### Lo que se descartó (para que no se repita el trabajo)
-
-| Hipótesis | Resultado |
+| pos | etapa |
 |---|---|
-| Subcuenta equivocada | ❌ `/locations/QTkb…` responde `CLINICA PALAVAS` |
-| Un segundo embudo | ❌ la API devuelve **1** pipeline; 3.820 opps en la subcuenta vs 3.819 en el embudo |
-| Datos de muestra (demo) | ❌ `lib/ghl.ts:172-177` prohíbe el demo en modo tenant |
-| Atribución a nivel de contacto | ❌ `getCampaignByContact` existe pero **nadie la llama** (código muerto) |
-| Confusión won/lost | ❌ las 3.819 oportunidades están en `status: "open"` |
-| Reordenamiento masivo de etapas hoy | ❌ 53 cambios el 31-ago, sin movimiento en bloque |
-| Citas de calendario | ❌ los 7 calendarios son personales, sin agenda de reservas |
+| 5 | **Pago Realizado** |
+| 6 | Perdido |
+| 7 | **Seguimiento** ← después del pago |
+| 8 | **Link de pago enviado** ← después del pago |
 
-**No se identificó el mecanismo que produce 16/17/48 en el panel**, y tras §2b la lista de
-explicaciones benignas quedó vacía: no es atribución perdida, no es contacto duplicado, no es
-oportunidad múltiple.
+### El 16 desarmado
 
-### Cómo zanjarlo en 10 segundos (no se puede desde acá)
+| | |
+|---|---|
+| Pago Realizado (pos 5) | **1** |
+| Seguimiento (pos 7) | **14** |
+| Link de pago enviado (pos 8) | **1** |
+| **= la columna «Pago realizado» del panel** | **16** |
 
-El pie de la tabla del panel dice: *«Haz clic en los números de tu CRM para ver quiénes son»*.
-**Hacer clic en el 16.**
-- Si salen 16 nombres que en GHL están en «Pago Realizado» → el error es de esta lectura.
-- Si salen nombres de otras etapas, o que no existen → el error es del panel.
+### Reproducción exacta
 
-Predicción falsable de esta lectura: el único pago atribuible a la campaña es un lead de
-**«Depilacion Laser Chillan vid1 v1» del 27-ago**. Cualquier otro nombre bajo cosmetología
-contradice este análisis. Que la columna «link de pago
-enviado» dé **1 en ambos** sugiere que el panel lee la misma fuente y que la diferencia está en
-cómo cuenta, no en qué lee. Esto se cierra corriendo el panel contra esta subcuenta con logs,
-no desde acá.
+| Fila | pago | agendado | link | calificado |
+|---|---|---|---|---|
+| TOTAL | 16 / **16** | 17 / **17** | 1 / **1** | 46 / 48 |
+| Chillán +30km | 4 / **4** | 5 / **5** | 1 / **1** | 25 / **25** |
+| Depilación Santiago | 1 / **1** | 1 / **1** | 0 / **0** | 3 / 4 |
+| Estética Stgo Oriente | 11 / **11** | 11 / **11** | 0 / **0** | 18 / 19 |
+
+*(calculado / panel — en negrita lo que calza exacto)*
+
+Las tres diferencias son de 1-2 casos en «calificado», la columna más temprana y por lo tanto la
+que más se mueve: son oportunidades que cambiaron de etapa en las ~3 horas entre el pantallazo y
+la bajada.
+
+**Cosmetología no tiene 11 pagos: tiene 11 personas en Seguimiento y cero pagos.**
+
+### El arreglo, sin tocar código
+
+En GHL, mover **Seguimiento**, **Link de pago enviado** y **Perdido** para que queden ANTES de
+«Pago Realizado». El panel queda correcto solo.
+
+> ⚠️ **Esto no es de Palavas: es de todos los clientes.** Cualquier embudo con etapas de
+> estacionamiento (seguimiento, en pausa, sin respuesta) ubicadas después de la etapa de cierre
+> está inflando la columna de ventas de la misma forma. Vale revisar el orden en cada subcuenta.
+
+### Lo que NO cambia
+
+La lectura de fondo se confirma por dos caminos independientes: **la campaña produjo 1 pago.**
+El cruce por teléfono/correo/nombre de §2b ya lo decía, y ahora la aritmética del panel lo
+confirma en vez de contradecirlo.
 
 ---
 
