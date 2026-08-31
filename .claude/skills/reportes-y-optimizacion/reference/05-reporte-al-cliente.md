@@ -130,6 +130,49 @@ Se dice arriba y sin rodeos, porque afecta todo lo demás del reporte.
 
 ---
 
+## 4b. Qué sale del reporte interno al pasarlo al cliente
+
+Cuatro cosas se cuelan siempre porque al operador le parecen interesantes. Ninguna
+sobrevive el paso al cliente:
+
+| Sale | Por qué |
+|---|---|
+| **El desglose por día** | Al cliente no le importa qué aportó el martes. Los números van **consolidados**; la varianza diaria es una discusión de operador |
+| **El análisis por creativo** | El cliente ve `vid1 v2` y no sabe qué video es. Nadie va a entrar a la plataforma a averiguarlo. Va solo si los creativos se muestran o se nombran por su contenido |
+| **Las acciones de esta semana** | Es la lista de tareas del operador, no del cliente. Al cliente le sirve **el plan del período** — qué campaña viene después de esta y cuándo — no el ajuste de presupuesto del jueves |
+| **Cómo se atienden los leads** | Si hay un agente de IA, un CRM o un equipo detrás, eso es infraestructura de la agencia. El cliente pregunta por resultados |
+
+**Lo que sí gana al pasar al cliente:** el análisis de **qué servicio o producto pide la
+gente**. Es el que traduce publicidad en decisión comercial, y suele ser lo más valioso
+del documento para quien dirige el negocio.
+
+### Traducir las unidades
+
+| No escribas | Escribe |
+|---|---|
+| CPL / CPA | Costo por persona interesada |
+| Leads | Personas que dejaron sus datos |
+| Conjunto de anuncios | La zona, o el servicio — lo que ese conjunto representa |
+| Tasa de conversión 28% | De cada 100 que abren el formulario, 28 lo completan |
+| Índice 1,34 | 69 interesados por cada $100.000 invertidos |
+| Frecuencia, CPM, CTR, ABO, Advantage+ | *(nada — no entran)* |
+
+### La confiabilidad del dato sí entra, pero reformulada
+
+La muestra mínima y el margen de error **no** son tecnicismos que esconder: son
+exactamente lo que le permite al cliente saber **sobre qué puede decidir presupuesto y
+sobre qué todavía no**. Preséntalos como esa herramienta, en dos columnas:
+
+- **Concluyente** — "235 interesados: el costo real está entre $1.644 y $1.872. Sobre esa
+  base se puede decidir."
+- **Todavía no** — "Este servicio aparece con el costo más bajo, pero con 5 casos. Ese
+  número puede moverse muchísimo. No decidimos sobre él todavía."
+
+Dicho así deja de ser estadística y pasa a ser prudencia con la plata del cliente, que es
+lo que en realidad es.
+
+---
+
 ## 5. Reporte de cartera (para uso interno de la agencia)
 
 Cuando la pregunta es "¿cómo va todo?", el formato es distinto: una tabla y tres
