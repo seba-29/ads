@@ -26,8 +26,12 @@
       "cuenta": "755647789856028",
       "destino": "Formulario nativo de Meta",
       "estado": "activa",
-      "gasto": null, "resultados": null, "cpa_objetivo": null,
-      "dias_desde_edicion": null, "dias_corriendo": null, "frecuencia": null,
+      "gasto": null,
+      "resultados": null,
+      "cpa_objetivo": null,
+      "dias_desde_edicion": null,
+      "dias_corriendo": null,
+      "frecuencia": null,
       "nota": "Conviven campanas de Heat con las legadas del cliente. Medir por separado antes de proponer apagar lo viejo: dos campanas al mismo publico inflan el CPM."
     },
     {
@@ -35,8 +39,12 @@
       "cuenta": "2252556455581103",
       "destino": "por confirmar",
       "estado": "activa",
-      "gasto": null, "resultados": null, "cpa_objetivo": null,
-      "dias_desde_edicion": null, "dias_corriendo": null, "frecuencia": null,
+      "gasto": null,
+      "resultados": null,
+      "cpa_objetivo": null,
+      "dias_desde_edicion": null,
+      "dias_corriendo": null,
+      "frecuencia": null,
       "nota": "Lanzamiento del 20-ago. Cuenta nueva sin publicos personalizados: las primeras semanas van a Presentacion. Aun puede caer en 'sin lectura'."
     },
     {
@@ -44,8 +52,12 @@
       "cuenta": "27527316",
       "destino": "Trafico + Formulario nativo",
       "estado": "activa",
-      "gasto": null, "resultados": null, "cpa_objetivo": null,
-      "dias_desde_edicion": null, "dias_corriendo": null, "frecuencia": null,
+      "gasto": null,
+      "resultados": null,
+      "cpa_objetivo": null,
+      "dias_desde_edicion": null,
+      "dias_corriendo": null,
+      "frecuencia": null,
       "nota": "Trafico optimiza por clics: no reportar ventas ni seguidores como resultado. Cuello de botella declarado: material grafico. Quiere testear Google (joyeria)."
     },
     {
@@ -53,8 +65,12 @@
       "cuenta": "1321852590109746",
       "destino": "WhatsApp (CTWA)",
       "estado": "activa",
-      "gasto": null, "resultados": null, "cpa_objetivo": null,
-      "dias_desde_edicion": null, "dias_corriendo": null, "frecuencia": null,
+      "gasto": null,
+      "resultados": null,
+      "cpa_objetivo": null,
+      "dias_desde_edicion": null,
+      "dias_corriendo": null,
+      "frecuencia": null,
       "atribucion_ok": null,
       "nota": "Verificar ctwa_clid + CAPI antes de creer el costo por conversacion. Pendiente ampliar geo: DUPLICAR el conjunto que funciona, no editarlo."
     },
@@ -63,8 +79,12 @@
       "cuenta": "65286325",
       "destino": "WhatsApp (CTWA)",
       "estado": "activa",
-      "gasto": null, "resultados": null, "cpa_objetivo": null,
-      "dias_desde_edicion": null, "dias_corriendo": null, "frecuencia": null,
+      "gasto": null,
+      "resultados": null,
+      "cpa_objetivo": null,
+      "dias_desde_edicion": null,
+      "dias_corriendo": null,
+      "frecuencia": null,
       "atribucion_ok": false,
       "nota": "CPA de referencia medido: $839/conversacion (1.138 conv / $955.033 en 30d) - es historico, NO objetivo. Sin ctwa_clid. Tiene 4 cuentas; la operativa es esta."
     },
@@ -73,28 +93,39 @@
       "cuenta": "1034674525430396",
       "destino": "Landing propia -> GHL",
       "estado": "activa",
-      "gasto": null, "resultados": null, "cpa_objetivo": null,
-      "dias_desde_edicion": null, "dias_corriendo": null, "frecuencia": null,
+      "gasto": null,
+      "resultados": null,
+      "cpa_objetivo": null,
+      "dias_desde_edicion": null,
+      "dias_corriendo": null,
+      "frecuencia": null,
       "atribucion_ok": null,
       "nota": "Landings recien conectadas a GHL. gclid aun no se guarda: bloquea atribucion de Google, no la de Meta. Faltan ticket, margen y capacidad semanal de agenda."
     },
     {
       "cliente": "PLAYMAKER",
       "cuenta": "231866284693734",
-      "estado": "bloqueada",
-      "bloqueo": "Saldo impago (cliente avisado)"
+      "estado": "por_verificar",
+      "bloqueo": "Saldo impago al 20-ago. NO verificado en vivo desde entonces. Confirmar estado real antes de darlo por bloqueado."
     },
     {
       "cliente": "RAICES FUTURAS",
       "cuenta": "26933616669645555",
       "estado": "bloqueada",
-      "bloqueo": "Saldo impago. Al reactivar: los publicos viejos siguen ahi y son el activo mas valioso"
+      "bloqueo": "Saldo impago — confirmado sin cambios por Seba el 31-ago"
     },
     {
       "cliente": "ESPACIO FUSION",
       "cuenta": null,
-      "estado": "bloqueada",
-      "bloqueo": "Sin acceso a la cuenta publicitaria + falta aprobacion del cliente"
+      "estado": "activa",
+      "destino": "por confirmar",
+      "gasto": null,
+      "resultados": null,
+      "cpa_objetivo": null,
+      "dias_desde_edicion": null,
+      "dias_corriendo": null,
+      "frecuencia": null,
+      "nota": "31-ago: Seba confirma que YA TIENE ACCESO y la cuenta esta andando. Falta identificar el ID de cuenta: no aparecia entre las 29 accesibles por MCP con los nombres 'Patricia' / 'Soy Patinaza'. Verificar en vivo."
     }
   ]
 }
