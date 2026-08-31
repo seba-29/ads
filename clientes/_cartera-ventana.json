@@ -1,0 +1,100 @@
+{
+  "_lee_esto_primero": [
+    "Archivo de trabajo de la skill `reportes-y-optimizacion`. Se llena cada ventana",
+    "de optimizacion (cada 5-7 dias) y se corre con:",
+    "  python3 .claude/skills/reportes-y-optimizacion/scripts/semaforo.py clientes/_cartera-ventana.json",
+    "",
+    "Campos por cliente:",
+    "  gasto              - de la ventana (no acumulado historico)",
+    "  resultados         - del action_type que corresponde al destino (ver reference/02)",
+    "  cpa_objetivo       - de ticket + margen. null si la ficha no lo tiene todavia",
+    "  dias_desde_edicion - de la BITACORA de la ficha, no del panel",
+    "  dias_corriendo     - desde el lanzamiento de la campana",
+    "  frecuencia         - de los ultimos 7 dias",
+    "  atribucion_ok      - false si falta ctwa_clid / CAPI / gclid segun el destino",
+    "",
+    "Regla: lo que no se sepa va en null. Nunca un numero inventado."
+  ],
+  "ventana": {
+    "desde": null,
+    "hasta": null,
+    "verificado_contra_meta": false
+  },
+  "clientes": [
+    {
+      "cliente": "ASISTENCIA LEGAL",
+      "cuenta": "755647789856028",
+      "destino": "Formulario nativo de Meta",
+      "estado": "activa",
+      "gasto": null, "resultados": null, "cpa_objetivo": null,
+      "dias_desde_edicion": null, "dias_corriendo": null, "frecuencia": null,
+      "nota": "Conviven campanas de Heat con las legadas del cliente. Medir por separado antes de proponer apagar lo viejo: dos campanas al mismo publico inflan el CPM."
+    },
+    {
+      "cliente": "CASA ZEN",
+      "cuenta": "2252556455581103",
+      "destino": "por confirmar",
+      "estado": "activa",
+      "gasto": null, "resultados": null, "cpa_objetivo": null,
+      "dias_desde_edicion": null, "dias_corriendo": null, "frecuencia": null,
+      "nota": "Lanzamiento del 20-ago. Cuenta nueva sin publicos personalizados: las primeras semanas van a Presentacion. Aun puede caer en 'sin lectura'."
+    },
+    {
+      "cliente": "BE FASHION",
+      "cuenta": "27527316",
+      "destino": "Trafico + Formulario nativo",
+      "estado": "activa",
+      "gasto": null, "resultados": null, "cpa_objetivo": null,
+      "dias_desde_edicion": null, "dias_corriendo": null, "frecuencia": null,
+      "nota": "Trafico optimiza por clics: no reportar ventas ni seguidores como resultado. Cuello de botella declarado: material grafico. Quiere testear Google (joyeria)."
+    },
+    {
+      "cliente": "DRA. VANESSA SILVA",
+      "cuenta": "1321852590109746",
+      "destino": "WhatsApp (CTWA)",
+      "estado": "activa",
+      "gasto": null, "resultados": null, "cpa_objetivo": null,
+      "dias_desde_edicion": null, "dias_corriendo": null, "frecuencia": null,
+      "atribucion_ok": null,
+      "nota": "Verificar ctwa_clid + CAPI antes de creer el costo por conversacion. Pendiente ampliar geo: DUPLICAR el conjunto que funciona, no editarlo."
+    },
+    {
+      "cliente": "CLINICA PALAVAS",
+      "cuenta": "65286325",
+      "destino": "WhatsApp (CTWA)",
+      "estado": "activa",
+      "gasto": null, "resultados": null, "cpa_objetivo": null,
+      "dias_desde_edicion": null, "dias_corriendo": null, "frecuencia": null,
+      "atribucion_ok": false,
+      "nota": "CPA de referencia medido: $839/conversacion (1.138 conv / $955.033 en 30d) - es historico, NO objetivo. Sin ctwa_clid. Tiene 4 cuentas; la operativa es esta."
+    },
+    {
+      "cliente": "CLINICA ONDEX",
+      "cuenta": "1034674525430396",
+      "destino": "Landing propia -> GHL",
+      "estado": "activa",
+      "gasto": null, "resultados": null, "cpa_objetivo": null,
+      "dias_desde_edicion": null, "dias_corriendo": null, "frecuencia": null,
+      "atribucion_ok": null,
+      "nota": "Landings recien conectadas a GHL. gclid aun no se guarda: bloquea atribucion de Google, no la de Meta. Faltan ticket, margen y capacidad semanal de agenda."
+    },
+    {
+      "cliente": "PLAYMAKER",
+      "cuenta": "231866284693734",
+      "estado": "bloqueada",
+      "bloqueo": "Saldo impago (cliente avisado)"
+    },
+    {
+      "cliente": "RAICES FUTURAS",
+      "cuenta": "26933616669645555",
+      "estado": "bloqueada",
+      "bloqueo": "Saldo impago. Al reactivar: los publicos viejos siguen ahi y son el activo mas valioso"
+    },
+    {
+      "cliente": "ESPACIO FUSION",
+      "cuenta": null,
+      "estado": "bloqueada",
+      "bloqueo": "Sin acceso a la cuenta publicitaria + falta aprobacion del cliente"
+    }
+  ]
+}

@@ -68,6 +68,12 @@ Identifica en cuál de los 10 trabajos está el usuario y ve al archivo correspo
 Referencias de apoyo: `reference/08-calendario-mkt.md` (fechas comerciales),
 `prompts/` (prompts de investigación listos para usar).
 
+> **¿Es una revisión recurrente de varias cuentas, no el diagnóstico de una?** Entonces
+> el punto de entrada es la skill **`reportes-y-optimizacion`**: cadencia, triage de a
+> quién se toca primero, muestra mínima para que un número signifique algo, y el
+> reporte que ve el cliente. Este skill sigue aportando el criterio; aquella aporta el
+> ciclo.
+
 **El eje 1↔7 es el que más importa.** `01` dice qué separar y por qué; `10` dice cómo
 se sostiene esa separación hoy — y cuándo conviene no separar nada.
 

@@ -54,3 +54,37 @@ Sin los tres primeros no hay recomendación de presupuesto posible:
 4. Destino de conversión (web / WhatsApp / form)
 5. Estado de la medición (píxel, CAPI, `ctwa_clid`)
 6. Qué corre hoy en la cuenta
+
+---
+
+## Ciclo de medición y reportes
+
+Las fichas alimentan dos skills:
+
+- **`meta-ads`** — el criterio: estrategia, estructura, diagnóstico de *una* campaña.
+- **`reportes-y-optimizacion`** — el ciclo sobre *toda* la cartera: qué se mira a
+  diario, qué se optimiza cada 5-7 días, qué se reporta cada mes, y a quién se toca
+  primero.
+
+El archivo de trabajo de cada ventana es **`_cartera-ventana.json`**. Se llena con los
+números crudos y se corre:
+
+```bash
+python3 .claude/skills/reportes-y-optimizacion/scripts/semaforo.py clientes/_cartera-ventana.json
+```
+
+Devuelve el semáforo, la banda de ruido de cada lectura y el orden de atención por
+dinero en riesgo.
+
+> ⚠️ **Las tablas de estado de arriba se levantaron el 20-ago y envejecen rápido.**
+> Reverificar contra el conector de Meta antes de operar: cuentas que estaban activas
+> pueden estar impagas, y campañas que no existían ya llevan semanas corriendo.
+
+### El bloqueo estructural de la cartera
+
+**Ningún cliente tiene ticket promedio ni margen cargado.** Sin esos dos números no
+existe CPA objetivo, y sin CPA objetivo ninguna lectura pasa de *provisional*: se puede
+describir lo que pasó, pero no dictaminar si está bien.
+
+Es el dato que más desbloquea y el más barato de conseguir. La sección *"Qué
+necesitamos de ti"* del reporte mensual existe para pedirlo.
