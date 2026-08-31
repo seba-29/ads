@@ -286,3 +286,69 @@ lead. Para estos 112 no está disparando.
 
 **Consecuencia para el reporte al cliente:** la versión anterior le pedía a la clínica contactar
 a esas 112. Es trabajo nuestro, no de ellos — corregido, ahora la agencia lo asume con plazo.
+
+---
+
+## 7. La lectura correcta para el reporte: ACUMULADA, con el orden lógico
+
+Seba pidió dos cosas y las dos corrigen el reporte:
+
+1. **Fuera del reporte al cliente todo lo que sea configuración de la agencia.** El asistente,
+   `ia-prendida`, las automatizaciones. Es exactamente lo que dice `reference/05` §4b y en la
+   versión anterior se coló. El cliente pregunta por resultados.
+2. **Los números tienen que ser comparables con el panel.** Y ahí estaba el desencuentro real:
+   **el panel cuenta ACUMULADO y yo estaba mostrando ETAPA ACTUAL.** Son dos lecturas
+   distintas del mismo dato, y ninguna es incorrecta — pero mezclarlas hace imposible conversar.
+
+### La regla del reporte, de ahora en adelante
+
+**Acumulada, con el orden LÓGICO del embudo** (no el físico de GHL, ver §3), y con
+`Seguimiento` y `Perdido` fuera de la progresión:
+
+```
+Lead Nuevo → Conversando IA → Calificado → Derivado a humano
+→ Agendado → Link de pago enviado → Pago Realizado
+```
+
+| Etapa (acumulada) | Campaña |
+|---|---|
+| Llegaron al CRM | 204 |
+| Conversaron o más | **73** (36%) |
+| Calificadas o más | **32** (16%) |
+| Con asesor o más | 6 |
+| Agendaron o más | 3 |
+| Link de pago o más | 2 |
+| Pagaron | 1 |
+
+*(185 en la progresión + 14 en Seguimiento + 5 descartadas = 204 ✅)*
+
+### Por qué esto sí calza con el panel
+
+Es la misma operación que hace `stageColumnCount(cumulative=true)`. La única diferencia es el
+orden: el panel usa el `position` de GHL, que tiene Seguimiento y Link de pago DESPUÉS de Pago
+Realizado. Con el orden arreglado en GHL (§3), **panel y reporte van a dar lo mismo**.
+
+Contraste de las dos lecturas, para que no se vuelvan a mezclar:
+
+| | Etapa actual | Acumulada (esta) | Panel hoy (orden malo) |
+|---|---|---|---|
+| Calificado | 26 | **32** | 48 |
+| Agendado | 1 | **3** | 17 |
+| Pago | 1 | **1** | 16 |
+
+### La métrica de eficiencia del reporte
+
+**Costo por persona calificada** — es el punto más abajo del embudo con volumen suficiente:
+
+| Zona | Inversión | Calificadas | Costo |
+|---|---|---|---|
+| Chillán | $157.575 | 23 | **$6.851** |
+| Cosmetología | $81.081 | 7 | $11.583 |
+| Las Condes | $136.146 | 2 | $68.073 |
+| **TOTAL** | **$413.550** | **32** | **$12.923** |
+
+### El disparo, con la misma regla
+
+985 personas · conversaron 33 (3,4%) · calificadas 31 (3,1%) · 2 compras.
+Contra 16% de la publicidad: **cinco veces menos**, no doce. La cifra anterior comparaba bases
+distintas.
