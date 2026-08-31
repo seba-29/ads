@@ -109,6 +109,44 @@ esconde por defecto y sin las cuales no se puede diagnosticar:
 
 ---
 
+## 3b. Si existe un panel que cruza publicidad con CRM, ese es la fuente
+
+Heat opera `ads.heat.cl`, un panel propio que une los datos de Meta con las etapas del
+pipeline del CRM por campaña, conjunto y anuncio. **Cuando ese cruce existe, se lee primero
+y manda sobre todo lo demás.** El conector de Meta pasa a ser el respaldo.
+
+La razón, con el caso que lo demostró: en Palavas, depilación láser en Las Condes tenía el
+**mejor costo por lead** de sus dos zonas ($1.702) y cosmetología costaba $1.158 — parecían
+comparables. Cruzado con ventas, una venta de cosmetología costaba **$7.371** y una de esa
+zona **$136.146**. Una diferencia de **18×** completamente invisible en el panel de Meta.
+
+> **Regla:** con el cruce disponible, el costo por lead deja de ser el veredicto y pasa a
+> ser una métrica de proceso. El veredicto es el **costo por venta**.
+
+### Lo que hay que pedirle al panel
+
+Por campaña → conjunto → anuncio, en la misma fila:
+
+| De Meta | Del CRM |
+|---|---|
+| Gasto · Resultados · Costo por resultado | Leads por **etapa del pipeline** |
+| Impresiones · CTR | Cuántos llegaron a *calificado*, *agendado*, *pago realizado* |
+
+Con eso salen las tres métricas que deciden: **costo por venta**, **tasa de cierre
+lead→venta** por anuncio, y **cuántos leads siguen vivos** en etapas positivas — que es
+inventario para el mes siguiente sin gastar de nuevo.
+
+### Los dos cuidados al leerlo
+
+1. **El pipeline va con retraso.** Los leads de los últimos días todavía no se trabajan, así
+   que el costo por venta que ves es el **peor escenario**, no el final. Dilo siempre.
+   La comparación *entre* anuncios sí es válida: todos tienen la misma antigüedad.
+2. **Distingue etapa actual de etapa alcanzada.** Si cada lead está en una sola etapa, los
+   conteos se suman para "leads en etapas positivas". Si son acumulativos, no. Confírmalo
+   antes de sumar.
+
+---
+
 ## 4. El dato que no está en ninguna plataforma
 
 Meta sabe cuántos leads entregó. **No sabe cuántos se convirtieron en pacientes,
