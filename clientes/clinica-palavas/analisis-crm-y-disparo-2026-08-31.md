@@ -156,10 +156,29 @@ la bajada.
 
 **Cosmetología no tiene 11 pagos: tiene 11 personas en Seguimiento y cero pagos.**
 
+### Qué es «Seguimiento» (confirmado por Seba, 31-ago)
+
+**Un cajón de espera**: gente que no contestó o quedó parqueada. **No es avance.** Dos cosas
+salen de ahí:
+
+1. El conteo de «avanzaron» del reporte al cliente (Calificado en adelante, sin Seguimiento ni
+   Derivado a humano) **es el correcto**: 29 de 204, 14%. No se toca.
+2. El bug es peor de lo que parecía: las 14 personas que el panel presenta como «Pago realizado»
+   son gente **parqueada sin respuesta**. No es que se confundan dos etapas positivas — se está
+   contando el cajón de descarte como cierre.
+
 ### El arreglo, sin tocar código
 
-En GHL, mover **Seguimiento**, **Link de pago enviado** y **Perdido** para que queden ANTES de
-«Pago Realizado». El panel queda correcto solo.
+En GHL, reordenar las etapas al orden lógico del embudo. Siendo «Seguimiento» un cajón de
+espera, va temprano — junto a las etapas iniciales, no al final:
+
+```
+Lead Nuevo · Conversando con IA · Seguimiento · Calificado
+· Derivado a humano · Agendado · Link de pago enviado · Pago Realizado · Perdido
+```
+
+Lo mínimo indispensable: que **Seguimiento** y **Link de pago enviado** queden ANTES de «Pago
+Realizado». Con eso el panel queda correcto solo, sin desplegar nada.
 
 > ⚠️ **Esto no es de Palavas: es de todos los clientes.** Cualquier embudo con etapas de
 > estacionamiento (seguimiento, en pausa, sin respuesta) ubicadas después de la etapa de cierre
