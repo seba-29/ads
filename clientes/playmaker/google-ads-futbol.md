@@ -299,20 +299,72 @@ P02 y P05 del sistema de contenido de Basti.
 
 ## 9. Checklist de lanzamiento
 
+### 9a. Lo que ya está en el sitio (auditado 1-sep-2026)
+
+Se revisó el código fuente de `/`, `/16-futbol` y `/20-personalizador`. **No hay que
+instalar GTM: ya está.** Lo que hace falta es acceso al contenedor.
+
+| Etiqueta | Estado |
+|---|---|
+| **Google Tag Manager `GTM-K44CLVC`** | ✅ Instalado — pero **en el `<body>`, no en el `<head>`**, y **sin el `<noscript>`** |
+| **Universal Analytics `UA-75834089-1`** | ⚠️ Código muerto: UA dejó de procesar datos en julio de 2023. Cargando en todas las páginas sin medir nada |
+| **Meta Pixel `254770085911338`** | ✅ Instalado |
+| GA4 (`G-…`) | ❓ No aparece en el fuente. Puede estar dentro del contenedor — confirmar al entrar |
+
+> **Con acceso de publicación al contenedor, la etiqueta de Google Ads se monta desde GTM
+> sin tocar el sitio.** Solo tres cosas requieren al desarrollador: mover el snippet al
+> `<head>`, el campo oculto `gclid` en el formulario, y el `dataLayer.push` al enviarlo.
+
+### 9b. ⛔ Cuenta nueva de Google Ads — revisar antes que nada
+
+La cuenta se creó desde cero. Dos de estos ajustes **no se pueden cambiar después**, y
+solo son gratis de corregir ahora, mientras la cuenta está vacía y sin gasto.
+
+| # | Ajuste | Qué tiene que decir | Si quedó mal |
+|---|---|---|---|
+| 1 | **Modo de la cuenta** | **Modo experto** | En Modo Inteligente no se puede cargar nada de este build. Se cambia en un clic, pero hay que darse cuenta |
+| 2 | **Zona horaria** | `(GMT-04:00) Santiago` | 🔒 **Irreversible.** Con la zona corrida, el reporte diario y la programación de anuncios quedan desfasados para siempre |
+| 3 | **Moneda** | **CLP** (recomendado) | 🔒 **Irreversible.** Ver abajo |
+| 4 | **Verificación de anunciante** | Iniciada hoy | Tarda días y **los anuncios no se muestran hasta que pasa**. Empezarla antes que cualquier otra cosa |
+
+**Por qué CLP y no USD:** el ticket, el margen, los costos del cliente y la cuenta de Meta
+están todos en pesos. Con la cuenta en CLP, cada lectura se compara directo contra el
+CPL máximo de la sección 3 sin pasar por un tipo de cambio, y desaparece el supuesto de
+$940 que hoy arrastra todo el presupuesto. Con la cuenta en USD hay que reconvertir en
+cada reporte y el CPL se mueve por razones que no tienen que ver con la campaña.
+
+> Si la cuenta quedó en **USD**, los CPC máximos de `build/01-palabras-clave.csv`
+> ($600 y $250 CLP) y los presupuestos diarios hay que reexpresarlos antes de importar.
+
+**Otras dos cosas de cuenta nueva:**
+
+- **Cero historial de conversión** — es exactamente el supuesto de la estrategia de puja
+  en tres fases (sección 5). Nada que ajustar, pero confirma que arrancar en CPA objetivo
+  sería un error.
+- **Riesgo de suspensión al primer arranque** — las cuentas nuevas se revisan con más
+  dureza. Que el nombre de la empresa, el dominio y los datos de facturación coincidan
+  entre sí reduce el riesgo. También conviene revisar si hay crédito promocional de
+  bienvenida antes de cargar el primer presupuesto.
+
 ### ⛔ Bloqueantes — sin esto no se enciende
 
-- [ ] Etiqueta de Google instalada en `playmaker.cl` y verificada con Tag Assistant
+- [ ] **Cuenta nueva verificada:** modo experto, zona horaria Santiago, moneda confirmada (§9b)
+- [ ] **Verificación de anunciante iniciada** — tarda días, empezar primero
+- [ ] Acceso de **publicación** al contenedor `GTM-K44CLVC`
+- [ ] Snippet de GTM movido al `<head>` + `<noscript>` en el body
 - [ ] Las 4 conversiones creadas y **probadas con un envío real** (no confiar en el estado "verificando")
 - [ ] Campo oculto `gclid` en el formulario de cotización, guardado en el CRM
+- [ ] `dataLayer.push({event:'cotizacion_enviada'})` al enviar el formulario
 - [ ] Página de destino decidida (ver decisión abajo)
-- [ ] Facturación de la cuenta con método de pago y límite de gasto
+- [ ] Facturación con método de pago y límite de gasto
 - [ ] **Negativas cargadas antes de encender**, no después
 - [ ] Confirmar el teléfono del recurso de llamada
 - [ ] Ventas avisada: los leads de Google entran con SLA de 1 hora
 
 ### ⚠️ Importantes, no bloqueantes
 - [ ] Perfil de Empresa vinculado (recurso de ubicación)
-- [ ] Google Analytics 4 y Search Console vinculados
+- [ ] Google Analytics 4 y Search Console vinculados (confirmar si ya hay GA4 en el contenedor)
+- [ ] Quitar el `UA-75834089-1` muerto del sitio
 - [ ] Recursos de imagen (ver sección 11)
 - [ ] Valores de conversión — necesita ticket y margen
 
