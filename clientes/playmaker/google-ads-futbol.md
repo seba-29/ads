@@ -5,6 +5,8 @@
 > de la cuenta de Meta** `231866284693734`, leído por el conector el 1-sep-2026.
 >
 > Canal fuera de la skill `meta-ads`. Los archivos importables están en `build/`.
+>
+> **Versión para Basti y el cliente:** https://claude.ai/code/artifact/bb9f10cc-9769-4672-bb01-9a5c34d10953
 
 ---
 
