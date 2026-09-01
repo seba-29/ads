@@ -92,9 +92,18 @@ Un solo conjunto (`Amplio | Meta Form`, público abierto), cinco anuncios:
 conversaciones a $619. El gancho "Personalizador" sostuvo ~$190.000 CLP y ~300
 conversaciones. La campaña de Ventas (2024) marcó el mejor CTR histórico: 4,56%.
 
-**Google Ads:** acceso a la cuenta ya obtenido. Build completo listo en
+**Google Ads:** cuenta nueva `130-061-3823` (Playmaker Spa) bajo el administrador Heat
+`150-194-2107`. CLP · zona horaria Chile · modo experto · etiquetado automático activo.
+Etiqueta `AW-18397559894`. Primera conversión creada ("Cotización enviada"). Build en
 [`playmaker/google-ads-futbol.md`](playmaker/google-ads-futbol.md) + CSV en
-`playmaker/build/`. **Sin encender** — falta el checklist bloqueante.
+`playmaker/build/`. **Sin encender.**
+
+> ⛔ **BLOQUEO: el sitio migra a Shopify.** Esperando de John la fecha. Las URL finales
+> del build son de PrestaShop y la migración las rompe. No se instala nada en el sitio
+> hasta saber la fecha. Ver §9-0 del build.
+
+> El contenedor GTM que ya está en el sitio (`GTM-K44CLVC`) pertenece a quien manejaba la
+> cuenta antigua — sin acceso. Hay que instalar uno propio de HEAT.
 
 **Material pendiente:** grabación de video para refrescar campañas. No bloquea Google.
 

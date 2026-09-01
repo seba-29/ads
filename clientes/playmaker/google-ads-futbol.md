@@ -299,10 +299,73 @@ P02 y P05 del sistema de contenido de Basti.
 
 ## 9. Checklist de lanzamiento
 
-### 9a. Lo que ya está en el sitio (auditado 1-sep-2026)
+### 9-0. ⛔ BLOQUEO ABIERTO: el sitio migra a Shopify
 
-Se revisó el código fuente de `/`, `/16-futbol` y `/20-personalizador`. **No hay que
-instalar GTM: ya está.** Lo que hace falta es acceso al contenedor.
+**Estado al 1-sep-2026: esperando respuesta de John sobre la fecha del Shopify nuevo.**
+Hasta que llegue esa fecha, no se instala nada en el sitio actual.
+
+Por qué frena todo: **la migración rompe las URL finales de este build.** Las cuatro
+rutas de destino (`/16-futbol`, `/10-deportes`, `/54-instituciones`,
+`/20-personalizador`) son de PrestaShop. En Shopify pasan a ser `/collections/...` u
+otra cosa. Una campaña corriendo contra URL que dejan de existir da 404, anuncios
+rechazados y presupuesto quemado — y toda la medición se rehace desde cero.
+
+| Respuesta de John | Qué hacemos |
+|---|---|
+| **Shopify en ≤6 semanas** | **No tocar PrestaShop.** Se instala una sola vez, ya en Shopify. Lanzar antes es trabajo tirado dos veces |
+| **6 a 12 semanas** | Lanzar igual, con la migración planificada: mapa de redirecciones y reinstalación de etiquetas como parte del pase |
+| **3+ meses, o sin fecha** | Seguir en PrestaShop. Tres meses de canal andando valen más que el costo de rehacerlo |
+
+**Lo más valioso que se puede hacer mientras se espera:** que quien haga la migración
+reciba los requisitos de medición **ahora**, para que nazcan dentro del Shopify en vez de
+atornillarse después:
+
+1. Contenedor de GTM propio de HEAT instalado en el tema
+2. Campo oculto `gclid` en el formulario de cotización, guardado con el lead
+3. Evento `cotizacion_enviada` al `dataLayer` al enviarlo
+4. Mapa de redirecciones 301 de las URL viejas a las nuevas
+5. Reinstalar el píxel de Meta `254770085911338`
+
+Shopify juega a favor en un punto: el canal de Google se conecta de forma nativa, sin
+depender de un desarrollador para cada cambio.
+
+---
+
+### 9a. Estado de la cuenta de Google Ads (al 1-sep-2026)
+
+| | |
+|---|---|
+| **Cuenta** | Playmaker Spa · `130-061-3823` |
+| **Administrador** | Heat · `150-194-2107` |
+| **Moneda** | **CLP** ✅ verificado |
+| **Zona horaria** | (GMT-04:00) hora de Chile ✅ |
+| **Modo** | Experto ✅ |
+| **Etiquetado automático** | Activado ✅ — es lo que agrega el `gclid`, requisito de la capa 3 |
+| **Aplicación automática de recomendaciones** | Desactivada ✅ |
+| **Etiqueta de Google** | `AW-18397559894` |
+| **Etiqueta de conversión** | ❓ pendiente de copiar del fragmento de evento |
+
+**Conversión creada — "Cotización enviada":** categoría Solicitar cotización · acción
+principal · recuento **Una** · ventana posclic **90 días** · atribución basada en datos ·
+valor 1 CLP provisorio (se reemplaza cuando lleguen ticket y margen).
+
+⚠️ **Pendiente:** "Solicitar cotización" no es objetivo predeterminado de la cuenta. Si
+queda así, la conversión se registra pero **no alimenta la puja**. Se arregla en la
+configuración de objetivos.
+
+Faltan tres acciones: Contacto (WhatsApp, principal), Contacto (teléfono, secundaria) y
+Vista de página (personalizador, secundaria).
+
+---
+
+### 9b. Lo que hay en el sitio actual (auditado 1-sep-2026)
+
+Se revisó el código fuente de `/`, `/16-futbol` y `/20-personalizador`.
+
+> ⚠️ **Corrección:** el contenedor `GTM-K44CLVC` que ya está en el sitio **no es
+> alcanzable** — pertenece a quien manejaba la cuenta antigua, a la que Playmaker perdió
+> el acceso (misma razón por la que se abrió una cuenta de Google Ads nueva). No sirve
+> pedir acceso: hay que instalar un contenedor propio de HEAT.
 
 | Etiqueta | Estado |
 |---|---|
@@ -311,9 +374,11 @@ instalar GTM: ya está.** Lo que hace falta es acceso al contenedor.
 | **Meta Pixel `254770085911338`** | ✅ Instalado |
 | GA4 (`G-…`) | ❓ No aparece en el fuente. Puede estar dentro del contenedor — confirmar al entrar |
 
-> **Con acceso de publicación al contenedor, la etiqueta de Google Ads se monta desde GTM
-> sin tocar el sitio.** Solo tres cosas requieren al desarrollador: mover el snippet al
-> `<head>`, el campo oculto `gclid` en el formulario, y el `dataLayer.push` al enviarlo.
+**Decisión: contenedor propio de HEAT, no `gtag.js` pegado a mano.** El desarrollador
+instala el contenedor una vez; después las cuatro conversiones, las conversiones
+avanzadas y los disparadores se configuran sin volver a pedirle nada. Por el camino del
+`gtag.js` suelto son seis idas y vueltas con alguien externo. Dos contenedores conviven
+en una misma página sin problema.
 
 ### 9b. ⛔ Cuenta nueva de Google Ads — revisar antes que nada
 
@@ -350,8 +415,9 @@ cada reporte y el CPL se mueve por razones que no tienen que ver con la campaña
 
 - [ ] **Cuenta nueva verificada:** modo experto, zona horaria Santiago, moneda confirmada (§9b)
 - [ ] **Verificación de anunciante iniciada** — tarda días, empezar primero
-- [ ] Acceso de **publicación** al contenedor `GTM-K44CLVC`
-- [ ] Snippet de GTM movido al `<head>` + `<noscript>` en el body
+- [ ] **Fecha del Shopify definida** (§9-0) — decide si se instala en PrestaShop o se espera
+- [ ] Contenedor de GTM propio de HEAT creado e instalado
+- [ ] Etiqueta de conversión copiada del fragmento de evento
 - [ ] Las 4 conversiones creadas y **probadas con un envío real** (no confiar en el estado "verificando")
 - [ ] Campo oculto `gclid` en el formulario de cotización, guardado en el CRM
 - [ ] `dataLayer.push({event:'cotizacion_enviada'})` al enviar el formulario
