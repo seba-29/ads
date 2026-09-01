@@ -1,0 +1,138 @@
+﻿Campaign,Keyword,Criterion Type,Status,"Grupo (nota, borrar antes de importar)"
+PMK | Search | Futbol Clubes | CL,colo colo,Campaign Negative Phrase,Enabled,"Clubes y selecciones (buscan la camiseta de ESE club, no fabricar la propia)"
+PMK | Search | Futbol Clubes | CL,colocolo,Campaign Negative Phrase,Enabled,"Clubes y selecciones (buscan la camiseta de ESE club, no fabricar la propia)"
+PMK | Search | Futbol Clubes | CL,universidad de chile,Campaign Negative Phrase,Enabled,"Clubes y selecciones (buscan la camiseta de ESE club, no fabricar la propia)"
+PMK | Search | Futbol Clubes | CL,u de chile,Campaign Negative Phrase,Enabled,"Clubes y selecciones (buscan la camiseta de ESE club, no fabricar la propia)"
+PMK | Search | Futbol Clubes | CL,universidad catolica,Campaign Negative Phrase,Enabled,"Clubes y selecciones (buscan la camiseta de ESE club, no fabricar la propia)"
+PMK | Search | Futbol Clubes | CL,cruzados,Campaign Negative Phrase,Enabled,"Clubes y selecciones (buscan la camiseta de ESE club, no fabricar la propia)"
+PMK | Search | Futbol Clubes | CL,la roja,Campaign Negative Phrase,Enabled,"Clubes y selecciones (buscan la camiseta de ESE club, no fabricar la propia)"
+PMK | Search | Futbol Clubes | CL,seleccion chilena,Campaign Negative Phrase,Enabled,"Clubes y selecciones (buscan la camiseta de ESE club, no fabricar la propia)"
+PMK | Search | Futbol Clubes | CL,cobreloa,Campaign Negative Phrase,Enabled,"Clubes y selecciones (buscan la camiseta de ESE club, no fabricar la propia)"
+PMK | Search | Futbol Clubes | CL,santiago wanderers,Campaign Negative Phrase,Enabled,"Clubes y selecciones (buscan la camiseta de ESE club, no fabricar la propia)"
+PMK | Search | Futbol Clubes | CL,everton,Campaign Negative Phrase,Enabled,"Clubes y selecciones (buscan la camiseta de ESE club, no fabricar la propia)"
+PMK | Search | Futbol Clubes | CL,union espanola,Campaign Negative Phrase,Enabled,"Clubes y selecciones (buscan la camiseta de ESE club, no fabricar la propia)"
+PMK | Search | Futbol Clubes | CL,palestino,Campaign Negative Phrase,Enabled,"Clubes y selecciones (buscan la camiseta de ESE club, no fabricar la propia)"
+PMK | Search | Futbol Clubes | CL,huachipato,Campaign Negative Phrase,Enabled,"Clubes y selecciones (buscan la camiseta de ESE club, no fabricar la propia)"
+PMK | Search | Futbol Clubes | CL,nublense,Campaign Negative Phrase,Enabled,"Clubes y selecciones (buscan la camiseta de ESE club, no fabricar la propia)"
+PMK | Search | Futbol Clubes | CL,coquimbo unido,Campaign Negative Phrase,Enabled,"Clubes y selecciones (buscan la camiseta de ESE club, no fabricar la propia)"
+PMK | Search | Futbol Clubes | CL,union la calera,Campaign Negative Phrase,Enabled,"Clubes y selecciones (buscan la camiseta de ESE club, no fabricar la propia)"
+PMK | Search | Futbol Clubes | CL,barcelona,Campaign Negative Phrase,Enabled,"Clubes y selecciones (buscan la camiseta de ESE club, no fabricar la propia)"
+PMK | Search | Futbol Clubes | CL,real madrid,Campaign Negative Phrase,Enabled,"Clubes y selecciones (buscan la camiseta de ESE club, no fabricar la propia)"
+PMK | Search | Futbol Clubes | CL,boca juniors,Campaign Negative Phrase,Enabled,"Clubes y selecciones (buscan la camiseta de ESE club, no fabricar la propia)"
+PMK | Search | Futbol Clubes | CL,river plate,Campaign Negative Phrase,Enabled,"Clubes y selecciones (buscan la camiseta de ESE club, no fabricar la propia)"
+PMK | Search | Futbol Clubes | CL,manchester,Campaign Negative Phrase,Enabled,"Clubes y selecciones (buscan la camiseta de ESE club, no fabricar la propia)"
+PMK | Search | Futbol Clubes | CL,liverpool,Campaign Negative Phrase,Enabled,"Clubes y selecciones (buscan la camiseta de ESE club, no fabricar la propia)"
+PMK | Search | Futbol Clubes | CL,psg,Campaign Negative Phrase,Enabled,"Clubes y selecciones (buscan la camiseta de ESE club, no fabricar la propia)"
+PMK | Search | Futbol Clubes | CL,inter miami,Campaign Negative Phrase,Enabled,"Clubes y selecciones (buscan la camiseta de ESE club, no fabricar la propia)"
+PMK | Search | Futbol Clubes | CL,brasil,Campaign Negative Phrase,Enabled,"Clubes y selecciones (buscan la camiseta de ESE club, no fabricar la propia)"
+PMK | Search | Futbol Clubes | CL,argentina,Campaign Negative Phrase,Enabled,"Clubes y selecciones (buscan la camiseta de ESE club, no fabricar la propia)"
+PMK | Search | Futbol Clubes | CL,nike,Campaign Negative Phrase,Enabled,"Marcas deportivas (buscan producto de marca, no fabricacion)"
+PMK | Search | Futbol Clubes | CL,adidas,Campaign Negative Phrase,Enabled,"Marcas deportivas (buscan producto de marca, no fabricacion)"
+PMK | Search | Futbol Clubes | CL,puma,Campaign Negative Phrase,Enabled,"Marcas deportivas (buscan producto de marca, no fabricacion)"
+PMK | Search | Futbol Clubes | CL,umbro,Campaign Negative Phrase,Enabled,"Marcas deportivas (buscan producto de marca, no fabricacion)"
+PMK | Search | Futbol Clubes | CL,joma,Campaign Negative Phrase,Enabled,"Marcas deportivas (buscan producto de marca, no fabricacion)"
+PMK | Search | Futbol Clubes | CL,kappa,Campaign Negative Phrase,Enabled,"Marcas deportivas (buscan producto de marca, no fabricacion)"
+PMK | Search | Futbol Clubes | CL,macron,Campaign Negative Phrase,Enabled,"Marcas deportivas (buscan producto de marca, no fabricacion)"
+PMK | Search | Futbol Clubes | CL,under armour,Campaign Negative Phrase,Enabled,"Marcas deportivas (buscan producto de marca, no fabricacion)"
+PMK | Search | Futbol Clubes | CL,reebok,Campaign Negative Phrase,Enabled,"Marcas deportivas (buscan producto de marca, no fabricacion)"
+PMK | Search | Futbol Clubes | CL,new balance,Campaign Negative Phrase,Enabled,"Marcas deportivas (buscan producto de marca, no fabricacion)"
+PMK | Search | Futbol Clubes | CL,le coq,Campaign Negative Phrase,Enabled,"Marcas deportivas (buscan producto de marca, no fabricacion)"
+PMK | Search | Futbol Clubes | CL,mitre,Campaign Negative Phrase,Enabled,"Marcas deportivas (buscan producto de marca, no fabricacion)"
+PMK | Search | Futbol Clubes | CL,zapatillas,Campaign Negative Phrase,Enabled,Producto que Playmaker no vende
+PMK | Search | Futbol Clubes | CL,botines,Campaign Negative Phrase,Enabled,Producto que Playmaker no vende
+PMK | Search | Futbol Clubes | CL,chuteras,Campaign Negative Phrase,Enabled,Producto que Playmaker no vende
+PMK | Search | Futbol Clubes | CL,guantes de arquero,Campaign Negative Phrase,Enabled,Producto que Playmaker no vende
+PMK | Search | Futbol Clubes | CL,balon,Campaign Negative Phrase,Enabled,Producto que Playmaker no vende
+PMK | Search | Futbol Clubes | CL,pelota,Campaign Negative Phrase,Enabled,Producto que Playmaker no vende
+PMK | Search | Futbol Clubes | CL,canilleras,Campaign Negative Phrase,Enabled,Producto que Playmaker no vende
+PMK | Search | Futbol Clubes | CL,arco de futbol,Campaign Negative Phrase,Enabled,Producto que Playmaker no vende
+PMK | Search | Futbol Clubes | CL,malla de arco,Campaign Negative Phrase,Enabled,Producto que Playmaker no vende
+PMK | Search | Futbol Clubes | CL,conos,Campaign Negative Phrase,Enabled,Producto que Playmaker no vende
+PMK | Search | Futbol Clubes | CL,disfraz,Campaign Negative Phrase,Enabled,Producto que Playmaker no vende
+PMK | Search | Futbol Clubes | CL,pijama,Campaign Negative Phrase,Enabled,Producto que Playmaker no vende
+PMK | Search | Futbol Clubes | CL,gorra,Campaign Negative Phrase,Enabled,Producto que Playmaker no vende
+PMK | Search | Futbol Clubes | CL,mochila,Campaign Negative Phrase,Enabled,Producto que Playmaker no vende
+PMK | Search | Futbol Clubes | CL,bolso,Campaign Negative Phrase,Enabled,Producto que Playmaker no vende
+PMK | Search | Futbol Clubes | CL,gratis,Campaign Negative Phrase,Enabled,Intencion informativa / gratis / gaming
+PMK | Search | Futbol Clubes | CL,gratuito,Campaign Negative Phrase,Enabled,Intencion informativa / gratis / gaming
+PMK | Search | Futbol Clubes | CL,descargar,Campaign Negative Phrase,Enabled,Intencion informativa / gratis / gaming
+PMK | Search | Futbol Clubes | CL,download,Campaign Negative Phrase,Enabled,Intencion informativa / gratis / gaming
+PMK | Search | Futbol Clubes | CL,png,Campaign Negative Phrase,Enabled,Intencion informativa / gratis / gaming
+PMK | Search | Futbol Clubes | CL,vector,Campaign Negative Phrase,Enabled,Intencion informativa / gratis / gaming
+PMK | Search | Futbol Clubes | CL,plantilla,Campaign Negative Phrase,Enabled,Intencion informativa / gratis / gaming
+PMK | Search | Futbol Clubes | CL,molde,Campaign Negative Phrase,Enabled,Intencion informativa / gratis / gaming
+PMK | Search | Futbol Clubes | CL,patron,Campaign Negative Phrase,Enabled,Intencion informativa / gratis / gaming
+PMK | Search | Futbol Clubes | CL,como hacer,Campaign Negative Phrase,Enabled,Intencion informativa / gratis / gaming
+PMK | Search | Futbol Clubes | CL,tutorial,Campaign Negative Phrase,Enabled,Intencion informativa / gratis / gaming
+PMK | Search | Futbol Clubes | CL,paso a paso,Campaign Negative Phrase,Enabled,Intencion informativa / gratis / gaming
+PMK | Search | Futbol Clubes | CL,diy,Campaign Negative Phrase,Enabled,Intencion informativa / gratis / gaming
+PMK | Search | Futbol Clubes | CL,dream league,Campaign Negative Phrase,Enabled,Intencion informativa / gratis / gaming
+PMK | Search | Futbol Clubes | CL,dls,Campaign Negative Phrase,Enabled,Intencion informativa / gratis / gaming
+PMK | Search | Futbol Clubes | CL,fifa,Campaign Negative Phrase,Enabled,Intencion informativa / gratis / gaming
+PMK | Search | Futbol Clubes | CL,efootball,Campaign Negative Phrase,Enabled,Intencion informativa / gratis / gaming
+PMK | Search | Futbol Clubes | CL,pes,Campaign Negative Phrase,Enabled,Intencion informativa / gratis / gaming
+PMK | Search | Futbol Clubes | CL,roblox,Campaign Negative Phrase,Enabled,Intencion informativa / gratis / gaming
+PMK | Search | Futbol Clubes | CL,minecraft,Campaign Negative Phrase,Enabled,Intencion informativa / gratis / gaming
+PMK | Search | Futbol Clubes | CL,editar escudo,Campaign Negative Phrase,Enabled,Intencion informativa / gratis / gaming
+PMK | Search | Futbol Clubes | CL,crear escudo,Campaign Negative Phrase,Enabled,Intencion informativa / gratis / gaming
+PMK | Search | Futbol Clubes | CL,kits dls,Campaign Negative Phrase,Enabled,Intencion informativa / gratis / gaming
+PMK | Search | Futbol Clubes | CL,logo gratis,Campaign Negative Phrase,Enabled,Intencion informativa / gratis / gaming
+PMK | Search | Futbol Clubes | CL,sublimadora,Campaign Negative Phrase,Enabled,Insumos y maquinaria (critico para AG3)
+PMK | Search | Futbol Clubes | CL,maquina sublimadora,Campaign Negative Phrase,Enabled,Insumos y maquinaria (critico para AG3)
+PMK | Search | Futbol Clubes | CL,impresora,Campaign Negative Phrase,Enabled,Insumos y maquinaria (critico para AG3)
+PMK | Search | Futbol Clubes | CL,papel sublimacion,Campaign Negative Phrase,Enabled,Insumos y maquinaria (critico para AG3)
+PMK | Search | Futbol Clubes | CL,tinta,Campaign Negative Phrase,Enabled,Insumos y maquinaria (critico para AG3)
+PMK | Search | Futbol Clubes | CL,plancha,Campaign Negative Phrase,Enabled,Insumos y maquinaria (critico para AG3)
+PMK | Search | Futbol Clubes | CL,prensa termica,Campaign Negative Phrase,Enabled,Insumos y maquinaria (critico para AG3)
+PMK | Search | Futbol Clubes | CL,curso de sublimacion,Campaign Negative Phrase,Enabled,Insumos y maquinaria (critico para AG3)
+PMK | Search | Futbol Clubes | CL,como sublimar,Campaign Negative Phrase,Enabled,Insumos y maquinaria (critico para AG3)
+PMK | Search | Futbol Clubes | CL,vinilo textil,Campaign Negative Phrase,Enabled,Insumos y maquinaria (critico para AG3)
+PMK | Search | Futbol Clubes | CL,insumos,Campaign Negative Phrase,Enabled,Insumos y maquinaria (critico para AG3)
+PMK | Search | Futbol Clubes | CL,replica,Campaign Negative Phrase,Enabled,Reventa / segunda mano / marketplaces
+PMK | Search | Futbol Clubes | CL,replicas,Campaign Negative Phrase,Enabled,Reventa / segunda mano / marketplaces
+PMK | Search | Futbol Clubes | CL,version jugador,Campaign Negative Phrase,Enabled,Reventa / segunda mano / marketplaces
+PMK | Search | Futbol Clubes | CL,original,Campaign Negative Phrase,Enabled,Reventa / segunda mano / marketplaces
+PMK | Search | Futbol Clubes | CL,retro,Campaign Negative Phrase,Enabled,Reventa / segunda mano / marketplaces
+PMK | Search | Futbol Clubes | CL,vintage,Campaign Negative Phrase,Enabled,Reventa / segunda mano / marketplaces
+PMK | Search | Futbol Clubes | CL,antigua,Campaign Negative Phrase,Enabled,Reventa / segunda mano / marketplaces
+PMK | Search | Futbol Clubes | CL,firmada,Campaign Negative Phrase,Enabled,Reventa / segunda mano / marketplaces
+PMK | Search | Futbol Clubes | CL,autografiada,Campaign Negative Phrase,Enabled,Reventa / segunda mano / marketplaces
+PMK | Search | Futbol Clubes | CL,usada,Campaign Negative Phrase,Enabled,Reventa / segunda mano / marketplaces
+PMK | Search | Futbol Clubes | CL,usado,Campaign Negative Phrase,Enabled,Reventa / segunda mano / marketplaces
+PMK | Search | Futbol Clubes | CL,segunda mano,Campaign Negative Phrase,Enabled,Reventa / segunda mano / marketplaces
+PMK | Search | Futbol Clubes | CL,yapo,Campaign Negative Phrase,Enabled,Reventa / segunda mano / marketplaces
+PMK | Search | Futbol Clubes | CL,mercado libre,Campaign Negative Phrase,Enabled,Reventa / segunda mano / marketplaces
+PMK | Search | Futbol Clubes | CL,aliexpress,Campaign Negative Phrase,Enabled,Reventa / segunda mano / marketplaces
+PMK | Search | Futbol Clubes | CL,shein,Campaign Negative Phrase,Enabled,Reventa / segunda mano / marketplaces
+PMK | Search | Futbol Clubes | CL,temu,Campaign Negative Phrase,Enabled,Reventa / segunda mano / marketplaces
+PMK | Search | Futbol Clubes | CL,alibaba,Campaign Negative Phrase,Enabled,Reventa / segunda mano / marketplaces
+PMK | Search | Futbol Clubes | CL,falabella,Campaign Negative Phrase,Enabled,Reventa / segunda mano / marketplaces
+PMK | Search | Futbol Clubes | CL,ripley,Campaign Negative Phrase,Enabled,Reventa / segunda mano / marketplaces
+PMK | Search | Futbol Clubes | CL,1 camiseta,Campaign Negative Phrase,Enabled,Fuera del ICP (pedido unitario) y busqueda de empleo
+PMK | Search | Futbol Clubes | CL,una camiseta,Campaign Negative Phrase,Enabled,Fuera del ICP (pedido unitario) y busqueda de empleo
+PMK | Search | Futbol Clubes | CL,unitaria,Campaign Negative Phrase,Enabled,Fuera del ICP (pedido unitario) y busqueda de empleo
+PMK | Search | Futbol Clubes | CL,por unidad,Campaign Negative Phrase,Enabled,Fuera del ICP (pedido unitario) y busqueda de empleo
+PMK | Search | Futbol Clubes | CL,al detalle,Campaign Negative Phrase,Enabled,Fuera del ICP (pedido unitario) y busqueda de empleo
+PMK | Search | Futbol Clubes | CL,empleo,Campaign Negative Phrase,Enabled,Fuera del ICP (pedido unitario) y busqueda de empleo
+PMK | Search | Futbol Clubes | CL,trabajo,Campaign Negative Phrase,Enabled,Fuera del ICP (pedido unitario) y busqueda de empleo
+PMK | Search | Futbol Clubes | CL,vacante,Campaign Negative Phrase,Enabled,Fuera del ICP (pedido unitario) y busqueda de empleo
+PMK | Search | Futbol Clubes | CL,sueldo,Campaign Negative Phrase,Enabled,Fuera del ICP (pedido unitario) y busqueda de empleo
+PMK | Search | Futbol Clubes | CL,practica,Campaign Negative Phrase,Enabled,Fuera del ICP (pedido unitario) y busqueda de empleo
+PMK | Search | Futbol Clubes | CL,curso,Campaign Negative Phrase,Enabled,Fuera del ICP (pedido unitario) y busqueda de empleo
+PMK | Search | Futbol Clubes | CL,como emprender,Campaign Negative Phrase,Enabled,Fuera del ICP (pedido unitario) y busqueda de empleo
+PMK | Search | Futbol Clubes | CL,negocio de,Campaign Negative Phrase,Enabled,Fuera del ICP (pedido unitario) y busqueda de empleo
+PMK | Search | Futbol Clubes | CL,peru,Campaign Negative Phrase,Enabled,Mercado equivocado
+PMK | Search | Futbol Clubes | CL,colombia,Campaign Negative Phrase,Enabled,Mercado equivocado
+PMK | Search | Futbol Clubes | CL,mexico,Campaign Negative Phrase,Enabled,Mercado equivocado
+PMK | Search | Futbol Clubes | CL,espana,Campaign Negative Phrase,Enabled,Mercado equivocado
+PMK | Search | Futbol Clubes | CL,bolivia,Campaign Negative Phrase,Enabled,Mercado equivocado
+PMK | Search | Futbol Clubes | CL,ecuador,Campaign Negative Phrase,Enabled,Mercado equivocado
+PMK | Search | Futbol Clubes | CL,uruguay,Campaign Negative Phrase,Enabled,Mercado equivocado
+PMK | Search | Futbol Clubes | CL,paraguay,Campaign Negative Phrase,Enabled,Mercado equivocado
+PMK | Search | Futbol Clubes | CL,venezuela,Campaign Negative Phrase,Enabled,Mercado equivocado
+PMK | Search | Marca | CL,que es un playmaker,Campaign Negative Phrase,Enabled,Marca: sentido futbolistico del termino
+PMK | Search | Marca | CL,significado,Campaign Negative Phrase,Enabled,Marca: sentido futbolistico del termino
+PMK | Search | Marca | CL,posicion,Campaign Negative Phrase,Enabled,Marca: sentido futbolistico del termino
+PMK | Search | Marca | CL,football manager,Campaign Negative Phrase,Enabled,Marca: sentido futbolistico del termino
+PMK | Search | Marca | CL,nba,Campaign Negative Phrase,Enabled,Marca: sentido futbolistico del termino
+PMK | Search | Marca | CL,fifa,Campaign Negative Phrase,Enabled,Marca: sentido futbolistico del termino

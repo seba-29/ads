@@ -9,7 +9,7 @@ etapas del ciclo y no se nota hasta que la campaña no vende.
 |---|---|---|---|---|
 | ASISTENCIA LEGAL | `755647789856028` | CLP | ✅ Activa | [ver](asistencia-legal.md) |
 | CASA ZEN | `2252556455581103` | CLP | ✅ Activa | [ver](casa-zen.md) |
-| PLAYMAKER | `231866284693734` | CLP | 🔴 Unsettled | [ver](playmaker.md) |
+| PLAYMAKER | `231866284693734` | CLP | ✅ Activa | [ver](playmaker.md) |
 | BE FASHION | `27527316` | CLP | ✅ Activa | [ver](be-fashion.md) |
 | DRA. VANESSA SILVA | `1321852590109746` | CLP | ✅ Activa | [ver](dra-vanessa-silva.md) |
 | CLÍNICA PALAVAS | `65286325` (+3) | CLP | ✅ Activa · 1 deshabilitada | [ver](clinica-palavas.md) |
@@ -18,13 +18,12 @@ etapas del ciclo y no se nota hasta que la campaña no vende.
 | CLÍNICA ONDEX | `1034674525430396` | CLP | ✅ Activa | [ver](clinica-ondex.md) |
 
 *Estado verificado vía el conector MCP oficial de Meta. Se degrada rápido — reverificar
-antes de operar.*
+antes de operar. **Playmaker reverificado el 1-sep-2026: pasó de impaga a activa.***
 
 ## Bloqueos que impiden trabajar
 
 | Cliente | Problema | Desbloquea |
 |---|---|---|
-| **PLAYMAKER** | Saldo impago (cambió de activa a unsettled durante la sesión) | Facturación |
 | **RAÍCES FUTURAS** | Saldo impago | Facturación |
 | **CLÍNICA PALAVAS** | Una de sus cuentas marcada por actividad inusual, anuncios pausados | Contactar a soporte de Meta |
 | **ESPACIO FUSIÓN** | Sin acceso a su cuenta publicitaria | Compartir acceso al BM |
@@ -35,7 +34,7 @@ antes de operar.*
 |---|---|---|
 | ASISTENCIA LEGAL | ✅ Lead-gen nueva + campañas legadas del cliente | Vigilar solapamiento entre ambas |
 | CASA ZEN | 🚀 Se montan hoy — lanzamiento | — (material ✅) |
-| PLAYMAKER | ⛔ Detenido | Saldo impago (cliente avisado) |
+| PLAYMAKER | ✅ Lead-gen Meta (501 leads / 14 d) · Google Ads montado sin encender | **Ticket y margen** — sin eso Google no tiene veredicto |
 | BE FASHION | ✅ Tráfico + Lead-gen | **Material gráfico** — graban la próxima semana |
 | DRA. VANESSA SILVA | ✅ WhatsApp, solo Santiago | Ampliar geo (tarea, no bloqueo) |
 | CLÍNICA PALAVAS | ⛔ Sin campaña aún | **Material** · foco: oferta de aniversario |
