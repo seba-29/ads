@@ -16,9 +16,9 @@ Se usa como checklist al armar una cuenta y como auditoría al recibir una hered
 
 ## 1. Deconstrucción de una cuenta profesional
 
-Dos capturas de una cuenta real de financiamiento vehicular en Lima. Sirven de caso
-canónico porque muestran las dos campañas calientes del ciclo, con sus exclusiones a
-la vista.
+Tres capturas de la planilla de una cuenta real de financiamiento vehicular
+(Lima y Colombia). Sirven de caso canónico porque muestran el ciclo caliente completo
+—evaluación, conversión y permanencia— con sus públicos y exclusiones a la vista.
 
 ### Captura A — campaña de EVALUACIÓN (retargeting tibio)
 
@@ -41,10 +41,22 @@ Dos conjuntos de anuncios, misma ubicación (Lima), mismo rango demográfico
 | **Exclusiones** | Abrieron y **completaron** el formulario · 90d<br>Lista de Clientes Potenciales<br>Clientes Potenciales web · 180d |
 | Ubicaciones | Advantage+ |
 
+### Captura C — campaña de ASCENSIÓN / permanencia (objetivo Reconocimiento)
+
+| Campo | Valor |
+|---|---|
+| Objetivo de campaña | **Reconocimiento** *(ya no Clientes potenciales)* |
+| Presupuesto Advantage+ | On |
+| Presupuesto diario | **$10** |
+| Objetivo de rendimiento | Maximizar el alcance de los anuncios |
+| **Límite de frecuencia** | **1 impresión cada 3 días** |
+| Calendario | Indefinido |
+| **Público** | Colombia · H+M · 18-65+<br>Abrieron y **completaron** el formulario · 90d<br>Lista de Clientes Potenciales<br>Clientes Potenciales web · 180d |
+
 ### Lo que hay que copiar de ahí
 
-**1. El bloque de exclusión es el mismo en las dos campañas.** Cambia el público,
-no la exclusión. Eso no es descuido: *"ya es un cliente potencial"* es un estado de la
+**1. El bloque de exclusión es el mismo en las dos campañas de adquisición.** Cambia el
+público, no la exclusión. Eso no es descuido: *"ya es un cliente potencial"* es un estado de la
 persona, no una característica de la campaña. Una vez que alguien es lead, sale de
 **toda** la máquina de adquisición — sin importar si se registró en Meta, en la web o
 por teléfono.
@@ -70,7 +82,29 @@ Y hace bien, por dos razones:
 **4. "Calendario: Indefinido".** El retargeting no tiene fecha de término. Se apaga
 cuando se apaga el frío que lo alimenta, no antes.
 
-### Tres precisiones sobre esas capturas
+**5. El bloque de exclusión de las otras campañas es el PÚBLICO de esta.**
+Los mismos tres públicos, palabra por palabra. Eso es lo que cierra el ciclo: nadie
+queda huérfano. La máquina de adquisición los expulsa y esta campaña los recoge, con
+otro objetivo y a otro precio. Es la Ley D de §2.
+
+**6. Cambió el objetivo porque cambió el trabajo.** Optimizar por clientes potenciales
+sobre gente que **ya es cliente potencial** es pagar por algo que ya tienes. Aquí el
+trabajo es *estar presente* mientras el equipo comercial cierra, y la moneda más barata
+para presencia es el CPM bajo objetivo Reconocimiento.
+
+**7. El límite de frecuencia es la razón real del cambio de objetivo.**
+El control de frecuencia **solo existe bajo Reconocimiento** — en Clientes potenciales o
+Ventas no lo tienes. Sobre un público chico (los leads de 90-180 días son unos pocos
+miles de personas) cualquier otro objetivo dispara la frecuencia y quema la base.
+1 impresión cada 3 días son ~10 al mes: presente, no encima.
+
+**8. $10/día alcanza aquí y no alcanzaría en conversión.**
+La fórmula `(CPA × 50) ÷ 7` aplica a eventos de conversión, que son escasos.
+Reconocimiento optimiza por alcance e impresiones, que son abundantes: no hay fase de
+aprendizaje famélica que temer. Por eso la capa de permanencia es la más barata del
+ciclo y la que casi nadie arma.
+
+### Precisiones y correcciones sobre esas capturas
 
 - **"Seguidores Facebook / Instagram" no es un segmento nativo.** Meta no ofrece un
   público personalizado de seguidores. Lo más cercano es *"Todos los que interactuaron
@@ -88,9 +122,26 @@ cuando se apaga el frío que lo alimenta, no antes.
   (`10-publicos-y-exclusiones.md` §4). Por debajo, un solo conjunto de retargeting a
   90 días rinde más que dos famélicos.
 
+- **En la Captura C hay que apagar Advantage+ Audience.** Es la campaña cuyo valor
+  entero es que aterrice **solo** sobre la base de leads. Con Advantage+ el público
+  incluido es una sugerencia y terminas comprando alcance fuera de la base — que es
+  justo lo que no quieres pagar. Se cambia a **públicos originales**. Mismo criterio
+  que `10-publicos-y-exclusiones.md` aplica al retargeting.
+
+- **A la Captura C le falta excluir a los clientes que ya cerraron.** El público son
+  leads, y algunos ya compraron. Agregar `EXCL · Clientes CRM`.
+
+- **Ojo con el nombre "Ascensión".** En el canon del ciclo, Ascensión son **clientes
+  que ya compraron**. El público de la Captura C son **leads que todavía no compran**.
+  Es una **capa de permanencia / acompañamiento comercial**, no una campaña de recompra.
+  En un negocio de ciclo largo que cierra por teléfono o WhatsApp —financiamiento,
+  inmobiliaria, salud, educación— es exactamente lo correcto: la marca sigue presente
+  mientras el vendedor trabaja el lead. Pero llámala por su nombre, o alguien va a
+  cargarle creativos de recompra a gente que nunca compró.
+
 ---
 
-## 2. Las tres leyes de las exclusiones
+## 2. Las cuatro leyes de las exclusiones
 
 ### Ley A — Asimetría de ventanas
 
@@ -132,6 +183,20 @@ pérdida, simplemente vuelves a pagar por un lead que ya tenías.
 
 Con Advantage+ la inclusión no ata. La redundancia aparente es la única garantía. Es
 gratis y evita el error más caro.
+
+### Ley D — Inversión de bloques
+
+> El bloque que **excluyes** en la máquina de adquisición es el **público** de la capa
+> de permanencia. La misma lista, invertida.
+
+Nadie queda huérfano: sale de una campaña y entra en la otra, con otro objetivo y a
+otro precio. Es lo que convierte el embudo en **ciclo**.
+
+El error simétrico es tan común como caro: excluir a los leads de todas las campañas y
+**no armar la que los recoge**. Ahí no los estás protegiendo, los estás soltando —
+dejan de ver tu marca justo mientras tu equipo comercial los trabaja.
+
+Si tienes bloque de exclusión, te falta la campaña que lo usa como público (§5).
 
 ---
 
@@ -271,7 +336,37 @@ las capturas.
 | **Conversión / web (Ventas)** | `AUD · Carrito 14d` · `AUD · Checkout iniciado 14d` | `CLIENTE` + `SUPR`<br>*(+ `EXCL · Lead web` si el objetivo es registro, no venta)* | No excluyas `CALIENTE` aquí: es exactamente a quien vienes a convertir. |
 | **Conversión / WhatsApp (CTWA)** | `CALIENTE` a 90d | `EXCL · Escribieron FB+IG 90d` + `CLIENTE` + `SUPR` | Excluir a quien ya te escribió es la exclusión que más presupuesto salva en LATAM: sin ella pagas por reabrir una conversación que ya tienes en el teléfono. |
 | **Ascensión / clientes** | `EXCL · Clientes CRM` · compradores 180d *(usados como inclusión)* | `EXCL · Compradores 30d` + `SUPR` | Aquí no excluyes etapas siguientes: excluyes a quien **acaba** de comprar. |
+| **Permanencia / acompañamiento de leads** — objetivo **Reconocimiento** | El bloque **`LEAD` completo, usado como inclusión** | `CLIENTE` + `SUPR` | ← **la Captura C**. Públicos originales (Advantage+ **off**) y límite de frecuencia. Detalle abajo. |
 | **Reactivación** (campaña especial) | Compradores 366-730d · leads viejos del CRM | `EXCL · Compradores 180d` + `SUPR` | Único caso donde la ventana larga se usa como **inclusión**. Nunca como exclusión automática. |
+
+### La capa de permanencia, en detalle
+
+La fila más barata de la matriz y la que casi nadie arma. Configuración exacta:
+
+| Ajuste | Valor | Por qué |
+|---|---|---|
+| Objetivo de campaña | **Reconocimiento** | Es el único que da control de frecuencia |
+| Objetivo de rendimiento | Maximizar el alcance | Pagas CPM, no CPA. La conversión ya ocurrió. |
+| **Límite de frecuencia** | 1 impresión cada 2-3 días | Sobre público chico, sin tope la frecuencia se dispara y quemas la base |
+| Tipo de público | **Públicos originales** (Advantage+ **off**) | Si la inclusión es sugerencia, compras alcance fuera de la base y pierdes el punto |
+| Presupuesto | $5-15/día | No hay fase de aprendizaje que alimentar: el alcance es abundante |
+| Calendario | Indefinido | Vive mientras exista base de leads |
+| Público | El bloque `LEAD` completo | Ley D |
+| Exclusiones | `CLIENTE` + `SUPR` | Quien ya cerró sale de aquí también |
+
+**Qué anuncios van adentro:** no anuncios de captura. Prueba social, casos, respuestas a
+objeciones, la cara del equipo, el detrás de escena. El objetivo es que cuando el
+vendedor llame, la marca no sea una desconocida. Nivel de consciencia **Producto** y
+**Decisión** (`03-niveles-consciencia.md`).
+
+**Cuándo NO armarla:** si el ciclo de venta se cierra en 48 horas, no hay nada que
+acompañar. Esta capa se justifica cuando entre el lead y la venta pasan semanas —
+financiamiento, inmobiliaria, salud, educación, B2B.
+
+**Cómo se mide:** no por CPA. Se mide por **cobertura de la base** (qué % de tus leads
+alcanzaste) y frecuencia. Si le exiges conversiones a esta campaña, la vas a apagar
+injustamente: su efecto aparece en la tasa de cierre del equipo comercial, no en el
+Administrador de Anuncios.
 
 ### Cómo se usa esta matriz según la arquitectura
 
@@ -318,6 +413,7 @@ semanales.
 | Excluir por **intereses** | Ya no existe. Meta lo retiró en 2024-2025. Solo se excluye por público personalizado. |
 | Excluir un público de **menos de 100 personas** y darlo por hecho | Funciona, pero no hace nada. Si tu lista de clientes tiene 40 nombres, la exclusión no es tu problema. |
 | Excluir la **lista de leads completa** cuando el ciclo de venta es de 6+ meses | Un lead de hace 8 meses que nunca compró está frío, no quemado. Segmenta el CRM por fecha y excluye solo los recientes. |
+| Excluir el bloque `LEAD` de todo y **no armar la capa de permanencia** | No los proteges, los sueltas: dejan de ver tu marca justo mientras tu equipo comercial los trabaja. Ley D (§2) y §5. |
 
 > **El criterio para decidir:** una exclusión se justifica cuando existe **otra campaña**
 > que sí va a atender a esa gente, o cuando volver a impactarla **cuesta y no aporta**.
@@ -378,6 +474,11 @@ Para una cuenta heredada, o cada tres meses sobre la propia.
 - [ ] Revisar la fecha de la última carga de la lista de clientes. A los 60 días una
       lista tiene huecos serios.
 - [ ] Confirmar que existe la lista de supresión y que está en todas las campañas.
+- [ ] Confirmar que cada bloque de exclusión tiene una campaña que lo usa como público
+      (Ley D). Si excluyes leads en todos lados y no existe la capa de permanencia,
+      falta una campaña.
+- [ ] En la capa de permanencia: verificar que está en **públicos originales** y no en
+      Advantage+, y que tiene límite de frecuencia.
 - [ ] Contar exclusiones por conjunto. Más de 4 en una cuenta que invierte menos de
       $1.000/mes es exclusión de más (§7).
 - [ ] Cruzar la ventana de exclusión de compradores contra el **ciclo de recompra real**
@@ -405,3 +506,6 @@ interfaz antes de dar cualquier fila por buena.
 - [Jon Loomer — How to Create an Instagram Account Custom Audience](https://www.jonloomer.com/instagram-account-custom-audience-facebook/)
 - [David Tamachi — Meta 730-Day Custom Audiences: The Retargeting Exclusion Trap](https://davidtamachi.ca/blog-meta-730-day-custom-audience-expansion)
 - [AdLibrary — Meta Ads for Lead Generation: The 2026 Practitioner's Guide](https://adlibrary.com/posts/meta-ads-for-lead-generation)
+- [Jon Loomer — Advantage+ Audience vs. Original Audiences](https://www.jonloomer.com/advantage-audience-vs-original-audiences/)
+- [Digital Position — Meta Ads Adds Frequency Controls To Auction Based Campaigns](https://www.digitalposition.com/resources/blog/ppc/meta-ads-adds-frequency-controls-to-auction-based-campaigns/)
+- [Benly — Brand Awareness Campaigns: Reach & Frequency Best Practices 2026](https://benly.ai/learn/meta-ads/brand-awareness-reach-campaigns)
