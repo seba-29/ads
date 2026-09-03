@@ -186,3 +186,97 @@ La landing manda **dos formas del mismo dato**, a propósito:
 
 Un espacio no separable (`\xa0`) en una etiqueta la vuelve imposible de escribir a mano
 — pasó en la primera prueba y por eso el identificador va sin espacios.
+
+---
+
+# Verificación de las 4 landings — 3-sep-2026
+
+Hecha contra producción: se descargó el HTML y el bundle de JavaScript de cada sitio
+(con cache-buster, porque una copia cacheada devolvía el WordPress viejo y hacía parecer
+que el Home no tenía puente).
+
+## ✅ Es literalmente la misma automatización
+
+**Los cuatro sitios apuntan al mismo webhook**, carácter por carácter:
+
+```
+https://services.leadconnectorhq.com/hooks/CHtgjFPx4hWkSAtKewIo/webhook-trigger/818f97bf-925a-4fc7-b21d-c110a878ddd6
+```
+
+**Y los cuatro formularios tienen los mismos campos con los mismos `id`:**
+
+| | `nombre` | `whatsapp` | `dolor` | `tiempo` | Envía por |
+|---|---|---|---|---|---|
+| **Home** (`clinicaondex.cl`) | ✅ | ✅ | ✅ | ✅ | puente inyectado en el HTML |
+| **Recupera el control** | ✅ | ✅ | ✅ | ✅ | puente inyectado en el HTML |
+| Método Ondex | ✅ | ✅ | ✅ | ✅ | bundle (`src/lib/leads.ts`) |
+| Kinesiología | ✅ | ✅ | ✅ | ✅ | bundle (`src/lib/leads.ts`) |
+
+Los `id` son lo que decide si el puente funciona: busca `#nombre` y `#whatsapp`, y si no
+los encuentra no envía nada **en silencio**. Están los cuatro. No hay que tocar el código.
+
+## Las tres diferencias que el workflow tiene que absorber
+
+### 1. Home y Recupera NO mandan `lead_parcial`
+
+Método y Kinesiología son un asistente de 2 pasos y disparan `Lead_Parcial` al terminar el
+paso 1. **Home y Recupera son de un solo paso**: sólo mandan `evento: "lead_completo"`.
+
+Verificado: `Lead_Parcial` aparece 1 vez en los bundles de Método y Kinesiología, y **0
+veces** en los de Home y Recupera.
+
+> **Qué revisar en el workflow:** si la rama de `lead_parcial` es la que abre la
+> conversación o pone la etiqueta principal, los leads de Home y Recupera se la saltan.
+> La rama de `lead_completo` tiene que ser autosuficiente.
+
+### 2. Dos valores nuevos de `origen_landing`
+
+| Sitio | `origen_landing` | `origen_landing_nombre` |
+|---|---|---|
+| Home | `home` | `Home` |
+| Recupera el control | `recupera-el-control` | `Recupera el control` |
+
+Si el workflow etiqueta o enruta por origen, **hay que agregar esas dos**. Si no, los leads
+del Home y de Recupera van a entrar sin etiqueta de origen y se mezclan con el resto.
+
+### 3. ⚠️ Home y Recupera no tienen honeypot anti-spam
+
+Método y Kinesiología llevan el campo trampa `empresa` (invisible, fuera de pantalla): si
+un bot lo llena, el envío se descarta. **Home y Recupera no lo tienen** — se compilaron sin
+él y el puente no lo suple.
+
+**El Home es ahora el dominio principal**, la página más expuesta de las cuatro, y es la
+única sin protección. Va a entrar spam al CRM.
+
+**Arreglo sin tocar el código fuente:** agregar al puente un control de tiempo — descartar
+el envío si ocurre a menos de ~3 segundos de cargada la página. Un bot llena y envía al
+instante; una persona no. No requiere cambiar el DOM ni el formulario, sólo
+`puente-formulario.html` y volver a correr `aplicar-parche.py`.
+
+## Lo que sigue pendiente, y no es de las landings
+
+- **`gclid` sí se está enviando** — el puente lo incluye (`gclid: opt(p.get("gclid"))`) y
+  las otras dos también. Lo que falta es que **GHL lo guarde**: es un campo estándar de
+  GHL y hay que mapearlo en el workflow, no crearlo como personalizado.
+- `Origen landing` sigue mapeado a `origen_landing` en vez de `origen_landing_nombre`
+  (cosmético, ver arriba en este documento).
+
+## La prueba que falta, y por qué no la corrí yo
+
+Lo anterior verifica que **el cableado está bien**: mismo webhook, mismos `id`, mismos
+campos. Lo que no pude comprobar desde acá es el envío real: el proxy de este entorno corta
+los túneles TLS del navegador (`ws_closed_mid_exchange`), así que Chromium no llega a los
+sitios y no pude simular un envío de verdad.
+
+**Cómo comprobarlo en 2 minutos, con el navegador:**
+
+1. Abre `https://clinicaondex.cl/?utm_source=prueba&gclid=TEST123` con la consola
+   (F12 → pestaña **Red**).
+2. Llena el formulario con datos de prueba y envía.
+3. En **Red**, busca la llamada a `services.leadconnectorhq.com`. Debe devolver **200**.
+   En la pestaña *Payload* tienen que estar `first_name`, `phone` con `+569…`,
+   `origen_landing: "home"`, `gclid: "TEST123"` y `event_id`.
+4. Lo mismo en `https://recupera-el-control.clinicaondex.cl/` — ahí `origen_landing` debe
+   decir `recupera-el-control`.
+5. En GHL: que el contacto aparezca con la etiqueta correcta y entre al workflow.
+6. **Borrar los dos contactos de prueba.**
