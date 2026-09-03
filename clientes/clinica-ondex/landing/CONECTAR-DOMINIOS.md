@@ -1,50 +1,73 @@
 # Conectar los dominios — todo listo
 
-> 27-ago-2026. Las cuatro páginas están publicadas y verificadas.
-> Falta solo el DNS. Este documento tiene los valores reales medidos hoy.
+> Escrito el 27-ago-2026. **Reverificado en vivo el 31-ago** — la tabla de abajo es el
+> estado medido ese día, no el plan.
 
-## Estado del DNS ahora mismo
+## Estado del DNS al 31-ago (medido)
 
-| Nombre | Apunta a | Qué es |
+| Nombre | Apunta a | Estado |
 |---|---|---|
-| `clinicaondex.cl` | `207.210.102.221` | el hosting, WordPress |
-| `www.clinicaondex.cl` | `207.210.102.221` | el hosting, responde 301 |
-| `metodoondex.clinicaondex.cl` | Netlify ✅ | listo |
-| `kinesiologia.clinicaondex.cl` | Netlify ✅ | listo |
-| `recupera.clinicaondex.cl` | *no existe* | **falta crear** |
+| `clinicaondex.cl` | `207.210.102.221` | ⛔ **sigue en WordPress** (responde LiteSpeed + `wp-json`) |
+| `www.clinicaondex.cl` | CNAME → `clinicaondex.cl` | ⛔ sigue el apex |
+| `metodoondex.clinicaondex.cl` | `ondex-metodo.netlify.app` | ✅ 200, con certificado |
+| `kinesiologia.clinicaondex.cl` | `ondex-kinesiologia.netlify.app` | ✅ 200, con certificado |
+| `recupera-el-control.clinicaondex.cl` | `recupera-el-control-ondex.netlify.app` | ✅ 200, con certificado |
+
+### Correcciones de este documento
+- El subdominio quedó como **`recupera-el-control`**, no `recupera` como decía el plan.
+- Los proyectos de Netlify de las dos landings de anuncios se llaman `ondex-metodo` y
+  `ondex-kinesiologia`.
+
+### ✅ Los MX ya están desacoplados del apex — la mina está desactivada
+El 31-ago se verificó: `MX 0 mail.clinicaondex.cl.` y `mail.clinicaondex.cl` tiene su
+**propio registro A** a `207.210.102.221`. Antes el MX apuntaba al dominio mismo y
+resolvía **a través del A del apex** — cambiar ese A habría cortado todo el correo
+entrante sin tocar un solo registro MX.
+
+**Ahora el apex se puede cambiar sin riesgo para el correo.** Era el bloqueo real.
 
 ---
 
-## Paso 1 — `recupera.clinicaondex.cl` (lo fácil, hazlo primero)
+## ~~Paso 1 — el subdominio de Recupera~~ ✅ HECHO
 
-**En Netlify**, proyecto `recupera-el-control-ondex` → **Domain management** →
-**Add a domain** → `recupera.clinicaondex.cl`
-
-**En cPanel** → **Dominios → Editor de zonas** → `clinicaondex.cl` →
-**Agregar registro**:
-
-| Campo | Valor |
-|---|---|
-| Tipo | `CNAME` |
-| Nombre | `recupera` |
-| TTL | `14400` |
-| Destino | `recupera-el-control-ondex.netlify.app` |
-
-En **Nombre** va sólo `recupera`, sin el dominio: cPanel lo completa.
+`recupera-el-control.clinicaondex.cl` responde **200 con certificado válido** y sirve la
+página correcta. Verificado el 31-ago. Nada pendiente acá.
 
 ---
 
-## Paso 2 — El dominio raíz (el delicado)
+## Paso 2 — El dominio raíz · **ES LO ÚNICO QUE FALTA**
 
-### 🚨 Antes de tocar nada: los MX
+El Home nuevo está compilado, parcheado y publicado en `home-ondex.netlify.app`
+(responde 200). **Nadie lo ve todavía**, porque el apex sigue sirviendo el WordPress.
 
-Si el correo `@clinicaondex.cl` corre por este dominio, los registros **MX** lo
-sostienen. **Sólo se cambia el registro A del apex y el de `www`.** Los MX, TXT
-(SPF, DKIM, verificaciones) y cualquier otro registro se dejan exactamente como
-están.
+### 🚨 Antes de tocar nada
 
-Antes de empezar, **saca una captura de la zona DNS completa.** Si algo sale mal,
-esa foto es la forma de volver atrás.
+Los MX ya están a salvo (ver arriba). Igual: **sólo se cambia el registro A del apex y
+el de `www`.** Los MX, DKIM y las verificaciones se dejan intactos.
+
+Antes de empezar, **saca una captura de la zona DNS completa.** Si algo sale mal, esa
+foto es la forma de volver atrás.
+
+### ⚠️ El SPF hay que ajustarlo en el mismo momento
+
+El SPF actual, medido el 31-ago:
+
+```
+v=spf1 +a +mx +ip4:207.210.102.221 include:relay.mailchannels.net ~all
+```
+
+Ese **`+a` autoriza a enviar correo a la IP del registro A del dominio**. Cuando el apex
+apunte a Netlify, `+a` va a estar autorizando a **Netlify** a mandar correo como
+`@clinicaondex.cl` — algo que no sirve para nada y que amplía la superficie de suplantación.
+
+**El correo real no se rompe al quitarlo:** ya está autorizado dos veces por `+ip4:207.210.102.221`
+y por `+mx` (que ahora resuelve a `mail.clinicaondex.cl`, la misma IP). El SPF queda así:
+
+```
+v=spf1 +mx +ip4:207.210.102.221 include:relay.mailchannels.net ~all
+```
+
+Cámbialo **en la misma ventana** que el registro A, no antes ni mucho después.
 
 ### El apex necesita registro A, no CNAME
 
@@ -98,8 +121,10 @@ Si más adelante aparece alguna URL vieja con tráfico real, se agrega a mano en
 
 ## Después de conectar
 
-- [ ] Los tres subdominios y el apex cargan por **https** con candado
+- [x] Los tres subdominios cargan por **https** con candado *(verificado 31-ago)*
+- [ ] El **apex** carga por https con candado
 - [ ] `clinicaondex.cl/thank-you/` redirige al inicio
+- [ ] **`+a` quitado del SPF**
 - [ ] **El correo `@clinicaondex.cl` sigue funcionando** — manda uno de prueba
 - [ ] Verificar el dominio en Meta → Configuración del negocio → Seguridad de
       marca → Dominios. Cubre los tres subdominios de una vez.

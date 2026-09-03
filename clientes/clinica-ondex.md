@@ -34,7 +34,8 @@
 | | |
 |---|---|
 | **Destino** | ✅ **Landing propia con form de 2 pasos** → GHL → WhatsApp (Heat) |
-| **Landings en producción** | [metodoondex.clinicaondex.cl](https://metodoondex.clinicaondex.cl) · [kinesiologia.clinicaondex.cl](https://kinesiologia.clinicaondex.cl) |
+| **Landings en producción** | [metodoondex](https://metodoondex.clinicaondex.cl) · [kinesiologia](https://kinesiologia.clinicaondex.cl) · [recupera-el-control](https://recupera-el-control.clinicaondex.cl) — las 3 con certificado ✅ |
+| **Home nuevo** | ⛔ listo en `home-ondex.netlify.app` pero **el apex sigue en WordPress**. Falta el registro A |
 | **Objetivo de campaña** | Clientes potenciales |
 | **Píxel** | ⚠️ `736328569555463` (dataset «Landing») — **ver advertencia abajo** |
 | **API de Conversiones** | Conectada en ese dataset por *otra* integración; falta la de GHL |
