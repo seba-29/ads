@@ -94,18 +94,61 @@ equipo o club**.
 | | |
 |---|---|
 | **Campaña** | `PM \| Búsqueda \| Fútbol \| Chile` · ID `24221465441` |
-| **Estado** | ⏸️ **PAUSADA** a propósito, esperando la etiqueta de conversión |
+| **Estado** | 🟢 **ENCENDIDA** el 7-sep-2026 por Seba |
 | **Presupuesto** | CLP 5.000/día · Maximizar clics con tope de CPC CLP 250 |
 | **Gasto histórico** | CLP 5.443 · 541 impresiones · 39 clics · CTR 7,21% · CPC CLP 140 · **0 conversiones** |
 | **Grupos** | 1 de 3 creado: `Camisetas Fútbol` (ID `198653351943`, 5 keywords, RSA nuevo ✅) |
-| **Faltan** | grupos `Equipos y Personalización` y `Marca Playmaker`, 40 negativas, recursos, etiqueta de conversión |
-| **Bloqueo** | el diálogo "Confirme su identidad" de Google. Solo lo puede resolver Seba — no se ingresan contraseñas ni 2FA |
-| **Prompt de continuación** | `clientes/playmaker/google-ads-parte3.md` |
+| **Grupos** | 3 de 3 ✅ `Camisetas Fútbol` · `Equipos y Personalización` · `Marca Playmaker` |
+| **Keywords** | 16 · 13 frase + 3 exacta · **cero en amplia** |
+| **Negativas** | 40 a nivel campaña (30 amplia + 10 frase) |
+| **Recursos** | 4 vínculos a sitio · 5 textos destacados · 1 fragmento estructurado |
+| **Falta** | ⚠️ **la etiqueta de conversión "Cotización enviada"** — sigue en "Configuración incorrecta" |
+| **Prompts de la construcción** | `clientes/playmaker/google-ads-parte3.md` |
 
-**Los 39 clics ya pagados se compraron con el copy desalineado** ("Compra
-Online Segura", "Stock Disponible"). Antes de encender hay que leer el informe
-de términos de búsqueda de esos 39 clics: es data real y gratis, y dice qué
-negativas faltan de verdad mejor que cualquier lista armada a priori.
+### La etiqueta no bloquea la entrega, bloquea la lectura
+La campaña usa **Maximizar clics**, y esa estrategia **no necesita conversiones
+para funcionar**. Sin la etiqueta la campaña entrega igual; lo que se pierde es
+saber cuántas cotizaciones salieron. Con $5.000/día son ~$150.000 al mes: un
+mes a ciegas se aguanta, dos no.
+
+### Lo que dejó el informe de términos de los 39 clics (8-ago a 6-sep)
+- **Solo 1 término repitió clic** (`camisetas de futbol`, 3 clics). Los otros 22
+  clics fueron 22 términos distintos. Cola larga pura, sin volumen que optimizar.
+- **19 de 23 términos entraron por *variante cercana*.** Aunque las keywords son
+  frase y exacta, Google amplía por su cuenta. Ahí está la fuga.
+- **CLP 819 (22% del gasto visible) se fue en clubes ajenos**: huachipato,
+  palestino, deportivo de la coruña, barcelona. Los tres primeros **no** están
+  en las 40 negativas cargadas.
+- **El cliente objetivo aparece y confirma la tesis**: `donde grabar camisetas
+  de futbol`, `hacer poleras de futbol`, `proveedor de camisetas de futbol`,
+  `camisetas de arquero personalizadas`, `mandar hacer camisetas de futbol
+  chile`. Son búsquedas de *mandar a hacer*, no de comprar retail.
+- **La geografía aparece sola**: Temuco, Viña del Mar, Concepción, Osorno,
+  Punta Arenas, Estación Central. Hay demanda regional real sin trabajar.
+- ⚠️ **El 32% del gasto (CLP 1.730, 14 clics) está en "Otros términos de
+  búsqueda"**, que Google no desglosa por umbral de privacidad. No se puede
+  negativizar lo que no se ve. Es un límite de la plataforma, no un pendiente.
+
+### Criterio acordado con Seba (7-sep): no perseguir la campaña perfecta
+El informe sugería ~60 negativas más. **No se cargan.** Casi todas salen de
+términos con 1 impresión y 0 clics — ruido que nunca costó un peso. El objetivo
+de esta campaña es **llevar tráfico calificado a `/16-futbol`**, no ser
+impecable. Se revisa con volumen real, no a priori.
+
+**Negativas que sí valen (ya costaron plata, pendientes de cargar):**
+`huachipato` · `palestino` · `"deportivo de la coruña"` · `"camarin del abuelo"`
+
+**Ojo: NO negativizar `chile` suelto.** Aparece en el ruido de selección, pero
+también en `camisetas futbol chile` (clic legítimo) y en la propia keyword
+`"camisetas de futbol chile"`. La forma segura son las frases
+`"seleccion chilena"` y `"camiseta de chile"`.
+
+### Falso positivo descartado
+El informe de la Parte 3 advertía que el copy dice "Desde $19.900" pero que el
+producto PRO OFICIAL FÚTBOL cuesta $12.000, con riesgo de desaprobación por
+precio inexacto. **Verificado contra el HTML de `/16-futbol`: el único precio
+en esa página es $19.900, en los 24 productos. Cero apariciones de $12.000.**
+El copy está correcto y no hay nada que editar.
 
 ### Negativas: la lista manda sobre el número
 El brief decía "37 términos" y la lista traía 41. El número era mío y estaba
@@ -132,4 +175,6 @@ amplia bloquearía cualquier búsqueda que traiga "la" y "u" sueltas.
 | 6-sep | Se descubre la campaña **encendida** y gastando con copy de "compra" sobre una landing de cotización | El copy prometía algo que la página no hace | Detener el gasto desalineado | ✅ pausada. CLP 5.443 gastados en 39 clics |
 | 6-sep | RSA del grupo `Camisetas Fútbol` reemplazado por completo (15 títulos + 4 descripciones, lenguaje de cotización) | Alinear anuncio y landing | Calidad del anuncio | ✅ Google la califica "Buena" |
 | 6-sep | Se eliminan 3 keywords de compra y se agregan 2 de "sublimadas" | Mismo motivo | Términos de búsqueda más limpios | ✅ 5 keywords, cero en amplia |
-| 7-sep | Se corrige la lista de negativas: 41 → 40, sale `juego` | "Juego de camisetas" es el cliente objetivo, no ruido | No perder tráfico calificado | ⏳ pendiente de cargar |
+| 7-sep | Se corrige la lista de negativas: 41 → 40, sale `juego` | "Juego de camisetas" es el cliente objetivo, no ruido | No perder tráfico calificado | ✅ confirmado por los datos: `juego camisetas de futbol`, `valor juego de camisetas de futbol` y `juegos de camiseta` aparecen en el informe. Con `juego` se habrían bloqueado |
+| 7-sep | Parte 3: se guardan los grupos 2 y 3, las 40 negativas, los 10 recursos y se verifica el tope de CPC | Terminar la carga bloqueada por la verificación de identidad | Campaña completa y lista | ✅ 11 de 12 del checklist en verde |
+| 7-sep | **Campaña ENCENDIDA** por Seba | El objetivo es llevar tráfico a `/16-futbol`; la etiqueta no bloquea la entrega con Maximizar clics | Clics con intención de cotizar | ⏳ primera lectura el **14-sep** |
