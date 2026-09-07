@@ -107,7 +107,7 @@ Gasto real = promedio diario medido entre el 24-ago y el 6-sep (14 días).
 | 01 | `AUDIENCIA GANADORA - Copia` | `120250595017530060` | $65.085 | $65.067 | 100% | 10,3 | $6.326 | **QUALITY_LEAD** |
 | 01 | `03- UBICACIONES REEL IG REGLA EDAD DE 30 A 55` | `120250406176740060` | $20.000 | $19.777 | 99% | 3,1 | $6.293 | LEAD_GENERATION |
 | HEAT | `Meta Form \| HEAT` | `120250454599090060` | $30.000 | **$14.670** | **49%** | **14,4** | **$1.022** | LEAD_GENERATION |
-| HEAT | `Meta Form \| HEAT - Test` | `120250911344120060` | $25.000 | **$0** | **0%** | 0 | — | LEAD_GENERATION |
+| HEAT | `Meta Form \| HEAT - Test` | `120250911344120060` | $25.000 | *recién encendido (7-sep 12:36)* | — | — | — | LEAD_GENERATION |
 | 08 | `RETARGTN SMART RECORDATORIO` | `120238352951680060` | $3.000 | ~$3.000 | 100% | (recall $18) | — | AWARENESS |
 | | **Total** | | **$143.085** | **≈$102.500** | | **27,8** | | |
 
@@ -125,8 +125,8 @@ Gasto real = promedio diario medido entre el 24-ago y el 6-sep (14 días).
 | `Meta Form \| HEAT` | `Reel 1 - Meta Form` | `120250454599070060` | $373.905 | **381** | **$981** | Calidad Media · Interacción Media · **Conversión Superior al promedio** → “estás bien” |
 | `Meta Form \| HEAT` | `Reel 2 - Meta Form` | `120250455215540060` | $33.494 | 7 | $4.785 | **Calidad 35% inferior · Interacción 35% inferior** → “baja calidad, no despierta interés” |
 | `Meta Form \| HEAT` | `Reel 3 - Meta Form` | `120250455267720060` | $6.598 | 3 | $2.199 | sin muestra suficiente |
-| `Meta Form \| HEAT` | `Prueba: Reel 2` / `Prueba: Reel 3` | `...242840` / `...242830` | $0 | 0 | — | 0 impresiones |
-| `Meta Form \| HEAT - Test` | 5 anuncios (Reel 1 copia, Reel 2/3 copia, 2 estáticos DICOM) | — | $0 | 0 | — | 0 impresiones desde el 7-sep 12:36 |
+| `Meta Form \| HEAT` | `Prueba: Reel 2` / `Prueba: Reel 3` | `...242840` / `...242830` | $0 | 0 | — | encendidos el 7-sep, sin datos |
+| `Meta Form \| HEAT - Test` | 5 anuncios (Reel 1 copia, Reel 2/3 copia, 2 estáticos DICOM) | — | $0 | 0 | — | **encendido el 7-sep 12:36 — corriendo, sin datos todavía** |
 
 **El Reel 1 es el único anuncio sano de toda la cuenta.** 381 de los 391 leads
 de la campaña HEAT salen de él.
@@ -156,13 +156,18 @@ Hipótesis a probar, en orden: (a) tiene `advantage_audience: OFF` mientras los
 otros dos lo tienen ON; (b) un solo anuncio sostiene el conjunto y Meta no
 encuentra más impresiones rentables a ese ritmo de conversión.
 
-### 3. El conjunto `Meta Form | HEAT - Test` es una copia exacta del público
+### 3. El conjunto `Meta Form | HEAT - Test` corre con el mismo público que el original
 Mismo país, misma edad 30–60, mismas ubicaciones, misma optimización,
-Advantage+ igualmente apagado. Es el mismo público que `Meta Form | HEAT`
-compitiendo consigo mismo, y el original tiene historial de aprendizaje.
-**Como test no mide nada**: si no cambia ni el público ni la optimización, no
-hay variable que aislar. Para que sirva hay que cambiarle una cosa y una sola
-(por ejemplo, Advantage+ ON).
+Advantage+ igualmente apagado. **Esto no es un problema de entrega** — se
+encendió el 7-sep a las 12:36 y hay que dejarlo correr.
+
+Lo que sí conviene tener presente al leer el resultado: como el público es
+idéntico, lo que este conjunto aísla es **el creativo**, no la audiencia. Si
+rinde distinto al original, la diferencia viene de los anuncios nuevos
+(los dos estáticos de DICOM), no de a quién le llegó. Es una lectura válida,
+solo hay que saber qué se está midiendo.
+
+**Decisión de Seba (7-sep): dejarlo correr tal cual y evaluar con datos.**
 
 ### 4. Duplicar un anuncio dentro del mismo conjunto no le da entrega
 `Prueba: Reel 2` y `Prueba: Reel 3` viven en `Meta Form | HEAT` con 0
@@ -186,16 +191,17 @@ que estar en un conjunto donde el Reel 1 **no** esté.
 | 7-sep | Pausa de la campaña `11-✅CAMPAÑ UNIFICADA-LEADS DEUDAS-ABO` completa | CPL $4.674 y solapamiento con la 01 | Gasto mensual a la baja | ✅ liberó ~$37.500/día |
 | 7-sep | Pausa del conjunto `01-TEST [MERCADO FINANCIERO+ EDAD]` (campaña 01) | $6.937/lead, el peor de los que gastaban | Gasto mensual a la baja | ✅ liberó $10.000/día |
 | 7-sep | Pausa de un conjunto en la campaña `08` de reconocimiento; se deja solo `RETARGTN SMART` con $3.000 | Reconocimiento no es la prioridad con el tope encima | Gasto mensual a la baja | ✅ |
-| 7-sep | Se crea el conjunto `Meta Form \| HEAT - Test` con 5 anuncios ($25.000/día) | Dar entrega a creativos que el Reel 1 ahogaba | Impresiones > 0 | ❌ **0 impresiones**. Público idéntico al original, ver hallazgo #3 |
-| 7-sep | Se duplican `Reel 2` y `Reel 3` como “Prueba:” dentro de `Meta Form \| HEAT` | Intentar darles entrega | Impresiones > 0 | ❌ **0 impresiones**, ver hallazgo #4 |
+| 7-sep | Se crea el conjunto `Meta Form \| HEAT - Test` con 5 anuncios ($25.000/día) | Dar entrega a creativos que el Reel 1 ahogaba | CPL a 7 días vs. el del conjunto original | ⏳ **encendido a las 12:36 del 7-sep**. Sin datos aún — primera lectura el 10-sep, veredicto el 14-sep |
+| 7-sep | Se duplican `Reel 2` y `Reel 3` como “Prueba:” dentro de `Meta Form \| HEAT` | Intentar darles entrega | Impresiones > 0 | ⏳ recién encendidos, ver hallazgo #4 |
 | 7-sep | Se fija techo de **$4.000.000/mes** = $129.000/día | Agosto cerró en $4.602.916 | Gasto mensual ≤ $4M | ⏳ septiembre proyecta $3,3–3,9M |
 
 ## Lo siguiente, en orden
 1. **Pedirle a Emma el ticket promedio y el % de cierre**, separando leads de
    `AUDIENCIA GANADORA` (QUALITY_LEAD) de los del `Reel 1` (LEAD_GENERATION).
    Sin ese cruce toda decisión de presupuesto es a ciegas.
-2. **Arreglar el conjunto Test**: cambiarle una sola variable respecto al
-   original — lo más directo es encender Advantage+ audiencia — o apagarlo.
+2. **Dejar correr el conjunto Test sin tocarlo.** Primera lectura el **10-sep**
+   (¿está entregando?), veredicto de CPL el **14-sep** (7 días completos).
+   Tocarlo antes reinicia el aprendizaje y borra la prueba.
 3. **Sacar el `Reel 2` de circulación**: Meta lo ubica en el 35% inferior en
    calidad y en interacción. No es que le falte presupuesto, es que no funciona.
 4. **Reasignar presupuesto solo después del punto 1**, con el límite de −20%
