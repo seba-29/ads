@@ -3,7 +3,7 @@
 > Ficha de contexto. La lee la skill `meta-ads` antes de cualquier recomendación.
 > Lo que no se sepa va como `?` — nunca inventado. Un dato falso contamina las 4 etapas.
 >
-> Última revisión completa de la cuenta: **7-sep-2026**.
+> Última revisión completa de la cuenta: **8-sep-2026**.
 
 ## Identificación
 | | |
@@ -29,10 +29,14 @@
 | **ROAS objetivo** *(calculado)* | ? |
 | **NÚMERO MÁGICO** *(CPL máximo)* | ? |
 
-> **Todo veredicto de esta cuenta es PROVISIONAL.** Hay dos precios de lead
-> conviviendo — $1.022 y $6.326 — y **no sabemos cuál cierra mejor**. Sin el
-> ticket y el % de cierre, no se puede decidir cuál de los dos conservar.
-> Es el dato que decide la estrategia completa, no un detalle pendiente.
+> **Todo veredicto de esta cuenta sigue siendo PROVISIONAL, pero menos.** Hay
+> dos precios de lead conviviendo — $1.022 y $6.326 — y aún **no sabemos cuál
+> cierra mejor**. Lo que sí sabemos desde el 8-sep: el CRM manda ~30
+> `Purchase` semanales a Meta, o sea **~120 contratos al mes**. Contra
+> $4.000.000 de inversión son **≈ $33.000 por contrato**.
+>
+> Falta el ticket promedio para saber si eso es negocio. Es la única pregunta
+> que queda entre nosotros y un ROAS real.
 
 ### Techo de inversión
 | | |
@@ -53,8 +57,9 @@ Seba apagó la campaña 11 y el conjunto `01-TEST` el 7-sep.
 |---|---|
 | **Destino** | **Formulario nativo de Meta** (instantáneo) |
 | **Objetivo de campaña** | Clientes Potenciales (`OUTCOME_LEADS`) |
-| **Píxel** | ? — los conjuntos activos tienen `promoted_object.pixel_id = null` |
-| **API de Conversiones** | ❌ |
+| **Dataset (píxel)** | `1102441958775610` — "Asistencia Legal Deudores" (BM `929736642112662`) |
+| **API de Conversiones** | ✅ **activa** — canal `crm`, eventos Lead · Schedule · Purchase |
+| **¿Alguna campaña optimiza por el dataset?** | ❌ **todavía no** — los conjuntos activos tienen `promoted_object.pixel_id = null`. Mide, no optimiza |
 | **`ctwa_clid`** | no aplica (no es WhatsApp) |
 | **% de cierre lead → venta** | ? — se asume 5% como estándar mientras no lo entreguen |
 | **Quién responde y en cuánto** | ? |
@@ -185,6 +190,60 @@ que estar en un conjunto donde el Reel 1 **no** esté.
   formulario instantáneo** — requiere el permiso `pages_manage_ads` sobre la
   página, que la conexión MCP no solicita. Se montan a mano en Ads Manager.
 
+---
+
+## CAPI — estado al 8-sep-2026
+
+El CAPI **ya estaba funcionando** cuando se revisó; el trabajo fue arreglarlo,
+no configurarlo. Detalle completo del diagnóstico en
+`capi-diagnostico-2026-09-08.md` y en la memoria de `heat-ads`
+(`.claude/memory/project/capi-calidad-lead.md`).
+
+| | |
+|---|---|
+| **Quién envía** | El motor de HEAT (`heat-ads`), cada 15 minutos |
+| **Volumen** | 355 eventos aceptados en 7 días |
+| **Canal** | `crm` ✅ (antes caía en `web`, que Meta archiva) |
+| **CRM conectado en Events Manager** | ✅ 5 stages |
+| **Optimización por lead calificado** | Habilitada por Meta, **sin usar todavía** |
+
+### Reglas activas — 3 de 18 etapas
+Embudo `Asistencia Legal Deudores` (`IHgDSH40zXRnlKk0yVLp`):
+
+| Etapa | ID | Evento de Meta |
+|---|---|---|
+| Nuevo | `8072bcbc-571b-43d2-9cde-97ae6239419c` | Lead |
+| agendado | `d3a68c0d-0f8e-465b-a3ee-9aa92b136362` | Schedule |
+| CONTRATO CERRADO AB | `9cacb3ce-fa64-4e13-ad07-a0e943c7befd` | Purchase |
+
+**El embudo `ABOGADOS` (`sqRteAXu3FnDbMM2CN2W`) NO lleva reglas y está bien
+así**: es post-venta. Ahí llegan quienes ya cerraron el contrato y pasan a la
+primera sesión con el abogado. La venta se marca en el embudo principal.
+
+### Calidad de coincidencia (EMQ, sobre 10)
+| Evento | EMQ | Falta |
+|---|---|---|
+| Lead | 5,2 | venía sin `external_id` — era el flujo duplicado, ya apagado |
+| Schedule | 6,4 | — |
+| Purchase | 6,4 | — |
+
+### ⚠️ Los `Purchase` llegan valiendo $0
+Las oportunidades de GHL **no llevan monto**. El motor usa
+`regla.value ?? opp.monetaryValue` y completa con `?? 0`, así que los ~30
+contratos semanales llegan a Meta sin valor: se puede optimizar por *cantidad*
+de contratos, nunca por valor, y no hay ROAS que calcular.
+
+`AttributionRule.value` existe y el motor lo usa, pero la pantalla de
+Atribución no tiene dónde cargarlo. **Bloqueado por el ticket promedio de Emma.**
+
+### Descartado, no volver a proponerlo
+- **`lead_id`**: GHL no lo guarda (trae `adId`, `adSetId`, `campaignId`,
+  `formId`) y el token de HEAT no puede leer `/{form_id}/leads` — falta
+  `pages_read_engagement`. Requiere revisión de app en Meta. Verificado por
+  Piero, 2026-09-06.
+- **Rotar el token de Meta**: hay una decisión vigente de Piero de no rotar
+  claves hasta que las revise el técnico de TI.
+
 ## Bitácora
 | Fecha | Qué se cambió | Por qué | Métrica que debía moverse | Resultado |
 |---|---|---|---|---|
@@ -194,6 +253,8 @@ que estar en un conjunto donde el Reel 1 **no** esté.
 | 7-sep | Se crea el conjunto `Meta Form \| HEAT - Test` con 5 anuncios ($25.000/día) | Dar entrega a creativos que el Reel 1 ahogaba | CPL a 7 días vs. el del conjunto original | ⏳ **encendido a las 12:36 del 7-sep**. Sin datos aún — primera lectura el 10-sep, veredicto el 14-sep |
 | 7-sep | Se duplican `Reel 2` y `Reel 3` como “Prueba:” dentro de `Meta Form \| HEAT` | Intentar darles entrega | Impresiones > 0 | ⏳ recién encendidos, ver hallazgo #4 |
 | 7-sep | Se fija techo de **$4.000.000/mes** = $129.000/día | Agosto cerró en $4.602.916 | Gasto mensual ≤ $4M | ⏳ septiembre proyecta $3,3–3,9M |
+| 8-sep | Se conecta el CRM en Events Manager (5 stages) | Sin eso Meta no puede optimizar por lead calificado | Que aparezca el canal `crm` | ✅ Meta habilitó la optimización por lead calificado |
+| 8-sep | **Se apaga el flujo `1. CAPI - Funnel Event \| Nuevo Lead - CRM`** en el GHL del cliente | Duplicaba el evento `Lead` desde el 13-ago: Meta contaba cada lead dos veces y optimizaba hacia un número inflado | `Cliente potencial` de ~65/día a ~28/día | ⏳ verificar el 10-sep |
 
 ## Lo siguiente, en orden
 1. **Pedirle a Emma el ticket promedio y el % de cierre**, separando leads de
