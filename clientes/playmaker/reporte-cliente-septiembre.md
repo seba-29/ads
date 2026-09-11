@@ -75,12 +75,65 @@ otro lado, y escribirles hoy gasta reputación del número sin devolver nada.
 
 ---
 
-## Google Ads
+## Google Ads — la campaña de fútbol
 
-*(Pendiente de completar — los datos se están extrayendo.)*
+Está activa desde el 7 de septiembre, con $5.000 diarios. Lleva 4 días, así que
+todo lo de abajo es una primera lectura, no un veredicto.
 
-La campaña de búsqueda para la línea de fútbol está activa desde el 7 de
-septiembre, con $5.000 diarios.
+| 7 al 10 de septiembre | |
+|---|---|
+| Inversión | **$20.620** |
+| Personas que entraron a la página de fútbol | **194** |
+| Costo por visita | **$106** |
+| Cotizaciones medidas | **no medibles todavía** (falta la etiqueta) |
+
+**El cambio de mensaje funcionó, y se puede demostrar.** Antes de corregirlo, los
+anuncios hablaban de "comprar" apuntando a una página donde se cotiza. Con el
+mensaje alineado:
+
+| | Antes (6 sep) | Ahora (7-10 sep) |
+|---|---|---|
+| De cada 100 que ven el anuncio, cuántos entran | 7,2 | **12,1** |
+| Costo por visita | $140 | **$106** |
+
+Más gente entra y cada visita cuesta menos.
+
+**Lo que la gente busca confirma el negocio.** Aparecen `camisetas personalizadas`,
+`uniformes de fútbol`, `camisetas para equipos de fútbol`, `hacer camisetas de
+fútbol`, `equipo de fútbol para niños completo`. Son búsquedas de **mandar a
+hacer**, no de comprar una camiseta suelta. Es exactamente el cliente que buscamos.
+
+### Dos cosas con fecha, y las dos necesitan tu decisión
+
+**1. Verificación de anunciante — antes del 10 de octubre.**
+Google exige verificar la identidad del anunciante. El aviso dice textual que
+"es posible que algunos de tus anuncios estén detenidos o limitados". Si no se
+completa a tiempo, la campaña se detiene. Es un trámite de identidad de la
+empresa y solo lo puedes hacer tú.
+
+**2. El crédito de Google de $327.667 — antes del 31 de octubre.**
+Acá hay que corregir algo que veníamos diciendo mal: el crédito **no es un regalo
+directo**. La condición real es *invertir* $327.667 antes del 31 de octubre para
+*recibir* $327.667 de vuelta.
+
+| | |
+|---|---|
+| Invertido hasta el 10 de septiembre | $26.063 |
+| Falta invertir | **$301.604** |
+| Días hasta el 31 de octubre | 51 |
+| A $5.000 diarios se llega a | $281.063 — **queda corto por ~$46.600** |
+| Ritmo necesario | **~$5.914 diarios** |
+
+Es decir: **al ritmo actual el crédito se pierde por poco.** Subir el presupuesto
+a $6.500 diarios cuesta unos $76.500 extra en total y libera $327.667.
+
+Y hay una segunda razón para subirlo: **hoy la campaña deja pasar demanda que no
+alcanza a comprar.** De cada 100 búsquedas donde podríamos aparecer, aparecemos
+en 11. Parte de eso es presupuesto.
+
+> Antes de mover nada vamos a confirmar el contador exacto de Google, porque las
+> promociones tienen letra chica y no queremos ajustar el presupuesto sobre un
+> supuesto.
 
 ---
 

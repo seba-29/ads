@@ -186,7 +186,9 @@ equipo o club**.
 | **Campaña** | `PM \| Búsqueda \| Fútbol \| Chile` · ID `24221465441` |
 | **Estado** | 🟢 **ENCENDIDA** el 7-sep-2026 por Seba |
 | **Presupuesto** | CLP 5.000/día · Maximizar clics con tope de CPC CLP 250 |
-| **Gasto histórico** | CLP 5.443 · 541 impresiones · 39 clics · CTR 7,21% · CPC CLP 140 · **0 conversiones** |
+| **Fecha de inicio real** | **6-sep-2026** (no 8-ago: el campo de Google lo confirma y el gráfico diario marca $0 hasta el 5-sep) |
+| **6-sep, un solo día** | CLP 5.443 · 541 impr. · 39 clics · CTR 7,21% · CPC CLP 140 · 0 conv. |
+| **7-10 sep (4 días)** | CLP 20.620 · 1.610 impr. · 194 clics · **CTR 12,05%** · **CPC CLP 106** · 0 conv. |
 | **Grupos** | 1 de 3 creado: `Camisetas Fútbol` (ID `198653351943`, 5 keywords, RSA nuevo ✅) |
 | **Grupos** | 3 de 3 ✅ `Camisetas Fútbol` · `Equipos y Personalización` · `Marca Playmaker` |
 | **Keywords** | 16 · 13 frase + 3 exacta · **cero en amplia** |
@@ -266,8 +268,87 @@ Tampoco van `retro`/`vintage` (hay "Camiseta Sublimada Retro" en catálogo),
 Las negativas de varias palabras van en **frase**, no en amplia. `la u` en
 amplia bloquearía cualquier búsqueda que traiga "la" y "u" sueltas.
 
-### Crédito promocional
-**$328.000 CLP, vence el 31-oct-2026.** Evaluar antes de esa fecha.
+### Lectura del 11-sep (informe completo de ClaudeChrome)
+
+**El copy alineado se pagó solo:** CTR 7,21% → **12,05%** y CPC $140 → **$106**.
+Mismo presupuesto, casi el doble de gente entrando y cada visita más barata.
+
+**La restricción se movió de presupuesto a ranking, en 4 días:**
+
+| Día | Impr. | CTR | Perdido por presupuesto | Perdido por ranking |
+|---|---:|---:|---:|---:|
+| 7-sep | 344 | 13,95% | 70,5% | 17,6% |
+| 8-sep | 390 | 13,08% | 62,6% | 25,2% |
+| 9-sep | 370 | 12,16% | 27,2% | 63,5% |
+| 10-sep | 506 | 9,88% | 11,5% | **76,6%** |
+
+Participación de impresiones: **11,27%**. Ya casi no sobra presupuesto — ahora se
+pierde por Ad Rank. Subir presupuesto solo llevaría a ~23%; pasar de ahí exige
+calidad.
+
+⚠️ **El cuello de botella es la landing.** La keyword de mayor volumen,
+`"camisetas de futbol"` (46% de las impresiones), tiene **índice de calidad 5/10**
+con **"Experiencia de la página de destino: Inferior al promedio"**. Lo mismo en
+`[camisetas de futbol]` (5/10) y `"camisetas de futbol chile"` (7/10). Las de
+marca dan 10/10.
+
+`/16-futbol` es una categoría de PrestaShop, no una página hecha para este
+tráfico. **Si se rehace el sitio en Shopify, este es el momento de construirla.**
+
+**Dos keywords fuera de la lista de 16** siguen gastando: `venta de camisetas de
+futbol` y `comprar camiseta de futbol` (CLP 831, 4% del gasto de la ventana).
+Son de intención de compra sobre un sitio que solo cotiza. **Verificar si siguen
+habilitadas y sacarlas.**
+
+**Las negativas siguen sin hacer falta.** De 549 términos, el ruido de clubes,
+réplicas y retro es casi todo 1 impresión y $0. Los únicos con costo suman ~$440
+de $20.620 (2%). El criterio del 7-sep se confirma con datos.
+
+⚠️ **77% de los términos entró por "variante cercana"** (315 frase + 105 exacta de
+549). Google amplía por encima de nuestras concordancias. Es la fuga estructural.
+
+**"Otros términos de búsqueda": CLP 8.602 = 42% del costo.** Subió del 32%. No es
+accionable — umbral de privacidad de Google.
+
+✅ **Aplicación automática: apagada** (0 de 7 y 0 de 14). Confirmado en el historial.
+**No aplicar la recomendación #2** ("agrega palabras clave nuevas"): propone
+`camiseta argentina mundial 2022`, `camiseta de messi`, `camisetas futbol retro`.
+Tampoco la #5 (socios de búsqueda).
+
+### ⚠️ Verificación de anunciante — vence el 10-oct-2026
+Textual: *"Verifica tu identidad - Es posible que algunos de tus anuncios estén
+detenidos o limitados... deberás completar la verificación del anunciante a más
+tardar el 2026-10-10."* Es el mismo diálogo que bloqueó la Parte 2 el 4-sep.
+**Si no se completa, la campaña se detiene.** Solo lo puede hacer el titular.
+
+### Crédito promocional — NO es un regalo, es contrapartida
+Lo que dice Google textual: *"Obtén un crédito de CLP327.667 cuando inviertas
+CLP327.667 en Google Ads"*. Estado: **"Canjeado: Debes cumplir con requisitos
+adicionales"**, canjeado el 1-sep, límite **31-oct-2026**.
+
+| | |
+|---|---|
+| Invertido al 10-sep (esta campaña) | $26.063 |
+| Falta | **$301.604** |
+| Días 11-sep → 31-oct | 51 |
+| A $5.000/día se llega a | $281.063 — **corto por ~$46.600** |
+| Ritmo necesario | **~$5.914/día** |
+| Sugerido con margen | **$6.500/día** → +$76.500 de gasto libera $327.667 |
+
+**La cuenta tiene 5 campañas.** Si alguna otra gastó, el hueco es menor —
+verificar el gasto total de la cuenta, no solo el de esta campaña. Y Google
+todavía no muestra su contador ("Créditos invertidos: los datos aún no están
+disponibles"): confirmarlo antes de mover el presupuesto.
+
+### Etiqueta de conversión — el estado exacto
+Una sola acción: `Cotización enviada`, creada el 1-sep, **Principal** ✅,
+valor CLP 1, ventana posclic 90 días. Estado **"Configuración incorrecta"**:
+
+> *"Conversion has never received data. Your conversion has never received a tag
+> ping or attribution data."*
+
+Nunca recibió un solo ping. Sin GA4 importado. Y el GTM del sitio
+(`GTM-K44CLVC`) es de la cuenta vieja, así que no sirve de atajo.
 
 ## Bitácora
 | Fecha | Qué se cambió | Por qué | Métrica que debía moverse | Resultado |
