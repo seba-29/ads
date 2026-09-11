@@ -67,9 +67,10 @@ normalidad desde el 18-ago.
 
 | Campaña `Clientes Potenciales \| Meta form` · `120247918878030157` | Últimos 30 días |
 |---|---|
-| Inversión | **$349.369** |
-| Leads | **999** (Ads Manager muestra **759** en Resultados — ventana de atribución) |
-| Costo por lead | **$350** |
+| Inversión | **$349.346** |
+| Leads | **759** ← usar SIEMPRE esta. Es la columna **Resultados**, la misma del panel del cliente |
+| Costo por lead | **$460** |
+| *(La columna «Clientes potenciales» marca 999 / $350)* | Otra ventana de atribución, **no** otro dato. Mezclarlas produjo una falsa alarma el 11-sep |
 | Impresiones · clics · CTR | 396.201 · 9.440 · 2,38% |
 | CPM · frecuencia | $882 · 2,21 |
 | Aprendizaje | ✅ salió (`SUCCESS`) |
@@ -79,21 +80,24 @@ Chile, hombres 19-55 configurado, **Advantage+ activo con permiso para salirse d
 edad y género** — y se sale: 17% de los leads son mujeres, a $322 (mejor CPL que
 los hombres, $357).
 
-| Edad | Leads | % |
+| Edad | Leads | c/u |
 |---|---:|---:|
-| 18-24 | 323 | 32% |
-| 25-34 | 298 | 30% |
-| 35-44 | 167 | 17% |
-| 45-54 | 146 | 15% |
-| 55+ | 65 | 7% |
+| 18-24 | 262 | $396 |
+| 25-34 | 231 | $470 |
+| 35-44 | 114 | $585 |
+| 45-54 | 102 | $434 |
+| 55-64 | 35 | $499 |
+| 65+ | 15 | $576 |
+
+Por red: **Instagram 675 · $447** · Facebook 84 · $565.
 
 ### Los 5 anuncios, y el problema de estructura
 | Anuncio | Gasto | Impresiones | Leads | CPL |
 |---|---:|---:|---:|---:|
-| **Prueba: basquet** | $229.359 | 299.109 | 671 | $342 |
-| **Prueba: diamante** | $112.765 | 92.125 | 319 | $353 |
-| No somos la marca para ti | $3.906 | 2.294 | 5 | $781 |
-| **Prueba: Fut 01** | $2.446 | 1.919 | 3 | $815 |
+| **Prueba: basquet** | $229.359 | 299.109 | 551 | $416 |
+| **Prueba: diamante** | $112.765 | 92.125 | 201 | $561 |
+| No somos la marca para ti | $3.906 | 2.294 | 4 | $977 |
+| **Prueba: Fut 01** | $2.446 | 1.919 | 2 | $1.223 |
 | La Clásica | $893 | 754 | 1 | $893 |
 
 **Los 5 están en el mismo conjunto, así que compiten entre ellos.** Meta concentró
@@ -135,21 +139,36 @@ Lo que **no** pregunta es para cuántas personas. Esa es la variable que separa 
 pedido de $19.900 de uno de club completo, y hoy no se captura ni en el formulario
 ni en Meta.
 
-### ⚠️ Meta y el CRM no cuadran — pendiente de zanjar
-Del 4 al 10-sep Meta reporta **283 leads** (28·32·37·63·48·32·43). El CRM, con
-119 sin contactar y 91% sin contactar, implica **~131 fichas**. Faltan ~150.
+### ✅ Meta y el CRM SÍ cuadran — falsa alarma del 11-sep, resuelta
+Llegué a decir que faltaban ~150 leads. **Era mío el error:** comparé la columna
+`Clientes potenciales` (999) contra un subconjunto del rescate (119). Contra la
+cifra correcta el panel lo zanja: **759 leads → 703 fichas = 93% de captura.**
+No hay fuga. **No volver a levantar esta alarma sin comparar columnas iguales.**
 
-Tres explicaciones posibles, sin distinguir todavía:
-1. **Duplicados** — frecuencia 2,21; GHL fusiona por teléfono y Meta cuenta dos.
-   La más probable. Si es esto, el costo por *persona real* es mayor a $350.
-2. **Leads que no llegan al CRM** — más caro que el problema recién corregido.
-3. **La lista de 119 venía filtrada** y el 91% no aplica al total.
+### El embudo llega hasta el final (panel HEAT, acumulado al 10-sep)
+Dimos por hecho que no había datos de conversión. Sí los hay.
 
-**La prueba:** contactos únicos creados en GHL del 4 al 10-sep contra 283. Si da
-~131, revisar cuántos de los 283 comparten teléfono.
+| Etapa | Personas | Costo por persona |
+|---|---:|---:|
+| Nuevo Lead | 703 | $497 |
+| En Calificación | 193 (27%) | $1.810 |
+| Pendiente Cotización | 29 (4%) | — |
+| Cotización Enviada | 24 (3%) | $14.556 |
+| **Pedido Confirmado** | **6 (0,9%)** | **$58.224** |
+| Cerrado | 6 | — |
 
-Ojo con las dos columnas de Meta: "Resultados" da 759 (≈30/día) y "Clientes
-potenciales" da 999 (≈40/día). Parte de la discrepancia entre lecturas sale de ahí.
+Es acumulado: cada fila cuenta a todos los que *pasaron* por ahí.
+
+**La lectura que importa:** el agente solo respondía si el lead escribía primero,
+así que esos **193 son los que se auto-iniciaron** — el 27% más motivado. De ahí
+salieron las 24 cotizaciones y los 6 pedidos. **Los otros 510 nunca hablaron con
+nadie.** El arreglo del 11-sep no busca más leads: busca activar ese tramo.
+
+⚠️ Al proyectar, no asumir que el 27% se replica sobre los 510: quien escribe
+primero cierra mejor que quien recibe un mensaje frío.
+
+**$58.224 por pedido confirmado es ahora LA pregunta de la cuenta**, y sigue sin
+poder juzgarse porque el ticket promedio nunca se pidió.
 
 ### Prioridad por canal (confirmado con Seba, 11-sep)
 - **Meta → básquetbol.** El anuncio de básquet no es una fuga: es la estrategia.

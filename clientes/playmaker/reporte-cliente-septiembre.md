@@ -1,16 +1,16 @@
 # Playmaker — Reporte del 18 de agosto al 10 de septiembre
 
-> **Borrador. No enviar todavía.** Falta el bloque de Google Ads y falta cerrar
-> la cifra de personas (ver nota al final).
+> **Borrador listo para revisión de Seba.** Las cifras coinciden con el panel.
 
 ---
 
 ## En una frase
 
-Las campañas trajeron cerca de **1.000 personas interesadas a $350 cada una**, y
-el problema nunca estuvo en la publicidad: **9 de cada 10 de esas personas nunca
-recibieron un mensaje de vuelta.** Eso quedó corregido hoy y hay un rescate en
-marcha sobre los que quedaron sin contactar la última semana.
+Las campañas trajeron **759 personas interesadas a $460 cada una**, y de ahí
+salieron **6 pedidos confirmados**. El problema nunca estuvo en la publicidad:
+**9 de cada 10 de esas personas nunca recibieron un mensaje de vuelta.** Eso
+quedó corregido hoy y hay un rescate en marcha sobre los que quedaron sin
+contactar la última semana.
 
 ---
 
@@ -18,18 +18,41 @@ marcha sobre los que quedaron sin contactar la última semana.
 
 | | 18 ago – 10 sep |
 |---|---|
-| Inversión en Meta | **$349.369** |
-| Personas que dejaron sus datos | **999** |
-| Costo por persona interesada | **$350** |
-| Personas que recibieron un mensaje nuestro | **~9%** |
-| Personas que llegaron a cotización | **prácticamente ninguna** |
+| Inversión en Meta | **$349.346** |
+| Personas que dejaron sus datos | **759** |
+| Costo por persona interesada | **$460** |
+| Llegaron a tu CRM | **703** |
+| Alcanzaron a hablar con alguien | **193** — $1.810 cada uno |
+| Cotizaciones enviadas | **24** — $14.556 cada una |
+| **Pedidos confirmados** | **6** — **$58.224 cada uno** |
 
 Es el primer período completo de esta campaña, así que no hay mes anterior contra
-el cual compararlo.
+el cual compararlo. Estas cifras son la vara para los próximos.
 
-**Cómo leer estas cifras.** El costo por persona interesada es real y es bajo. El
-costo por conversación, en cambio, era infinito — porque no había conversaciones.
-Esa es exactamente la distancia entre lo que estaba funcionando y lo que no.
+**Cómo leer esto.** El costo por persona interesada es real y es bajo. Lo que no
+funcionaba estaba después: de las 759 personas, solo 193 llegaron a conversar.
+El resto quedó esperando.
+
+---
+
+## De dónde salieron esos 6 pedidos
+
+Es la parte importante del reporte, porque explica dónde está el crecimiento.
+
+El sistema respondía a quien escribía primero, pero **no iniciaba la conversación**.
+Entonces las 193 personas que llegaron a hablar con alguien son, en la práctica,
+**las que se auto-iniciaron**: las más decididas. De esas salieron las 24
+cotizaciones y los 6 pedidos.
+
+**Las otras 510 nunca hablaron con nadie.** No sabemos qué había ahí, porque nadie
+preguntó.
+
+Eso es lo que cambia desde hoy. No se trata de traer más gente: se trata de
+conversar con la que ya está pagada y esperando.
+
+**Sin prometer de más:** quien escribe por iniciativa propia cierra mejor que quien
+recibe un mensaje frío. Ese 27% que llegó a conversar no se va a repetir igual
+sobre las 510. Pero hoy ese tramo no está rindiendo nada, y esa es la diferencia.
 
 ---
 
@@ -159,9 +182,13 @@ conclusiones.
 ## Qué necesitamos de ti
 
 **1. El ticket promedio de un pedido y el margen aproximado.**
-Hoy sabemos que una persona interesada cuesta $350. No sabemos si eso es barato o
-caro para tu negocio, porque no sabemos cuánto deja un pedido. Es el dato que
-falta para decidir si en octubre subimos el presupuesto o lo mantenemos.
+Este es el dato que falta para saber si la cuenta funciona. Hoy sabemos que **cada
+pedido confirmado costó $58.224 en publicidad**. Si un juego de camisetas para un
+club vale bastante más que eso, el negocio es bueno y corresponde invertir más. Si
+el pedido promedio es una camiseta suelta, hay que replantear el enfoque.
+
+No podemos responderlo desde acá: solo tú sabes cuánto deja un pedido. Es la
+decisión de octubre.
 
 **2. Acceso al sitio para instalar la medición de Google.**
 La etiqueta que hay instalada hoy es de la cuenta de Google Ads antigua, a la que
