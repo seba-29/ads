@@ -3,7 +3,7 @@
 > Ficha de contexto. La lee la skill `meta-ads` antes de cualquier recomendación.
 > Lo que no se sepa va como `?` — nunca inventado. Un dato falso contamina las 4 etapas.
 
-> Última revisión: **7-sep-2026**. El aviso de UNSETTLED de agosto quedó
+> Última revisión: **11-sep-2026**. El aviso de UNSETTLED de agosto quedó
 > resuelto — la cuenta de Meta volvió a publicar (**$105.629 en los últimos
 > 7 días**). Ahora el cliente corre en **dos canales**: Meta y Google Ads.
 
@@ -60,12 +60,86 @@
 | **3 deseos de Reiss** *(con evidencia)* | |
 | **2 perfiles de comprador** | |
 
-## Estado actual de la cuenta
-- **Qué corre hoy:** nada — la cuenta quedó **impaga** y no es consultable.
-- **Historial:** las campañas estaban apagadas; se creó una **campaña nueva de Clientes Potenciales con formulario** (hace ~2 días) y acto seguido saltó el estado de pago.
-- **Estado de gestión:** ✅ ya se avisó al cliente.
-- **Desbloquea:** que el cliente regularice el saldo. Hasta entonces no hay nada que optimizar.
-- **Al reactivar:** la campaña nueva va a reiniciar aprendizaje. Tratarla como lanzamiento, no como continuación.
+## Estado actual de la cuenta — Meta, al 11-sep-2026
+
+El bloque de "cuenta impaga" de agosto quedó **obsoleto**: la cuenta publica con
+normalidad desde el 18-ago.
+
+| Campaña `Clientes Potenciales \| Meta form` · `120247918878030157` | Últimos 30 días |
+|---|---|
+| Inversión | **$349.369** |
+| Leads | **999** (Ads Manager muestra **759** en Resultados — ventana de atribución) |
+| Costo por lead | **$350** |
+| Impresiones · clics · CTR | 396.201 · 9.440 · 2,38% |
+| CPM · frecuencia | $882 · 2,21 |
+| Aprendizaje | ✅ salió (`SUCCESS`) |
+
+**Un solo conjunto:** `Amplio | Meta Form` (`120247918878040157`), $15.000/día.
+Chile, hombres 19-55 configurado, **Advantage+ activo con permiso para salirse de
+edad y género** — y se sale: 17% de los leads son mujeres, a $322 (mejor CPL que
+los hombres, $357).
+
+| Edad | Leads | % |
+|---|---:|---:|
+| 18-24 | 323 | 32% |
+| 25-34 | 298 | 30% |
+| 35-44 | 167 | 17% |
+| 45-54 | 146 | 15% |
+| 55+ | 65 | 7% |
+
+### Los 5 anuncios, y el problema de estructura
+| Anuncio | Gasto | Impresiones | Leads | CPL |
+|---|---:|---:|---:|---:|
+| **Prueba: basquet** | $229.359 | 299.109 | 671 | $342 |
+| **Prueba: diamante** | $112.765 | 92.125 | 319 | $353 |
+| No somos la marca para ti | $3.906 | 2.294 | 5 | $781 |
+| **Prueba: Fut 01** | $2.446 | 1.919 | 3 | $815 |
+| La Clásica | $893 | 754 | 1 | $893 |
+
+**Los 5 están en el mismo conjunto, así que compiten entre ellos.** Meta concentró
+98% del gasto en dos y los otros tres nunca tuvieron muestra suficiente para ser
+juzgados — el umbral son 500 impresiones y `Fut 01` llegó a 1.919 con $2.446.
+
+⚠️ **El único creativo de fútbol es uno de los que no se probó.** No sabemos si el
+fútbol funciona en Meta; sabemos que no se midió.
+
+Consecuencia directa para el plan de "hacer más videos": si entran al mismo
+conjunto, les pasa lo mismo. Para aprender qué deporte y qué video funcionan hay
+que **separarlos en conjuntos distintos**, o no compiten en igualdad.
+
+### Retención de video (los creativos vienen reutilizados de Instagram)
+| Anuncio | Reproducciones | Llegaron al 75% | |
+|---|---:|---:|---:|
+| Prueba: basquet | 293.230 | 11.603 | **4,0%** |
+| Prueba: diamante | 89.567 | 2.595 | **2,9%** |
+
+### Medición: el hueco de fondo
+| | |
+|---|---|
+| **Objetivo de optimización** | `LEAD_GENERATION` — **volumen** de formularios, no calidad |
+| **`promoted_object.pixel_id`** | `null` |
+| **CAPI / dataset** | ❌ no conectado |
+| **Destino** | `ON_AD` — formulario instantáneo nativo |
+
+**Meta no tiene forma de saber cuál de los 999 leads valió algo**, así que persigue
+el formulario más barato que encuentra. Está cumpliendo la orden que se le dio.
+Es el mismo patrón que Asistencia Legal, y lo resuelve el mismo motor de CAPI.
+
+### El formulario sí califica — pero por deporte, no por tamaño
+Pregunta **"¿Para qué deporte estás buscando la prenda?"** más los datos básicos.
+
+Eso es mejor de lo que parece: **los 999 leads ya traen el deporte declarado.** La
+trazabilidad básica está recolectada, solo hay que contarla.
+
+Lo que **no** pregunta es para cuántas personas. Esa es la variable que separa un
+pedido de $19.900 de uno de club completo, y hoy no se captura ni en el formulario
+ni en Meta.
+
+### Prioridad por canal (confirmado con Seba, 11-sep)
+- **Meta → básquetbol.** El anuncio de básquet no es una fuga: es la estrategia.
+- **Google → fútbol.** Por eso la campaña y la landing apuntan a `/16-futbol`.
+- Pendiente de decidir con datos: cuál de los dos canales convierte mejor. Si gana
+  Meta con claridad, el plan es concentrar ahí y producir más video.
 
 ---
 
@@ -104,6 +178,17 @@ equipo o club**.
 | **Recursos** | 4 vínculos a sitio · 5 textos destacados · 1 fragmento estructurado |
 | **Falta** | ⚠️ **la etiqueta de conversión "Cotización enviada"** — sigue en "Configuración incorrecta" |
 | **Prompts de la construcción** | `clientes/playmaker/google-ads-parte3.md` |
+
+### El GTM del sitio NO es nuestro (verificado 11-sep)
+El HTML de `playmaker.cl` trae el contenedor **`GTM-K44CLVC`**. No sirve: es de la
+**cuenta vieja de Google Ads, a la que ya no hay acceso**. La cuenta nueva
+(`130-061-3823`) no está incluida ahí.
+
+O sea que la etiqueta no se resuelve desde el navegador: hace falta **acceso al
+contenedor o al sitio**, y eso lo tiene que dar el cliente. La migración a Shopify
+no cambia ese requisito — solo cambia dónde hay que instalarlo.
+
+**No volver a proponer "usamos el GTM que ya está".** Ya se revisó.
 
 ### La etiqueta no bloquea la entrega, bloquea la lectura
 La campaña usa **Maximizar clics**, y esa estrategia **no necesita conversiones
