@@ -65,3 +65,6 @@
 | Fecha | Qué se cambió | Por qué | Métrica que debía moverse | Resultado |
 |---|---|---|---|---|
 | | | | | |
+| 11-sep | La tabla de anuncios distingue apagado de sin resultados | Los dos salían como una raya | Legibilidad | ✅ Aplica a todos los clientes |
+| 11-sep | El plan se pone al día | Los dos videos ya llegaron y están al aire | — | ✅ Pasa de «grabar» a «ver cómo rinden», con la advertencia de que lleva un día |
+| 11-sep | ⚠️ Pendiente de decidir | Arrancó el 20-ago, lleva 3 semanas | — | Su reporte todavía dice «este período es el punto de partida» y ya no lo es. **Consultado a Seba, sin respuesta** |

@@ -84,3 +84,6 @@
 | 25-ago-2026 | Workflow «Nuevo Lead - Form Landing» armado y publicado | Convertir el envío del formulario en contacto + oportunidad | Leads que llegan al CRM | ✅ Probado en producción por el cliente |
 | 25-ago-2026 | Landings publicadas en Netlify con dominio propio | Estaban solo como código local | — | ✅ Las dos con certificado |
 | 25-ago-2026 | Corregidas URLs de `localhost` en el nav de producción | Las pestañas de cruce entre landings daban error de conexión | Navegación entre las dos líneas | ✅ Cruzan y arrastran la atribución |
+| 11-sep | Primera semana con campañas nuestras (creadas 4-sep) | — | Línea base | ✅ **$352.417 invertidos.** Formulario: $196.188 → 275 leads a $713. Landing: $156.229 → 2 registros |
+| 11-sep | ⚠️ Se detecta que la landing optimiza hacia un evento que no envía | $118.598 en 7 días sin señal | Conversiones reales | ⛔ **Los conjuntos persiguen `CompleteRegistration`; la landing dispara `Lead`.** Los 8 `CompleteRegistration` de la semana vienen con `Purchase` e `InitiateCheckout` — son de la tienda que comparte el píxel |
+| 11-sep | Se escribe su ficha de gestión en heat-ads | No tenía: el reporte salía sin método ni plan | — | ✅ Sin unidad de resultado fijada, para que las dos campañas salgan en bandas separadas y no se esconda el gasto de la landing |

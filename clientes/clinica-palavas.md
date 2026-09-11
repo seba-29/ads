@@ -74,6 +74,11 @@
 |---|---|---|---|---|
 | 24-ago-2026 | Auditoría de cuenta + plan Aniversario→Cyber | Sale promo de aniversario | — | CPA real $839; arquitectura de 6 conjuntos |
 | 31-ago-2026 | Nada — solo lectura | Primer ciclo de reportes con datos en vivo | — | CPL $1.729 (±7%) sobre 221 leads. Detectados: Inyectables a 5,2× el mejor CPL, Chillán con frecuencia 3,37, y Estética convirtiendo el formulario al doble |
+| 11-sep | Reporte semanal (4-10 sep). Cierra el aniversario | ANIV26 terminó, arrancó la de régimen | Costo por lead | ✅ **$1.407 contra $1.777.** Menos inversión ($292.635 vs $504.595), más alcance (55.940 vs 41.847) y frecuencia de 2,43 a 1,45 |
+| 11-sep | La campaña de régimen rinde mejor que la de aniversario | — | Costo por lead | ✅ `Clientes Potenciales \| Meta Form \| ABO` a **$1.116** contra $1.721 de ANIV26 en su última semana. n=108 |
+| 11-sep | Sale el bloque de envíos masivos de WhatsApp | No se mandaron más desde las tres olas de agosto | — | ✅ La sección sigue existiendo en el producto para la próxima tanda |
+| 11-sep | Se agrega aviso destacado de fase de aprendizaje | Las de régimen se crearon el lunes; varios videos en cero | Que el cero no se lea como fracaso | ✅ Cuadro propio arriba, no viñeta al final |
+| 11-sep | Ajuste de inversión a $250.000 semanales | Cifra de la planilla que mandó el cliente | Gasto semanal | ⏳ desde $292.635, en tramos para no reiniciar el aprendizaje |
 
 ---
 

@@ -67,3 +67,7 @@
 | Fecha | Qué se cambió | Por qué | Métrica que debía moverse | Resultado |
 |---|---|---|---|---|
 | | | | | |
+| 11-sep | Primera lectura completa de Google Ads (4-10 sep) | Canal nuevo, foco joyería | — | ✅ **$76.781 · 697 visitas · $110 c/u · CTR 9,05%** |
+| 11-sep | ⚠️ La medición de compras está rota | — | Ventas atribuidas | ⛔ El objetivo **Compra** en «Configuración incorrecta» (afecta a las 9 campañas). **0 compras** en el período. Las 20 «conversiones» son otra acción — NO se cargaron al reporte |
+| 11-sep | ⚠️ 57% del presupuesto en términos de UNOde50, sin resultado | Choca con la tesis del canal | Costo por clic | ⛔ Marcas: $43.565 · 139 clics · **~$313 CPC** · **0 conv.** Genérica: $33.217 · 558 clics · ~$60 · 20 conv. Solo UNOde50 suma $26.572 |
+| 11-sep | ⚠️ El grupo `Marca BeFashion` no tiene palabras clave | — | — | Está publicando nada. Suele ser el grupo más barato y el que mejor convierte |

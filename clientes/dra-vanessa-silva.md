@@ -127,6 +127,9 @@ comparar contra WhatsApp, y pedir 2-3 videos nuevos grabados para anuncio.
 | 2026-07-15 | Conjunto (1-3-5) de $15.000 a $5.000/día | Corrección de la subida del 14-jul | — | — |
 | 2026-07-24 | Nace PROMOCIONES con $13.000/día | Escalar el ángulo de promoción | Volumen de conversaciones | Es el conjunto más barato: $423 c/u |
 | 2026-09-03 | PROMOCIONES $13.000→$10.000; (1-3-5) y (2-4) $5.000→$3.500 | El conjunto (2-4) va a $907 por conversación contra $423 de PROMOCIONES; diferencia declarable (n=137 y 759) | Costo por conversación de la campaña hacia $460-480 | *(en 7 días)* |
+| 11-sep | Reporte semanal (4-10 sep) | Cadencia nueva | Costo por conversación | ✅ **254 conversaciones a $464** contra 213 a $469. El ajuste del 3-sep cumplió: la meta era $460-480 |
+| 11-sep | Se mide el mes contra el presupuesto | Seba informa tope de $500.000/mes | Gasto proyectado | ⛔ **$300.000 gastados en 10 días.** Quedan $200.000 para 20 días = $10.000/día. Los conjuntos suman $17.000/día |
+| 11-sep | Se identifica qué recortar | El recorte por presupuesto coincide con el de rendimiento | Costo por conversación | 📌 PROMOCIONES $377 · (1-3-5) $566 · **(2-4) $857**. Dejar solo PROMOCIONES cierra el mes exacto |
 
 > ⚠️ **Los tres cambios del 3-sep se hicieron el mismo día.** Rompe la regla de
 > un cambio a la vez: la próxima ventana no va a poder decir cuál de los tres

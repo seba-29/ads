@@ -255,6 +255,10 @@ Atribución no tiene dónde cargarlo. **Bloqueado por el ticket promedio de Emma
 | 7-sep | Se fija techo de **$4.000.000/mes** = $129.000/día | Agosto cerró en $4.602.916 | Gasto mensual ≤ $4M | ⏳ septiembre proyecta $3,3–3,9M |
 | 8-sep | Se conecta el CRM en Events Manager (5 stages) | Sin eso Meta no puede optimizar por lead calificado | Que aparezca el canal `crm` | ✅ Meta habilitó la optimización por lead calificado |
 | 8-sep | **Se apaga el flujo `1. CAPI - Funnel Event \| Nuevo Lead - CRM`** en el GHL del cliente | Duplicaba el evento `Lead` desde el 13-ago: Meta contaba cada lead dos veces y optimizaba hacia un número inflado | `Cliente potencial` de ~65/día a ~28/día | ⏳ verificar el 10-sep |
+| 11-sep | Reporte semanal. Se verifica la comparativa contra las heredadas | Seba reporta haber bajado el costo por lead | Costo por lead | ✅ **Confirmado y mayor de lo dicho.** Misma unidad: QUALITY_LEAD nuestro $4.343 vs heredado $7.318 (−41%); LEAD_GENERATION $1.567 vs $10.556 (−85%) |
+| 11-sep | ✅ **El CAPI cerró el circuito** | Era el paso 6, en rojo desde el 8-sep | Un conjunto optimizando por el dataset | ✅ `CAPI - Meta Form \| HEAT - Test` (creado 8-sep) con `promoted_object.pixel_id = 1102441958775610`. **El único de la cuenta** — `AUDIENCIA GANADORA` usa QUALITY_LEAD pero con pixel_id null |
+| 11-sep | Se mide el mes contra el tope de $4.000.000 | — | Gasto proyectado | ⛔ **$1.593.081 en 10 días.** Quedan $2.406.919 para 20 = $120.346/día contra ~$144.640 actuales. Cierra en ~$4.486.000 |
+| 11-sep | Se identifica qué recortar | Igual que en Vanessa, coincide con el peor | Costo por lead | 📌 `03- UBICACIONES REEL IG`: $20.000/día, **13 leads a $10.556** (bajo el umbral de 15). Pausarlo deja el mes en ~$4.086.000 |
 
 ## Lo siguiente, en orden
 1. **Pedirle a Emma el ticket promedio y el % de cierre**, separando leads de
