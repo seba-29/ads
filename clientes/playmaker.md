@@ -135,6 +135,22 @@ Lo que **no** pregunta es para cuántas personas. Esa es la variable que separa 
 pedido de $19.900 de uno de club completo, y hoy no se captura ni en el formulario
 ni en Meta.
 
+### ⚠️ Meta y el CRM no cuadran — pendiente de zanjar
+Del 4 al 10-sep Meta reporta **283 leads** (28·32·37·63·48·32·43). El CRM, con
+119 sin contactar y 91% sin contactar, implica **~131 fichas**. Faltan ~150.
+
+Tres explicaciones posibles, sin distinguir todavía:
+1. **Duplicados** — frecuencia 2,21; GHL fusiona por teléfono y Meta cuenta dos.
+   La más probable. Si es esto, el costo por *persona real* es mayor a $350.
+2. **Leads que no llegan al CRM** — más caro que el problema recién corregido.
+3. **La lista de 119 venía filtrada** y el 91% no aplica al total.
+
+**La prueba:** contactos únicos creados en GHL del 4 al 10-sep contra 283. Si da
+~131, revisar cuántos de los 283 comparten teléfono.
+
+Ojo con las dos columnas de Meta: "Resultados" da 759 (≈30/día) y "Clientes
+potenciales" da 999 (≈40/día). Parte de la discrepancia entre lecturas sale de ahí.
+
 ### Prioridad por canal (confirmado con Seba, 11-sep)
 - **Meta → básquetbol.** El anuncio de básquet no es una fuga: es la estrategia.
 - **Google → fútbol.** Por eso la campaña y la landing apuntan a `/16-futbol`.
@@ -263,3 +279,7 @@ amplia bloquearía cualquier búsqueda que traiga "la" y "u" sueltas.
 | 7-sep | Se corrige la lista de negativas: 41 → 40, sale `juego` | "Juego de camisetas" es el cliente objetivo, no ruido | No perder tráfico calificado | ✅ confirmado por los datos: `juego camisetas de futbol`, `valor juego de camisetas de futbol` y `juegos de camiseta` aparecen en el informe. Con `juego` se habrían bloqueado |
 | 7-sep | Parte 3: se guardan los grupos 2 y 3, las 40 negativas, los 10 recursos y se verifica el tope de CPC | Terminar la carga bloqueada por la verificación de identidad | Campaña completa y lista | ✅ 11 de 12 del checklist en verde |
 | 7-sep | **Campaña ENCENDIDA** por Seba | El objetivo es llevar tráfico a `/16-futbol`; la etiqueta no bloquea la entrega con Maximizar clics | Clics con intención de cotizar | ⏳ primera lectura el **14-sep** |
+| 11-sep | Se mide el CRM contra Meta y se encuentra la causa del reclamo del cliente | El cliente decía "pocos leads"; llegaban ~40/día | Tasa de contacto | ✅ **921 fichas en la etapa de entrada; de las 120 más recientes, 109 (91%) sin un solo mensaje. Cero fichas con mensaje nuestro sin respuesta** — el primer contacto no fallaba a veces, no existía |
+| 11-sep 11:56 | Primer contacto automático en producción: mensaje dentro de 5 min usando el deporte declarado en el formulario | La etapa de entrada no la revisaba nadie; los avisos arrancaban en "Pendiente Cotización" | Contactados ÷ recibidos: de ~9% a ~100% | ⏳ primera lectura **15-sep** |
+| 11-sep | Rescate a goteo de los 119 sin contactar de los últimos 7 días (1 cada 5 min, 9-20 h) | Recuperar lo salvable sin quemar el número de WhatsApp | Respuestas | ⏳ en curso. En Ondex, mismo defecto, **24% de los números falló** — descontarlo antes de calcular tasas |
+
