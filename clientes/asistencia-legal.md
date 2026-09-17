@@ -14,6 +14,8 @@
 | **Estado de la cuenta** | ✅ ACTIVE |
 | **Rubro** | Servicios legales — reprogramación / renegociación de deudas (Ley de insolvencia, DICOM) |
 | **Contraparte** | Emma |
+| **WhatsApp API** | **`+56 9 7894 5536`** — "Asistencia Legal Deudores". Conectado a GHL el **17-sep-2026** vía LeadConnector, en modo **coexistencia** |
+| **WABA** | Creada el 17-sep, limpia. ⚠️ **Nunca usar `1157548536170601`** ("Isabel Asistente legal deudores") — ver el aprendizaje del 17-sep |
 | **Web / IG** | ? |
 
 ## Los números (obligatorios — sin esto no hay recomendación de presupuesto)
@@ -62,12 +64,55 @@ Seba apagó la campaña 11 y el conjunto `01-TEST` el 7-sep.
 | **¿Alguna campaña optimiza por el dataset?** | ❌ **todavía no** — los conjuntos activos tienen `promoted_object.pixel_id = null`. Mide, no optimiza |
 | **`ctwa_clid`** | no aplica (no es WhatsApp) |
 | **% de cierre lead → venta** | ? — se asume 5% como estándar mientras no lo entreguen |
-| **Quién responde y en cuánto** | ? |
+| **Quién responde y en cuánto** | ? — tiempo sin medir |
+| **Canal de seguimiento** | WhatsApp API `+56 9 7894 5536` → GHL, desde el 17-sep. El anuncio sigue yendo a formulario nativo; el WhatsApp es lo que viene después |
 
 > ⚠️ **Trampa de métrica documentada en esta cuenta.** El campo `lead` a nivel
 > de anuncio es más amplio que `results` (`actions:leadgen.other`) a nivel de
 > campaña: 1.765 vs 1.071 leads en la misma ventana. **Nunca mezclar los dos en
 > un mismo reporte.** Toda esta ficha usa `actions:leadgen.other`.
+
+## El WhatsApp API — lo que costó y lo que queda
+
+Conectado el **17-sep-2026** después de dos días trabados. Estado hoy en el
+panel de LeadConnector:
+
+| | |
+|---|---|
+| Número | `+56 9 7894 5536` · Chile · **Coexistencia** · ✅ Conectado |
+| Estado de la cuenta | ✅ Aprobado |
+| **Verificación de negocio de Meta** | 🟠 **No verificado** — la hace el cliente con documentos del estudio. Define los límites de mensajería |
+| **Mensajes de marketing** | 🟠 **Pendiente** — sin verificar qué implica; confirmar contra documentación antes de planificar envíos |
+| Calificación de calidad | Ninguno — normal, el número aún no tiene tráfico |
+
+### 🔴 El aprendizaje, y aplica a cualquier cliente
+
+El número original (`+56 9 2383 2982`) **no se pudo conectar nunca**. Vivía en
+la WABA `1157548536170601` ("Isabel Asistente legal deudores", propiedad de
+Estudio Jurídico Carabajal y asociados), que tenía una **tarjeta VISA \*6698**
+asociada desde una herramienta anterior (Clienty).
+
+> **Una WABA que ya tiene método de pago no se puede conectar a otro BSP.**
+> Meta lo bloquea para evitar doble facturación, y la tarjeta **no se puede
+> quitar sin registrar otra** en su lugar. No hay forma de limpiarla.
+
+Lo que se probó y falló: elegir otra WABA en el onboarding (el número queda
+amarrado a la suya), desconectar el proveedor anterior desde Meta Business
+Suite, y quitar el método de pago.
+
+**La salida es número nuevo + WABA nueva.** Costo real: un chip de ~$1.000 CLP.
+No vale la pena pelear con la WABA heredada.
+
+📌 Documentación de HighLevel, textual: *"Do not add a payment method during
+the onboarding process"* — la agrega su backend al terminar. Agregar una a
+mano es exactamente lo que deja la WABA inservible para el futuro.
+
+### Pendiente de este canal
+- **Prueba de humo**: mensaje desde otro teléfono → ¿llega a GHL? ¿responde el agente? ¿vuelve la respuesta? **Antes de publicar el número en ningún lado.**
+- **Definir la coexistencia**: el número quedó vivo también en el celular. O el teléfono no se usa, o se ata a la etapa de "Ayuda Humana" — si no, el agente y una persona contestan lo mismo.
+- **Actualizar el número** en: pantalla de agradecimiento del formulario, creativos que lo lleven impreso, flujos de GHL, prompt del agente, web y firma. Y respuesta automática en el número viejo apuntando al nuevo.
+- **Titularidad del chip**: acordado que quede a nombre del estudio. **Sin formalizar todavía.**
+- **Mantener el chip vigente**: sin plan ni recarga la operadora lo recicla y reasigna el número.
 
 ## Las 7 Maletas
 1. **Público** — personas con deudas vencidas y/o publicadas en DICOM, 25–60, Chile
@@ -259,6 +304,9 @@ Atribución no tiene dónde cargarlo. **Bloqueado por el ticket promedio de Emma
 | 11-sep | ✅ **El CAPI cerró el circuito** | Era el paso 6, en rojo desde el 8-sep | Un conjunto optimizando por el dataset | ✅ `CAPI - Meta Form \| HEAT - Test` (creado 8-sep) con `promoted_object.pixel_id = 1102441958775610`. **El único de la cuenta** — `AUDIENCIA GANADORA` usa QUALITY_LEAD pero con pixel_id null |
 | 11-sep | Se mide el mes contra el tope de $4.000.000 | — | Gasto proyectado | ⛔ **$1.593.081 en 10 días.** Quedan $2.406.919 para 20 = $120.346/día contra ~$144.640 actuales. Cierra en ~$4.486.000 |
 | 11-sep | Se identifica qué recortar | Igual que en Vanessa, coincide con el peor | Costo por lead | 📌 `03- UBICACIONES REEL IG`: $20.000/día, **13 leads a $10.556** (bajo el umbral de 15). Pausarlo deja el mes en ~$4.086.000 |
+| 16-sep | Se intenta conectar `+56 9 2383 2982` a la API vía LeadConnector | Llevar el seguimiento al agente de IA en GHL | Número conectado | ⛔ **Bloqueado.** «a payment method already exists for current WhatsApp Business Account - 1157548536170601». La VISA \*6698 no se puede retirar sin registrar otra |
+| 17-sep | Se descarta rescatar el número viejo y se compra un chip nuevo | La WABA heredada es inservible para otro BSP; el chip cuesta ~$1.000 | Tiempo hasta tener el canal andando | ✅ Decisión tomada con el cliente vía Julieta. Acordado que el chip quede a nombre del estudio |
+| 17-sep | ✅ **WhatsApp API conectado**: `+56 9 7894 5536`, WABA nueva | Cerrar el canal de seguimiento del formulario | Estado «Conectado» en LeadConnector | ✅ Conectado, coexistencia, cuenta Aprobada. 🟠 Verificación de negocio **no verificada** y Mensajes de marketing **pendiente** |
 
 ## Lo siguiente, en orden
 1. **Pedirle a Emma el ticket promedio y el % de cierre**, separando leads de
@@ -271,3 +319,9 @@ Atribución no tiene dónde cargarlo. **Bloqueado por el ticket promedio de Emma
    calidad y en interacción. No es que le falte presupuesto, es que no funciona.
 4. **Reasignar presupuesto solo después del punto 1**, con el límite de −20%
    por ajuste para no reiniciar la fase de aprendizaje de cada conjunto.
+5. **Prueba de humo del WhatsApp nuevo** antes de publicarlo en cualquier lado,
+   y decidir qué pasa con la coexistencia (ver el bloque del WhatsApp API).
+6. **Empujar la verificación de negocio** del estudio. No la resuelve el chip
+   nuevo y es la que fija los límites de mensajería del número.
+7. **Conjunto nuevo de TAG** — sigue sin crearse. Los 9 textos y 9 títulos
+   están escritos; el plan era financiarlo pausando `03- UBICACIONES REEL IG`.
