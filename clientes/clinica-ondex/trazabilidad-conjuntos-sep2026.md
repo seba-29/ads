@@ -1,104 +1,129 @@
 # Ondex · De qué conjunto están agendando — septiembre 2026
 
-> Medido el 21-sep-2026 cruzando **todas** las oportunidades de GHL de la
-> subcuenta `CHtgjFPx4hWkSAtKewIo` contra el gasto por conjunto de la cuenta
-> `1034674525430396`. No es una muestra: son las 1.736 oportunidades que
-> existen, filtradas a los contactos cuya PRIMERA oportunidad nació en
-> septiembre.
+> Medido el 21-sep-2026. Fuente: los **1.819 contactos** y las **1.736
+> oportunidades** de la subcuenta `CHtgjFPx4hWkSAtKewIo`, cruzados contra el
+> gasto por conjunto de la cuenta `1034674525430396`. No es una muestra.
 
-## Cómo se contó (importa, porque cambia el número)
+## Cómo se contó (importa, porque dos veces cambió el resultado)
 
-- **La unidad es el CONTACTO, no la oportunidad.** Un mismo paciente genera una
-  oportunidad en cada embudo (Captación → Agendamiento → Tratamiento). Contando
-  oportunidades, el mismo agendamiento se cuenta hasta tres veces. Contando
-  contactos únicos, una vez.
+- **La unidad es el CONTACTO.** Un mismo paciente genera una oportunidad en cada
+  embudo (Captación → Agendamiento → Tratamiento). Contando oportunidades, el
+  mismo agendamiento se cuenta hasta tres veces.
+- **Se parte del listado de contactos, no de las oportunidades.** Partir de las
+  oportunidades deja afuera a los contactos que todavía no entraron al embudo.
 - **«Agendado» = llegó a agendar o más allá**: la etapa `Agendado` del Embudo 1,
-  o cualquier etapa de los Embudos 2 y 3 (entrar al Embudo 2 ya significa que
-  tuvo hora). Incluye no-shows y reagendas: tuvo hora igual.
-- **La campaña sale de dos lugares distintos.** El formulario nativo y WhatsApp
-  la traen en `attributions[]` (integración oficial de GHL). La landing propia
-  NO: entra por nuestro webhook y la deja en los campos personalizados del
-  contacto (`UTM campaign`, `UTM term`, `UTM content`). Hay que leer los dos.
-  ⚠️ El id del CONJUNTO viaja en `UTM term`; en `UTM medium` va el literal
-  `"paid"`.
+  o cualquier etapa de los Embudos 2 y 3. Incluye no-shows y reagendas: tuvo
+  hora igual.
+- **El origen se lee de dos lugares.** El formulario nativo y WhatsApp lo traen
+  en `attributions[]`. La landing propia lo deja en los campos personalizados
+  del contacto. ⚠️ El id del CONJUNTO viaja en `UTM term`; en `UTM medium` va el
+  literal `"paid"`.
 
 ## La respuesta a la pregunta de Matías
 
-| Conjunto | Campaña | Leads en CRM | Agendados | Tasa | Gasto | Costo por agendamiento |
+| Conjunto | Campaña | Leads | Agendados | Tasa | Gasto | $/agendamiento |
 |---|---|---:|---:|---:|---:|---:|
-| **Ondas de Choque \| Santiago** | Formulario | 463 | **14** | 3,0% | $258.203 | **$18.443** |
-| **Kinesiologia \| Santiago** | Formulario | 205 | **7** | 3,4% | $257.840 | $36.834 |
-| **Ondas de Choque \| Santiago** | Landing | 17 | **3** | 17,6% | $167.222 | $55.740 |
+| **Ondas de Choque \| Santiago** | Formulario | 459 | **14** | 3,1% | $258.203 | **$18.443** |
+| **Kinesiologia \| Santiago** | Formulario | 204 | **7** | 3,4% | $257.840 | $36.834 |
+| **Kinesiologia \| Santiago** | Landing | 17 | **4** | 23,5% | $168.608 | $42.152 |
+| **Ondas de Choque \| Santiago** | Landing | 48 | **3** | 6,2% | $167.222 | $55.740 |
 | **Adventage +** | Creatiklab | 284 | **3** | 1,1% | $215.096 | $71.698 |
-| **Kinesiologia \| Santiago** | Landing | 9 | **2** | 22,2% | $168.608 | $84.304 |
 | **Hot Traffic** | Creatiklab | 177 | **1** | 0,6% | $164.271 | $164.271 |
-| Landing \| publico Tbrein \| Las Condes | Landing | 3 | 0 | 0% | $81.640 | — |
-| Landing \| publico Tbrein \| Las Condes - Copia | Landing | 0 | 0 | — | $38.137 | — |
-| **Nuevo conjunto** (Whatsapp Las Condes) | Whatsapp | *invisible* | *invisible* | — | $122.122 | — |
+| Landing \| Tbrein \| Las Condes | Landing | 3 | 0 | 0% | $81.640 | — |
+| Landing \| Tbrein \| Copia | Landing | 3 | 0 | 0% | $38.137 | — |
+| Nuevo conjunto (Whatsapp Las Condes) | Whatsapp | 0 | 0 | — | $122.122 | — |
+| *Landing sin UTM — no se sabe el conjunto* | Landing | 28 | **6** | 21,4% | — | — |
+| *Sin ningún rastro de campaña* | — | 545 | **13** | 2,4% | — | — |
 
 **El conjunto que más agenda es `Ondas de Choque | Santiago` de la campaña de
 FORMULARIO: 14 agendamientos a $18.443 cada uno.** Es el más barato por
-agendamiento de toda la cuenta y el que más volumen produce.
+agendamiento de toda la cuenta y el de más volumen.
 
-En segundo lugar `Kinesiologia | Santiago` (formulario), con 7 a $36.834.
+Por canal completo:
 
-**Los dos conjuntos de Tbrein no agendan a nadie.** El original quemó $81.640
-en 2.805 clics y 2.432 vistas de landing sin un solo lead; la copia gastó
-$38.137 y sus 9 leads no aparecen en el CRM. Entre los dos, **$119.777 sin un
-agendamiento**.
+| Canal | Leads | Agendados | Tasa | Gasto | $/agendamiento |
+|---|---:|---:|---:|---:|---:|
+| **Landing propia** | 102 | **13** | **12,7%** | $455.607 | $35.047 |
+| **Formulario nativo** | 663 | **21** | 3,2% | $516.043 | **$24.573** |
+| **Creatiklab** *(pausada)* | 461 | **4** | 0,9% | $379.367 | $94.842 |
 
-## ⚠️ Dos agujeros que hacen que esta tabla sea un piso, no la verdad
+La landing convierte **4× mejor por lead**, pero el lead le cuesta bastante más.
+Por agendamiento las dos primeras quedan a $35.047 contra $24.573 — con 13 y 21
+casos, esa diferencia **no alcanza para declarar un ganador**. Se dejan las dos
+y se vuelve a medir en octubre.
 
-### 1. De cada 4 leads de la landing, 3 no llegan al CRM
+Lo que sí está claro: **Creatiklab era 3,9× más cara por agendamiento.** Se
+pausaron sus dos conjuntos el 21-sep.
 
-| | Meta dice | GHL tiene |
-|---|---:|---:|
-| Ondas de Choque (landing) | 101 leads | 17 contactos |
-| Kinesiologia (landing) | 42 leads | 12 contactos |
-| Tbrein - Copia | 9 leads | 0 contactos |
-| Tbrein original | 0 leads | 0 contactos |
-| **Total** | **152** | **37** |
+Y **los dos conjuntos de Tbrein llevan $119.777 con 6 leads y cero
+agendamientos.** Es lo primero que hay que apagar.
 
-Meta cuenta 152 eventos `Lead` en los conjuntos de landing. En GHL hay 37
-contactos con rastro de landing (29 con UTM completo + 8 con `Origen landing`
-pero sin UTM). **Faltan 115.** Mientras esto no se cierre, el costo por
-agendamiento de la landing ($55.740) está inflado por un factor desconocido:
-si esos 115 existen y agendan a la misma tasa, la landing sería el mejor canal
-de la cuenta por lejos.
+## ✅ Resuelto: no se están perdiendo leads de la landing
 
-**Lo que NO está verificado:** cuál de los dos números miente. Puede ser que el
-webhook pierda envíos, que el píxel dispare `Lead` también en la captura
-parcial del paso 1, o que Meta esté atribuyendo conversiones fuera de la
-sesión. **Hay que medirlo antes de mover un peso por esto.**
-Prueba concreta: llenar el formulario 5 veces desde dispositivos distintos y
-contar cuántos contactos aparecen en GHL. Si aparecen los 5, el problema es el
-píxel; si aparecen 2, el problema es el webhook.
+Se reportó antes que de 152 leads que Meta contaba en la landing solo llegaban
+37 al CRM. **Eso era un error de medición, no un problema del sistema.**
 
-### 2. El 41% de los agendamientos no tiene campaña
+La causa: se leyeron los contactos uno por uno con `GET /contacts/{id}` en
+paralelo, y GHL **devuelve HTTP 200 con el contacto sin sus campos** cuando se
+le pide muy seguido. No responde 429: recorta. Releídos de a uno y con pausa,
+los 10 de la muestra volvieron completos. Como un contacto sin campos es
+indistinguible de uno que no vino de la landing, faltaban 37 de 66 y el número
+parecía razonable.
 
-De los **51 agendamientos de septiembre**, 30 se pueden atribuir a un conjunto
-y **21 no**. Esos 21 se reparten así:
+La cadena real, ya reconciliada con las **215 corridas** de la automatización
+`Nuevo Lead - Form Landing`:
 
-- **11** entran con `source: IA` y `attributions[]` completamente vacío — son
-  conversaciones de WhatsApp que el agente levanta sin rastro de origen.
-- **8** entran como `Manual` desde workflows del CRM o carga a mano.
-- **1** desde Instagram sin campaña, **1** desde web.
+| | |
+|---|---:|
+| Corridas de la automatización | 215 |
+| Contactos de landing en GHL | **102** |
+| Corridas por contacto | **2,11** |
+| De esos, con oportunidad en el embudo | 99 |
+| De esos, agendados | 13 |
 
-La campaña `Clientes potenciales / Whatsapp / Las Condes` gastó **$122.122** y
-generó **44 conversaciones** según Meta, y no aparece ni una vez en el CRM. Es
-la sospechosa principal de buena parte de esos 11.
+2,11 corridas por contacto es exactamente lo que produce un formulario de dos
+pasos: una en la captura parcial y otra en el envío completo, las dos sobre el
+mismo contacto. Coincide además con los campos: **98 `lead_completo` y 4
+`lead_parcial`**. **El webhook no pierde nada.**
 
-**Traducción para Matías:** hoy podemos decir con certeza de dónde vienen 30 de
-51 agendamientos. Los otros 21 entran por WhatsApp sin que el CRM registre qué
-anuncio los trajo. Eso se arregla activando el parámetro de referencia de los
-anuncios click-to-WhatsApp (`ctwa_clid`) y guardándolo en el contacto.
+## Lo que sigue abierto
 
-## Qué hacer con esto
+### 1. Meta cuenta 152 y la realidad son 102
+
+Queda una diferencia de 50 leads (49%) **del lado de Meta**, no del CRM. Es
+inflación de reporte, no leads perdidos: son ventanas de atribución de 7 días
+por clic y 1 día por visualización, más posible falta de deduplicación entre el
+píxel y CAPI (los contactos traen un campo `Event ID Meta`, que es justamente
+lo que sirve para deduplicar).
+
+**Consecuencia práctica:** el costo por lead que muestra el panel de Meta para
+la landing está subestimado en ~a la mitad. El costo por lead real es
+$455.607 / 102 = **$4.467**, no los ~$3.000 que aparecen en Meta.
+
+### 2. Hay 28 leads de landing sin UTM — y 6 de ellos agendaron
+
+Son contactos que traen `Origen landing` pero no `UTM campaign`. Llegaron a la
+landing sin parámetros de campaña: tráfico directo, orgánico, o un clic que
+perdió los UTM en el camino. **Tienen la mejor tasa de la tabla (21,4%)** y no
+se les puede asignar conjunto.
+
+Vale la pena arreglarlo en la landing: si no hay UTM en la URL, guardar al menos
+`fbclid` y el `Referrer` para poder separar orgánico de pagado.
+
+### 3. El 25% de los agendamientos sigue sin campaña
+
+De los **51 agendamientos del mes**, 38 se atribuyen a un canal y **13 no**.
+Entran por WhatsApp con `attributions[]` vacío (`source: IA`) o por carga
+manual. La campaña `Clientes potenciales / Whatsapp / Las Condes` gastó
+**$122.122**, generó 44 conversaciones según Meta, y no aparece ni una vez en el
+CRM.
+
+Se arregla capturando el `ctwa_clid` de los anuncios click-to-WhatsApp y
+guardándolo en el contacto.
+
+## Qué hacer
 
 1. **No tocar `Ondas de Choque | Santiago` (formulario).** Es el que funciona.
-2. **Apagar los dos conjuntos de Tbrein** — $119.777 sin un agendamiento.
-3. **Medir el agujero de la landing** con la prueba de los 5 envíos, antes de
-   decidir si la landing es cara o si simplemente no la estamos contando.
-4. **Capturar el origen de los leads de WhatsApp.** Mientras 41% de los
-   agendamientos no tenga campaña, cualquier decisión de presupuesto se toma
-   sobre la mitad de los datos.
+2. **Apagar los dos conjuntos de Tbrein** — $119.777, 6 leads, cero agendamientos.
+3. **Guardar `fbclid` y `Referrer` en la landing** cuando no vengan UTM.
+4. **Capturar el `ctwa_clid`** de los anuncios de WhatsApp.

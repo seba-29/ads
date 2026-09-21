@@ -96,29 +96,61 @@ de nuevo**.
 
 ## El CRM decide, no el CPL — cruce del 21-sep-2026
 
-Se cruzaron las 1.200 oportunidades de septiembre en GHL contra el gasto de
-cada origen. El lead de landing cuesta más del doble que el de formulario y aun
-así es el que llega más lejos:
+Cruce completo de los **1.819 contactos** y las **1.736 oportunidades** de GHL
+contra el gasto por conjunto. Detalle en
+`clinica-ondex/trazabilidad-conjuntos-sep2026.md`.
 
-| Origen | Oportunidades | Agendado o más | Tasa | Gasto | Costo por agendamiento |
-|---|---|---|---|---|---|
-| **Landing propia** | 71 | 12 | **16,9%** | $455.607 | $37.967 |
-| **Formulario nativo** | 510 | 19 | **3,7%** | $516.043 | **$27.160** |
-| **Creatiklab** *(heredada)* | 277 | 4 | **1,4%** | $379.367 | **$94.842** |
+| Canal | Leads | Agendados | Tasa | Gasto | $/agendamiento |
+|---|---:|---:|---:|---:|---:|
+| **Landing propia** | 102 | **13** | **12,7%** | $455.607 | $35.047 |
+| **Formulario nativo** | 663 | **21** | 3,2% | $516.043 | **$24.573** |
+| **Creatiklab** *(pausada)* | 461 | **4** | 0,9% | $379.367 | $94.842 |
 
-**Lo que sí concluye este cruce:** Creatiklab es 3,5× más cara por agendamiento
-que cualquiera de las dos nuestras. Se pausaron sus dos conjuntos el 21-sep.
+**El conjunto que más agenda: `Ondas de Choque | Santiago` de FORMULARIO** — 14
+agendamientos a **$18.443**, el más barato y el de más volumen de la cuenta.
 
-**Lo que NO concluye:** entre landing y formulario, la diferencia por
-agendamiento ($37.967 contra $27.160) descansa sobre 12 y 19 casos. Con esos
-números no se puede declarar ganador ninguno. La landing convierte 4,5× mejor
-por lead; el formulario compra el lead mucho más barato. Se dejan las dos
-corriendo y se vuelve a medir en octubre con más volumen.
+**Lo que sí concluye:** Creatiklab era 3,9× más cara por agendamiento. Pausada.
+Y los dos conjuntos de Tbrein llevan **$119.777 con 6 leads y cero
+agendamientos** — son lo próximo a apagar.
 
-**⚠️ Ojo con `Landing | publico Tbrein | Las Condes - Copia`:** el conjunto
-ORIGINAL acumuló 2.805 clics sin un solo lead, pero la COPIA que optimiza por
-`VALUE` sí trae — 9 leads a $4.237. No confundirlos: la ficha decía antes que
-el público entero no servía, y eso era del conjunto viejo.
+**Lo que NO concluye:** entre landing y formulario, $35.047 contra $24.573 sobre
+13 y 21 casos no alcanza para declarar ganador. Se dejan las dos y se mide de
+nuevo en octubre.
+
+### ⚠️ Dos trampas de medición que costaron dos correcciones
+
+**La unidad es el CONTACTO, no la oportunidad.** Cada paciente genera una
+oportunidad por embudo, así que contando oportunidades el mismo agendamiento se
+cuenta hasta tres veces. La primera versión de este cruce decía 12 agendamientos
+de landing; los reales son 13, pero sobre un total muy distinto.
+
+**Y se parte del listado de contactos, no de las oportunidades.** Partir de las
+oportunidades deja afuera a quien todavía no entró al embudo.
+
+### ✅ La landing NO pierde leads
+
+Se reportó que de 152 leads que Meta contaba solo llegaban 37 al CRM. **Era un
+error de medición.** Leer los contactos con `GET /contacts/{id}` en paralelo
+hace que GHL **devuelva HTTP 200 con el contacto sin sus campos** — no 429,
+recorta. Releídos de a uno y con pausa, volvieron completos.
+
+Reconciliado con las **215 corridas** de la automatización `Nuevo Lead - Form
+Landing`: 215 ÷ 102 contactos = **2,11 corridas por lead**, que es exactamente
+lo que produce un formulario de dos pasos (captura parcial + envío completo
+sobre el mismo contacto). Confirmado por los campos: 98 `lead_completo` y 4
+`lead_parcial`.
+
+Lo que sí queda: **Meta cuenta 152 y los reales son 102.** La diferencia es del
+lado de Meta —ventanas de atribución y posible falta de deduplicación píxel/CAPI—
+así que el costo por lead real de la landing es **$4.467**, no los ~$3.000 que
+muestra el panel de Meta.
+
+### Los 28 leads de landing sin UTM
+
+28 contactos traen `Origen landing` pero no `UTM campaign`: llegaron sin
+parámetros de campaña. **6 de ellos agendaron (21,4%, la mejor tasa de la
+tabla)** y no se les puede asignar conjunto. Arreglo: guardar `fbclid` y
+`Referrer` en la landing cuando no vengan UTM.
 
 ## Documentos
 | Archivo | Qué tiene |
