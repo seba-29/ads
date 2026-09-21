@@ -88,69 +88,104 @@ de nuevo**.
 > por caída hay que mirar el gasto por día. Si hay gasto, entregó.
 
 ## Lo que sigue pendiente de ejecutar
-- **Cambiar el evento de optimización de `CompleteRegistration` a `Lead`** en los conjuntos de landing. En 8 días el dataset recibió **4 `CompleteRegistration` contra 973 `Lead`**, y los 4 vienen de `agenda.softwaremedilink.com`, no de las landings. Pedirle a Meta un evento que el sitio no dispara es lo que sostiene el CPM alto.
-- **Preguntar qué es `agenda.softwaremedilink.com`.** Es el único dominio que manda `Purchase` a este píxel. Si es la agenda propia de la clínica, ahí hay un evento de fondo de embudo que hoy no usa nadie.
-- **Verificar el panel en vivo** — abrir el reporte de Ondex y confirmar que la campaña de landing ya muestra sus 12 agendados. Hasta verlo, el arreglo está escrito pero no comprobado.
-- **Arreglo de ORIGEN en GHL** — que el workflow `Nuevo Lead - Form Landing` escriba `attributions[]` al crear la oportunidad, y no solo los campos del contacto. ⚠️ Al mapear: el id del CONJUNTO viaja en `utm_term`, no en `utm_medium` (ahí va el literal `"paid"`). El parche de lectura no reemplaza esto, lo tapa.
-- **Definir `etapaClave` de Ondex** en `lib/reporte-gestion.ts` — hoy no tiene ninguna, así que el reporte no puede contar «cuántos llegaron a agendar». Casa Zen usa `"reserva confirmada"`, Playmaker `"cotizacion enviada"`. Falta acordar con Matías cuál es la etapa que importa acá.
 
-## El CRM decide, no el CPL — cruce del 21-sep-2026
+- 🔴 **Rotar el PIT manual.** El panel de Ondex depende de él y se pegó en un
+  chat de IA. Uno nuevo con los mismos permisos, a la ficha del admin, y
+  revocar el viejo.
+- 🔴 **Apagar `Landing | publico Tbrein | Las Condes - Copia`.** Sigue ACTIVO a
+  $5.000 diarios. Entre los dos conjuntos Tbrein llevan **$120.092 con 11
+  clientes potenciales y cero agendamientos**. El original ya está pausado.
+- **Cambiar el evento de optimización de `CompleteRegistration` a `Lead`** en
+  los conjuntos de landing. Se viene arrastrando desde el 11-sep: la página no
+  dispara ese evento, así que Meta entrega a ciegas. Resetea el aprendizaje
+  2-3 días, por eso conviene hacerlo con el mes recién empezado.
+- **Guardar `fbclid` y `Referrer` en la landing** cuando no vengan UTM. Hoy 28
+  leads llegan sin origen y 6 de ellos agendaron.
+- **Capturar el `ctwa_clid`** de los anuncios click-to-WhatsApp. Sin eso la
+  campaña de WhatsApp seguirá mostrando $122.122 con las columnas del CRM en
+  cero.
+- **Renovar creativos** con testimonios de pacientes reales, cubriendo
+  distintas condiciones. Es la palanca más grande y se le pidió al cliente.
+- **Preguntar qué es `agenda.softwaremedilink.com`.** Es el único dominio que
+  manda `Purchase` a este píxel. Si es la agenda propia de la clínica, ahí hay
+  un evento de fondo de embudo que hoy no usa nadie.
 
-Cruce completo de los **1.819 contactos** y las **1.736 oportunidades** de GHL
-contra el gasto por conjunto. Detalle en
-`clinica-ondex/trazabilidad-conjuntos-sep2026.md`.
+## El CRM decide, no el CPL — cierre del 21-sep-2026
 
-| Canal | Leads | Agendados | Tasa | Gasto | $/agendamiento |
-|---|---:|---:|---:|---:|---:|
-| **Landing propia** | 102 | **13** | **12,7%** | $455.607 | $35.047 |
-| **Formulario nativo** | 663 | **21** | 3,2% | $516.043 | **$24.573** |
-| **Creatiklab** *(pausada)* | 461 | **4** | 0,9% | $379.367 | $94.842 |
+Lo que muestra el panel una vez arreglada la lectura, contando **por contacto**
+y con los tres embudos encadenados:
 
-**El conjunto que más agenda: `Ondas de Choque | Santiago` de FORMULARIO** — 14
-agendamientos a **$18.443**, el más barato y el de más volumen de la cuenta.
+| Canal | Clientes potenciales | Agendados | Gasto | $/agendamiento |
+|---|---:|---:|---:|---:|
+| **Formulario nativo** | 676 | **21** | $516.043 | **$24.583** |
+| **Landing propia** | 154 | **7** | $455.607 | $65.207 |
+| **Creatiklab** *(pausada el 21-sep)* | — | **4** | $379.367 | $94.842 |
+| **Whatsapp Las Condes** | — | 0 | $122.122 | — |
 
-**Lo que sí concluye:** Creatiklab era 3,9× más cara por agendamiento. Pausada.
-Y los dos conjuntos de Tbrein llevan **$119.777 con 6 leads y cero
-agendamientos** — son lo próximo a apagar.
+**El formulario agenda 2,6× más barato.** Ese margen aguanta la decisión de
+moverle peso en octubre.
 
-**Lo que NO concluye:** entre landing y formulario, $35.047 contra $24.573 sobre
-13 y 21 casos no alcanza para declarar ganador. Se dejan las dos y se mide de
-nuevo en octubre.
+**Pero la landing nunca corrió en condiciones justas**: sus conjuntos optimizan
+por `CompleteRegistration`, un evento que la página no dispara. Antes de
+juzgarla hay que arreglar eso y darle dos semanas.
 
-### ⚠️ Dos trampas de medición que costaron dos correcciones
+### El anuncio que sostiene la cuenta
+
+De los 21 agendamientos del formulario, **13 vienen de un solo anuncio**:
+`Testimonio espolón / fascitis`, a **$17.516** por agendamiento — la mitad del
+promedio de la cuenta. Los otros cuatro anuncios de ese mismo conjunto traen
+**1 entre todos**.
+
+Mover presupuesto entre campañas rinde menos que renovar creativos con ese
+formato: paciente real contando un dolor concreto.
+
+### Lo que no se puede atribuir
+
+De los 32 agendamientos que el panel cuelga de una campaña, faltan los que
+entran sin rastro:
+
+- **28 leads de landing llegaron sin UTM** y 6 de ellos agendaron. No se les
+  puede asignar conjunto. Arreglo: guardar `fbclid` y `Referrer` cuando no
+  vengan parámetros.
+- **La campaña `Whatsapp / Las Condes` gastó $122.122** y no aparece ni una vez
+  en el CRM. Meta cuenta 44 conversaciones iniciadas. Es medición, no
+  rendimiento: los leads de WhatsApp entran sin `ctwa_clid`.
+
+### ⚠️ Tres trampas de medición que costaron un día entero
 
 **La unidad es el CONTACTO, no la oportunidad.** Cada paciente genera una
-oportunidad por embudo, así que contando oportunidades el mismo agendamiento se
-cuenta hasta tres veces. La primera versión de este cruce decía 12 agendamientos
-de landing; los reales son 13, pero sobre un total muy distinto.
+oportunidad por embudo: contando oportunidades, un mismo agendamiento vale
+hasta tres.
 
-**Y se parte del listado de contactos, no de las oportunidades.** Partir de las
-oportunidades deja afuera a quien todavía no entró al embudo.
+**Un 200 sin datos es peor que un 429.** Leer los contactos de a uno en
+paralelo hace que GHL devuelva el contacto *sin sus campos*, con HTTP 200. Con
+ese dato roto se reportó que la landing perdía 115 leads. No perdía ninguno:
+la automatización corrió 215 veces para 102 contactos — 2,11 por lead, que es
+lo que produce un formulario de dos pasos.
 
-### ✅ La landing NO pierde leads
+**Dos cosas que se llaman igual no se cuentan igual.** Meta cuenta el lead de
+formulario y el del sitio con nombres distintos. El panel tomaba siempre el
+primero de una lista fija, y la campaña de landing tenía un **1 suelto** ahí:
+mostraba *«1 cliente potencial a $455.607»* cuando su costo real era **$1.656**.
+Lo encontró Seba mirando el Ads Manager, no el panel.
 
-Se reportó que de 152 leads que Meta contaba solo llegaban 37 al CRM. **Era un
-error de medición.** Leer los contactos con `GET /contacts/{id}` en paralelo
-hace que GHL **devuelva HTTP 200 con el contacto sin sus campos** — no 429,
-recorta. Releídos de a uno y con pausa, volvieron completos.
+## La conexión con GoHighLevel — cómo quedó
 
-Reconciliado con las **215 corridas** de la automatización `Nuevo Lead - Form
-Landing`: 215 ÷ 102 contactos = **2,11 corridas por lead**, que es exactamente
-lo que produce un formulario de dos pasos (captura parcial + envío completo
-sobre el mismo contacto). Confirmado por los campos: 98 `lead_completo` y 4
-`lead_parcial`.
+**Ondex lee su CRM con un PIT manual**, no con el OAuth de la agencia.
 
-Lo que sí queda: **Meta cuenta 152 y los reales son 102.** La diferencia es del
-lado de Meta —ventanas de atribución y posible falta de deduplicación píxel/CAPI—
-así que el costo por lead real de la landing es **$4.467**, no los ~$3.000 que
-muestra el panel de Meta.
+El 21-sep se reconectó la agencia para ganar el permiso de campos
+personalizados y en esa reconexión se perdió `oauth.write`, que es el que
+permite generar el token de cada sub-cuenta. La cartera entera quedó sin CRM
+hasta corregirlo. Ondex se desatascó pegando un PIT manual en su ficha del
+admin, que es el respaldo que el panel usa cuando la agencia no puede mintear.
 
-### Los 28 leads de landing sin UTM
+> **La lista de scopes es el contrato completo, no un mínimo.** Lo que no está
+> ahí se pierde en la próxima reconexión, aunque la app lo tenga publicado.
 
-28 contactos traen `Origen landing` pero no `UTM campaign`: llegaron sin
-parámetros de campaña. **6 de ellos agendaron (21,4%, la mejor tasa de la
-tabla)** y no se les puede asignar conjunto. Arreglo: guardar `fbclid` y
-`Referrer` en la landing cuando no vengan UTM.
+- 🔴 **Pendiente: rotar ese PIT.** Se pegó en un chat de IA. Crear uno nuevo con
+  los mismos permisos, ponerlo en la ficha y revocar el viejo.
+- Para diagnosticar la conexión de cualquier cliente:
+  `GET /api/admin/diagnostico-landing?location=<locationId>` (solo admin).
 
 ## Documentos
 | Archivo | Qué tiene |
@@ -172,6 +207,12 @@ tabla)** y no se les puede asignar conjunto. Arreglo: guardar `fbclid` y
 | 11-sep | ⚠️ Se detecta que la landing optimiza hacia un evento que no envía | $118.598 en 7 días sin señal | Conversiones reales | ⛔ **Los conjuntos persiguen `CompleteRegistration`; la landing dispara `Lead`.** Los 8 `CompleteRegistration` de la semana vienen con `Purchase` e `InitiateCheckout` — son de la tienda que comparte el píxel |
 | 11-sep | Se escribe su ficha de gestión en heat-ads | No tenía: el reporte salía sin método ni plan | — | ✅ Sin unidad de resultado fijada, para que las dos campañas salgan en bandas separadas y no se esconda el gasto de la landing |
 | 21-sep | La cuenta figura `UNSETTLED` y deja de ser consultable | Impaga. El 17-sep estaba `ACTIVE`. Coincide con el reclamo de Matías por los cobros (16-sep) | Entrega diaria | ✅ **Nunca dejó de entregar**: $48k–$84k por día del 14 al 20-sep, solo el 21 en $0. Seba avisó al cliente y esa tarde volvió a correr |
-| 21-sep | Cruce de las 1.200 oportunidades de septiembre contra el gasto por origen | El CPL no alcanza para decidir: un lead barato que muere en «conversación» vale menos que uno caro que agenda | Tasa de agendamiento por origen | ✅ Landing 16,9% · Formulario 3,7% · Creatiklab 1,4%. Costo por agendamiento: $37.967 · $27.160 · $94.842 |
+| 21-sep | Cruce de las oportunidades de septiembre contra el gasto por origen | El CPL no alcanza para decidir: un lead barato que muere en «conversación» vale menos que uno caro que agenda | Tasa de agendamiento por origen | ⚠️ **Los primeros números de este cruce estaban mal** (Landing 16,9% · Formulario 3,7%): se midió con una lectura de GHL que devolvía contactos sin sus campos. Los buenos están en la sección «El CRM decide» |
 | 21-sep | **Pausados los dos conjuntos de Creatiklab** | 3,5× más caros por agendamiento que los nuestros, con 277 oportunidades para mostrarlo | Gasto diario y cierre de mes | ✅ De ~$59.000 a ~$51.000 diarios. Septiembre cierra en **$1.983.139**, bajo el techo de $2.000.000 |
 | 21-sep | Arreglado el panel: la landing salía en **0 agendados** | No era rendimiento. `Clientes potenciales \| Landing \| ABO` aparecía cero veces en `attributions[]` porque la landing entra por nuestro webhook, que escribe campos del CONTACTO | Agendados visibles de la landing | ✅ `lib/ghl-landing.ts` en heat-ads (commit `eb5cbce`). **Falta verificarlo en el panel en vivo** |
+| 21-sep | El panel pasa a leer los **tres embudos** como un recorrido único | Con un embudo solo, la cuenta se quedaba ciega justo donde empieza lo que al cliente le importa: quién asistió, quién contrató, quién llegó al alta | Etapas visibles del CRM | ✅ Captación → Agendamiento → Tratamiento, con orden global. Un no-show cuenta como agendado; un «no interesado» cuenta como que solo entró |
+| 21-sep | ⚠️ **Se detecta que el panel contaba los leads de la familia equivocada** | Lo encontró Seba mirando el Ads Manager, no el panel | Clientes potenciales por conjunto | ⛔ La landing mostraba **1 cliente potencial a $455.607** cuando su CPL real era **$1.656**. Meta cuenta el lead de formulario y el del sitio con nombres distintos y se tomaba siempre el primero de una lista fija |
+| 21-sep | Se reconecta la agencia GHL para ganar el permiso de campos personalizados | El rescate de la landing no podía traducir los campos del contacto | Atribución de la landing | ⛔ **En la reconexión se perdió `oauth.write`** y la cartera entera quedó sin CRM. Ondex se desatascó con un PIT manual; el resto necesita reconectar con la lista de scopes corregida |
+| 21-sep | Ondex queda leyendo su CRM con **PIT manual** | La agencia no podía generar el token de la sub-cuenta | Embudo visible en el panel | ✅ Landing muestra sus 7 agendados. 🔴 **Ese PIT hay que rotarlo** |
+| 21-sep | Se actualiza la ficha de gestión del reporte del cliente | Era del 11-sep: decía que Creatiklab seguía al aire y llamaba «esta semana» a tres semanas de datos | Lo que el cliente lee en `/reporte` | ✅ Y se le agrega **etapa clave**, así que el reporte ahora muestra cuántos pacientes llegaron a agendar, no solo cuántos leads entraron |
+| 21-sep | El reporte deja de medir la landing por un evento que la página no dispara | `CompleteRegistration` devolvía 1 con 101 clientes potenciales reales detrás | Unidad del reporte | ✅ Cuando llegan más clientes potenciales que registros, la unidad honesta es el cliente potencial. Acotado a eventos de registro: compras y conversaciones no se tocan |
