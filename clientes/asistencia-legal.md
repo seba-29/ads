@@ -307,6 +307,9 @@ Atribución no tiene dónde cargarlo. **Bloqueado por el ticket promedio de Emma
 | 16-sep | Se intenta conectar `+56 9 2383 2982` a la API vía LeadConnector | Llevar el seguimiento al agente de IA en GHL | Número conectado | ⛔ **Bloqueado.** «a payment method already exists for current WhatsApp Business Account - 1157548536170601». La VISA \*6698 no se puede retirar sin registrar otra |
 | 17-sep | Se descarta rescatar el número viejo y se compra un chip nuevo | La WABA heredada es inservible para otro BSP; el chip cuesta ~$1.000 | Tiempo hasta tener el canal andando | ✅ Decisión tomada con el cliente vía Julieta. Acordado que el chip quede a nombre del estudio |
 | 17-sep | ✅ **WhatsApp API conectado**: `+56 9 7894 5536`, WABA nueva | Cerrar el canal de seguimiento del formulario | Estado «Conectado» en LeadConnector | ✅ Conectado, coexistencia, cuenta Aprobada. 🟠 Verificación de negocio **no verificada** y Mensajes de marketing **pendiente** |
+| 21-sep | **Recorte de presupuesto: $158.000 → $81.500/día** | El 20-sep gastó $189.687, el día más caro del mes. A ese ritmo septiembre cerraba en ~$4.600.000, igual que agosto | Gasto mensual ≤ $4.000.000 | ✅ Proyecta **$4.019.244**. CAPI-Test $50.000→$10.000 · HEAT-Test $25.000→$10.000 · AUDIENCIA GANADORA-Copia $30.000→$8.500 |
+| 21-sep | Se registra que el conjunto `Meta Form \| TAG` está al aire | Se creó sin que quedara anotado | Costo por resultado | ⭐ **282 resultados a $398** (15–21 sep), el mejor de la cuenta. El peor: `CAPI - Meta Form \| HEAT - Test`, 41 a **$7.042** con $50.000/día |
+| 21-sep | ⚠️ Dos unidades conviviendo en la misma cuenta | TAG y CAPI-Test miden en «Meta leads» (`onsite_conversion.lead_grouped`); los otros tres en «Leads (form)» (`leadgen.other`) | Legibilidad del reporte | 📌 **No comparar entre grupos.** Dentro de cada uno sí |
 
 ## Lo siguiente, en orden
 1. **Pedirle a Emma el ticket promedio y el % de cierre**, separando leads de

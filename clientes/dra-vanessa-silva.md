@@ -20,7 +20,9 @@
 | **Margen** | ? |
 | **% dispuesto a invertir por cliente nuevo** | ? |
 | **Meta de ventas mensual** | ? |
-| **Inversión actual/mes** | **$510.000 aprox.** ($17.000/día desde el 3-sep). NO confirmado con el cliente |
+| **Inversión actual/mes** | Septiembre 1–20, **solo HEAT**: **$403.171**. La cuenta completa marca $490.187 — ver la advertencia de abajo |
+| **TECHO ACORDADO** | **$500.000/mes** *(confirmado por Seba el 21-sep-2026)* |
+| **Cierre proyectado de septiembre** | **$523.171** — se pasa $23.171. **Aceptado por Seba** para no matar el aprendizaje del conjunto de formulario |
 | **CPA objetivo** *(calculado)* | ? — sin ticket ni margen no se puede calcular |
 | **ROAS objetivo** *(calculado)* | ? |
 | **NÚMERO MÁGICO** *(ROAS mínimo o CPA/CPL máximo)* | ? |
@@ -56,6 +58,46 @@ Nunca se acordó por escrito un techo mensual. **Pendiente de confirmar.**
 > reporte público de este cliente va SIN cruce con el CRM (`sinCrm` en
 > `heat-ads/lib/reporte-gestion.ts`): un embudo que se corta a la mitad se lee
 > como uno que no avanza.
+
+## ⚠️ El gasto de la cuenta NO es la inversión de HEAT
+
+**Aplica a cualquier cliente que corra campañas propias en la misma cuenta.**
+
+Esta clienta lanza campañas por su lado. Si se lee el gasto a nivel de cuenta,
+se le atribuye a HEAT plata que no manejamos, y el techo se ve tocado antes de
+tiempo.
+
+Septiembre (1 al 21):
+
+| Campaña | Quién | Gasto |
+|---|---|---|
+| `Interacción WhatsApp - HEAT` | **HEAT** | $346.967 |
+| `Clientes potenciales \| FORM \| ABO` | **HEAT** | $60.641 |
+| `Promoción Lipovaser 🔥🔥` | **la clienta** | **$87.016** |
+| | **Cuenta completa** | $494.624 |
+
+La campaña de la clienta tiene `lifetime_budget` de $150.000, se creó el 11-ago
+y quedó **pausada** tras gastar $87.016.
+
+> **Regla:** en esta cuenta, el techo se mide **por campaña**, no por cuenta.
+> Sumar el total lleva a apagar campañas que todavía tenían espacio — pasó el
+> 21-sep y se corrigió porque Seba lo notó.
+
+## ✅ La campaña de formulario ya está al aire
+
+Era el pendiente de la reunión del 3-sep («proponer la campaña de formulario y
+compararla contra WhatsApp»). Se lanzó y **es lo mejor que tiene la cuenta**:
+
+| Conjunto | Presupuesto | 7 días (15–21 sep) | Costo |
+|---|---|---|---|
+| **`Meta form \| Santiago \| Promociones`** | $8.000/día | **170 leads** | **$356** |
+| `PROMOCIONES - Mujeres \| Zona centro` | $2.000/día | 109 conversaciones | $316 |
+| `Mujeres \| Zona centro (1-3-5)` | $2.000/día | 28 conversaciones | $766 |
+
+⚠️ **Unidades distintas**: lead de formulario contra conversación de WhatsApp.
+No son comparables de frente. Lo que falta para cerrar la comparación es cuál
+de los dos canales termina en pabellón — y eso sigue sin medirse porque el
+agendamiento vive fuera del CRM.
 
 ## Las 7 Maletas
 1. **Público** —
@@ -130,6 +172,9 @@ comparar contra WhatsApp, y pedir 2-3 videos nuevos grabados para anuncio.
 | 11-sep | Reporte semanal (4-10 sep) | Cadencia nueva | Costo por conversación | ✅ **254 conversaciones a $464** contra 213 a $469. El ajuste del 3-sep cumplió: la meta era $460-480 |
 | 11-sep | Se mide el mes contra el presupuesto | Seba informa tope de $500.000/mes | Gasto proyectado | ⛔ **$300.000 gastados en 10 días.** Quedan $200.000 para 20 días = $10.000/día. Los conjuntos suman $17.000/día |
 | 11-sep | Se identifica qué recortar | El recorte por presupuesto coincide con el de rendimiento | Costo por conversación | 📌 PROMOCIONES $377 · (1-3-5) $566 · **(2-4) $857**. Dejar solo PROMOCIONES cierra el mes exacto |
+| 21-sep | 🔑 **Se separa el gasto de HEAT del de la clienta** | El techo se estaba midiendo sobre el total de la cuenta, que incluye sus campañas propias | Inversión real de HEAT | ✅ HEAT va en **$403.171**, no $490.187. Los $87.016 restantes son de `Promoción Lipovaser`, campaña de la clienta. **Lo detectó Seba** |
+| 21-sep | Ajuste a $12.000/día ($8.000 formulario + $2.000 + $2.000) | Techo de $500.000/mes | Cierre ≤ $500.000 | 🟡 Proyecta **$523.171**. Seba acepta los $23.171 de exceso para no reiniciar el aprendizaje del conjunto de formulario |
+| 21-sep | ✅ **La campaña de formulario quedó al aire** | Era el pendiente de la reunión del 3-sep | Costo por lead | ⭐ **170 leads a $356** en 7 días — lo mejor de la cuenta. Falta saber cuál canal termina en pabellón |
 
 > ⚠️ **Los tres cambios del 3-sep se hicieron el mismo día.** Rompe la regla de
 > un cambio a la vez: la próxima ventana no va a poder decir cuál de los tres

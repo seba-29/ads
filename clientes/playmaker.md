@@ -26,7 +26,9 @@
 | **Margen** | |
 | **% dispuesto a invertir por cliente nuevo** | |
 | **Meta de ventas mensual** | |
-| **Inversión actual/mes** | |
+| **Inversión actual/mes** | Septiembre 1–20: **$300.219** = $15.011/día |
+| **TECHO ACORDADO** | **$15.000/día en Meta** *(confirmado por Seba el 21-sep-2026)* |
+| **Cierre proyectado de septiembre** | **$450.219** ✅ el único que llegó clavado sin ajustes |
 | **CPA objetivo** *(calculado)* | |
 | **ROAS objetivo** *(calculado)* | |
 | **NÚMERO MÁGICO** *(ROAS mínimo o CPA/CPL máximo)* | |
@@ -387,4 +389,5 @@ Nunca recibió un solo ping. Sin GA4 importado. Y el GTM del sitio
 | 11-sep 11:56 | Primer contacto automático en producción + rescate a goteo de 119 | La etapa de entrada no la revisaba nadie | Contactados ÷ recibidos: ~9% → ~100% | ⏳ primera lectura **15-sep**. Descontar ~24% de números inválidos antes de calcular tasas |
 | 11-sep | Google entra al reporte con cifras cargadas a mano | Faltan las credenciales de Google en Vercel | — | ✅ 4-10 sep: $26.063 · 2.151 impr. · 233 visitas |
 | 11-sep | Se corrige el crédito de Google mal leído | Lo teníamos como regalo de $328.000 | — | ⚠️ **Hay que INVERTIR $327.667 antes del 31-oct para recibirlos.** A $5.000/día queda corto por ~$46.600 |
+| 21-sep | Se registra el techo: **$15.000/día en Meta** | Confirmado por Seba | Gasto diario | ✅ Va en **$15.011/día** (1–20 sep, $300.219). **El único cliente de la cartera que llegó clavado sin necesitar ajuste** |
 

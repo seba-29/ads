@@ -8,10 +8,10 @@
 ## Identificación
 | | |
 |---|---|
-| **Cuenta publicitaria** | `?` |
-| **Business Manager** | ? |
-| **Moneda** | ? |
-| **Estado de la cuenta** | ❓ sin cuenta identificada |
+| **Cuenta publicitaria** | `366677430643171` — **"Soypatinaza"** *(identificada el 21-sep-2026)* |
+| **Business Manager** | Soypatinaza (`178345516176776`) |
+| **Moneda** | CLP |
+| **Estado de la cuenta** | ✅ ACTIVE |
 | **Rubro** | |
 | **Web / IG** | |
 
@@ -22,7 +22,9 @@
 | **Margen** | |
 | **% dispuesto a invertir por cliente nuevo** | |
 | **Meta de ventas mensual** | |
-| **Inversión actual/mes** | |
+| **Inversión actual/mes** | Septiembre 1–20: **$392.643** |
+| **TECHO ACORDADO** | **NO APLICA — ver abajo.** El cliente no paga la suscripción de Performance |
+| **Modelo de servicio** | ⚠️ **Solo configuración inicial.** HEAT montó la cuenta y las campañas; de ahí en adelante la gestión es del cliente. **No hay optimización ni reportería de nuestra parte** |
 | **CPA objetivo** *(calculado)* | |
 | **ROAS objetivo** *(calculado)* | |
 | **NÚMERO MÁGICO** *(ROAS mínimo o CPA/CPL máximo)* | |
@@ -57,12 +59,23 @@
 | **2 perfiles de comprador** | |
 
 ## Estado actual de la cuenta
-- **Qué corre hoy:** nada — **pendiente de aprobación del cliente** para lanzar.
-- **Estado:** se está gestionando el contenido; falta que el cliente lo apruebe.
-- **🔎 Cuenta publicitaria:** el cliente indica que puede llamarse algo con **"Patricia"** o **"Soy Patinaza"**. **Verificado: no aparece ninguna cuenta con esos nombres** entre las 29 accesibles vía el conector MCP.
-- **Desbloquea:** que compartan acceso a la cuenta publicitaria con el Business Manager de Heat, o confirmar el nombre exacto.
+
+> ⚠️ **ESTE CLIENTE NO ESTÁ EN PERFORMANCE.** No paga la suscripción, así que
+> HEAT hizo **solo la configuración inicial**: montar la cuenta y dejar las
+> campañas al aire. De ahí en adelante la gestión, la optimización y el control
+> de presupuesto son del cliente.
+>
+> **Consecuencia práctica:** esta cuenta **no entra en la revisión de cierre de
+> mes**, no tiene techo acordado con nosotros y no se optimiza. Si aparece en un
+> reporte de cartera, va marcada aparte.
+
+- **Qué corre hoy:** ✅ **campañas al aire y gastando** — $392.643 entre el 1 y el 20 de septiembre (≈ $19.632/día).
+- **Cuenta identificada el 21-sep:** era `366677430643171` ("Soypatinaza"). La nota anterior decía que no aparecía entre las cuentas accesibles; era incorrecta.
+- **Qué NO hacemos:** optimizar, reportar ni vigilar presupuesto.
 
 ## Bitácora
 | Fecha | Qué se cambió | Por qué | Métrica que debía moverse | Resultado |
 |---|---|---|---|---|
 | | | | | |
+| 21-sep | ✅ **Cuenta identificada**: `366677430643171` ("Soypatinaza") | La ficha decía que no aparecía entre las accesibles; era incorrecto | — | ACTIVE y gastando: **$392.643** del 1 al 20 de septiembre (≈$19.632/día) |
+| 21-sep | Se aclara el modelo de servicio | El cliente **no paga la suscripción de Performance** | — | 📌 **Solo configuración inicial.** HEAT montó la cuenta y las campañas; la gestión es del cliente. **Fuera de la revisión de cierre de mes** |

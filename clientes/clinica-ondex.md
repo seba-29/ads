@@ -25,7 +25,9 @@
 | **Margen** | |
 | **% dispuesto a invertir por cliente nuevo** | |
 | **Meta de ventas mensual** | |
-| **Inversión actual/mes** | |
+| **Inversión actual/mes** | Septiembre 1–17: **$1.243.829** *(lectura parcial, ver abajo)* |
+| **TECHO ACORDADO** | **$2.000.000/mes** *(confirmado por Seba el 21-sep-2026)* |
+| **Cierre de septiembre** | ⛔ **no calculable** — la cuenta quedó impaga, ver abajo |
 | **CPA objetivo** *(calculado)* | |
 | **ROAS objetivo** *(calculado)* | |
 | **NÚMERO MÁGICO** *(ROAS mínimo o CPA/CPL máximo)* | |
@@ -68,6 +70,24 @@
 - **Pendiente antes de encender:** ticket promedio y margen por línea (bloquean el CPA objetivo), presupuesto mensual y reparto Meta/Google, y capacidad de agenda semanal.
 - **⚠️ Bloquea Google, no Meta:** el `gclid` no se está guardando en GHL. Sin él no se puede atribuir un paciente al clic de Google Ads. Meta sí quedó completo (`fbclid`, `fbp`, `fbc`).
 
+## 🔴 Cuenta impaga desde ~18-sep
+
+Al 21-sep-2026 la cuenta `1034674525430396` figura como **`UNSETTLED`** y **no
+es consultable** por el conector (`is_queryable: false`). El 17-sep estaba
+`ACTIVE`. Si está impaga, **los anuncios están detenidos**.
+
+Ocurrió justo después de que Matías reclamara por los cobros de Meta (16-sep),
+así que la hipótesis más probable es un cargo rechazado o una tarjeta retirada.
+**No verificado.** Seba avisó al cliente el 21-sep.
+
+**Al reactivarse hay que recalcular el cierre de mes desde cero** — los días
+caídos cambian todo el reparto.
+
+### Lo que quedó pendiente de ejecutar antes de la caída
+- **Pausar `Landing | publico Tbrein | Las Condes - Copia`** — el público acumuló 2.805 clics y **cero leads**; el conjunto además optimiza por `VALUE` y las landings no generan ningún evento de valor.
+- **Cambiar el evento de optimización de `CompleteRegistration` a `Lead`** en los conjuntos de landing. En 8 días el dataset recibió **4 `CompleteRegistration` contra 973 `Lead`**, y los 4 vienen de `agenda.softwaremedilink.com`, no de las landings.
+- **Preguntar qué es `agenda.softwaremedilink.com`.** Es el único dominio que manda `Purchase` a este píxel. Si es la agenda propia de la clínica, ahí hay un evento de fondo de embudo que hoy no usa nadie.
+
 ## Documentos
 | Archivo | Qué tiene |
 |---|---|
@@ -87,3 +107,4 @@
 | 11-sep | Primera semana con campañas nuestras (creadas 4-sep) | — | Línea base | ✅ **$352.417 invertidos.** Formulario: $196.188 → 275 leads a $713. Landing: $156.229 → 2 registros |
 | 11-sep | ⚠️ Se detecta que la landing optimiza hacia un evento que no envía | $118.598 en 7 días sin señal | Conversiones reales | ⛔ **Los conjuntos persiguen `CompleteRegistration`; la landing dispara `Lead`.** Los 8 `CompleteRegistration` de la semana vienen con `Purchase` e `InitiateCheckout` — son de la tienda que comparte el píxel |
 | 11-sep | Se escribe su ficha de gestión en heat-ads | No tenía: el reporte salía sin método ni plan | — | ✅ Sin unidad de resultado fijada, para que las dos campañas salgan en bandas separadas y no se esconda el gasto de la landing |
+| 21-sep | ⛔ **La cuenta figura `UNSETTLED` y deja de ser consultable** | Impaga. El 17-sep estaba `ACTIVE`. Coincide con el reclamo de Matías por los cobros (16-sep) | — | Seba avisó al cliente el 21-sep. **Recalcular el cierre de mes al reactivarse** |
