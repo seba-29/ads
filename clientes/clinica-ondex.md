@@ -89,6 +89,11 @@ de nuevo**.
 
 ## Lo que sigue pendiente de ejecutar
 
+- 🔴 **Leer el `ctwaClid` y el `sourceId` del primer mensaje de la
+  conversación.** Es el pendiente más grande de la cuenta: **8 de los 59
+  agendamientos de septiembre** vienen de anuncios de WhatsApp y el panel no
+  los muestra. El dato está completo en GoHighLevel —id del anuncio incluido—
+  y solo hay que leerlo del mensaje, no del contacto.
 - 🟢 **Que la landing conserve los UTM entre sus dos pantallas.** Es el arreglo
   de mayor retorno de la cuenta y no cuesta un peso de medios: **34 de sus 109
   contactos pierden el id del conjunto**, y esos 34 agendaron 6 veces (17,6%).
@@ -96,9 +101,12 @@ de nuevo**.
 - 🔴 **Rotar el PIT manual.** El panel de Ondex depende de él y se pegó en un
   chat de IA. Uno nuevo con los mismos permisos, a la ficha del admin, y
   revocar el viejo.
-- 🔴 **Apagar `Landing | publico Tbrein | Las Condes - Copia`.** Sigue ACTIVO a
-  $5.000 diarios. Entre los dos conjuntos Tbrein llevan **$125.091 con 7
-  contactos en el CRM y cero agendamientos**. El original ya está pausado.
+- ⚠️ **Revisar `Landing | publico Tbrein | Las Condes - Copia` antes de
+  apagarlo.** Se iba a apagar por no tener agendamientos; su anuncio
+  `Testimonio volver a correr` trajo **uno por WhatsApp** que nadie contaba.
+  Con $43.574 y 1 agendamiento sigue siendo caro, pero ya no es un cero. El
+  conjunto ORIGINAL sí está en cero real —$81.640, 3 contactos— y ya está
+  pausado.
 - **Cambiar el evento de optimización de `CompleteRegistration` a `Lead`** en
   los conjuntos de landing. Se viene arrastrando desde el 11-sep: la página no
   dispara ese evento, así que Meta entrega a ciegas. Resetea el aprendizaje
@@ -130,22 +138,50 @@ de nuevo**.
 
 Contados **por contacto**, con los tres embudos encadenados y de forma
 acumulada. Los 19 que no cuelgan de ninguna campaña se releyeron uno por uno
-por el detalle del contacto — no se dedujeron.
+y los 12 sin huella se abrieron a mano en GoHighLevel.
 
 | Origen | Agendamientos | |
 |---|---:|---|
 | Campaña de Meta (`attributions[]`) | 28 | el panel los muestra |
 | Landing con UTM | 7 | el panel los muestra |
-| **Subtotal rastreable** | **35** | **= lo que ve el cliente en el panel** |
-| Landing que perdió los UTM | 6 | son de Meta; arreglo nuestro |
-| Social orgánico | 1 | no es publicidad |
-| Sin ninguna huella | 12 | inatribuible, medido |
+| **Click-to-WhatsApp, sin leer** | **8** | **la atribución está y nadie la lee** |
+| Landing que perdió los UTM | 6 | son de Meta |
+| **Subtotal: trabajo de Meta** | **49** | **el panel muestra 35** |
+| Orgánico | 2 | |
+| Pacientes con cita previa | 3 | confirmaban hora, no son leads |
 | Contactos creados antes de septiembre | 5 | agendaron este mes, entraron antes |
 | **Total** | **59** | |
 
-**El panel no esconde nada: muestra 35 porque 35 es lo que puede rastrear
-hasta un anuncio.** Cuando el cliente cuente ~55 y el panel diga 35, esa es la
-explicación, y está medida.
+**49 de los 59 agendamientos los trajo la publicidad, y el panel muestra 35.**
+No porque el CRM no tenga el dato: lo tiene completo y en el lugar equivocado.
+
+### ⚠️ Dónde guarda GoHighLevel la atribución de click-to-WhatsApp
+
+**No está en `attributionSource` del contacto. Está en el PRIMER MENSAJE de la
+conversación**, y trae más de lo que hace falta:
+
+| Campo | Qué es |
+|---|---|
+| `ctwaClid` | el click id de Meta — solo lo pone un anuncio |
+| `sourceId` | **el id del ANUNCIO**, que resuelve conjunto y campaña |
+| `sourceType: "ad"` | confirma que fue un clic pagado |
+| `sourceApp` | `facebook` o `instagram` |
+| `body`, `title`, `mediaUrl` | el copy y el creativo exactos |
+
+Los 8 agendamientos recuperados, resueltos contra Meta:
+
+| Anuncio | Conjunto | Campaña | Agend. |
+|---|---|---|---:|
+| Ad #2, Ad #3, Ad #1 | `Adventage +` | Creatiklab | 4 |
+| Ad #1 | `Hot Traffic` | Creatiklab | 2 |
+| `Testimonio espolón / fascitis` | `Ondas de Choque \| Stgo / Las Condes` | Formulario | 1 |
+| `Testimonio volver a correr` | `Landing \| Tbrein \| Las Condes - Copia` | Landing | 1 |
+
+**Creatiklab se lleva 6 de los 8.** Se le atribuían 4 agendamientos por
+$379.378 —**$94.842** cada uno— y con estos son **al menos 10: $37.938**. Sus
+dos conjuntos se pausaron el 21-sep con el número inflado. A $37.938 sigue
+siendo peor que el formulario ($24.583), así que la decisión no se da vuelta
+sola; pero se tomó con un número 2,5 veces peor que el real.
 
 ### La landing es el mejor canal y es el que peor se mide
 
@@ -177,22 +213,21 @@ formato: paciente real contando un dolor concreto.
 Y en el formulario, `Ondas de Choque` está a **$548** por lead contra **$1.239**
 de Kinesiología, con el mismo presupuesto diario en los dos.
 
-### Dos hipótesis que la medición descartó
+### Una hipótesis que se dio por descartada sin haberla medido
 
-**No es WhatsApp.** Se supuso que los agendamientos sin atribuir eran leads de
-click-to-WhatsApp con la atribución perdida. Releídos los 19 por el detalle del
-contacto —que sí devuelve el bloque de atribución— **ninguno trae `ctwaClid`,
-`adId` ni `fbclid`**. La campaña de Creatiklab tampoco pierde leads en el CRM:
-la diferencia entre sus 1.108 conversaciones y sus 461 contactos es gente que
-abrió el chat y no dejó datos.
+El 22-sep se declaró muerta la hipótesis de que los agendamientos sin atribuir
+eran click-to-WhatsApp: releídos los 19 por el detalle del contacto, **ninguno
+traía `ctwaClid`**. La conclusión era falsa y el dato era correcto — el
+`ctwaClid` **no vive en el contacto, vive en el mensaje**. Se buscó en el lugar
+equivocado y se reportó como medición.
 
-**Tbrein no fue un problema de medición.** Meta mostraba `lead: 0` para el
-conjunto pausado, que optimiza por visitas a la página (2.432 a $34). Como Meta
-solo cuenta un lead si el píxel dispara y logra atribuirlo, podía estar
-ciego — pero el CRM tiene **3 contactos** de ese conjunto, no más. $81.640 por
-3 contactos y cero agendamientos. Era el público, no el instrumento.
-*(Al revés también falla: en la Copia Meta dice 11 leads y el CRM tiene 4.
-Ninguna de las dos fuentes ve el total.)*
+Lo destrabó Seba pidiendo los ids para abrirlos a mano: 8 de los 12 traían el
+anuncio completo a la vista.
+
+> **Regla.** «Lo busqué y no está» solo vale si se sabe dónde debería estar.
+> Cuando una fuente puede guardar el mismo dato en dos objetos distintos
+> —contacto y conversación— mirar uno y concluir por los dos es adivinar con
+> cara de medición.
 
 ### ⚠️ Cuatro trampas de medición que costaron dos días
 
@@ -271,3 +306,5 @@ admin, que es el respaldo que el panel usa cuando la agencia no puede mintear.
 | 22-sep | ⛔ Descartada la hipótesis de WhatsApp | Se venía trabajando con que los sin atribuir eran click-to-WhatsApp con el `ctwa_clid` perdido | Agendamientos recuperables | ⛔ **Ninguno de los 19 trae `ctwaClid`, `adId` ni `fbclid`.** Los 12 sin huella tienen además `source` vacío: inatribuibles por medición, no por falta de mirar |
 | 22-sep | Medida la landing por conjunto, del lado del CRM | Meta mostraba `lead: 0` en el conjunto Tbrein, y un cero de Meta no es un hecho del mundo | Leads reales por conjunto | ✅ **La landing convierte al 11,9% contra 2,4% del resto.** Y 34 de sus 109 contactos pierden el `utm_term`: esos agendaron 6 veces. Tbrein sí fue rendimiento: 3 contactos por $81.640 |
 | 22-sep | ⚠️ Se corrige un error de proceso propio | Se le dijo a Seba «mergeado y desplegado» habiendo verificado que main tenía un merge nuevo, no que tuviera **el commit**. El endpoint corrió dos veces con el build viejo | — | ✅ Regla: antes de mandar a correr algo, verificar el commit específico en main, no el último merge |
+| 22-sep | ⛔ **Se corrige la conclusión sobre WhatsApp: era la hipótesis buena** | Se había declarado descartada porque el `ctwaClid` no aparecía en `attributionSource` del contacto. Vive en el PRIMER MENSAJE de la conversación, junto con el id del anuncio | Agendamientos atribuibles | ✅ **8 de los 12 sin huella vienen de anuncios.** Los 59 quedan en **49 de Meta contra 35 que muestra el panel**. Lo destrabó Seba abriendo los contactos a mano |
+| 22-sep | Se recalcula Creatiklab con los agendamientos recuperados | Se pausaron sus dos conjuntos el 21-sep por $94.842 por agendamiento | Costo por agendamiento real | ⚠️ **Son al menos 10 agendamientos: $37.938.** Sigue siendo peor que el formulario ($24.583), pero la decisión se tomó con un número 2,5× peor que el real |
