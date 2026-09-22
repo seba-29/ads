@@ -29,6 +29,35 @@ antes de operar.*
 | **CLÍNICA PALAVAS** | Una de sus cuentas marcada por actividad inusual, anuncios pausados | Contactar a soporte de Meta |
 | **ESPACIO FUSIÓN** | Sin acceso a su cuenta publicitaria | Compartir acceso al BM |
 
+## Techos de inversión — confirmados el 21-sep-2026
+
+**Antes de esta fecha, cuatro de siete cuentas activas no tenían techo
+registrado.** Sin techo acordado no hay forma de decir si una cuenta va bien o
+mal, solo describir cuánto gastó.
+
+| Cliente | Techo | Unidad |
+|---|---|---|
+| ASISTENCIA LEGAL | **$4.000.000** | mensual |
+| CLÍNICA ONDEX | **$2.000.000** | mensual |
+| BE FASHION | **$1.000.000** | mensual |
+| DRA. VANESSA SILVA | **$500.000** | mensual — **solo campañas de HEAT**, ver su ficha |
+| CASA ZEN | **$450.000** | mensual |
+| PLAYMAKER | **$15.000** | **diario** en Meta |
+| CLÍNICA PALAVAS | **$250.000** | **semanal** · aniversario $400.000 · **cyber $1.200.000/sem desde el 28-sep** |
+| ESPACIO FUSIÓN | **no aplica** | no paga Performance: solo configuración inicial |
+| RAÍCES FUTURAS | — | cuenta impaga |
+
+### Dos trampas que ya costaron confusión
+
+**1. El techo no siempre es mensual.** Playmaker es diario y Palavas es semanal.
+Traducir a mensual y trabajar con ese número lleva a decisiones equivocadas —
+pasó con Palavas el 21-sep.
+
+**2. El gasto de la cuenta ≠ la inversión de HEAT.** Cuando el cliente corre
+campañas propias en la misma cuenta, hay que medir **por campaña**. En Vanessa
+la diferencia era de $87.016 y casi lleva a apagar campañas que tenían espacio.
+Ver `dra-vanessa-silva.md`.
+
 ## Estado de trabajo (actualizado con contexto de Seba)
 
 | Cliente | Corre hoy | Bloqueo real |

@@ -6,6 +6,11 @@ está hoy, no como estaba cuando se grabó el curso.
 
 **Lee primero la Ley 1 de `09-plataforma-2026.md`.** Todo lo que sigue depende de ella.
 
+> **¿Buscas el listado concreto de qué excluir en cada campaña?** Está en
+> `15-catalogo-de-exclusiones.md`: catálogo de fuentes y segmentos, bloques de
+> exclusión reutilizables, matriz por campaña y auditoría. Este documento explica
+> el porqué y la arquitectura; el 15 es la lista para ejecutar.
+
 ---
 
 ## 1. La inversión que hay que entender
@@ -69,6 +74,11 @@ Aunque no vayas a separar campañas, **créalos igual** — los necesitas para e
 > **Nota sobre el nº 4:** el curso dice "Reproducciones de video" a secas. Usa **25% o
 > más**, no 3 segundos. Un usuario que ve 3 segundos muchas veces solo no alcanzó a
 > deslizar; no es una señal de interés.
+
+> **El detalle de cada fuente —qué segmentos ofrece por dentro (visitaron el perfil,
+> enviaron un mensaje, abrieron y no enviaron el formulario…)— está en
+> `15-catalogo-de-exclusiones.md` §3.** Esta tabla lista las fuentes; aquella lista
+> los segmentos, que es lo que se necesita para excluir con precisión.
 
 ---
 
@@ -384,6 +394,8 @@ días creado para sembrar lookalikes.
 | CTWA sin `ctwa_clid` + CAPI | Meta optimiza hacia "gente que escribe", no hacia compradores | Ver `09-plataforma-2026.md` |
 | Tocar la campaña cada 2 días | Reinicio de aprendizaje: +35-60% CPA por 48-72h | Ley 0: cada 5-7 días |
 | Mover el 60% de Presentación al retargeting | Se seca el ciclo en 2-3 semanas | El ROAS del retargeting está inflado 60-80% |
+| **Excluir de más** en una cuenta chica (5-6 exclusiones apiladas) | Público diminuto, CPM alto, aprendizaje limitado permanente | `15-catalogo-de-exclusiones.md` §7 |
+| Excluir solo el formulario nativo y dar por cubierto "ya es lead" | El formulario solo ve Meta y solo 90 días: los leads de la web y del CRM se escapan | Cobertura multifuente: `15` §2, Ley B |
 
 ---
 
@@ -397,3 +409,5 @@ días creado para sembrar lookalikes.
 - [ ] Al menos 10-15 anuncios cargados, cubriendo los 5 niveles
 - [ ] Ubicación y edad mínima definidas; el resto abierto
 - [ ] Fecha de la próxima optimización en el calendario: **hoy + 7 días**
+- [ ] Lista de supresión (bajas, equipo interno) creada y aplicada a **todas** las
+      campañas — `15-catalogo-de-exclusiones.md` §6

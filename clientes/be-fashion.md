@@ -20,7 +20,9 @@
 | **Margen** | |
 | **% dispuesto a invertir por cliente nuevo** | |
 | **Meta de ventas mensual** | |
-| **Inversión actual/mes** | |
+| **Inversión actual/mes** | Septiembre 1–20: **$763.991** |
+| **TECHO ACORDADO** | **$1.000.000/mes** *(confirmado por Seba el 21-sep-2026)* |
+| **Cierre proyectado de septiembre** | **$998.991** ✅ tras el ajuste del 21-sep |
 | **CPA objetivo** *(calculado)* | |
 | **ROAS objetivo** *(calculado)* | |
 | **NÚMERO MÁGICO** *(ROAS mínimo o CPA/CPL máximo)* | |
@@ -67,3 +69,9 @@
 | Fecha | Qué se cambió | Por qué | Métrica que debía moverse | Resultado |
 |---|---|---|---|---|
 | | | | | |
+| 11-sep | Primera lectura completa de Google Ads (4-10 sep) | Canal nuevo, foco joyería | — | ✅ **$76.781 · 697 visitas · $110 c/u · CTR 9,05%** |
+| 11-sep | ⚠️ La medición de compras está rota | — | Ventas atribuidas | ⛔ El objetivo **Compra** en «Configuración incorrecta» (afecta a las 9 campañas). **0 compras** en el período. Las 20 «conversiones» son otra acción — NO se cargaron al reporte |
+| 11-sep | ⚠️ 57% del presupuesto en términos de UNOde50, sin resultado | Choca con la tesis del canal | Costo por clic | ⛔ Marcas: $43.565 · 139 clics · **~$313 CPC** · **0 conv.** Genérica: $33.217 · 558 clics · ~$60 · 20 conv. Solo UNOde50 suma $26.572 |
+| 11-sep | ⚠️ El grupo `Marca BeFashion` no tiene palabras clave | — | — | Está publicando nada. Suele ser el grupo más barato y el que mejor convierte |
+| 21-sep | Ajuste $50.000 → $23.500/día | Techo de $1.000.000/mes; iba a cerrar en ~$1.104.000 | Cierre ≤ $1.000.000 | ✅ Proyecta **$998.991**. Meta form $25.000→$15.000 · Tráfico IG $15.000→$8.500 · conjunto de Interacción pausado |
+| 21-sep | ⚠️ ~19 conjuntos ACTIVOS gastando $0 | Publicaciones de Instagram promocionadas que quedaron encendidas | Legibilidad de la cuenta | 📌 No cuestan nada, pero ensucian la lectura |

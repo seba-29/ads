@@ -20,7 +20,9 @@
 | **Margen** | |
 | **% dispuesto a invertir por cliente nuevo** | |
 | **Meta de ventas mensual** | |
-| **Inversión actual/mes** | |
+| **Inversión actual/mes** | Septiembre 1–20: **$349.911** |
+| **TECHO ACORDADO** | **$450.000/mes** *(confirmado por Seba el 21-sep-2026)* |
+| **Cierre proyectado de septiembre** | **$449.911** ✅ a 89 pesos del techo |
 | **CPA objetivo** *(calculado)* | |
 | **ROAS objetivo** *(calculado)* | |
 | **NÚMERO MÁGICO** *(ROAS mínimo o CPA/CPL máximo)* | |
@@ -65,3 +67,11 @@
 | Fecha | Qué se cambió | Por qué | Métrica que debía moverse | Resultado |
 |---|---|---|---|---|
 | | | | | |
+| 11-sep | La tabla de anuncios distingue apagado de sin resultados | Los dos salían como una raya | Legibilidad | ✅ Aplica a todos los clientes |
+| 11-sep | El plan se pone al día | Los dos videos ya llegaron y están al aire | — | ✅ Pasa de «grabar» a «ver cómo rinden», con la advertencia de que lleva un día |
+| 11-sep | ⚠️ Pendiente de decidir | Arrancó el 20-ago, lleva 3 semanas | — | Su reporte todavía dice «este período es el punto de partida» y ya no lo es. **Consultado a Seba, sin respuesta** |
+| 17-sep | Reunión de reportería con el cliente | Primer mes completo al aire (desde el 20-ago) | — | ✅ **457 formularios a $923** · 27 agendados · **19 reservas confirmadas** · 4 atendidas → **$22.194 por reserva confirmada** |
+| 17-sep | 🔑 **El costo por lead engañaba** | Los dos anuncios grandes se veían casi iguales por CPL ($827 vs $969) | Costo por reserva confirmada | ⭐ `Prueba - Video resumen` **$13.232/reserva** contra `spa japones + higgsfield` **$36.977** — **2,8×**, y con el 35% del gasto. Sin el cruce con el CRM habríamos escalado el equivocado |
+| 17-sep | Se detecta fatiga creativa | CTR de 6,93% a 5,36% en una semana **con el CPM bajando** | CTR | ⚠️ No es la subasta, es el creativo. Gastó 29% más y trajo 3 leads menos |
+| 21-sep | Ajuste $17.000 → $10.000/día | Techo de $450.000/mes | Cierre ≤ $450.000 | ✅ Proyecta **$449.911** — a 89 pesos del techo. `Videos nuevos` sin tocar: ya rinde mejor ($990 vs $1.018) con la tercera parte del presupuesto |
+| 21-sep | 📌 **Pendiente nuestro: grabar los dos videos** | Comprometidos y sin hacer. El CTR cayendo confirma que urge | CTR | ⏳ Falta fijar fecha de grabación |

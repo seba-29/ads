@@ -2,68 +2,329 @@
 
 > Ficha de contexto. La lee la skill `meta-ads` antes de cualquier recomendación.
 > Lo que no se sepa va como `?` — nunca inventado. Un dato falso contamina las 4 etapas.
+>
+> Última revisión completa de la cuenta: **8-sep-2026**.
 
 ## Identificación
 | | |
 |---|---|
-| **Cuenta publicitaria** | `755647789856028` |
+| **Cuenta publicitaria** | `755647789856028` (“Asistencial Legal”) |
 | **Business Manager** | Estudio Jurídico Carabajal y asociados |
 | **Moneda** | CLP |
 | **Estado de la cuenta** | ✅ ACTIVE |
-| **Rubro** | |
-| **Web / IG** | |
+| **Rubro** | Servicios legales — reprogramación / renegociación de deudas (Ley de insolvencia, DICOM) |
+| **Contraparte** | Emma |
+| **WhatsApp API** | **`+56 9 7894 5536`** — "Asistencia Legal Deudores". Conectado a GHL el **17-sep-2026** vía LeadConnector, en modo **coexistencia** |
+| **WABA** | Creada el 17-sep, limpia. ⚠️ **Nunca usar `1157548536170601`** ("Isabel Asistente legal deudores") — ver el aprendizaje del 17-sep |
+| **Web / IG** | ? |
 
 ## Los números (obligatorios — sin esto no hay recomendación de presupuesto)
 | | |
 |---|---|
-| **Ticket promedio** | |
-| **Margen** | |
-| **% dispuesto a invertir por cliente nuevo** | |
-| **Meta de ventas mensual** | |
-| **Inversión actual/mes** | |
-| **CPA objetivo** *(calculado)* | |
-| **ROAS objetivo** *(calculado)* | |
-| **NÚMERO MÁGICO** *(ROAS mínimo o CPA/CPL máximo)* | |
+| **Ticket promedio** | ? — **pedido a Emma, sin respuesta todavía** |
+| **Margen** | ? |
+| **% dispuesto a invertir por cliente nuevo** | ? |
+| **Meta de ventas mensual** | ? |
+| **Inversión actual/mes** | **$4.589.722** (últimos 30 días) · agosto cerró en **$4.602.916** |
+| **Techo mensual acordado** | **$4.000.000 CLP** (fijado por Seba el 7-sep) |
+| **CPA objetivo** *(calculado)* | ? — sin ticket ni margen no se puede calcular |
+| **ROAS objetivo** *(calculado)* | ? |
+| **NÚMERO MÁGICO** *(CPL máximo)* | ? |
+
+> **Todo veredicto de esta cuenta sigue siendo PROVISIONAL, pero menos.** Hay
+> dos precios de lead conviviendo — $1.022 y $6.326 — y aún **no sabemos cuál
+> cierra mejor**. Lo que sí sabemos desde el 8-sep: el CRM manda ~30
+> `Purchase` semanales a Meta, o sea **~120 contratos al mes**. Contra
+> $4.000.000 de inversión son **≈ $33.000 por contrato**.
+>
+> Falta el ticket promedio para saber si eso es negocio. Es la única pregunta
+> que queda entre nosotros y un ROAS real.
+
+### Techo de inversión
+| | |
+|---|---|
+| **Tope acordado** | $4.000.000/mes |
+| **Traducción a diario** | **$129.000/día** — sirve para cualquier mes (31 × 129.000 = $3.999.000) |
+| **Septiembre 1–7** | $946.887 gastados |
+| **Disponible 8–30 sep** | $3.053.113 → hasta $132.744/día |
+| **Presupuesto nominal hoy** | $143.085/día (suma de los 5 conjuntos activos) |
+| **Gasto real hoy** | **≈ $102.500/día** — el nominal miente, ver hallazgo #2 |
+| **Proyección de septiembre** | $3.30M (si el Test no arranca) a $3.88M (si gasta todo) → **bajo el tope** |
+
+Agosto se pasó en $602.916. El tope no está en riesgo en septiembre porque
+Seba apagó la campaña 11 y el conjunto `01-TEST` el 7-sep.
 
 ## Conversión y medición
 | | |
 |---|---|
-| **Destino** | web / WhatsApp / form nativo / DM |
-| **Objetivo de campaña** | **Clientes Potenciales (formulario nativo)** |
-| **Píxel** | ✅ / ❌ |
-| **API de Conversiones** | ✅ / ❌ |
-| **`ctwa_clid`** *(solo si es WhatsApp)* | ✅ / ❌ |
-| **% de cierre lead → venta** | *(si no se sabe, 5% como estándar)* |
-| **Quién responde y en cuánto** | |
+| **Destino** | **Formulario nativo de Meta** (instantáneo) |
+| **Objetivo de campaña** | Clientes Potenciales (`OUTCOME_LEADS`) |
+| **Dataset (píxel)** | `1102441958775610` — "Asistencia Legal Deudores" (BM `929736642112662`) |
+| **API de Conversiones** | ✅ **activa** — canal `crm`, eventos Lead · Schedule · Purchase |
+| **¿Alguna campaña optimiza por el dataset?** | ❌ **todavía no** — los conjuntos activos tienen `promoted_object.pixel_id = null`. Mide, no optimiza |
+| **`ctwa_clid`** | no aplica (no es WhatsApp) |
+| **% de cierre lead → venta** | ? — se asume 5% como estándar mientras no lo entreguen |
+| **Quién responde y en cuánto** | ? — tiempo sin medir |
+| **Canal de seguimiento** | WhatsApp API `+56 9 7894 5536` → GHL, desde el 17-sep. El anuncio sigue yendo a formulario nativo; el WhatsApp es lo que viene después |
+
+> ⚠️ **Trampa de métrica documentada en esta cuenta.** El campo `lead` a nivel
+> de anuncio es más amplio que `results` (`actions:leadgen.other`) a nivel de
+> campaña: 1.765 vs 1.071 leads en la misma ventana. **Nunca mezclar los dos en
+> un mismo reporte.** Toda esta ficha usa `actions:leadgen.other`.
+
+## El WhatsApp API — lo que costó y lo que queda
+
+Conectado el **17-sep-2026** después de dos días trabados. Estado hoy en el
+panel de LeadConnector:
+
+| | |
+|---|---|
+| Número | `+56 9 7894 5536` · Chile · **Coexistencia** · ✅ Conectado |
+| Estado de la cuenta | ✅ Aprobado |
+| **Verificación de negocio de Meta** | 🟠 **No verificado** — la hace el cliente con documentos del estudio. Define los límites de mensajería |
+| **Mensajes de marketing** | 🟠 **Pendiente** — sin verificar qué implica; confirmar contra documentación antes de planificar envíos |
+| Calificación de calidad | Ninguno — normal, el número aún no tiene tráfico |
+
+### 🔴 El aprendizaje, y aplica a cualquier cliente
+
+El número original (`+56 9 2383 2982`) **no se pudo conectar nunca**. Vivía en
+la WABA `1157548536170601` ("Isabel Asistente legal deudores", propiedad de
+Estudio Jurídico Carabajal y asociados), que tenía una **tarjeta VISA \*6698**
+asociada desde una herramienta anterior (Clienty).
+
+> **Una WABA que ya tiene método de pago no se puede conectar a otro BSP.**
+> Meta lo bloquea para evitar doble facturación, y la tarjeta **no se puede
+> quitar sin registrar otra** en su lugar. No hay forma de limpiarla.
+
+Lo que se probó y falló: elegir otra WABA en el onboarding (el número queda
+amarrado a la suya), desconectar el proveedor anterior desde Meta Business
+Suite, y quitar el método de pago.
+
+**La salida es número nuevo + WABA nueva.** Costo real: un chip de ~$1.000 CLP.
+No vale la pena pelear con la WABA heredada.
+
+📌 Documentación de HighLevel, textual: *"Do not add a payment method during
+the onboarding process"* — la agrega su backend al terminar. Agregar una a
+mano es exactamente lo que deja la WABA inservible para el futuro.
+
+### Pendiente de este canal
+- **Prueba de humo**: mensaje desde otro teléfono → ¿llega a GHL? ¿responde el agente? ¿vuelve la respuesta? **Antes de publicar el número en ningún lado.**
+- **Definir la coexistencia**: el número quedó vivo también en el celular. O el teléfono no se usa, o se ata a la etapa de "Ayuda Humana" — si no, el agente y una persona contestan lo mismo.
+- **Actualizar el número** en: pantalla de agradecimiento del formulario, creativos que lo lleven impreso, flujos de GHL, prompt del agente, web y firma. Y respuesta automática en el número viejo apuntando al nuevo.
+- **Titularidad del chip**: acordado que quede a nombre del estudio. **Sin formalizar todavía.**
+- **Mantener el chip vigente**: sin plan ni recarga la operadora lo recicla y reasigna el número.
 
 ## Las 7 Maletas
-1. **Público** —
-2. **Problema principal** —
-3. **Solución** —
-4. **Diferencial menos mencionado en el mercado** —
-5. **Testimonios disponibles** —
-6. **Objeción #1** —
-7. **Garantía** —
+1. **Público** — personas con deudas vencidas y/o publicadas en DICOM, 25–60, Chile
+2. **Problema principal** — deuda impagable + puertas cerradas (crédito, arriendo, trabajo)
+3. **Solución** — asesoría legal para reprogramar o extinguir la deuda
+4. **Diferencial menos mencionado en el mercado** — ?
+5. **Testimonios disponibles** — ?
+6. **Objeción #1** — ?
+7. **Garantía** — ?
 
 ## ADN
 | | |
 |---|---|
-| **Nivel de consciencia dominante del copy** | |
-| **¿Tiene material para hablarle a gente fría?** | |
+| **Nivel de consciencia dominante del copy** | Consciente del problema (los ganchos nombran el síntoma: “sigues apareciendo en DICOM”, “te cerraron las puertas”) |
+| **¿Tiene material para hablarle a gente fría?** | Sí — 3 reels propios de HEAT + material heredado de la agencia anterior |
 | **Tipo de oferta** | **servicio** |
-| **3 deseos de Reiss** *(con evidencia)* | |
-| **2 perfiles de comprador** | |
+| **3 deseos de Reiss** *(con evidencia)* | ? — falta validar |
+| **2 perfiles de comprador** | ? |
 
-## Estado actual de la cuenta
-- **Qué corre hoy:**
-  - Campaña **nueva de Clientes Potenciales con formulario nativo**, creada por Heat.
-  - **Campañas antiguas del cliente siguen activas**, a propósito, para no cortar el flujo de leads.
-- **Arquitectura:** convivencia temporal (Heat + legado del cliente)
-- **Objetivo declarado:** llegar a gestionar todas las campañas de la empresa
-- **⚠️ Riesgo a vigilar:** dos campañas de la misma cuenta persiguiendo al mismo público compiten en la misma subasta → CPM inflado y atribución confusa. Ver `10-publicos-y-exclusiones.md` §3.
-- **Pendiente:** medir por separado Heat vs. legado antes de proponer apagar lo viejo.
+---
+
+## Estructura real de la cuenta (7-sep-2026)
+
+Toda referencia a un anuncio va con su campaña y su conjunto. Sin excepción.
+
+### Campañas — últimos 30 días
+| Campaña | ID | Estado | Objetivo | Gasto 30d | Leads | CPL |
+|---|---|---|---|---|---|---|
+| `01-🟦DEUDA-CLIENTES POTENCIALES FORM FB-ABO` | `120205650356490060` | ACTIVE | LEADS | $2.903.913 | 440 | $6.600 |
+| `Clientes Potenciales \| Meta Form \| HEAT` | `120250454599080060` | ACTIVE | LEADS | $413.998 | 391 | **$1.059** |
+| `08-🟢🔵--RECONOCIMIENTO-VIDEO VIEW--ASISTENCIA LEGAL--ABO` | `120214291879560060` | ACTIVE | AWARENESS | $150.010 | — | — |
+| `11-✅CAMPAÑ UNIFICADA-LEADS DEUDAS-ABO` | `120227219834480060` | **PAUSED** (7-sep) | LEADS | $1.121.801 | 240 | $4.674 |
+| **Total cuenta** | | | | **$4.589.722** | | |
+
+El resto del historial (≈40 campañas) está en pausa y no gasta.
+
+### Conjuntos de anuncios activos
+Gasto real = promedio diario medido entre el 24-ago y el 6-sep (14 días).
+
+| Campaña | Conjunto | ID | Presupuesto | Gasto real/día | % que usa | Leads/día | CPL | Optimización |
+|---|---|---|---|---|---|---|---|---|
+| 01 | `AUDIENCIA GANADORA - Copia` | `120250595017530060` | $65.085 | $65.067 | 100% | 10,3 | $6.326 | **QUALITY_LEAD** |
+| 01 | `03- UBICACIONES REEL IG REGLA EDAD DE 30 A 55` | `120250406176740060` | $20.000 | $19.777 | 99% | 3,1 | $6.293 | LEAD_GENERATION |
+| HEAT | `Meta Form \| HEAT` | `120250454599090060` | $30.000 | **$14.670** | **49%** | **14,4** | **$1.022** | LEAD_GENERATION |
+| HEAT | `Meta Form \| HEAT - Test` | `120250911344120060` | $25.000 | *recién encendido (7-sep 12:36)* | — | — | — | LEAD_GENERATION |
+| 08 | `RETARGTN SMART RECORDATORIO` | `120238352951680060` | $3.000 | ~$3.000 | 100% | (recall $18) | — | AWARENESS |
+| | **Total** | | **$143.085** | **≈$102.500** | | **27,8** | | |
+
+### Públicos — son distintos, no se solapan como parecía
+| Conjunto | Geografía | Edad | Intereses | Advantage+ audiencia | Exclusiones |
+|---|---|---|---|---|---|
+| `AUDIENCIA GANADORA - Copia` | 2 radios de 16 km en Santiago + Puente Alto | 25–55 | 12 intereses financieros (banca, préstamos, Santander, Scotiabank) + empleados de Banco Itaú | **ON** | `FORM-FB -LLENO Y ENVIADO 90D` |
+| `03- UBICACIONES REEL IG` | Chile, ciudades de +1M hab. | 30–54 | — | **ON** | ninguna |
+| `Meta Form \| HEAT` | **Todo Chile** | 30–60 | — | **OFF** | **ninguna** |
+| `Meta Form \| HEAT - Test` | **Todo Chile** | 30–60 | — | **OFF** | **ninguna** |
+
+### Anuncios de la campaña HEAT — últimos 30 días
+| Conjunto | Anuncio | ID | Gasto | Leads | CPL | Diagnóstico de Meta |
+|---|---|---|---|---|---|---|
+| `Meta Form \| HEAT` | `Reel 1 - Meta Form` | `120250454599070060` | $373.905 | **381** | **$981** | Calidad Media · Interacción Media · **Conversión Superior al promedio** → “estás bien” |
+| `Meta Form \| HEAT` | `Reel 2 - Meta Form` | `120250455215540060` | $33.494 | 7 | $4.785 | **Calidad 35% inferior · Interacción 35% inferior** → “baja calidad, no despierta interés” |
+| `Meta Form \| HEAT` | `Reel 3 - Meta Form` | `120250455267720060` | $6.598 | 3 | $2.199 | sin muestra suficiente |
+| `Meta Form \| HEAT` | `Prueba: Reel 2` / `Prueba: Reel 3` | `...242840` / `...242830` | $0 | 0 | — | encendidos el 7-sep, sin datos |
+| `Meta Form \| HEAT - Test` | 5 anuncios (Reel 1 copia, Reel 2/3 copia, 2 estáticos DICOM) | — | $0 | 0 | — | **encendido el 7-sep 12:36 — corriendo, sin datos todavía** |
+
+**El Reel 1 es el único anuncio sano de toda la cuenta.** 381 de los 391 leads
+de la campaña HEAT salen de él.
+
+---
+
+## Hallazgos abiertos
+
+### 1. Los dos CPL no son comparables — corrige la lectura anterior
+`AUDIENCIA GANADORA - Copia` optimiza a **`QUALITY_LEAD`**; `Meta Form | HEAT`
+optimiza a **`LEAD_GENERATION`**. Son dos objetivos de optimización distintos
+que producen dos tipos de lead distintos: QUALITY_LEAD filtra más duro y cobra
+más caro por diseño.
+
+Decir “$6.326 contra $1.022, por lo tanto uno es seis veces peor” **es un error
+de lectura**. Puede que el lead caro cierre mucho mejor y termine siendo el
+negocio. **No se corta `AUDIENCIA GANADORA` hasta cruzar ambos con las ventas
+reales de Emma.**
+
+### 2. `Meta Form | HEAT` gasta la mitad de lo que tiene asignado
+Catorce días seguidos: $30.000 asignados, entre $11.622 y $19.852 gastados.
+Frecuencia 1,03–1,08 y alcance de 3.000–7.000/día, o sea **no es saturación de
+público**. Subirle el presupuesto no aumenta el gasto ni un peso — está topado
+por entrega, no por plata.
+
+Hipótesis a probar, en orden: (a) tiene `advantage_audience: OFF` mientras los
+otros dos lo tienen ON; (b) un solo anuncio sostiene el conjunto y Meta no
+encuentra más impresiones rentables a ese ritmo de conversión.
+
+### 3. El conjunto `Meta Form | HEAT - Test` corre con el mismo público que el original
+Mismo país, misma edad 30–60, mismas ubicaciones, misma optimización,
+Advantage+ igualmente apagado. **Esto no es un problema de entrega** — se
+encendió el 7-sep a las 12:36 y hay que dejarlo correr.
+
+Lo que sí conviene tener presente al leer el resultado: como el público es
+idéntico, lo que este conjunto aísla es **el creativo**, no la audiencia. Si
+rinde distinto al original, la diferencia viene de los anuncios nuevos
+(los dos estáticos de DICOM), no de a quién le llegó. Es una lectura válida,
+solo hay que saber qué se está midiendo.
+
+**Decisión de Seba (7-sep): dejarlo correr tal cual y evaluar con datos.**
+
+### 4. Duplicar un anuncio dentro del mismo conjunto no le da entrega
+`Prueba: Reel 2` y `Prueba: Reel 3` viven en `Meta Form | HEAT` con 0
+impresiones. El presupuesto del conjunto va al anuncio con mejor rendimiento
+esperado, y ese es el Reel 1. Para que un creativo nuevo reciba entrega tiene
+que estar en un conjunto donde el Reel 1 **no** esté.
+
+---
+
+## Estado del encargo
+- **Permiso:** Emma autorizó modificar todas las campañas heredadas (reunión del 7-sep).
+- **Arquitectura:** convivencia HEAT + legado del cliente, en transición.
+- **Objetivo declarado:** llegar a gestionar todas las campañas de la empresa.
+- **Bloqueo técnico conocido:** el conector de Meta **no puede crear anuncios de
+  formulario instantáneo** — requiere el permiso `pages_manage_ads` sobre la
+  página, que la conexión MCP no solicita. Se montan a mano en Ads Manager.
+
+---
+
+## CAPI — estado al 8-sep-2026
+
+El CAPI **ya estaba funcionando** cuando se revisó; el trabajo fue arreglarlo,
+no configurarlo. Detalle completo del diagnóstico en
+`capi-diagnostico-2026-09-08.md` y en la memoria de `heat-ads`
+(`.claude/memory/project/capi-calidad-lead.md`).
+
+| | |
+|---|---|
+| **Quién envía** | El motor de HEAT (`heat-ads`), cada 15 minutos |
+| **Volumen** | 355 eventos aceptados en 7 días |
+| **Canal** | `crm` ✅ (antes caía en `web`, que Meta archiva) |
+| **CRM conectado en Events Manager** | ✅ 5 stages |
+| **Optimización por lead calificado** | Habilitada por Meta, **sin usar todavía** |
+
+### Reglas activas — 3 de 18 etapas
+Embudo `Asistencia Legal Deudores` (`IHgDSH40zXRnlKk0yVLp`):
+
+| Etapa | ID | Evento de Meta |
+|---|---|---|
+| Nuevo | `8072bcbc-571b-43d2-9cde-97ae6239419c` | Lead |
+| agendado | `d3a68c0d-0f8e-465b-a3ee-9aa92b136362` | Schedule |
+| CONTRATO CERRADO AB | `9cacb3ce-fa64-4e13-ad07-a0e943c7befd` | Purchase |
+
+**El embudo `ABOGADOS` (`sqRteAXu3FnDbMM2CN2W`) NO lleva reglas y está bien
+así**: es post-venta. Ahí llegan quienes ya cerraron el contrato y pasan a la
+primera sesión con el abogado. La venta se marca en el embudo principal.
+
+### Calidad de coincidencia (EMQ, sobre 10)
+| Evento | EMQ | Falta |
+|---|---|---|
+| Lead | 5,2 | venía sin `external_id` — era el flujo duplicado, ya apagado |
+| Schedule | 6,4 | — |
+| Purchase | 6,4 | — |
+
+### ⚠️ Los `Purchase` llegan valiendo $0
+Las oportunidades de GHL **no llevan monto**. El motor usa
+`regla.value ?? opp.monetaryValue` y completa con `?? 0`, así que los ~30
+contratos semanales llegan a Meta sin valor: se puede optimizar por *cantidad*
+de contratos, nunca por valor, y no hay ROAS que calcular.
+
+`AttributionRule.value` existe y el motor lo usa, pero la pantalla de
+Atribución no tiene dónde cargarlo. **Bloqueado por el ticket promedio de Emma.**
+
+### Descartado, no volver a proponerlo
+- **`lead_id`**: GHL no lo guarda (trae `adId`, `adSetId`, `campaignId`,
+  `formId`) y el token de HEAT no puede leer `/{form_id}/leads` — falta
+  `pages_read_engagement`. Requiere revisión de app en Meta. Verificado por
+  Piero, 2026-09-06.
+- **Rotar el token de Meta**: hay una decisión vigente de Piero de no rotar
+  claves hasta que las revise el técnico de TI.
 
 ## Bitácora
 | Fecha | Qué se cambió | Por qué | Métrica que debía moverse | Resultado |
 |---|---|---|---|---|
-| | | | | |
+| 7-sep | Pausa de la campaña `11-✅CAMPAÑ UNIFICADA-LEADS DEUDAS-ABO` completa | CPL $4.674 y solapamiento con la 01 | Gasto mensual a la baja | ✅ liberó ~$37.500/día |
+| 7-sep | Pausa del conjunto `01-TEST [MERCADO FINANCIERO+ EDAD]` (campaña 01) | $6.937/lead, el peor de los que gastaban | Gasto mensual a la baja | ✅ liberó $10.000/día |
+| 7-sep | Pausa de un conjunto en la campaña `08` de reconocimiento; se deja solo `RETARGTN SMART` con $3.000 | Reconocimiento no es la prioridad con el tope encima | Gasto mensual a la baja | ✅ |
+| 7-sep | Se crea el conjunto `Meta Form \| HEAT - Test` con 5 anuncios ($25.000/día) | Dar entrega a creativos que el Reel 1 ahogaba | CPL a 7 días vs. el del conjunto original | ⏳ **encendido a las 12:36 del 7-sep**. Sin datos aún — primera lectura el 10-sep, veredicto el 14-sep |
+| 7-sep | Se duplican `Reel 2` y `Reel 3` como “Prueba:” dentro de `Meta Form \| HEAT` | Intentar darles entrega | Impresiones > 0 | ⏳ recién encendidos, ver hallazgo #4 |
+| 7-sep | Se fija techo de **$4.000.000/mes** = $129.000/día | Agosto cerró en $4.602.916 | Gasto mensual ≤ $4M | ⏳ septiembre proyecta $3,3–3,9M |
+| 8-sep | Se conecta el CRM en Events Manager (5 stages) | Sin eso Meta no puede optimizar por lead calificado | Que aparezca el canal `crm` | ✅ Meta habilitó la optimización por lead calificado |
+| 8-sep | **Se apaga el flujo `1. CAPI - Funnel Event \| Nuevo Lead - CRM`** en el GHL del cliente | Duplicaba el evento `Lead` desde el 13-ago: Meta contaba cada lead dos veces y optimizaba hacia un número inflado | `Cliente potencial` de ~65/día a ~28/día | ⏳ verificar el 10-sep |
+| 11-sep | Reporte semanal. Se verifica la comparativa contra las heredadas | Seba reporta haber bajado el costo por lead | Costo por lead | ✅ **Confirmado y mayor de lo dicho.** Misma unidad: QUALITY_LEAD nuestro $4.343 vs heredado $7.318 (−41%); LEAD_GENERATION $1.567 vs $10.556 (−85%) |
+| 11-sep | ✅ **El CAPI cerró el circuito** | Era el paso 6, en rojo desde el 8-sep | Un conjunto optimizando por el dataset | ✅ `CAPI - Meta Form \| HEAT - Test` (creado 8-sep) con `promoted_object.pixel_id = 1102441958775610`. **El único de la cuenta** — `AUDIENCIA GANADORA` usa QUALITY_LEAD pero con pixel_id null |
+| 11-sep | Se mide el mes contra el tope de $4.000.000 | — | Gasto proyectado | ⛔ **$1.593.081 en 10 días.** Quedan $2.406.919 para 20 = $120.346/día contra ~$144.640 actuales. Cierra en ~$4.486.000 |
+| 11-sep | Se identifica qué recortar | Igual que en Vanessa, coincide con el peor | Costo por lead | 📌 `03- UBICACIONES REEL IG`: $20.000/día, **13 leads a $10.556** (bajo el umbral de 15). Pausarlo deja el mes en ~$4.086.000 |
+| 16-sep | Se intenta conectar `+56 9 2383 2982` a la API vía LeadConnector | Llevar el seguimiento al agente de IA en GHL | Número conectado | ⛔ **Bloqueado.** «a payment method already exists for current WhatsApp Business Account - 1157548536170601». La VISA \*6698 no se puede retirar sin registrar otra |
+| 17-sep | Se descarta rescatar el número viejo y se compra un chip nuevo | La WABA heredada es inservible para otro BSP; el chip cuesta ~$1.000 | Tiempo hasta tener el canal andando | ✅ Decisión tomada con el cliente vía Julieta. Acordado que el chip quede a nombre del estudio |
+| 17-sep | ✅ **WhatsApp API conectado**: `+56 9 7894 5536`, WABA nueva | Cerrar el canal de seguimiento del formulario | Estado «Conectado» en LeadConnector | ✅ Conectado, coexistencia, cuenta Aprobada. 🟠 Verificación de negocio **no verificada** y Mensajes de marketing **pendiente** |
+| 21-sep | **Recorte de presupuesto: $158.000 → $81.500/día** | El 20-sep gastó $189.687, el día más caro del mes. A ese ritmo septiembre cerraba en ~$4.600.000, igual que agosto | Gasto mensual ≤ $4.000.000 | ✅ Proyecta **$4.019.244**. CAPI-Test $50.000→$10.000 · HEAT-Test $25.000→$10.000 · AUDIENCIA GANADORA-Copia $30.000→$8.500 |
+| 21-sep | Se registra que el conjunto `Meta Form \| TAG` está al aire | Se creó sin que quedara anotado | Costo por resultado | ⭐ **282 resultados a $398** (15–21 sep), el mejor de la cuenta. El peor: `CAPI - Meta Form \| HEAT - Test`, 41 a **$7.042** con $50.000/día |
+| 21-sep | ⚠️ Dos unidades conviviendo en la misma cuenta | TAG y CAPI-Test miden en «Meta leads» (`onsite_conversion.lead_grouped`); los otros tres en «Leads (form)» (`leadgen.other`) | Legibilidad del reporte | 📌 **No comparar entre grupos.** Dentro de cada uno sí |
+
+## Lo siguiente, en orden
+1. **Pedirle a Emma el ticket promedio y el % de cierre**, separando leads de
+   `AUDIENCIA GANADORA` (QUALITY_LEAD) de los del `Reel 1` (LEAD_GENERATION).
+   Sin ese cruce toda decisión de presupuesto es a ciegas.
+2. **Dejar correr el conjunto Test sin tocarlo.** Primera lectura el **10-sep**
+   (¿está entregando?), veredicto de CPL el **14-sep** (7 días completos).
+   Tocarlo antes reinicia el aprendizaje y borra la prueba.
+3. **Sacar el `Reel 2` de circulación**: Meta lo ubica en el 35% inferior en
+   calidad y en interacción. No es que le falte presupuesto, es que no funciona.
+4. **Reasignar presupuesto solo después del punto 1**, con el límite de −20%
+   por ajuste para no reiniciar la fase de aprendizaje de cada conjunto.
+5. **Prueba de humo del WhatsApp nuevo** antes de publicarlo en cualquier lado,
+   y decidir qué pasa con la coexistencia (ver el bloque del WhatsApp API).
+6. **Empujar la verificación de negocio** del estudio. No la resuelve el chip
+   nuevo y es la que fija los límites de mensajería del número.
+7. **Conjunto nuevo de TAG** — sigue sin crearse. Los 9 textos y 9 títulos
+   están escritos; el plan era financiarlo pausando `03- UBICACIONES REEL IG`.
