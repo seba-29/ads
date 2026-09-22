@@ -89,11 +89,14 @@ de nuevo**.
 
 ## Lo que sigue pendiente de ejecutar
 
-- 🔴 **Leer el `ctwaClid` y el `sourceId` del primer mensaje de la
-  conversación.** Es el pendiente más grande de la cuenta: **8 de los 59
-  agendamientos de septiembre** vienen de anuncios de WhatsApp y el panel no
-  los muestra. El dato está completo en GoHighLevel —id del anuncio incluido—
-  y solo hay que leerlo del mensaje, no del contacto.
+- 🔴 **Que la automatización guarde el `sourceId` del anuncio en un campo
+  personalizado.** Es lo único que falta para atribución COMPLETA de WhatsApp,
+  y es un cambio en GoHighLevel, no en el panel. Hoy el tag dice que el lead
+  vino de un anuncio de Facebook o Instagram —258 contactos en septiembre— pero
+  no de cuál, así que no se pueden colgar de un conjunto. La app de WhatsApp
+  tiene el id a la vista cuando llega el mensaje.
+- ✅ **Hecho: el panel reconoce los leads de anuncios de WhatsApp por sus
+  tags.** 252 contactos de septiembre que estaban en cero dejan de estarlo.
 - 🟢 **Que la landing conserve los UTM entre sus dos pantallas.** Es el arreglo
   de mayor retorno de la cuenta y no cuesta un peso de medios: **34 de sus 109
   contactos pierden el id del conjunto**, y esos 34 agendaron 6 veces (17,6%).
@@ -155,20 +158,46 @@ y los 12 sin huella se abrieron a mano en GoHighLevel.
 **49 de los 59 agendamientos los trajo la publicidad, y el panel muestra 35.**
 No porque el CRM no tenga el dato: lo tiene completo y en el lugar equivocado.
 
-### ⚠️ Dónde guarda GoHighLevel la atribución de click-to-WhatsApp
+### ⚠️ Dónde NO está la atribución de click-to-WhatsApp (y dónde sí)
 
-**No está en `attributionSource` del contacto. Está en el PRIMER MENSAJE de la
-conversación**, y trae más de lo que hace falta:
+**El WhatsApp de Ondex no entra por la integración nativa de GoHighLevel** sino
+por una app del marketplace: *«Whatsapp, iMessage and SMS»* (appId
+`67fb75c15f402353e5cfaa63`). Esa app se guarda el bloque del anuncio —el que se
+ve en la interfaz, con `ctwaClid`, `sourceId` y el creativo— y **la API pública
+de GoHighLevel no lo devuelve**.
 
-| Campo | Qué es |
+Verificado con un token de lectura el 22-sep-2026, contacto por contacto:
+
+| Dónde se buscó | Qué hay |
 |---|---|
-| `ctwaClid` | el click id de Meta — solo lo pone un anuncio |
-| `sourceId` | **el id del ANUNCIO**, que resuelve conjunto y campaña |
-| `sourceType: "ad"` | confirma que fue un clic pagado |
-| `sourceApp` | `facebook` o `instagram` |
-| `body`, `title`, `mediaUrl` | el copy y el creativo exactos |
+| `contact.attributions` | `null` |
+| `attributionSource` / `lastAttributionSource` | no existen en el listado |
+| Los 41 mensajes de la conversación | ni `ctwaClid` ni `sourceId` |
+| `meta` del primer mensaje | `{marketplace: {appId, appName}}` y nada más |
+| El detalle del mensaje | tampoco |
 
-Los 8 agendamientos recuperados, resueltos contra Meta:
+**Lo que sí llega son los TAGS.** La automatización del cliente etiqueta cada
+lead al entrar, y el listado de contactos los devuelve — así que leerlos no
+cuesta ni una llamada extra.
+
+| Tag | Contactos de septiembre |
+|---|---:|
+| `fb-ad-lead-whatsapp` | 178 |
+| `instagram-ad-lead-whatsapp` | 80 |
+| **Total** | **258** |
+| De esos, **sin** `attributions` | **252** |
+
+De los 12 agendamientos que el panel daba por «sin ninguna huella», **8 traen
+tag de anuncio** — 6 de Facebook y 2 de Instagram. Los mismos 8 que se habían
+encontrado abriendo los contactos a mano: **dos fuentes independientes, mismo
+número.**
+
+> **El tag dice que vino de un anuncio, no de CUÁL.** Sin el id del anuncio no
+> se puede colgar de un conjunto ni de una campaña. El arreglo está en
+> GoHighLevel, no en el panel: que la automatización guarde el `sourceId` en un
+> campo personalizado al recibir el mensaje. La app lo tiene a la vista.
+
+Los 8 de septiembre sí quedaron resueltos, porque se leyeron uno por uno:
 
 | Anuncio | Conjunto | Campaña | Agend. |
 |---|---|---|---:|
@@ -229,7 +258,7 @@ anuncio completo a la vista.
 > —contacto y conversación— mirar uno y concluir por los dos es adivinar con
 > cara de medición.
 
-### ⚠️ Cuatro trampas de medición que costaron dos días
+### ⚠️ Cinco trampas de medición que costaron dos días
 
 **La unidad es el CONTACTO, no la oportunidad.** Cada paciente genera una
 oportunidad por embudo: contando oportunidades, un mismo agendamiento vale
@@ -254,6 +283,23 @@ miró. El detalle `/contacts/{id}` sí lo trae, pero hay que pedirlo de a uno co
 pausa. Por eso el diagnóstico declara `confiable` (el desglose completo) y
 `veredictoConfiable` (los agendamientos) **por separado**: son dos
 afirmaciones distintas y mezclarlas deja al lector sin saber cuál creer.
+
+**Un cero sin haber mirado no es un cero — tres veces el mismo error.** Buscar
+el `ctwaClid` en el contacto y concluir que no venía de un anuncio. Contar
+respuestas de la búsqueda de conversaciones como si fueran lecturas de
+mensajes. Pedir los últimos 25 mensajes de conversaciones de 68 y no llegar al
+primero. Las tres veces el instrumento devolvió «0, sin problemas».
+
+> **La regla.** «Lo busqué y no está» solo vale si se sabe dónde debería estar.
+> Y cuando se busca a ciegas en una API ajena, el instrumento tiene que decir
+> DÓNDE se cortó —cuántas páginas, cuántos objetos, qué claves trajo— y no solo
+> qué no encontró.
+
+**Y el error de método que costó más que todos los de medición juntos:** se
+depuraron ocho hipótesis contra producción, una por despliegue, con el cliente
+esperando. Cada vuelta se trató como «un arreglo chico más» en vez de parar a
+preguntarse qué terminaba el ciclo. Con un token de lectura de la API —lo que
+al final destrabó todo— cada hipótesis costaba 30 segundos en vez de un merge.
 
 ## La conexión con GoHighLevel — cómo quedó
 
@@ -308,3 +354,6 @@ admin, que es el respaldo que el panel usa cuando la agencia no puede mintear.
 | 22-sep | ⚠️ Se corrige un error de proceso propio | Se le dijo a Seba «mergeado y desplegado» habiendo verificado que main tenía un merge nuevo, no que tuviera **el commit**. El endpoint corrió dos veces con el build viejo | — | ✅ Regla: antes de mandar a correr algo, verificar el commit específico en main, no el último merge |
 | 22-sep | ⛔ **Se corrige la conclusión sobre WhatsApp: era la hipótesis buena** | Se había declarado descartada porque el `ctwaClid` no aparecía en `attributionSource` del contacto. Vive en el PRIMER MENSAJE de la conversación, junto con el id del anuncio | Agendamientos atribuibles | ✅ **8 de los 12 sin huella vienen de anuncios.** Los 59 quedan en **49 de Meta contra 35 que muestra el panel**. Lo destrabó Seba abriendo los contactos a mano |
 | 22-sep | Se recalcula Creatiklab con los agendamientos recuperados | Se pausaron sus dos conjuntos el 21-sep por $94.842 por agendamiento | Costo por agendamiento real | ⚠️ **Son al menos 10 agendamientos: $37.938.** Sigue siendo peor que el formulario ($24.583), pero la decisión se tomó con un número 2,5× peor que el real |
+| 22-sep | ⛔ **La atribución de WhatsApp NO está en la API de GoHighLevel** | Se buscó en el contacto, en los 41 mensajes, en el `meta` del primero y en el detalle. En ninguno | Atribución de los leads de WhatsApp | ⛔ El WhatsApp entra por una app del marketplace («Whatsapp, iMessage and SMS») que se guarda el bloque del anuncio y no lo expone. Tres PR fueron a buscar donde no estaba |
+| 22-sep | El panel reconoce los leads de anuncios de WhatsApp por sus **tags** | Es el único rastro que queda, y el listado de contactos ya los devuelve | Contactos atribuibles | ✅ **258 contactos etiquetados en septiembre, 252 de ellos sin `attributions`.** Cero llamadas extra a la API. De los 12 agendamientos sin huella, 8 son de anuncios: 6 Facebook, 2 Instagram — los mismos que se habían leído a mano |
+| 22-sep | ⚠️ Se corrige el método de depuración | Ocho hipótesis probadas contra producción, una por despliegue, con el cliente esperando | Vueltas hasta resolver | ✅ Con un token de LECTURA de la API cada hipótesis pasó a costar 30 segundos. La regla: cuando cada prueba cuesta un despliegue ajeno, lo primero que hay que arreglar es cómo se prueba |
