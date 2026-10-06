@@ -141,3 +141,38 @@ eliminó y hoy devuelve 404 en producción.
 | `localhost` en el bundle | ✅ ninguno | ✅ ninguno |
 | Favicons sirviendo | ✅ `.ico` y `.png` 200 | ✅ `.ico` y `.png` 200 |
 | `favicon.svg` viejo | ✅ 404 | ✅ 404 |
+
+---
+
+## Actualización — 06-oct-2026, Microsoft Clarity
+
+| Landing | Proyecto Clarity | Estado |
+|---|---|---|
+| Kinesiología | `ytk2sazcfb` | zip listo para publicar |
+| Método Ondex | pendiente | — |
+
+**Se parchea sobre lo publicado**, igual que `agenda-directa.js`: el zip se baja de
+Netlify (Deploys → el deploy vigente → Download), se compara archivo por archivo contra
+producción y recién ahí se edita. Netlify guarda los nombres en minúscula y sirve sin
+distinguir mayúsculas, así que el zip descargado se puede volver a subir tal cual.
+Copia de lo publicado: `publicado/<landing>/`.
+
+Qué se agregó:
+
+- **`index.html`**: el código de Clarity en el `<head>` y dos etiquetas desde la URL:
+  `conjunto` (`utm_term`) y `anuncio` (`utm_content`). Clarity filtra solo por
+  `utm_source`, `utm_medium` y `utm_campaign`; sin las etiquetas no se puede mirar
+  Las Condes aparte de Santiago Centro.
+- **`agenda-directa.js`**: eventos para filtrar grabaciones — `lead_reserva`,
+  `lead_whatsapp`, `lead_llamada`, `lead_agenda_externa`, `agenda_no_cargo` — y los pasos
+  de adentro de la agenda: `agenda_sede`, `agenda_horas`, `agenda_datos`, con la sede
+  elegida como etiqueta `sede`.
+
+⚠️ **Clarity no graba adentro de la agenda**: es un iframe de otro dominio
+(`agentes.heatchile.com`). Los pasos llegan porque la agenda los avisa por `postMessage`
+(heat-integrations, PR #2164). Sin ese PR mergeado los eventos `agenda_*` no aparecen;
+el resto funciona igual.
+
+Probado en Chromium con la agenda simulada: eventos de Clarity en orden, un `paso` con
+forma inválida se descarta, y las llamadas al píxel (Lead y Contact) son idénticas a las
+de antes del cambio.
