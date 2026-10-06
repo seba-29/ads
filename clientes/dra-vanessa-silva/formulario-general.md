@@ -127,34 +127,66 @@ conversación arranca peleando. Eso lo explica Lorena.
 
 ---
 
-## 4. Pantalla de agradecimiento
+## 4. Pantalla de agradecimiento ("Mensaje para clientes potenciales")
+
+Meta tiene acción nativa **"Chatear en WhatsApp"** — no hace falta el truco de poner un
+`wa.me` dentro de "Ir al sitio web". Es la que va.
+
+### Título (tope 60 caracteres)
 
 ```
-Título:       ¡Listo! Te escribimos por WhatsApp 💬
-
-Descripción:  Revisamos tu caso y te contactamos para orientarte y coordinar tu
-              evaluación. Si quieres adelantar, escríbenos ahora y te atendemos
-              al instante.
-
-Botón:        destino → https://wa.me/569XXXXXXXX?text=Hola,%20llen%C3%A9%20el%20formulario%20y%20quiero%20informaci%C3%B3n
+¡Listo! Escríbenos ahora y te atendemos al instante 💬
 ```
 
-🔸 **El número de WhatsApp no está en el repo** (el agente entra por el puente QR, no
-hay número en `agente.yaml` ni en la KB). Hay que pedirlo y armar el enlace — no lo
-inventé.
+Corto, si se prefiere: `¡Listo! Hablemos por WhatsApp 💬`
 
-Si el editor solo deja elegir etiquetas predefinidas para el botón ("Ver sitio web",
-"Más información"), da igual la etiqueta: lo que importa es que el destino sea el
-`wa.me`.
+El título de esta pantalla tiene **un solo trabajo: que toquen el botón**. Por eso no
+dice "te escribimos" — eso le da permiso a la persona de cerrar e irse a esperar, y un
+lead que abre la conversación vale varias veces uno que queda esperando.
 
-**Este botón es la pieza más valiosa del formulario en esta cuenta.** La regla de
-lead-gen es contactar en menos de 48 horas; acá Lorena contesta 24/7, así que el lead
-que toca el botón entra a una conversación atendida en segundos en vez de esperar.
-Al revés también: **si el agente está apagado para este cliente, el formulario pierde
-justamente su ventaja** y hay que avisar que alguien conteste a mano.
+### Descripción
 
-El texto precargado no puede traer la respuesta de la pregunta 1 — el `wa.me` es fijo
-para todo el formulario. Esa la lee Lorena del CRM.
+```
+Recibimos tus datos. Toca el botón y seguimos por WhatsApp: resolvemos tus dudas
+sobre el procedimiento que te interesa, te contamos qué incluye y coordinamos tu
+evaluación con la Dra. Vanessa Silva.
+
+Respondemos todos los días, a cualquier hora. 💬
+```
+
+Variante sobria, si el equipo contesta a mano y no se puede prometer inmediatez:
+
+```
+Recibimos tus datos. Toca el botón para seguir por WhatsApp y coordinar tu
+evaluación con la Dra. Vanessa Silva — o espera nuestro mensaje, te contactamos
+dentro del horario de atención (lunes a viernes, 08:00 a 18:00).
+```
+
+### El número que se conecte es lo que decide si esto funciona
+
+La acción nativa pide **agregar la cuenta de WhatsApp Business**, y ahí está el riesgo
+real de esta cuenta: **Lorena atiende por el puente QR**, no necesariamente por el
+número que esté vinculado al Business Manager. Si se conecta un número distinto, los
+leads caen en un WhatsApp que nadie está mirando y el formulario pierde justamente su
+ventaja.
+
+**Se verifica mandándose un mensaje a sí mismo desde el formulario en vista previa y
+viendo si Lorena contesta.** Que el número aparezca conectado en Meta es el intento;
+la respuesta de Lorena es el efecto.
+
+**Por qué importa tanto:** la regla de lead-gen es contactar en menos de 48 horas. Con
+Lorena encendida, el lead que toca el botón entra a una conversación atendida en
+segundos. Es la ventaja más grande que tiene esta cuenta sobre cualquier competidor que
+devuelva el llamado al día siguiente — y se pierde entera si el número está mal.
+
+Si la acción permite cargar un mensaje inicial, va este:
+
+```
+Hola, llené el formulario y quiero información 😊
+```
+
+Ese texto es fijo para todo el formulario: **no puede traer la respuesta de la pregunta
+1**. Esa la lee Lorena en el CRM.
 
 ---
 
@@ -217,7 +249,8 @@ confirmado por escrito (pendiente desde la reunión del 3-sep).
 ## 8. Checklist de lanzamiento
 
 - [ ] Enlace de política de privacidad (copiado del formulario que ya corre)
-- [ ] Número de WhatsApp para el botón de la pantalla final
+- [ ] Cuenta de WhatsApp Business conectada en la acción "Chatear en WhatsApp"
+      — y verificada con un mensaje de prueba: ¿contesta Lorena?
 - [ ] Tipo de formulario: **Más intención**
 - [ ] Teléfono obligatorio · Ciudad prellenada
 - [ ] Dos preguntas, ni una más
