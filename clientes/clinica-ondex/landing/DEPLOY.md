@@ -183,3 +183,38 @@ dos archivos que cambian, para reemplazarlos en la carpeta descargada de Netlify
 Probado en Chromium con la agenda simulada: eventos de Clarity en orden, un `paso` con
 forma inválida se descarta, y las llamadas al píxel (Lead y Contact) son idénticas a las
 de antes del cambio.
+
+---
+
+## Actualización — 06-oct-2026 (tarde), código del botón de WhatsApp
+
+**Problema:** el botón «Escribir por WhatsApp» no dejaba nada en el CRM, así que el panel
+contaba esos contactos como "WhatsApp sin anuncio" aunque vinieran de un anuncio. Las reservas
+de la agenda sí llegaban atribuidas.
+
+**Solución** (heat-integrations #2167 + `agenda-directa.js` de las dos landings):
+
+- El texto de WhatsApp lleva un código: `… (código K8YL3Z)`. **K** = Kinesiología,
+  **M** = Método/ondas; el resto es al azar, sin I, O, 0 ni 1.
+- Al tocar el botón, la landing registra el código con los UTM de la visita en
+  `https://agentes.heatchile.com/api/landing/codigo` (sendBeacon, texto plano, sin datos de
+  la persona), y lo deja en Clarity como etiqueta `codigo_whatsapp`.
+- Cuando el mensaje entra, el cerebro escribe en el contacto los mismos campos que la agenda
+  (UTM campaign/term/content/source + Origen landing) y las etiquetas `whatsapp-landing` y la
+  de la landing. El panel no necesita cambios.
+
+**Orden:** primero el merge del PR, después las landings. Si el código no está registrado,
+el contacto queda solo con la landing (por la letra), nunca con un conjunto adivinado.
+
+**Qué se ve en GHL ahora, por camino de entrada:**
+
+| Entró por | Etiquetas | Campos de atribución |
+|---|---|---|
+| Agenda de la landing | `reserva-web` + `landing-…` | campaña, conjunto, anuncio, fuente, landing |
+| WhatsApp de la landing | `whatsapp-landing` + `landing-…` + nota con el código | los mismos |
+| Llamar | — | — (solo el clic en Meta y en Clarity) |
+
+Probado en Chromium con las dos landings: el código va en el texto, se registra una sola vez
+aunque se toque dos veces, viaja como `text/plain` con los cuatro UTM, queda en Clarity, y el
+evento de Meta (Lead + Contact) no cambia. Cruce: el cerebro lee del texto real el mismo
+código que la landing registra.
