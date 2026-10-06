@@ -72,56 +72,10 @@
   // El WhatsApp donde contesta María Paz. El texto predefinido no es adorno: le
   // dice de qué landing viene la persona, así que la atribución de los leads que
   // entran por acá sale gratis, en el primer mensaje.
-  // ── CÓDIGO DEL BOTÓN DE WHATSAPP (06-10-2026) ──────────────────────────────────────────────
-  //
-  // 🔴 SIN ESTO, QUIEN ESCRIBE DESDE ACÁ LLEGA AL CRM SIN ANUNCIO. El clic en WhatsApp no deja
-  // nada en GHL: entra un mensaje cualquiera y el panel lo cuenta como "WhatsApp sin anuncio",
-  // aunque haya venido de un anuncio pagado. Con el código pegado al texto, y registrado en la
-  // plataforma con los UTM de esta visita, el cerebro le escribe al contacto la MISMA atribución
-  // que deja una reserva de la agenda (campaña, conjunto, anuncio). Ver heat-integrations,
-  // lib/whatsapp-landing-puro.ts.
-  //
-  // La primera letra dice de qué landing viene (K = kine): si el registro se perdiera,
-  // al menos queda la landing. El resto es al azar, sin I, O, 0 ni 1 para que no se confunda.
-  var SLUG = "clinica-ondex";
-  var ORIGEN_CLAVE = "kine";
-  var REGISTRO_CODIGO = ORIGEN + "/api/landing/codigo";
-  var ALFABETO = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
-  function nuevoCodigo(letra) {
-    var n = new Uint8Array(5);
-    if (window.crypto && window.crypto.getRandomValues) window.crypto.getRandomValues(n);
-    else for (var i = 0; i < 5; i++) n[i] = Math.floor(Math.random() * 256);
-    var out = letra;
-    for (var j = 0; j < 5; j++) out += ALFABETO.charAt(n[j] % 32);
-    return out;
-  }
-  var CODIGO = nuevoCodigo("K");
-
-  // Se registra al tocar el botón, no al cargar la página: solo quedan los códigos que alguien
-  // usó. Con sendBeacon y texto plano: el navegador lo manda aunque la página se vaya a WhatsApp, y
-  // no necesita permiso de CORS. Solo viajan el código y los UTM de la URL, nada de la persona.
-  var registrado = false;
-  function registrarCodigo() {
-    if (registrado) return;
-    registrado = true;
-    var q = new URLSearchParams(window.location.search || "");
-    var utm = {};
-    var claves = ["utm_campaign", "utm_term", "utm_content", "utm_source"];
-    for (var i = 0; i < claves.length; i++) { var v = q.get(claves[i]); if (v) utm[claves[i]] = v; }
-    var cuerpo = JSON.stringify({ slug: SLUG, codigo: CODIGO, origen: ORIGEN_CLAVE, utm: utm });
-    var ok = false;
-    try { ok = !!(navigator.sendBeacon && navigator.sendBeacon(REGISTRO_CODIGO, cuerpo)); } catch (e) { ok = false; }
-    if (!ok) {
-      try { fetch(REGISTRO_CODIGO, { method: "POST", body: cuerpo, mode: "no-cors", keepalive: true }); } catch (e) { /* se pierde la atribución, no el WhatsApp */ }
-    }
-    // El mismo código queda en la grabación de Clarity: desde el contacto del CRM se llega a la visita.
-    if (typeof window.clarity === "function") window.clarity("set", "codigo_whatsapp", CODIGO);
-  }
-
   var WA =
     "https://wa.me/56952296611?text=" +
     encodeURIComponent(
-      "Hola, vengo del sitio de Kinesiología de Clínica Ondex y tengo una duda antes de agendar. (código " + CODIGO + ")",
+      "Hola, vengo del sitio de Kinesiología de Clínica Ondex y tengo una duda antes de agendar.",
     );
   var TEL = "+56951776311"; // línea de la clínica
 
@@ -168,13 +122,55 @@
     window.clarity("event", evento);
   }
 
+  // ── DE QUÉ ANUNCIO VIENE EL QUE ESCRIBE POR WHATSAPP ───────────────────────
+  //
+  // El mensaje de WhatsApp NO lleva nada agregado: es el saludo de siempre. Lo que se anota es el
+  // CLIC: esta landing, los parámetros del anuncio de esta visita y si venía de un anuncio. Nada de
+  // la persona. Cuando entra la conversación con este saludo, la plataforma la cruza con el clic de
+  // esta landing de justo antes y el contacto queda con su campaña, conjunto y anuncio. Si no se
+  // puede saber con certeza, queda "sin identificar": no se adivina.
+  //
+  // sendBeacon sobrevive a que se abra WhatsApp y, con texto plano, no pide permiso de CORS. Una
+  // vez por visita, como el píxel. Si falla, el botón abre WhatsApp igual: esto nunca lo frena.
+  var clicAvisado = false;
+  function avisarClicWhatsapp() {
+    if (clicAvisado) return;
+    clicAvisado = true;
+    try {
+      var busca = window.location.search || "";
+      var leer = function (clave) {
+        var m = busca.match(new RegExp("[?&]" + clave + "=([^&]+)"));
+        if (!m || !m[1]) return "";
+        try { return decodeURIComponent(m[1].replace(/\+/g, " ")); } catch (_) { return ""; }
+      };
+      var utm = {};
+      var claves = ["utm_campaign", "utm_term", "utm_content", "utm_source"];
+      for (var i = 0; i < claves.length; i++) {
+        var v = leer(claves[i]);
+        if (v) utm[claves[i]] = v;
+      }
+      // Pagado = el link traía los parámetros del anuncio. `fbclid` NO cuenta: Facebook lo agrega
+      // también a los links de publicaciones orgánicas.
+      var pagado = Boolean(utm.utm_campaign || utm.utm_content || leer("utm_medium") === "paid");
+      var cuerpo = JSON.stringify({ slug: "clinica-ondex", origen: "kine", utm: utm, pagado: pagado });
+      var url = ORIGEN + "/api/landing/clic";
+      if (navigator.sendBeacon && navigator.sendBeacon(url, cuerpo)) return;
+      fetch(url, { method: "POST", body: cuerpo, keepalive: true, mode: "no-cors", headers: { "Content-Type": "text/plain" } });
+    } catch (_) {
+      // Sin aviso, ese WhatsApp queda "sin identificar". El botón sigue funcionando.
+    }
+  }
+
   // Los botones se pintan después (ver `pintar`), así que se escucha en el documento.
   document.addEventListener(
     "click",
     function (e) {
       var a = e.target && e.target.closest ? e.target.closest("a.ox-btn") : null;
       if (!a) return;
-      if (a.classList.contains("ox-wa")) { registrarCodigo(); medir("whatsapp"); }
+      if (a.classList.contains("ox-wa")) {
+        avisarClicWhatsapp();
+        medir("whatsapp");
+      }
       else if (a.classList.contains("ox-tel")) medir("llamada");
       // El botón de respaldo solo aparece si la agenda no cargó: es la única forma de reservar.
       else if (a.classList.contains("ox-brand")) medir("agenda_externa");

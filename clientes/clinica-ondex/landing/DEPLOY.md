@@ -186,35 +186,53 @@ de antes del cambio.
 
 ---
 
-## Actualización — 06-oct-2026 (tarde), código del botón de WhatsApp
+## Actualización — 06-oct-2026 (noche), clic del botón de WhatsApp
+
+> Reemplaza la versión de la tarde, que agregaba un código visible al mensaje
+> (`… (código K8YL3Z)`). Se descartó antes de publicarse: el cliente no quiere nada
+> agregado al saludo.
 
 **Problema:** el botón «Escribir por WhatsApp» no dejaba nada en el CRM, así que el panel
-contaba esos contactos como "WhatsApp sin anuncio" aunque vinieran de un anuncio. Las reservas
-de la agenda sí llegaban atribuidas.
+contaba esos contactos como "WhatsApp sin anuncio" aunque vinieran de un anuncio (47 entre el
+01 y el 06-10). Las reservas de la agenda sí llegaban atribuidas.
 
-**Solución** (heat-integrations #2167 + `agenda-directa.js` de las dos landings):
+**Solución** (heat-integrations #2169 + `agenda-directa.js` de las dos landings):
 
-- El texto de WhatsApp lleva un código: `… (código K8YL3Z)`. **K** = Kinesiología,
-  **M** = Método/ondas; el resto es al azar, sin I, O, 0 ni 1.
-- Al tocar el botón, la landing registra el código con los UTM de la visita en
-  `https://agentes.heatchile.com/api/landing/codigo` (sendBeacon, texto plano, sin datos de
-  la persona), y lo deja en Clarity como etiqueta `codigo_whatsapp`.
-- Cuando el mensaje entra, el cerebro escribe en el contacto los mismos campos que la agenda
-  (UTM campaign/term/content/source + Origen landing) y las etiquetas `whatsapp-landing` y la
-  de la landing. El panel no necesita cambios.
+- El botón y el texto de WhatsApp quedan **exactamente iguales**.
+- Al tocar el botón, la landing anota el CLIC en
+  `https://agentes.heatchile.com/api/landing/clic`. Se usa sendBeacon con texto plano, una vez
+  por visita. El aviso lleva la landing (`kine` / `ondas`), los cuatro UTM de la visita y
+  `pagado`, que solo es verdadero si la URL traía `utm_campaign`, `utm_content` o
+  `utm_medium=paid`. `fbclid` solo no cuenta, porque Facebook lo agrega también a las
+  publicaciones orgánicas. No se envía ningún dato de la persona.
+- Cuando entra una conversación con el saludo de esa landing, el cerebro la cruza con el clic
+  de **esa** landing hecho en los 10 minutos anteriores:
+  - **Clic de anuncio:** el contacto queda con los mismos campos que una reserva de la agenda
+    (campaña, conjunto, anuncio, fuente y landing) y con la etiqueta de la landing.
+  - **Clic orgánico:** solo queda la etiqueta `origen-organico`, sin campos ni etiqueta de
+    landing, para que el panel no lo cuelgue de la campaña.
+  - **Sin clic, o con clics de anuncios distintos en la ventana:** queda «sin identificar».
+    No se adivina.
+- Si el aviso del clic falla, el botón abre WhatsApp igual.
 
-**Orden:** primero el merge del PR, después las landings. Si el código no está registrado,
-el contacto queda solo con la landing (por la letra), nunca con un conjunto adivinado.
+**Orden:** primero el merge del PR, después las landings.
 
 **Qué se ve en GHL ahora, por camino de entrada:**
 
 | Entró por | Etiquetas | Campos de atribución |
 |---|---|---|
 | Agenda de la landing | `reserva-web` + `landing-…` | campaña, conjunto, anuncio, fuente, landing |
-| WhatsApp de la landing | `whatsapp-landing` + `landing-…` + nota con el código | los mismos |
+| WhatsApp de la landing, desde un anuncio | `whatsapp-landing` + `landing-…` + nota | los mismos |
+| WhatsApp de la landing, orgánico | `whatsapp-landing` + `origen-organico` + nota | — |
+| WhatsApp de la landing, sin identificar | `whatsapp-landing` + nota | — |
 | Llamar | — | — (solo el clic en Meta y en Clarity) |
 
-Probado en Chromium con las dos landings: el código va en el texto, se registra una sola vez
-aunque se toque dos veces, viaja como `text/plain` con los cuatro UTM, queda en Clarity, y el
-evento de Meta (Lead + Contact) no cambia. Cruce: el cerebro lee del texto real el mismo
-código que la landing registra.
+**Probado en Chromium con las dos landings:**
+
+- El texto de WhatsApp es idéntico al de antes.
+- Se envía un solo aviso aunque se toque el botón dos veces, como `text/plain`.
+- Con anuncio viajan los cuatro UTM y `pagado:true`. Sin parámetros, o solo con `fbclid`, va
+  `pagado:false`.
+- El píxel sigue enviando Lead y Contact.
+- Los cuerpos reales pasan el validador del servidor, y el texto real de cada botón se
+  reconoce como su landing.
