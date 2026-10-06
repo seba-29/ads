@@ -148,8 +148,8 @@ eliminó y hoy devuelve 404 en producción.
 
 | Landing | Proyecto Clarity | Estado |
 |---|---|---|
-| Kinesiología | `ytk2sazcfb` | zip listo para publicar |
-| Método Ondex | pendiente | — |
+| Kinesiología | `ytk2sazcfb` | publicado y verificado en vivo con la agenda real (06-oct) |
+| Método Ondex | `ytksllnlfb` | archivos listos; al 06-oct 17:00 Clarity respondía vacío para este ID (proyecto recién creado) |
 
 **Se parchea sobre lo publicado**, igual que `agenda-directa.js`: el zip se baja de
 Netlify (Deploys → el deploy vigente → Download), se compara archivo por archivo contra
@@ -172,6 +172,13 @@ Qué se agregó:
 (`agentes.heatchile.com`). Los pasos llegan porque la agenda los avisa por `postMessage`
 (heat-integrations, PR #2164). Sin ese PR mergeado los eventos `agenda_*` no aparecen;
 el resto funciona igual.
+
+Método lleva exactamente el mismo parche (aplicado con un script que falla si un ancla no
+calza): su `agenda-directa.js` difiere del de Kinesiología solo en los textos propios de
+cada landing.
+
+⚠️ **El zip de Método pesa 31 MB** y el chat no acepta más de 30: se entregaron solo los
+dos archivos que cambian, para reemplazarlos en la carpeta descargada de Netlify.
 
 Probado en Chromium con la agenda simulada: eventos de Clarity en orden, un `paso` con
 forma inválida se descarta, y las llamadas al píxel (Lead y Contact) son idénticas a las
