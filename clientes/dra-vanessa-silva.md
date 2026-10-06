@@ -99,6 +99,10 @@ No son comparables de frente. Lo que falta para cerrar la comparación es cuál
 de los dos canales termina en pabellón — y eso sigue sin medirse porque el
 agendamiento vive fuera del CRM.
 
+📌 **Campaña general de formulario (oct-2026):** el copy del formulario
+—título, descripción, preguntas, pantalla final y lo que NO puede ir— está en
+`clientes/dra-vanessa-silva/formulario-general.md`. Aún no se monta.
+
 ## Las 7 Maletas
 1. **Público** —
 2. **Problema principal** —
