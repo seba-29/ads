@@ -198,3 +198,71 @@ esa promoción, así que mide interés, no preferencia declarada.)*
   distintas de atender.
 - **Instagram trae 42 de los 101** leads de anuncios de WhatsApp (42%), contra 59 de
   Facebook. No está separado en la pauta.
+
+---
+
+## 6. El desglose: 101 contactos sin rastro de WhatsApp, y 1 pidió hora
+
+Segunda corrida (14-oct, misma ventana), con el grupo "otro" partido en dos:
+
+| Grupo | Contactos | Pidieron hora | Tasa |
+|---|---:|---:|---:|
+| WhatsApp de anuncios | 101 | 4 | 3,96% |
+| Otro **con** rastro de WhatsApp | 109 | 14 | **12,84%** |
+| Otro **sin** rastro de WhatsApp | **101** | **1** | **0,99%** |
+
+Los 101 sin rastro de WhatsApp **sí llegan al CRM**: entran, se crean como contacto,
+y no traen ni etiqueta de ruteo `wa:` ni `inbound whatsapp`. O sea no entraron por
+ese canal. Su volumen (101 en 7 días) es del orden de los ~145 leads de formulario
+por semana que reporta Meta.
+
+> **Esto es inferencia fuerte, no atribución.** Que no entraran por WhatsApp no
+> prueba que sean del formulario. Se confirma en dos minutos: abrir 5 de esos
+> contactos en GHL y mirar de dónde vienen. Hasta entonces se escribe "≈".
+
+### La lectura que parece obvia, y probablemente está mal
+
+La tentación es leer 0,99% contra 3,96% y concluir que **el formulario trae leads
+cuatro veces peores**. Da vuelta la premisa que abrió esta discusión, así que es
+cómodo creerla.
+
+Pero hay una explicación más simple y mucho más grave: **a un lead de formulario
+hay que escribirle.** No inicia conversación — deja su teléfono y espera. Y lo que
+dice el desglose es justamente que esos 101 contactos **no tienen ninguna
+conversación de WhatsApp**. Si nadie les escribió, el 1% no mide la calidad del
+canal: mide que el canal no se atiende.
+
+Lorena vive en WhatsApp. El lead de WhatsApp le llega solo; el del formulario hay
+que ir a buscarlo. Nada en el repo dice que alguien lo haga.
+
+**Es la diferencia entre "este canal no sirve" y "estamos pagando ~$74.000 por
+semana por leads que nadie contesta".** Las dos explicaciones producen el mismo 1%.
+
+### Cómo se separan, con lo que ya existe
+
+`GET /api/admin/tenants/<id>/primer-contacto` — la medición que entró con el PR #92
+y que quedó operativa el 14-oct al reconectar la agencia con
+`conversations.readonly`. Responde exactamente esto: de los leads nuevos, a cuántos
+les habló alguien.
+
+- **Si casi ninguno tiene conversación** → no es el canal, es que nadie contesta.
+  El arreglo no es publicitario: es que esos leads entren al flujo de Lorena.
+- **Si les hablaron y aun así no agendan** → ahí sí el formulario califica peor, y
+  el presupuesto se mueve al revés de lo que se venía pensando.
+
+### Mientras tanto, lo que no cambia
+
+**No se mueve presupuesto a formulario.** Con n=4 y n=1 no hay nada que declarar —
+el propio instrumento avisa que la muestra es corta—, pero la decisión no necesita
+esperar: no existe una sola señal a favor de la premisa original, y el canal que se
+lleva el 72% de la plata no se puede ver desde el CRM. Se sigue midiendo dos o tres
+semanas más antes de tocar nada.
+
+### Y el grupo que mejor convierte no es ninguno de los dos
+
+**109 contactos con rastro de WhatsApp pero sin etiqueta de anuncio: 12,84%** —
+tres veces mejor que el WhatsApp pagado. Es gente que llega por WhatsApp sin venir
+de un anuncio identificado: orgánico, referidos, la bio de Instagram, recompra.
+Vale la pena mirarlo aparte: puede ser demanda propia de la marca, o pueden ser
+leads de anuncios cuya etiqueta no se aplicó. Son cosas muy distintas y hoy no se
+distinguen.
