@@ -134,3 +134,67 @@ Casa Zen: **todavía no.**
 2. Que mande también el momento que importa (`quiere-agendar` / `cita-agendada`) —
    que es, además, el dato que zanja la discusión del punto 2.
 3. Cuando ese evento pase de 50/semana estables, recién ahí campaña de conversiones.
+
+---
+
+## 5. Medido el 14-oct: el formulario no existe en el CRM
+
+`GET /api/admin/origen-vs-agenda?tenant=…&dias=7`, ventana 07→14 de octubre.
+Cobertura completa (4 páginas, 400 contactos leídos, el más viejo del 04-oct),
+sin problemas de lectura: **312 contactos entraron a GHL en 7 días.**
+
+| Origen | Contactos | Pidieron hora | Tasa |
+|---|---:|---:|---:|
+| WhatsApp de anuncios | 101 | 4 | **3,96%** |
+| **Formulario** | **0** | 0 | — |
+| Otro (sin etiqueta de origen) | 211 | 15 | 7,11% |
+
+**Cero.** Y no es que la etiqueta esté vacía: `fb-ad-lead` e `instagram-ad-lead`
+**no aparecen en el censo de etiquetas**, que sí trae `fb-ad-lead-whatsapp` (59) e
+`instagram-ad-lead-whatsapp` (42). Mientras tanto Meta reporta del orden de **145
+leads de formulario por semana** en esta cuenta.
+
+### Lo que esto decide, y lo que todavía no
+
+**Decide esto:** no se mueve el presupuesto a formulario. El motivo ya no es la
+calidad —que sigue sin medirse— sino algo más duro: **el canal que se lleva el 72%
+de la plata no deja rastro identificable en el CRM.** Nadie puede ver qué pasa con
+esos leads: ni el panel, ni Lorena, ni el reporte del cliente. Darle el 100% sería
+quedarse ciego a propósito.
+
+**No decide esto:** si los leads de formulario *llegan* a GHL sin etiqueta, o si no
+llegan. Son dos fallas distintas con arreglos distintos, y **no se puede concluir
+desde este JSON**: 211 contactos quedaron en "otro" y ahí se mezclan orgánico,
+referidos, base vieja y —quizás— los del formulario. El instrumento ahora parte ese
+grupo por rastro de WhatsApp (`wa: +569…` / `inbound whatsapp`) para separarlos.
+
+> ⚠️ La tasa de 7,11% de "otro" **no es la del formulario**. Es una bolsa mezclada.
+> Leerla como "el formulario convierte mejor" sería exactamente el error que esta
+> medición vino a evitar.
+
+### El hallazgo que no buscábamos: la demanda de Lipovaser
+
+En los mismos 7 días, las etiquetas que pone Lorena cuando la paciente consulta por
+cada promoción:
+
+| | Contactos |
+|---|---:|
+| **`promo-lipovaser`** | **69** |
+| `promo-lipoescultura` | 36 |
+
+**Casi el doble de consultas por Lipovaser que por Lipoescultura** — y es la promo
+que la pauta de WhatsApp tiene en **$24 y 4 impresiones** en 14 días. La demanda
+existe y la pauta no la está sirviendo. Eso cambia el peso de la decisión del punto
+3: el conjunto propio para Lipovaser deja de ser un capricho y pasa a tener
+evidencia del CRM detrás.
+
+*(Cuidado con el tamaño del dato: el tag se aplica a quien "consulta o llegó por"
+esa promoción, así que mide interés, no preferencia declarada.)*
+
+### Al pasar, dos cosas anotadas
+
+- **48 de 312 contactos (15%)** tienen `ia-apagada` o `ia-en-espera`. En esos, la
+  conversación la lleva una persona, así que las tasas de arriba mezclan dos formas
+  distintas de atender.
+- **Instagram trae 42 de los 101** leads de anuncios de WhatsApp (42%), contra 59 de
+  Facebook. No está separado en la pauta.
